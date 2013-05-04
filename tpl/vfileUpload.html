@@ -1,0 +1,22 @@
+
+<p>上传视频</p><hr><p id="msg"></p>
+<form enctype="multipart/form-data" method=post action="/cgi/upload">
+	<input id="file" type="file" name="file" /></form>
+	<script>
+		function upload() {
+			var file = document.getElementById("file").files[0]; 
+			var form = new FormData();
+			var rand = Math.random();
+			form.append("file", file);
+			var xhr = new XMLHttpRequest();
+			xhr.open("post", "/cgi/upload/"+rand, true);
+			xhr.send(form);
+
+			var msg = document.getElementById("msg"); 
+			msg.innerHTML = "[<a href='/vfile/"+rand+"'>查看上传进度</a>]";
+
+			window.open("/vfile/"+rand);
+		}
+	</script>
+<button onclick="upload();">上传</button>
+

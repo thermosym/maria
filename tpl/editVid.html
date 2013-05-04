@@ -1,0 +1,36 @@
+<form class="form-horizontal" method=post action="{{action}}">
+
+	<legend>{{title}} : {{path}}</legend>
+
+	<div class="control-group">
+		<label class="control-label" >名称</label>
+		<div class="controls">
+			<input type="text" name="desc" value="{{desc}}" placeholder="请输入">
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" >类型</label>
+		<div class="controls">
+			{{#types}}
+			<input type="radio" name="type" value="{{Value}}" {{Checked}}>{{Desc}}</input>
+			{{/types}}
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" >视频列表</label>
+		<div class="controls">
+			<textarea name=content style="width:500px;height:300px">{{content}}</textarea>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<div class="controls">
+			<button type="submit" class="btn">提交</button>
+			<a class=btn href="{{backurl}}">返回</a>
+		</div>
+	</div>
+
+</form>
+

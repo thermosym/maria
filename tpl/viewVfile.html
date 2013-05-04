@@ -1,0 +1,32 @@
+
+<p>查看视频</p>
+<a class=btn href="/manv">返回</a>
+<div class=well>
+	<p>视频链接: <a href="{{url}}" target=_blank>{{url}}</a>
+	<p>状态: {{statstr}}</p>
+	<p>
+		<a class=btn target=_blank href="/m3u8/vfile/{{path}}">查看m3u8</a>
+		<a class=btn target=_blank href="/play/vfile/{{path}}">播放m3u8</a>
+	</p>
+	
+	{{#isDownloading}}
+	<p>下载开始时间: {{starttm}}</p>
+	<p>下载进度: {{progress}}</p>
+	<p>下载速度: {{speed}}</p>
+	{{/isDownloading}}
+
+	{{#isUploading}}
+	<p>上传开始时间: {{starttm}}</p>
+	<p>上传进度: {{progress}}</p>
+	<p>上传速度: {{speed}}</p>
+	{{/isUploading}}
+
+	<p>ts 文件个数: {{tsTotal}}</p>
+	<p>ts 已下载个数: {{tsDown}}</p>
+
+	{{#isError}}
+	<p>出错原因: {{error}}</p>
+	{{/isError}}
+
+</div>
+

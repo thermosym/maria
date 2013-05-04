@@ -1,0 +1,17 @@
+<p>{{statstr}}</p>
+<table border=1>
+	<tr>
+		<td>状态</td>
+		<td>地址</td>
+		<td>操作</td>
+	</tr>
+
+	{{#list}}
+		<tr>
+			<td>{{Statstr}}</td>
+			<td><a href="{{Url}}" target=blank_>{{Url}}</a></td>
+			<td>{{{HtmlDownOrView}}}</td>
+		</tr>
+	{{/list}}
+</table>
+
