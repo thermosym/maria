@@ -1,4 +1,6 @@
 .*.swp
+.*.swo
 fetch
 global
 vfile
+

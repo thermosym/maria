@@ -11,18 +11,23 @@
   </head>
 
   <body>
+
 		<div class="navbar navbar-inverse nav-fixed-top"> 
 			<div class="navbar-inner">
-				<div class="container-fluid">
-					<a class="brand" href="/">视频管理系统</a>
-					<a class="brand" href="/menu">菜单</a>
-					<a class="brand" href="/manv">视频</a>
-					<a class="brand" href="/manv/upload">上传</a>
+				<div class="container">
+					<a class=brand>视频管理系统</a>
+					<ul class=nav>
+						<li><a href="/menu">菜单</a></li>
+						<li><a href="/manv">视频</a></li>
+						<li><a href="/manv/upload">上传</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
 
-		{{{body}}}
+		<div class="container-fluid">
+			{{{body}}}
+		</div>
 
   </body>
 

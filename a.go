@@ -4,6 +4,7 @@ package main
 import (
 	"github.com/hoisie/mustache"
 
+	"bytes"
 	"net/http"
 	"crypto/sha1"
 	"errors"
@@ -515,8 +516,8 @@ func (m vfilemap) shoturl(url string) (r *vfile) {
 	return m.shotsha(getsha1(url))
 }
 
-func (m vfilemap) shotall() (rm vfilelist) {
-	rm = vfilelist{}
+func (m vfilemap) shotall() (rm *vfilelist) {
+	rm = &vfilelist{}
 	for _, pv := range m.m {
 		pv.l.Lock()
 		v := *pv
@@ -524,7 +525,7 @@ func (m vfilemap) shotall() (rm vfilelist) {
 		rm.m = append(rm.m, &v)
 	}
 	rm.dosum()
-	sort.Sort(&rm)
+	sort.Sort(rm)
 	return
 }
 
@@ -656,8 +657,8 @@ func (m *vfilelist) Less(i,j int) bool {
 	return m.m[i].Url < m.m[j].Url
 }
 
-func vfilelistFromContent(c string) (m vfilelist) {
-	m = vfilelist{}
+func vfilelistFromContent(c string) (m *vfilelist) {
+	m = &vfilelist{}
 	for _, line := range splitContent(c) {
 		if strings.HasPrefix(line, "http") {
 			v := global.vfile.shoturl(line)
@@ -693,6 +694,181 @@ func (m vfilelist) statstr() (s string) {
 	return
 }
 
+func getloopat(at, dur float32) float32 {
+	n := int(at/dur)
+	return at - float32(n)*dur
+}
+
+func (m vfilelist) genLiveEndM3u8(w io.Writer, host string, at float32) {
+
+	at = getloopat(at, m.dur)
+	pos := float32(0)
+	for _, v := range m.m {
+		if pos + v.Dur > at {
+			start := 0
+			for i, t := range v.Ts {
+				pos += t.Dur
+				start = i
+				if pos > at {
+					break
+				}
+			}
+
+			fmt.Fprintf(w, "#EXTM3U\n")
+			fmt.Fprintf(w, "#EXT-X-TARGETDURATION:%.0f\n", 30.0)
+			for i := start; i < len(v.Ts); i++ {
+				fmt.Fprintf(w, "#EXTINF:%.0f,\n", v.Ts[i].Dur)
+				fmt.Fprintf(w, "http://%s/%s/%d.ts\n", host, v.path, i)
+			}
+			fmt.Fprintf(w, "#EXT-X-ENDLIST\n")
+
+			return
+		}
+		pos += v.Dur
+	}
+}
+
+func (m vfilelist) genLiveM3u8(w io.Writer, host string, at float32) {
+
+	type pktS struct {
+		url string
+		dur float32
+		end bool
+		pos float32
+		v *vfile
+	}
+
+	pkts := []pktS{}
+	pos := float32(0)
+
+	for _, v := range m.m {
+		for i, t := range v.Ts {
+			pkt := pktS{}
+			pkt.v = v
+			pkt.dur = t.Dur
+			pkt.url = fmt.Sprintf("http://%s/%s/%d.ts", host, v.path, i)
+			if i == len(v.Ts)-1 {
+				pkt.end = true
+			}
+			pkt.pos = pos
+			pos += pkt.dur
+			pkts = append(pkts, pkt)
+		}
+	}
+
+	nloop := int(at/m.dur)
+	loopat := at - float32(nloop)*m.dur
+
+	pktsat := 0
+	for i, p := range pkts {
+		if p.pos > loopat {
+			break
+		}
+		pktsat = i
+	}
+	seqno := len(pkts)*nloop + pktsat
+
+	fmt.Fprintf(w, "#EXTM3U\n")
+	fmt.Fprintf(w, "#EXT-X-TARGETDURATION:%.0f\n", 30.0)
+	fmt.Fprintf(w, "#EXT-X-MEDIA-SEQUENCE:%d\n", seqno)
+
+	if false {
+		fmt.Fprintf(w, "\n")
+		fmt.Fprintf(w, "# live stream at %s\n", durstr(at))
+		fmt.Fprintf(w, "# loop nr %d\n", nloop)
+		fmt.Fprintf(w, "# loop at %f\n", loopat)
+		fmt.Fprintf(w, "# pkts nr %d\n", len(pkts))
+		fmt.Fprintf(w, "# pkts at %d\n", pktsat)
+		fmt.Fprintf(w, "\n")
+	}
+
+	j := 0
+	for i := pktsat; i < len(pkts); i++ {
+		p := pkts[i]
+		fmt.Fprintf(w, "#EXTINF:%.0f,\n", p.dur)
+		fmt.Fprintf(w, "%s\n", p.url)
+		if p.end {
+			//fmt.Fprintf(w, "#EXT-X-DISCONTINUITY\n")
+		}
+		j++
+		if j == 3 {
+			break
+		}
+	}
+
+}
+
+func (m vfilelist) genLiveM3u8_dummy(w io.Writer, host string, at float32) {
+
+	type pktS struct {
+		url string
+		dur float32
+		end bool
+		v *vfile
+	}
+
+	pkts := []pktS{}
+	segs := [][]pktS{}
+	poss := []float32{}
+	pos := float32(0)
+
+	flush := func () {
+		segs = append(segs, pkts)
+		poss = append(poss, pos)
+		pkts = []pktS{}
+	}
+
+	for _, v := range m.m {
+		for i, t := range v.Ts {
+			pkt := pktS{}
+			pkt.v = v
+			pkt.dur = t.Dur
+			pkt.url = fmt.Sprintf("http://%s/%s/%d.ts", host, v.path, i)
+			if i == len(v.Ts)-1 {
+				pkt.end = true
+			}
+			pos += pkt.dur
+			pkts = append(pkts, pkt)
+			if len(pkts) == 3 {
+				flush()
+			}
+		}
+	}
+	flush()
+
+	nloop := int(at/m.dur)
+	loopat := at - float32(nloop)*m.dur
+
+	segat := 0
+	for i := 0; i < len(segs); i++ {
+		segat = i
+		if poss[i] > loopat {
+			break
+		}
+	}
+	seqno := len(segs)*nloop + segat
+
+
+	fmt.Fprintf(w, "#EXTM3U\n")
+	fmt.Fprintf(w, "#EXT-X-TARGETDURATION:%.0f\n", 30.0)
+	fmt.Fprintf(w, "#EXT-X-MEDIA-SEQUENCE:%d\n", seqno)
+	fmt.Fprintf(w, "\n")
+	fmt.Fprintf(w, "# live stream at %s\n", durstr(at))
+	fmt.Fprintf(w, "# loop nr %d\n", nloop)
+	fmt.Fprintf(w, "# loop at %f\n", loopat)
+	fmt.Fprintf(w, "# segs nr %d\n", len(segs))
+	fmt.Fprintf(w, "# segs at %d\n", segat)
+	fmt.Fprintf(w, "\n")
+
+	for _, p := range segs[segat] {
+		fmt.Fprintf(w, "#EXTINF:%.0f\n", p.dur)
+		fmt.Fprintf(w, "%s\n", p.url)
+		if p.end {
+			fmt.Fprintf(w, "#EXT-X-DISCONTINUITY\n")
+		}
+	}
+}
+
 func (m vfilelist) genM3u8(w io.Writer, host string, args... interface{}) {
 	maxdur := float32(0)
 	for _, v := range m.m {
@@ -706,6 +882,8 @@ func (m vfilelist) genM3u8(w io.Writer, host string, args... interface{}) {
 		}
 	}
 
+	debug := false
+
 	at := float32(-1)
 	if len(args) > 0 {
 		if args[0].(string) == "at" {
@@ -713,26 +891,31 @@ func (m vfilelist) genM3u8(w io.Writer, host string, args... interface{}) {
 		}
 	}
 	fmt.Fprintf(w, "#EXTM3U\n")
-	fmt.Fprintf(w, "#EXT-X-TARGETDURATION:%.1f\n\n", maxdur)
+	fmt.Fprintf(w, "#EXT-X-TARGETDURATION:%.0f\n", maxdur)
+	fmt.Fprintf(w, "#EXT-X-MEDIA-SEQUENCE:%d\n", 0)
 	if at >= 0 {
-		fmt.Fprintf(w, "# live stream at %s\n\n", durstr(at))
+		if debug {
+			fmt.Fprintf(w, "# live stream at %s\n\n", durstr(at))
+		}
 	}
 
 	cur := float32(0)
 	cnt := 0
 
 	for _, v := range m.m {
-		fmt.Fprintf(w, "# %s%s\n", v.Statstr(), v.Url)
-		if v.Stat != "done" {
-			fmt.Fprintf(w, "\n")
-			continue
+		if debug {
+			fmt.Fprintf(w, "# %s%s\n", v.Statstr(), v.Url)
+			if v.Stat != "done" {
+				fmt.Fprintf(w, "\n")
+				continue
+			}
 		}
 		for j, t := range v.Ts {
 			if v.Size == 0 {
 				continue
 			}
 			if at >= 0 && cur > at && cnt < 3 || at < 0 {
-				fmt.Fprintf(w, "#EXTINF:%.1f,\n", t.Dur)
+				fmt.Fprintf(w, "#EXTINF:%.0f,\n", t.Dur)
 				fmt.Fprintf(w, "http://%s/%s/%d.ts\n", host, v.path, j)
 				cnt++
 			}
@@ -741,9 +924,12 @@ func (m vfilelist) genM3u8(w io.Writer, host string, args... interface{}) {
 		if len(v.Ts) > 0 {
 			fmt.Fprintf(w, "#EXT-X-DISCONTINUITY\n")
 		}
-		fmt.Fprintf(w, "\n")
+		//fmt.Fprintf(w, "\n")
 	}
 
+	if at < 0 {
+		fmt.Fprintf(w, "#EXT-X-ENDLIST\n")
+	}
 }
 
 type menu struct {
@@ -753,6 +939,8 @@ type menu struct {
 	Content string
 	M3u8Url string
 	Sub map[string]*menu
+
+	tmstart time.Time
 }
 
 type globalS struct {
@@ -787,6 +975,9 @@ func (m *menu) load(r io.Reader) {
 
 func (m *menu) fillM3u8Url(host,path string) {
 	m.M3u8Url = "http://"+host+"/m3u8/menu"+path+"/a.m3u8"
+	if m.Type == "live" {
+		m.M3u8Url += "?live=1"
+	}
 	log.Printf("fillm3u8 %s", path)
 	for s, mc := range m.Sub {
 		mc.fillM3u8Url(host, path+"/"+s)
@@ -916,6 +1107,19 @@ func (m *menu) readFile(filename string) {
 		return
 	}
 	json.Unmarshal(data, m)
+
+	m.foreach(func (r *menu) {
+		if r.Type == "live" {
+			r.tmstart = time.Now()
+		}
+	})
+}
+
+func (m *menu) foreach(cb func (r *menu)) {
+	cb(m)
+	for _, s := range m.Sub {
+		s.foreach(cb)
+	}
 }
 
 func testMenu() {
@@ -986,6 +1190,11 @@ func testMenu() {
 	m.dumptree(0)
 	global.menu = m
 	m.writeFile("global")
+}
+
+func tmdur2float(dur time.Duration) float32 {
+	a := float32(dur)/float32(time.Second)
+	return a
 }
 
 func durstr(d float32) string {
@@ -1061,6 +1270,18 @@ func main() {
 		return
 	}
 
+	type menuTitleS struct {
+		Desc,Href string
+	}
+
+	path2titles := func (path string) (tarr []menuTitleS) {
+		tarr = append(tarr, menuTitleS{"主菜单", ""})
+		global.menu.get(path, func (r,p *menu, id string) {
+			tarr = append(tarr, menuTitleS{r.Desc, ""})
+		})
+		return tarr
+	}
+
 	path2title := func (path string) string {
 		tarr := []string{}
 		global.menu.get(path, func (r,p *menu, id string) {
@@ -1086,7 +1307,7 @@ func main() {
 		fmt.Fprintf(w, "%s", s)
 	}
 
-	listvfile := func (m vfilelist) string {
+	listvfile := func (m *vfilelist) string {
 		return mustache.RenderFile("tpl/listVfile.html",
 			map[string]interface{} {
 				"list": m.m,
@@ -1099,7 +1320,15 @@ func main() {
 		if m == nil {
 			return
 		}
+
 		title := "编辑菜单: " + path2title(path)
+		titles := path2titles(path)
+		titlelast := ""
+		if len(titles) > 0 {
+			n := len(titles)
+			titlelast = titles[n-1].Desc
+			titles = titles[0:n-1]
+		}
 
 		type btn struct {
 			Href, Title string
@@ -1125,6 +1354,9 @@ func main() {
 		mharr := []menuH{}
 		liststr := ""
 
+		at := float32(0)
+		elapsed := float32(0)
+
 		if m.Flag == "dir" {
 			marr := global.menu.ls(path)
 			for k, s := range marr {
@@ -1148,11 +1380,22 @@ func main() {
 			btns2 = append(btns2, btn{"/m3u8/menu/"+path, "查看m3u8"})
 			btns2 = append(btns2, btn{"/play/menu/"+path, "播放m3u8"})
 			btns2 = append(btns2, btn{"/cgi/"+path+"/?do=downAllVfile", "下载全部"})
+
+			var list *vfilelist
+
 			if m.Content != "" {
-				list := vfilelistFromContent(m.Content)
-				liststr = listvfile(list)
-			} else {
+				list = vfilelistFromContent(m.Content)
+			}
+
+			if list == nil || len(list.m) == 0 {
 				liststr = `<p>[空]</p>`
+			} else {
+				liststr = listvfile(list)
+			}
+
+			if m.Type == "live" && list != nil && list.dur > 0 {
+				elapsed = tmdur2float(time.Since(m.tmstart))
+				at = elapsed - list.dur*float32(int(elapsed/list.dur))
 			}
 		}
 
@@ -1165,6 +1408,11 @@ func main() {
 				"list": mharr,
 				"liststr": liststr,
 				"title": title,
+				"titles": titles,
+				"titlelast": titlelast,
+				"isLive": m.Type == "live",
+				"tmelapsed": durstr(elapsed),
+				"tmat": durstr(at),
 			}))
 	}
 
@@ -1282,10 +1530,6 @@ func main() {
 			fmt.Fprintf(w, `<p>标题不能为空 [<a href="/menu/%s">返回</a>]</p>`, path)
 			return
 		}
-		if r.FormValue("type") == "" {
-			fmt.Fprintf(w, `<p>类型不能为空 [<a href="/menu/%s">返回</a>]</p>`, path)
-			return
-		}
 		var m *menu
 		if op == "add" {
 			if flag == "url" {
@@ -1365,17 +1609,17 @@ func main() {
 		renderIndex(w, mustache.RenderFile("tpl/vfileUpload.html", map[string]interface{}{}))
 	}
 
-	vfileM3u8 := func (w http.ResponseWriter, sha string, host string) {
+	vfileM3u8 := func (w http.ResponseWriter, wr io.Writer, sha string, host string) {
 		log.Printf("vfilem3u8: %s", sha)
 		v := global.vfile.shotsha(sha)
 		if v == nil {
 			http.Error(w, "not found", 404)
 			return
 		}
-		v.genM3u8(w, host)
+		v.genM3u8(wr, host)
 	}
 
-	menuM3u8 := func (r *http.Request, w http.ResponseWriter, path,host string) {
+	menuM3u8 := func (r *http.Request, w http.ResponseWriter, wr io.Writer, path,host string) {
 		log.Printf("menum3u8 %s", path)
 		m := global.menu.get(path, nil)
 		if m == nil || m.Flag != "url" {
@@ -1383,29 +1627,38 @@ func main() {
 			return
 		}
 		list := vfilelistFromContent(m.Content)
+		at := r.FormValue("at")
 		live := r.FormValue("live")
-		if live != "" {
-			at := float32(0)
-			fmt.Sscanf(live, "%f", &at)
-			list.genM3u8(w, host, "at", at)
-		} else {
+		liveend := r.FormValue("liveend")
+		switch {
+		case at != "":
+			fat := float32(0)
+			fmt.Sscanf(at, "%f", &fat)
+			list.genM3u8(w, host, "at", fat)
+		case live != "":
+			fat := tmdur2float(time.Since(m.tmstart))
+			list.genLiveM3u8(w, host, fat)
+		case liveend != "":
+			fat := tmdur2float(time.Since(m.tmstart))
+			list.genLiveEndM3u8(w, host, fat)
+		default:
 			list.genM3u8(w, host)
 		}
 	}
 
+	sampleM3u8Starttm := time.Now()
+
 	sampleM3u8 := func (r *http.Request, w io.Writer, host,path string) {
 		log.Printf("samplem3u8 %s", path)
 		list := global.vfile.shotall()
-		fmt.Fprintf(w, "#EXTM3U\n")
-		fmt.Fprintf(w, "#EXT-X-TARGETDURATION:%.1f\n\n", 30.0)
+		list2 := vfilelist{}
 		for _, v := range list.m {
-			if len(v.Ts) == 0 {
-				continue
-			}
-			fmt.Fprintf(w, "#EXTINF:%.1f,\n", v.Ts[0].Dur)
-			fmt.Fprintf(w, "http://%s/%s/%d.ts\n", host, v.path, 0)
-			fmt.Fprintf(w, "#EXT-X-DISCONTINUITY\n")
+			v.Ts = v.Ts[0:1]
+			list2.m = append(list2.m, v)
+			list2.dur += v.Ts[0].Dur
 		}
+		at := tmdur2float(time.Since(sampleM3u8Starttm))
+		list2.genLiveM3u8(w, host, at)
 	}
 
 	playM3u8 := func (w io.Writer, url string) {
@@ -1456,6 +1709,12 @@ func main() {
 			path = dir
 		}
 
+		var bs bytes.Buffer
+		oneshot := func () {
+			w.Header().Add("Content-Length", fmt.Sprintf("%d", (bs.Len())))
+			w.Write(bs.Bytes())
+		}
+
 		switch {
 		case path == "/":
 			http.Redirect(w, r, "/menu", 302)
@@ -1464,17 +1723,19 @@ func main() {
 			menuPage(w, pathsplit(path, 1))
 
 		case strings.HasPrefix(path, "/m3u8/vfile"):
-			vfileM3u8(w, pathsplit(path, 2), r.Host)
+			vfileM3u8(w, &bs, pathsplit(path, 2), r.Host)
+			oneshot()
 		case strings.HasPrefix(path, "/m3u8/menu"):
-			menuM3u8(r, w, pathsplit(path, 2), r.Host)
+			menuM3u8(r, w, &bs, pathsplit(path, 2), r.Host)
+			oneshot()
 		case strings.HasPrefix(path, "/m3u8/sample"):
-			sampleM3u8(r, w, r.Host, pathsplit(path, 2))
+			sampleM3u8(r, &bs, r.Host, pathsplit(path, 2))
+			oneshot()
 
 		case strings.HasPrefix(path, "/json/menu"):
 			jsonMenu(w, r.Host, pathsplit(path, 2))
 		case strings.HasPrefix(path, "/json/callback"):
 			jsonCallback(w, r.Host, pathsplit(path, 2))
-
 
 		case strings.HasPrefix(path, "/play"):
 			playM3u8(w, "/m3u8/"+pathsplit(path,1)+"/a.m3u8?"+r.URL.RawQuery)
