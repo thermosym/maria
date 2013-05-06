@@ -505,6 +505,9 @@ func main() {
 			sampleM3u8(r, &bs, r.Host, pathsplit(path, 2))
 			oneshot()
 
+		case strings.HasPrefix(path, "/players"):
+			menuPlayersPage(w, pathsplit(path, 1))
+
 		case strings.HasPrefix(path, "/json/menu"):
 			jsonMenu(w, r.Host, pathsplit(path, 2))
 		case strings.HasPrefix(path, "/json/callback"):

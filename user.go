@@ -82,7 +82,7 @@ func userPage(w io.Writer, path string) {
 	renderIndex(w,
 	mustache.RenderFile("tpl/userPage.html", map[string]interface{} {
 		"name": u.name,
-		"watch": fmt.Sprintf(`<a href="%s">%s</a>`, u.watch, u.watch),
+		"watch": fmt.Sprintf(`<a target=_blank href="%s">%s</a>`, u.watch, u.watch),
 		"app": u.app,
 		"appver": u.appver,
 		"cpuinfo": u.cpuinfo,
@@ -91,13 +91,21 @@ func userPage(w io.Writer, path string) {
 	}))
 }
 
+type usersS struct {
+	NameHref, Name string
+	WatchHref, Watch string
+	Time string
+}
+
+func userlistPage(users []usersS) string {
+	return mustache.RenderFile("tpl/usersPage.html", map[string]interface{} {
+		"livenr":len(users),
+		"users":users,
+	})
+}
+
 func usersPage(w io.Writer, path string) {
 	m := global.user.shotall()
-	type usersS struct {
-		NameHref, Name string
-		WatchHref, Watch string
-		Time string
-	}
 	users := []usersS{}
 	for _, u := range m.m {
 		users = append(users, usersS{
@@ -108,10 +116,30 @@ func usersPage(w io.Writer, path string) {
 			Time: "N/a",
 		})
 	}
-	renderIndex(w,
-	mustache.RenderFile("tpl/usersPage.html", map[string]interface{} {
-		"livenr":len(m.m),
-		"users":users,
-	}))
+	renderIndex(w, userlistPage(users))
+}
+
+func (m usermap) listPlayers(_url string) (users []usersS) {
+	for _, u := range m.m {
+		if u.watch == _url {
+			users = append(users, usersS{
+				Name: u.name,
+				NameHref: "/user/"+u.name,
+				Watch: u.watch,
+				WatchHref: u.watch,
+				Time: "N/a",
+			})
+		}
+	}
+	return
+}
+
+func (m usermap) countPlayers(_url string) (n int) {
+	for _, u := range m.m {
+		if u.watch == _url {
+			n++
+		}
+	}
+	return
 }
 

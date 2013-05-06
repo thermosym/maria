@@ -340,8 +340,11 @@ func menuPage(w io.Writer, path string) {
 		}
 	}
 
+	livenr := global.user.countPlayers(m.M3u8Url)
+
 	renderIndex(w,
 	mustache.RenderFile("tpl/menuPage.html", map[string]interface{} {
+		"path":path,
 		"btns": btns,
 		"btns2": btns2,
 		"isDir": m.Flag == "dir",
@@ -354,7 +357,17 @@ func menuPage(w io.Writer, path string) {
 		"isLive": m.Type == "live",
 		"tmelapsed": durstr(elapsed),
 		"tmat": durstr(at),
+		"livenr":livenr,
 	}))
+}
+
+func menuPlayersPage(w io.Writer, path string) {
+	m := global.menu.get(path, nil)
+	if m == nil {
+		return
+	}
+	list := global.user.listPlayers(m.M3u8Url)
+	renderIndex(w, userlistPage(list))
 }
 
 type menuTitleS struct {
@@ -380,4 +393,5 @@ func path2title (path string) string {
 		return strings.Join(tarr, " / ")
 	}
 }
+
 
