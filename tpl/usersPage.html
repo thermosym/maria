@@ -1,0 +1,18 @@
+
+<p>[在线 {{livenr}}]</p>
+<table border=1>
+	<tr>
+		<td>用户名</td>
+		<td>正在播放</td>
+		<td>在线时长</td>
+	</tr>
+
+	{{#users}}
+	<tr>
+		<td><a href="{{NameHref}}">{{Name}}</a></td>
+		<td><a href="{{WatchHref}}">{{Watch}}</a></td>
+		<td>{{Time}}</td>
+	</tr>
+	{{/users}}
+
+</table>
