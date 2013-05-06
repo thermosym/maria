@@ -2,6 +2,8 @@
 package main
 
 import (
+	"github.com/hoisie/mustache"
+
 	"time"
 	"io"
 	"encoding/json"
@@ -253,4 +255,129 @@ func testMenu() {
 	m.writeFile("global")
 }
 
+
+func menuPage(w io.Writer, path string) {
+	m := global.menu.get(path, nil)
+	if m == nil {
+		return
+	}
+
+	title := "编辑菜单: " + path2title(path)
+	titles := path2titles(path)
+	titlelast := ""
+	if len(titles) > 0 {
+		n := len(titles)
+		titlelast = titles[n-1].Desc
+		titles = titles[0:n-1]
+	}
+
+	type btn struct {
+		Href, Title string
+	}
+	btns := []btn{}
+	btns2 := []btn{}
+
+	if path != "" {
+		btns = append(btns, btn{"/menu/"+pathup(path), "上一级目录"})
+	}
+	if m.Flag == "dir" {
+		btns = append(btns, btn{"/adddir/"+path, "添加目录"})
+		btns = append(btns, btn{"/addvid/"+path, "添加视频"})
+		if path != "" {
+			btns = append(btns, btn{"/editdir/"+path, "修改"})
+		}
+	}
+	btns = append(btns, btn{"/del/"+path, "删除"})
+
+	type menuH struct {
+		Tstr,Path,Desc string
+	}
+	mharr := []menuH{}
+	liststr := ""
+
+	at := float32(0)
+	elapsed := float32(0)
+
+	if m.Flag == "dir" {
+		marr := global.menu.ls(path)
+		for k, s := range marr {
+			var tstr string
+			switch s.Flag {
+			case "dir":
+				tstr = "目录"
+			case "url":
+				tstr = "视频"
+			}
+			switch s.Type {
+			case "live":
+				tstr = "直播"
+			case "ondemand":
+				tstr = "点播"
+			}
+			mharr = append(mharr, menuH{tstr,"/menu/"+path+"/"+k, s.Desc})
+		}
+	} else {
+		btns2 = append(btns2, btn{"/editvid/"+path, "编辑"})
+		btns2 = append(btns2, btn{"/m3u8/menu/"+path, "查看m3u8"})
+		btns2 = append(btns2, btn{"/play/menu/"+path, "播放m3u8"})
+		btns2 = append(btns2, btn{"/cgi/"+path+"/?do=downAllVfile", "下载全部"})
+
+		var list *vfilelist
+
+		if m.Content != "" {
+			list = vfilelistFromContent(m.Content)
+		}
+
+		if list == nil || len(list.m) == 0 {
+			liststr = `<p>[空]</p>`
+		} else {
+			liststr = listvfile(list)
+		}
+
+		if m.Type == "live" && list != nil && list.dur > 0 {
+			elapsed = tmdur2float(time.Since(m.tmstart))
+			at = elapsed - list.dur*float32(int(elapsed/list.dur))
+		}
+	}
+
+	renderIndex(w,
+	mustache.RenderFile("tpl/menuPage.html", map[string]interface{} {
+		"btns": btns,
+		"btns2": btns2,
+		"isDir": m.Flag == "dir",
+		"listEmpty": len(mharr) == 0,
+		"list": mharr,
+		"liststr": liststr,
+		"title": title,
+		"titles": titles,
+		"titlelast": titlelast,
+		"isLive": m.Type == "live",
+		"tmelapsed": durstr(elapsed),
+		"tmat": durstr(at),
+	}))
+}
+
+type menuTitleS struct {
+	Desc,Href string
+}
+
+func path2titles (path string) (tarr []menuTitleS) {
+	tarr = append(tarr, menuTitleS{"主菜单", ""})
+	global.menu.get(path, func (r,p *menu, id string) {
+		tarr = append(tarr, menuTitleS{r.Desc, ""})
+	})
+	return tarr
+}
+
+func path2title (path string) string {
+	tarr := []string{}
+	global.menu.get(path, func (r,p *menu, id string) {
+		tarr = append(tarr, r.Desc)
+	})
+	if len(tarr) == 0 {
+		return "根目录"
+	} else {
+		return strings.Join(tarr, " / ")
+	}
+}
 

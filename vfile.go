@@ -2,6 +2,8 @@
 package main
 
 import (
+	"github.com/hoisie/mustache"
+
 	"fmt"
 	"sync"
 	"log"
@@ -460,4 +462,11 @@ func (v *vfile) HtmlDownOrView() string {
 	}
 }
 
+func listvfile (m *vfilelist) string {
+	return mustache.RenderFile("tpl/listVfile.html",
+	map[string]interface{} {
+		"list": m.m,
+		"statstr": m.statstr(),
+	})
+}
 
