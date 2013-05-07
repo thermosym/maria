@@ -418,21 +418,6 @@ func main() {
 		}
 	}
 
-	sampleM3u8Starttm := time.Now()
-
-	sampleM3u8 := func (r *http.Request, w io.Writer, host,path string) {
-		log.Printf("samplem3u8 %s", path)
-		list := global.vfile.shotall()
-		list2 := vfilelist{}
-		for _, v := range list.m {
-			v.Ts = v.Ts[0:1]
-			list2.m = append(list2.m, v)
-			list2.dur += v.Ts[0].Dur
-		}
-		at := tmdur2float(time.Since(sampleM3u8Starttm))
-		list2.genLiveM3u8(w, host, at)
-	}
-
 	playM3u8 := func (w io.Writer, url string) {
 		log.Printf("playm3u8 %s", url)
 		fmt.Fprintf(w, "<html>")

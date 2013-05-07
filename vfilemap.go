@@ -192,6 +192,7 @@ func (m vfilelist) genLiveEndM3u8(w io.Writer, host string, at float32) {
 
 	at = getloopat(at, m.dur)
 	pos := float32(0)
+
 	for _, v := range m.m {
 		if pos + v.Dur > at {
 			start := 0
