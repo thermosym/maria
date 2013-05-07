@@ -172,8 +172,7 @@ func renderIndex(w io.Writer, sel,body string) {
 
 func main() {
 
-	global.menu = &menu{Flag:"dir"}
-	global.menu.readFile("global")
+	global.menu = loadMenu()
 	global.vfile = loadVfilemap()
 	global.user = loadUsermap()
 
@@ -343,43 +342,6 @@ func main() {
 		fmt.Fprintf(w, `<a href="/menu/%s">返回</a>`, path)
 	}
 
-	vfilepage := func (w http.ResponseWriter, r *http.Request, path string) {
-		v := global.vfile.shotsha(getsha1(path))
-		if v != nil {
-			http.Redirect(w, r, fmt.Sprintf("/vfile/%s", getsha1(path)), 302)
-			return
-		}
-		v = global.vfile.shotsha(path)
-		if v == nil {
-			return
-		}
-
-		renderIndex(w, "manv",
-			mustache.RenderFile("tpl/viewVfile.html", map[string]interface{} {
-				"url": v.Url,
-				"statstr": v.Statstr(),
-				"path": path,
-				"starttm": v.Starttm,
-				"isDownloading": v.Stat == "downloading",
-				"isUploading": v.Stat == "uploading",
-				"isError": v.Stat == "error",
-				"progress": fmt.Sprintf("%.1f%%", v.progress*100),
-				"speed": fmt.Sprintf("%s/s", sizestr(v.speed)),
-				"tsTotal": len(v.Ts),
-				"tsDown": v.downN,
-				"error": fmt.Sprintf("%v", v.err),
-			}))
-	}
-
-	manvfile := func (w io.Writer, path string) {
-		list := global.vfile.shotall()
-		s := listvfile(list)
-		renderIndex(w, "manv", s)
-	}
-
-	vfileUpload := func (w io.Writer, path string) {
-		renderIndex(w, "upload", mustache.RenderFile("tpl/vfileUpload.html", map[string]interface{}{}))
-	}
 
 	vfileM3u8 := func (w http.ResponseWriter, wr io.Writer, sha string, host string) {
 		log.Printf("vfilem3u8: %s", sha)
@@ -527,9 +489,9 @@ func main() {
 		case strings.HasPrefix(path, "/manv/upload"):
 			vfileUpload(w, pathsplit(path, 2))
 		case strings.HasPrefix(path, "/manv"):
-			manvfile(w, pathsplit(path, 1))
+			manvfilePage(w, pathsplit(path, 1))
 		case strings.HasPrefix(path, "/vfile"):
-			vfilepage(w, r, pathsplit(path, 1))
+			vfilePage(w, r, pathsplit(path, 1))
 		case strings.HasPrefix(path, "/cgi"):
 			cgipage(w, r, pathsplit(path, 1))
 		}

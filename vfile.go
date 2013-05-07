@@ -470,3 +470,41 @@ func listvfile (m *vfilelist) string {
 	})
 }
 
+func vfilePage (w http.ResponseWriter, r *http.Request, path string) {
+	v := global.vfile.shotsha(getsha1(path))
+	if v != nil {
+		http.Redirect(w, r, fmt.Sprintf("/vfile/%s", getsha1(path)), 302)
+		return
+	}
+	v = global.vfile.shotsha(path)
+	if v == nil {
+		return
+	}
+
+	renderIndex(w, "manv",
+	mustache.RenderFile("tpl/viewVfile.html", map[string]interface{} {
+		"url": v.Url,
+		"statstr": v.Statstr(),
+		"path": path,
+		"starttm": v.Starttm,
+		"isDownloading": v.Stat == "downloading",
+		"isUploading": v.Stat == "uploading",
+		"isError": v.Stat == "error",
+		"progress": fmt.Sprintf("%.1f%%", v.progress*100),
+		"speed": fmt.Sprintf("%s/s", sizestr(v.speed)),
+		"tsTotal": len(v.Ts),
+		"tsDown": v.downN,
+		"error": fmt.Sprintf("%v", v.err),
+	}))
+}
+
+func manvfilePage(w io.Writer, path string) {
+	list := global.vfile.shotall()
+	s := listvfile(list)
+	renderIndex(w, "manv", s)
+}
+
+func vfileUpload (w io.Writer, path string) {
+	renderIndex(w, "upload", mustache.RenderFile("tpl/vfileUpload.html", map[string]interface{}{}))
+}
+

@@ -4,17 +4,20 @@ package main
 import (
 	"github.com/hoisie/mustache"
 
+	"strings"
 	"net/http"
 	"log"
 	"io"
 	"fmt"
+	"net/url"
+	"path/filepath"
 )
 
 type user struct {
 	name string
 	cpuinfo,sysinfo,meminfo string
 	app,appver string
-	watch string
+	watch,watchPath string
 }
 
 type usermap struct {
@@ -35,13 +38,20 @@ func (m usermap) shotone(name string) (u *user) {
 	return
 }
 
+func getWatchPath(_url string) string {
+	u, _ := url.Parse(_url)
+	path := filepath.Dir(u.Path)
+	path = strings.Trim(path, "/")
+	return path
+}
+
 func (m usermap) interim(r *http.Request) {
 	var name string
 	name = r.FormValue("name")
 	if name == "" {
 		return
 	}
-	log.Printf("interim: %s", name)
+	log.Printf("user %s: interim", name)
 	var u *user
 	var ok bool
 	u, ok = m.m[name]
@@ -61,6 +71,8 @@ func (m usermap) interim(r *http.Request) {
 	}
 	if r.FormValue("watch") != "" {
 		u.watch = r.FormValue("watch")
+		u.watchPath = getWatchPath(u.watch)
+		log.Printf("user %s: watch %s", name, u.watchPath)
 	}
 	if r.FormValue("app") != "" {
 		u.app = r.FormValue("app")
@@ -93,7 +105,7 @@ func userPage(w io.Writer, path string) {
 
 type usersS struct {
 	NameHref, Name string
-	WatchHref, Watch string
+	WatchHtml, Watch string
 	Time string
 }
 
@@ -104,39 +116,51 @@ func userlistPage(users []usersS) string {
 	})
 }
 
+func (u user) getPageS() (pu usersS) {
+	html := ""
+	if strings.HasPrefix(u.watchPath, "m3u8/menu") {
+		menupath := pathsplit(u.watchPath, 2)
+		menu := global.menu.get(menupath, nil)
+		log.Printf("pages: %s", menupath)
+		if menu != nil {
+			html = fmt.Sprintf(`<a target=_blank href="/menu/%s">%s</a>`, menu.path, menu.Desc)
+		}
+	}
+	if html == "" {
+		html = fmt.Sprintf(`<a href="%s">%s</a>`, u.watch, u.watch)
+	}
+	pu = usersS{
+		Name: u.name,
+		NameHref: "/user/"+u.name,
+		Watch: u.watch,
+		WatchHtml: html,
+		Time: "N/a",
+	}
+	return
+}
+
 func usersPage(w io.Writer, path string) {
 	m := global.user.shotall()
 	users := []usersS{}
 	for _, u := range m.m {
-		users = append(users, usersS{
-			Name: u.name,
-			NameHref: "/user/"+u.name,
-			Watch: u.watch,
-			WatchHref: u.watch,
-			Time: "N/a",
-		})
+		users = append(users, u.getPageS())
 	}
 	renderIndex(w, "user", userlistPage(users))
 }
 
-func (m usermap) listPlayers(_url string) (users []usersS) {
+func (m usermap) listPlayers(path string) (users []usersS) {
 	for _, u := range m.m {
-		if u.watch == _url {
-			users = append(users, usersS{
-				Name: u.name,
-				NameHref: "/user/"+u.name,
-				Watch: u.watch,
-				WatchHref: u.watch,
-				Time: "N/a",
-			})
+		if u.watchPath == path {
+			users = append(users, u.getPageS())
 		}
 	}
 	return
 }
 
-func (m usermap) countPlayers(_url string) (n int) {
+func (m usermap) countPlayers(path string) (n int) {
+	log.Printf("count %s", path)
 	for _, u := range m.m {
-		if u.watch == _url {
+		if u.watchPath == path {
 			n++
 		}
 	}

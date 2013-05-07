@@ -30,11 +30,17 @@
 		<a class=btn href="{{Href}}">{{Title}}</a>
 	{{/btns2}}
 
-	<p>[播放人数 {{livenr}}] <a target=_blank href="/players/{{path}}">查看详情</a></p>
-
 	{{#isLive}}
+	<p>[类型: 直播]</p>
 	<p>开始时间: {{tmelapsed}} 位于: {{tmat}}</p>
+	{{#hasCurPlay}}<p>正在播放: {{{livehtml}}} 位于: {{liveat}}</p>{{/hasCurPlay}}
+	<p>[当前观看人数 {{livenr}}] <a target=_blank href="/players/{{path}}">查看详情</a></p>
 	{{/isLive}}
+
+	{{#isOndemand}}
+	<p>[类型: 点播]</p>
+	<p>[当前观看人数 {{livenr}}] <a target=_blank href="/players/{{path}}">查看详情</a></p>
+	{{/isOndemand}}
 
 	{{{liststr}}}
 	</p>

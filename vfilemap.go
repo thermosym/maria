@@ -188,6 +188,24 @@ func (m vfilelist) statstr() (s string) {
 	return
 }
 
+func (m vfilelist) getLiveVfile(at float32) (rv *vfile, rat float32, ridx int) {
+	at = getloopat(at, m.dur)
+	pos := float32(0)
+	for _, v := range m.m {
+		if pos + v.Dur > at {
+			tmstart := pos
+			for i, t := range v.Ts {
+				pos += t.Dur
+				if pos > at {
+					return v, at-tmstart, i
+				}
+			}
+		}
+		pos += v.Dur
+	}
+	return nil, 0, 0
+}
+
 func (m vfilelist) genLiveEndM3u8(w io.Writer, host string, at float32) {
 
 	at = getloopat(at, m.dur)

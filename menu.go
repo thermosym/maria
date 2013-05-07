@@ -20,6 +20,7 @@ type menu struct {
 	Content string
 	M3u8Url string
 	Sub map[string]*menu
+	path string
 
 	tmstart time.Time
 }
@@ -38,11 +39,6 @@ func (m *menu) dumptree(indent int) {
 		log.Printf("%s%s\n", is, k)
 		s.dumptree(indent+1)
 	}
-}
-
-func (m *menu) load(r io.Reader) {
-	dec := json.NewDecoder(r)
-	dec.Decode(m)
 }
 
 func (m *menu) fillM3u8Url(host,path string) {
@@ -172,18 +168,32 @@ func (m *menu) readFile(filename string) {
 	}
 	json.Unmarshal(data, m)
 
-	m.foreach(func (r *menu) {
+	m.foreach(func (r *menu, path string) {
+		r.path = path
+		log.Printf("menu %s: loaded", path)
 		if r.Type == "live" {
 			r.tmstart = time.Now()
+		} else {
+			r.Type = "ondemand"
 		}
 	})
 }
 
-func (m *menu) foreach(cb func (r *menu)) {
-	cb(m)
-	for _, s := range m.Sub {
-		s.foreach(cb)
+func (m *menu) _foreach(path string, cb func (r *menu, path string)) {
+	cb(m, path)
+	for p, s := range m.Sub {
+		newpath := path
+		if path == "" {
+			newpath += p
+		} else {
+			newpath += "/"+p
+		}
+		s._foreach(newpath, cb)
 	}
+}
+
+func (m *menu) foreach(cb func (r *menu, path string)) {
+	m._foreach("", cb)
 }
 func testMenu() {
 	m := &menu{Flag:"dir", Sub:map[string]*menu{}}
@@ -255,7 +265,6 @@ func testMenu() {
 	m.writeFile("global")
 }
 
-
 func menuPage(w io.Writer, path string) {
 	m := global.menu.get(path, nil)
 	if m == nil {
@@ -297,6 +306,7 @@ func menuPage(w io.Writer, path string) {
 
 	at := float32(0)
 	elapsed := float32(0)
+	var list *vfilelist
 
 	if m.Flag == "dir" {
 		marr := global.menu.ls(path)
@@ -307,12 +317,12 @@ func menuPage(w io.Writer, path string) {
 				tstr = "目录"
 			case "url":
 				tstr = "视频"
-			}
-			switch s.Type {
-			case "live":
-				tstr = "直播"
-			case "ondemand":
-				tstr = "点播"
+				switch s.Type {
+				case "live":
+					tstr = "直播"
+				case "ondemand":
+					tstr = "点播"
+				}
 			}
 			mharr = append(mharr, menuH{tstr,"/menu/"+path+"/"+k, s.Desc})
 		}
@@ -321,8 +331,6 @@ func menuPage(w io.Writer, path string) {
 		btns2 = append(btns2, btn{"/m3u8/menu/"+path, "查看m3u8"})
 		btns2 = append(btns2, btn{"/play/menu/"+path, "播放m3u8"})
 		btns2 = append(btns2, btn{"/cgi/"+path+"/?do=downAllVfile", "下载全部"})
-
-		var list *vfilelist
 
 		if m.Content != "" {
 			list = vfilelistFromContent(m.Content)
@@ -340,10 +348,26 @@ func menuPage(w io.Writer, path string) {
 		}
 	}
 
-	livenr := global.user.countPlayers(m.M3u8Url)
+	livenr := global.user.countPlayers("m3u8/menu/"+m.path)
+
+	var hasCurPlay bool
+	var livehtml string
+	var liveat float32
+
+	if list != nil {
+		v, rat, _ := list.getLiveVfile(elapsed)
+		if v != nil {
+			hasCurPlay = true
+			livehtml = fmt.Sprintf(`%s<a>%s</a>`, v.Statstr(), v.Url)
+			liveat = rat
+		}
+	}
 
 	renderIndex(w, "menu",
 	mustache.RenderFile("tpl/menuPage.html", map[string]interface{} {
+		"hasCurPlay": hasCurPlay,
+		"livehtml": livehtml,
+		"liveat": durstr(liveat),
 		"path":path,
 		"btns": btns,
 		"btns2": btns2,
@@ -355,6 +379,7 @@ func menuPage(w io.Writer, path string) {
 		"titles": titles,
 		"titlelast": titlelast,
 		"isLive": m.Type == "live",
+		"isOndemand": m.Type == "ondemand",
 		"tmelapsed": durstr(elapsed),
 		"tmat": durstr(at),
 		"livenr":livenr,
@@ -366,7 +391,7 @@ func menuPlayersPage(w io.Writer, path string) {
 	if m == nil {
 		return
 	}
-	list := global.user.listPlayers(m.M3u8Url)
+	list := global.user.listPlayers("m3u8/menu/"+m.path)
 	renderIndex(w, "menu", userlistPage(list))
 }
 
@@ -394,4 +419,9 @@ func path2title (path string) string {
 	}
 }
 
+func loadMenu() (m *menu) {
+	m = &menu{Flag:"dir"}
+	m.readFile("global")
+	return
+}
 
