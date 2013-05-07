@@ -566,6 +566,18 @@ func (v *vfile) HtmlDownOrView() string {
 	}
 }
 
+func (v *vfile) Typestr() string {
+	switch v.Type {
+	case "upload":
+		return "用户上传"
+	case "youku":
+		return "优酷下载"
+	case "sohu":
+		return "搜狐下载"
+	}
+	return ""
+}
+
 func listvfile (m *vfilelist) string {
 	return mustache.RenderFile("tpl/listVfile.html",
 	map[string]interface{} {
