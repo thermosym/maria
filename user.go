@@ -79,7 +79,7 @@ func userPage(w io.Writer, path string) {
 	if u == nil {
 		return
 	}
-	renderIndex(w,
+	renderIndex(w, "user",
 	mustache.RenderFile("tpl/userPage.html", map[string]interface{} {
 		"name": u.name,
 		"watch": fmt.Sprintf(`<a target=_blank href="%s">%s</a>`, u.watch, u.watch),
@@ -116,7 +116,7 @@ func usersPage(w io.Writer, path string) {
 			Time: "N/a",
 		})
 	}
-	renderIndex(w, userlistPage(users))
+	renderIndex(w, "user", userlistPage(users))
 }
 
 func (m usermap) listPlayers(_url string) (users []usersS) {

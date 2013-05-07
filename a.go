@@ -161,8 +161,12 @@ func pathsplit(path string, from int) string {
 	}
 }
 
-func renderIndex(w io.Writer, body string) {
-	s := mustache.RenderFile("tpl/index.html", map[string]string{"body": body})
+func renderIndex(w io.Writer, sel,body string) {
+	mp :=	map[string]string{
+		"body": body,
+	}
+	mp[sel+"Sel"] = "active"
+	s := mustache.RenderFile("tpl/index.html", mp)
 	fmt.Fprintf(w, "%s", s)
 }
 
@@ -197,7 +201,7 @@ func main() {
 			title = "添加目录"
 		}
 
-		renderIndex(w,
+		renderIndex(w, "menu",
 			mustache.RenderFile("tpl/editDir.html", map[string]interface{} {
 				"title": title,
 				"path": path2title(path),
@@ -235,7 +239,7 @@ func main() {
 			title = "添加视频"
 		}
 
-		renderIndex(w,
+		renderIndex(w, "menu",
 			mustache.RenderFile("tpl/editVid.html", map[string]interface{} {
 				"title": title,
 				"path": path2title(path),
@@ -350,7 +354,7 @@ func main() {
 			return
 		}
 
-		renderIndex(w,
+		renderIndex(w, "manv",
 			mustache.RenderFile("tpl/viewVfile.html", map[string]interface{} {
 				"url": v.Url,
 				"statstr": v.Statstr(),
@@ -370,11 +374,11 @@ func main() {
 	manvfile := func (w io.Writer, path string) {
 		list := global.vfile.shotall()
 		s := listvfile(list)
-		renderIndex(w, s)
+		renderIndex(w, "manv", s)
 	}
 
 	vfileUpload := func (w io.Writer, path string) {
-		renderIndex(w, mustache.RenderFile("tpl/vfileUpload.html", map[string]interface{}{}))
+		renderIndex(w, "upload", mustache.RenderFile("tpl/vfileUpload.html", map[string]interface{}{}))
 	}
 
 	vfileM3u8 := func (w http.ResponseWriter, wr io.Writer, sha string, host string) {

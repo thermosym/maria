@@ -342,7 +342,7 @@ func menuPage(w io.Writer, path string) {
 
 	livenr := global.user.countPlayers(m.M3u8Url)
 
-	renderIndex(w,
+	renderIndex(w, "menu",
 	mustache.RenderFile("tpl/menuPage.html", map[string]interface{} {
 		"path":path,
 		"btns": btns,
@@ -367,7 +367,7 @@ func menuPlayersPage(w io.Writer, path string) {
 		return
 	}
 	list := global.user.listPlayers(m.M3u8Url)
-	renderIndex(w, userlistPage(list))
+	renderIndex(w, "menu", userlistPage(list))
 }
 
 type menuTitleS struct {
