@@ -293,6 +293,9 @@ func main() {
 			http.Redirect(w, r, fmt.Sprintf("/vfile/%s", v.sha), 302)
 		case "userinterim":
 			global.user.interim(r)
+
+		case "editVfilePage":
+			doEditVfilePage(w, r)
 		}
 	}
 
@@ -490,8 +493,12 @@ func main() {
 			vfileUpload(w, pathsplit(path, 2))
 		case strings.HasPrefix(path, "/manv"):
 			manvfilePage(w, pathsplit(path, 1))
+
+		case strings.HasPrefix(path, "/edit/vfile"):
+			editVfilePage(w, r, pathsplit(path, 2))
 		case strings.HasPrefix(path, "/vfile"):
 			vfilePage(w, r, pathsplit(path, 1))
+
 		case strings.HasPrefix(path, "/cgi"):
 			cgipage(w, r, pathsplit(path, 1))
 		}

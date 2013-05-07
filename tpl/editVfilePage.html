@@ -1,0 +1,22 @@
+<form class="form-horizontal" method=post action="/cgi?do=editVfilePage">
+	<fieldset>
+	<legend>{{title}}</legend>
+
+	<input type=hidden name=path value="{{path}}">
+
+	<div class="control-group">
+		<label class="control-label" >名称</label>
+		<div class="controls">
+			<input type="text" name="desc" value="{{desc}}" placeholder="请输入">
+		</div>
+	</div>
+
+	<div class="control-group">
+		<div class="controls">
+			<button type="submit" class="btn">提交</button>
+			<a class=btn href="{{backurl}}">返回</a>
+		</div>
+	</div>
+	</fieldset>
+</form>
+

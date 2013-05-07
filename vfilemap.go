@@ -97,7 +97,6 @@ func (m vfilemap) upload(name string, ext string, r io.Reader, length int64) (v 
 	v.l = &sync.Mutex{}
 	v.path = filepath.Join("vfile", v.sha)
 	v.Url = v.path
-	v.Tag = []string{"upload"}
 	v.Desc = name
 	os.Mkdir(v.path, 0777)
 	m.m[sha] = v

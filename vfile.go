@@ -3,7 +3,10 @@ package main
 
 import (
 	"github.com/hoisie/mustache"
+	"github.com/axgle/mahonia"
 
+	"bytes"
+	"bufio"
 	"fmt"
 	"sync"
 	"log"
@@ -44,10 +47,28 @@ func (m *vfile) parseM3u8() (ts []tsinfo) {
 	return
 }
 
+func gbk2utf(in string) (out string) {
+	b := bytes.NewBuffer([]byte(in))
+	decoder := mahonia.NewDecoder("gbk")
+	r := bufio.NewReader(decoder.NewReader(b))
+	line, _, err := r.ReadLine()
+	if err != nil {
+		log.Printf("gtk2utf: err %v", err)
+	}
+	out = string(line)
+	return
+}
+
 func (m *vfile) parseSohu() (err error) {
 
+	m.Type = "sohu"
+
 	var body string
+	var re *regexp.Regexp
+	var ma []string
+
 	body, err = curl(m.Url)
+
 	if err != nil {
 		return errors.New(fmt.Sprintf("fetch index failed: %v", err))
 	}
@@ -59,9 +80,15 @@ func (m *vfile) parseSohu() (err error) {
 		f.Close()
 	}
 
-	var re *regexp.Regexp
+	re, err = regexp.Compile(`<title>([^<]+)</title>`)
+	ma = re.FindStringSubmatch(body)
+	if len(ma) >= 2 {
+		m.Desc = gbk2utf(ma[1])
+		log.Printf("sohu: %s", m.Desc)
+	}
+
 	re, err = regexp.Compile(`var vid="([^"]+)"`)
-	ma := re.FindStringSubmatch(body)
+	ma = re.FindStringSubmatch(body)
 
 	if len(ma) != 2 {
 		return errors.New(fmt.Sprintf("sohu: cannot find vid: ma = %v", ma))
@@ -86,6 +113,8 @@ func (m *vfile) parseSohu() (err error) {
 }
 
 func (m *vfile) parseYouku() (err error) {
+
+	m.Type = "youku"
 
 	var body string
 	var ma []string
@@ -138,15 +167,6 @@ func (m *vfile) load() (error) {
 	}
 	json.Unmarshal(b, m)
 	return nil
-}
-
-func (m *vfile) hastag(tag string) bool {
-	for _, s := range m.Tag {
-		if s == tag {
-			return true
-		}
-	}
-	return false
 }
 
 func (m *vfile) upload(r io.Reader, length int64, ext string) {
@@ -429,7 +449,7 @@ type tsinfo struct {
 type vfile struct {
 	Url string
 	Desc string
-	Tag []string
+	Type string
 	Size int64
 	Stat string
 	Dur float32
@@ -449,8 +469,9 @@ type vfile struct {
 
 func testvfile() {
 	urls := []string {
-		"http://v.youku.com/v_show/id_XNTM1NTgzNjQ4.html?f=19249434",
+		"http://tv.sohu.com/20130506/n375007214.shtml",
 		/*
+		"http://v.youku.com/v_show/id_XNTM1NTgzNjQ4.html?f=19249434",
 		"http://tv.sohu.com/20130417/n372981909.shtml",
 		"http://tv.sohu.com/20130409/n372077553.shtml",
 		"http://tv.sohu.com/20130407/n371829027.shtml",
@@ -495,6 +516,7 @@ func vfilePage (w http.ResponseWriter, r *http.Request, path string) {
 	renderIndex(w, "manv",
 	mustache.RenderFile("tpl/viewVfile.html", map[string]interface{} {
 		"url": v.Url,
+		"desc": v.Desc,
 		"statstr": v.Statstr(),
 		"path": path,
 		"starttm": v.Starttm,
@@ -513,6 +535,38 @@ func manvfilePage(w io.Writer, path string) {
 	list := global.vfile.shotall()
 	s := listvfile(list)
 	renderIndex(w, "manv", s)
+}
+
+func editVfilePage(w http.ResponseWriter, r *http.Request, path string) {
+	v := global.vfile.shotsha(path)
+	if v == nil {
+		return
+	}
+	renderIndex(w, "manv",
+	mustache.RenderFile("tpl/editVfilePage.html", map[string]interface{} {
+		"title": "编辑视频",
+		"desc": v.Desc,
+		"path": path,
+	}))
+}
+
+func doEditVfilePage(w http.ResponseWriter, r *http.Request) {
+	path := r.FormValue("path")
+	v := global.vfile.m[path]
+	if v == nil {
+		return
+	}
+	desc := r.FormValue("desc")
+	if desc == "" {
+		renderIndex(w, "manv",
+		mustache.RenderFile("tpl/alert.html", map[string]interface{} {
+			"msg": "标题能为空",
+			"back": "/edit/vfile/"+path,
+		}))
+		return
+	}
+	v.Desc = desc
+	http.Redirect(w, r, "/vfile/"+path, 302)
 }
 
 func vfileUpload (w io.Writer, path string) {
