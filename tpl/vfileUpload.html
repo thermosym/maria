@@ -1,12 +1,14 @@
 <script>
-	function upload() {
+	function doUpload() {
 		var file = document.getElementById("file").files[0]; 
+		console.log(file);
 		var form = new FormData();
 		var rand = Math.random();
 		form.append("file", file);
 		var xhr = new XMLHttpRequest();
 		xhr.open("post", "/cgi/upload/"+rand, true);
-		xhr.send(form);
+		var r = xhr.send(form);
+		console.log(r);
 
 		var msg = document.getElementById("msg"); 
 		msg.innerHTML = "[<a href='/vfile/"+rand+"'>查看上传进度</a>]";
@@ -15,10 +17,10 @@
 	}
 </script>
 
-<form enctype="multipart/form-data" method=post action="/cgi/upload">
+<form enctype="multipart/form-data" >
 	<legend>上传视频</legend>
 	<input id="file" type="file" name="file" />
 	<p id="msg"></p>
-	<button onclick="upload();">上传</button>
 </form>
+<button onclick="doUpload();">上传</button>
 

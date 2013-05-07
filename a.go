@@ -232,6 +232,7 @@ func main() {
 		ext := filepath.Ext(filename)
 		log.Printf("upload: newfile filename %s ext %s", filename, ext)
 		global.vfile.upload(path, ext, part, length)
+		log.Printf("upload: end")
 	}
 
 	cgipage := func (w http.ResponseWriter, r *http.Request, path string) {

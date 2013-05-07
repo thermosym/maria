@@ -7,6 +7,7 @@ import (
 	"log"
 	"regexp"
 	"fmt"
+	"errors"
 )
 
 func test1() {
@@ -16,6 +17,7 @@ func test1() {
 func avprobe(path string) (err error, dur float32, w,h int) {
 	out, err := exec.Command("avprobe", path).CombinedOutput()
 	if err != nil {
+		err = errors.New(fmt.Sprintf("avprobe: %v: %s", err, out))
 		return
 	}
 	for _, l := range strings.Split(string(out), "\n") {

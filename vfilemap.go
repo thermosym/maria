@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"sync"
 	"sort"
+	"log"
 	"path/filepath"
 	"os"
 	"io"
@@ -100,6 +101,7 @@ func (m vfilemap) upload(name string, ext string, r io.Reader, length int64) (v 
 	v.Desc = name
 	os.Mkdir(v.path, 0777)
 	m.m[sha] = v
+	log.Printf("vfilemap: upload %d", length)
 	v.upload(r, length, ext)
 	return
 }

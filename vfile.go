@@ -148,7 +148,6 @@ func (m *vfile) parseYouku() (err error) {
 	}
 	m.m3u8body = body
 
-
 	return
 }
 
@@ -190,7 +189,9 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 	}
 
 	var f *os.File
-	f, err = os.Create(filepath.Join(m.path, "a"+ext))
+	filename := filepath.Join(m.path, "a"+ext)
+
+	f, err = os.Create(filename)
 	if err != nil {
 		shit()
 		return
@@ -199,6 +200,22 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 	tmstart := time.Now()
 	var n,ntx int64
 
+	probedNr := 0
+
+	doProbe := func () error {
+		probedNr++
+		var dur float32
+		var w,h int
+		err, dur, w, h = avprobe(filename)
+		if err != nil {
+			return err
+		}
+		m.W = w
+		m.H = h
+		m.Dur = dur
+		return nil
+	}
+
 	for {
 		size := int64(64*1024)
 		n, err = io.CopyN(f, r, size)
@@ -206,6 +223,7 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 			break
 		}
 		if err != nil {
+			err = errors.New(fmt.Sprintf("when uploading: %v", err))
 			shit()
 			return
 		}
@@ -222,6 +240,16 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 			m.log("progress %.1f%% speed %s/s", m.progress*100, sizestr(m.speed))
 		}
 		m.l.Unlock()
+
+		if m.Size > int64(probedNr)*1024*512 && probedNr < 40 {
+			doProbe()
+		}
+	}
+
+	err = doProbe()
+	if err != nil {
+		shit()
+		return
 	}
 
 	m.l.Lock()
@@ -415,19 +443,19 @@ func (v vfile) Statstr() string {
 	case "downloading":
 		stat += fmt.Sprintf("[下载中%.1f%%]", v.progress*100)
 		stat += fmt.Sprintf("[%s]", sizestr(v.Size))
-		stat += fmt.Sprintf("[%s]", durstr(v.Dur))
 	case "done":
 		stat += "[已完成]"
 		stat += fmt.Sprintf("[%s]", sizestr(v.Size))
-		stat += fmt.Sprintf("[%s]", durstr(v.Dur))
 	case "uploading":
 		stat += fmt.Sprintf("[上传中%.1f%%]", v.progress*100)
 		stat += fmt.Sprintf("[%s]", sizestr(v.Size))
-		stat += fmt.Sprintf("[%s]", durstr(v.Dur))
 	case "error":
 		stat += "[出错]"
 	case "nonexist":
 		stat += "[未下载]"
+	}
+	if v.Dur > 0.0 {
+		stat += fmt.Sprintf("[%s]", durstr(v.Dur))
 	}
 	if v.W != 0 {
 		stat += fmt.Sprintf("[%dx%d]", v.W, v.H)
