@@ -1,11 +1,28 @@
 
 <p><a class=btn href="/users">返回</a></p>
-<p>用户名: {{name}}</p>
-<p>正在播放: {{{watch}}}</p>
-<p>在线时长: {{time}}</p>
-<p>app名称: {{app}}</p>
-<p>app版本: {{appver}}</p>
+<legend>用户: {{name}}</legend>
+<p>正在播放 {{{watch}}}</p>
+<p>观看历史</p>
+<p>[总时长: {{hisDur}}]</p>
+<table border=1>
+	<tr>
+		<td>时间</td>
+		<td>节目</td>
+		<td>观看时长</td>
+	</tr>
+	{{#history}}
+	<tr>
+		<td>{{TimeStr}}</td>
+		<td>{{{DescHtml}}}</td>
+		<td>{{DurStr}}</td>
+	</tr>
+	{{/history}}
+</table>
 <hr>
+
+<p>客户端: {{app}}</p>
+<p>客户端版本: {{appver}}</p>
+
 <p>CPU 信息</p>
 <pre>{{{cpuinfo}}}</pre>
 <p>内存信息</p>

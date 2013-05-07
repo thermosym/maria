@@ -11,21 +11,47 @@ import (
 	"fmt"
 	"net/url"
 	"path/filepath"
+	"time"
 )
+
+type userHistoryS struct {
+	watch,watchPath string
+	dur float32
+	time time.Time
+}
+
+type userHistory struct {
+	m []*userHistoryS
+	dur float32
+}
 
 type user struct {
 	name string
 	cpuinfo,sysinfo,meminfo string
 	app,appver string
 	watch,watchPath string
+
+	history userHistory
 }
 
 type usermap struct {
 	m map[string]*user
 }
 
-func loadUsermap() (m usermap) {
+func loadUsermap(test bool) (m usermap) {
 	m.m = map[string]*user{}
+	if test {
+		m.m["xieran"] = &user{
+			name: "xieran",
+			history: userHistory{
+				m: []*userHistoryS{
+					&userHistoryS{watch:"xx", watchPath:"m3u8/menu/youku/0", dur:33.0, time:time.Now()},
+				},
+				dur:33.0,
+			},
+		}
+		return
+	}
 	return
 }
 
@@ -36,6 +62,30 @@ func (m usermap) shotone(name string) (u *user) {
 		return nil
 	}
 	return
+}
+
+func (u *user) addHistory(watch,watchPath string, dur float32) {
+	var h *userHistoryS
+	if len(u.history.m) > 0 && u.history.m[len(u.history.m)-1].watch == watch {
+		h = u.history.m[len(u.history.m)-1]
+	} else {
+		h = &userHistoryS{watch:watch, watchPath:watchPath, dur:dur, time:time.Now()}
+		u.history.m = append(u.history.m, h)
+	}
+	h.dur += dur
+	u.history.dur += dur
+}
+
+func (h *userHistoryS) TimeStr() string {
+	return h.time.Format("15:04:05")
+}
+
+func (h *userHistoryS) DescHtml() string {
+	return getWatchHtml(h.watch, h.watchPath)
+}
+
+func (h *userHistoryS) DurStr() string {
+	return durstr(h.dur)
 }
 
 func getWatchPath(_url string) string {
@@ -69,9 +119,14 @@ func (m usermap) interim(r *http.Request) {
 	if r.FormValue("sysinfo") != "" {
 		u.sysinfo = r.FormValue("sysinfo")
 	}
-	if r.FormValue("watch") != "" {
-		u.watch = r.FormValue("watch")
-		u.watchPath = getWatchPath(u.watch)
+
+	watch := r.FormValue("watch")
+	watchPath := ""
+
+	if watch != "" {
+		watchPath = getWatchPath(watch)
+		u.watch = watch
+		u.watchPath = watchPath
 		log.Printf("user %s: watch %s", name, u.watchPath)
 	}
 	if r.FormValue("app") != "" {
@@ -79,6 +134,13 @@ func (m usermap) interim(r *http.Request) {
 	}
 	if r.FormValue("appver") != "" {
 		u.appver = r.FormValue("appver")
+	}
+	if r.FormValue("interval") != "" {
+		var i float32
+		fmt.Sscanf(r.FormValue("interval"), "%f", &i)
+		if i > 0 && watch != "" {
+			u.addHistory(watch,watchPath, i)
+		}
 	}
 }
 
@@ -100,6 +162,8 @@ func userPage(w io.Writer, path string) {
 		"cpuinfo": u.cpuinfo,
 		"meminfo": u.meminfo,
 		"sysinfo": u.sysinfo,
+		"hisDur": durstr(u.history.dur),
+		"history": u.history.m,
 	}))
 }
 
@@ -116,10 +180,10 @@ func userlistPage(users []usersS) string {
 	})
 }
 
-func (u user) getPageS() (pu usersS) {
-	html := ""
-	if strings.HasPrefix(u.watchPath, "m3u8/menu") {
-		menupath := pathsplit(u.watchPath, 2)
+func getWatchHtml(watch,watchPath string) (html string) {
+	html = ""
+	if strings.HasPrefix(watchPath, "m3u8/menu") {
+		menupath := pathsplit(watchPath, 2)
 		menu := global.menu.get(menupath, nil)
 		log.Printf("pages: %s", menupath)
 		if menu != nil {
@@ -127,14 +191,17 @@ func (u user) getPageS() (pu usersS) {
 		}
 	}
 	if html == "" {
-		html = fmt.Sprintf(`<a href="%s">%s</a>`, u.watch, u.watch)
+		html = fmt.Sprintf(`<a href="%s">%s</a>`, watch, watch)
 	}
+	return
+}
+
+func (u user) getPageS() (pu usersS) {
 	pu = usersS{
 		Name: u.name,
 		NameHref: "/user/"+u.name,
 		Watch: u.watch,
-		WatchHtml: html,
-		Time: "N/a",
+		WatchHtml: getWatchHtml(u.watch, u.watchPath),
 	}
 	return
 }
@@ -166,4 +233,5 @@ func (m usermap) countPlayers(path string) (n int) {
 	}
 	return
 }
+
 

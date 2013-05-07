@@ -137,9 +137,15 @@ func renderIndex(w io.Writer, sel,body string) {
 
 func main() {
 
+	testu := false
+
+	if len(os.Args) >= 2 && os.Args[1] == "testu" {
+		testu = true
+	}
+
 	global.menu = loadMenu()
 	global.vfile = loadVfilemap()
-	global.user = loadUsermap()
+	global.user = loadUsermap(testu)
 
 	if len(os.Args) >= 2 && os.Args[1] == "testv" {
 		testvfile()
