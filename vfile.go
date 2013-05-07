@@ -173,6 +173,7 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 
 	m.l.Lock()
 	m.log("upload start")
+	m.Type = "upload"
 	m.Stat = "uploading"
 	m.Size = 0
 	m.speed = 0
@@ -189,7 +190,7 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 	}
 
 	var f *os.File
-	filename := filepath.Join(m.path, "a"+ext)
+	filename := filepath.Join(m.path, "0"+ext)
 
 	f, err = os.Create(filename)
 	if err != nil {
@@ -201,18 +202,19 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 	var n,ntx int64
 
 	probedNr := 0
+	probedOk := false
 
 	doProbe := func () error {
 		probedNr++
-		var dur float32
-		var w,h int
-		err, dur, w, h = avprobe(filename)
+		var info avprobeInfo
+		err, info = avprobe(filename)
 		if err != nil {
 			return err
 		}
-		m.W = w
-		m.H = h
-		m.Dur = dur
+
+		m.copyAvprobeInfo(info)
+
+		probedOk = true
 		return nil
 	}
 
@@ -241,7 +243,7 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 		}
 		m.l.Unlock()
 
-		if m.Size > int64(probedNr)*1024*512 && probedNr < 40 {
+		if !probedOk && m.Size > int64(probedNr)*1024*512 && probedNr < 40 {
 			doProbe()
 		}
 	}
@@ -421,18 +423,38 @@ func (m *vfile) downloadAllTs() (err error) {
 		w.Close()
 
 		if i == 0 {
-			var vw,vh int
-			err, _, vw,vh = avprobe(filepath.Join(m.path, "0.ts"))
+			var info avprobeInfo
+			err, info = avprobe(filepath.Join(m.path, "0.ts"))
 			if err == nil {
-				m.W = vw
-				m.H = vh
-				m.log("avprobe: size %dx%d", vw, vh)
+				m.copyAvprobeInfo(info)
+				m.log("avprobe: size %dx%d", m.W, m.H)
 			} else {
 				m.log("avprobe failed: %v", err)
 			}
 		}
 	}
 	return
+}
+
+func (m *vfile) copyAvprobeInfo(info avprobeInfo) {
+	m.W = info.w
+	m.H = info.h
+	m.Acodec = info.acodec
+	m.Vcodec = info.vcodec
+	m.Ainfo = info.ainfo
+	m.Vinfo = info.vinfo
+	m.Fps = info.fps
+	m.Bitrate = info.bitrate
+}
+
+func (v *vfile) avprobe() {
+	for _, s := range []string{"0.ts", "0.mp4"} {
+		err, info := avprobe(filepath.Join(v.path, s))
+		if err == nil {
+			v.copyAvprobeInfo(info)
+			break
+		}
+	}
 }
 
 func (v vfile) Statstr() string {
@@ -498,7 +520,12 @@ type vfile struct {
 	Dur float32
 	Ts []tsinfo
 	Starttm time.Time
+
 	W,H int
+	Ainfo,Vinfo string
+	Acodec,Vcodec string
+	Fps int
+	Bitrate int
 
 	sha string
 	path string
@@ -558,6 +585,15 @@ func vfilePage (w http.ResponseWriter, r *http.Request, path string) {
 		return
 	}
 
+	infostr := ""
+	hasInfostr := false
+	if v.Bitrate != 0 || v.Vinfo != "" || v.Ainfo != "" {
+		infostr += fmt.Sprintf("bitrate: %d kb/s\n", v.Bitrate)
+		infostr += v.Vinfo + "\n"
+		infostr += v.Ainfo + "\n"
+		hasInfostr = true
+	}
+
 	renderIndex(w, "manv",
 	mustache.RenderFile("tpl/viewVfile.html", map[string]interface{} {
 		"url": v.Url,
@@ -567,12 +603,18 @@ func vfilePage (w http.ResponseWriter, r *http.Request, path string) {
 		"starttm": v.Starttm,
 		"isDownloading": v.Stat == "downloading",
 		"isUploading": v.Stat == "uploading",
-		"isError": v.Stat == "error",
 		"progress": fmt.Sprintf("%.1f%%", v.progress*100),
 		"speed": fmt.Sprintf("%s/s", sizestr(v.speed)),
+
+		"hasTsinfo": len(v.Ts) > 0,
 		"tsTotal": len(v.Ts),
 		"tsDown": v.downN,
+
+		"isError": v.Stat == "error",
 		"error": fmt.Sprintf("%v", v.err),
+
+		"hasInfostr": hasInfostr,
+		"infostr": infostr,
 	}))
 }
 

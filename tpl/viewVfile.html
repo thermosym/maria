@@ -1,5 +1,5 @@
 
-<p>视频: {{desc}}</p>
+<legend>视频标题: {{desc}}</legend>
 <p>
 	<a class=btn href="/edit/vfile/{{path}}">编辑</a>
 	<a class=btn href="/manv">返回</a>
@@ -8,11 +8,11 @@
 <p>视频链接: <a href="{{url}}" target=_blank>{{url}}</a>
 <p>状态: {{statstr}}</p>
 <p>
-<a class=btn target=_blank href="/m3u8/vfile/{{path}}">查看m3u8</a>
+<a class=btn target=_blank href="/m3u8/vfile/{{path}}/a.m3u8">查看m3u8</a>
 <a class=btn target=_blank href="/play/vfile/{{path}}">播放m3u8</a>
 </p>
 
-<p>[观看人数 {{livenr}}]</p>
+<p>观看人数: {{livenr}}</p>
 
 {{#isDownloading}}
 <p>下载开始时间: {{starttm}}</p>
@@ -26,8 +26,14 @@
 <p>上传速度: {{speed}}</p>
 {{/isUploading}}
 
-<p>ts 文件个数: {{tsTotal}}</p>
-<p>ts 已下载个数: {{tsDown}}</p>
+{{#hasTsinfo}}
+<p>ts 文件个数/已下载: {{tsTotal}} / {{tsDown}}</p>
+{{/hasTsinfo}}
+
+{{#hasInfostr}}
+<p>视频信息:</p>
+<pre>{{{infostr}}}</pre>
+{{/hasInfostr}}
 
 {{#isError}}
 <p>出错原因: </p>

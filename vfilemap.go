@@ -36,6 +36,10 @@ func loadVfilemap() (m vfilemap) {
 			if v.Desc == "" {
 				v.Desc = v.Url
 			}
+			if v.Bitrate == 0 {
+				v.avprobe()
+				v.dump()
+			}
 		}
 	}
 	return
