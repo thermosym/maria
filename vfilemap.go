@@ -32,6 +32,9 @@ func loadVfilemap() (m vfilemap) {
 			if v.Stat == "downloading" {
 				go v.download(v.Url)
 			}
+			if v.Desc == "" {
+				v.Desc = v.Url
+			}
 		}
 	}
 	return

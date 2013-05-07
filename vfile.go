@@ -88,14 +88,22 @@ func (m *vfile) parseSohu() (err error) {
 func (m *vfile) parseYouku() (err error) {
 
 	var body string
+	var ma []string
+	var re *regexp.Regexp
+
 	body, err = curl(m.Url)
 	if err != nil {
 		return errors.New(fmt.Sprintf("fetch index failed: %v", err))
 	}
 
-	var re *regexp.Regexp
+	re, err = regexp.Compile(`<meta name="title" content="([^"]+)">`)
+	ma = re.FindStringSubmatch(body)
+	if len(ma) >= 2 {
+		m.Desc = "[优酷]"+ma[1]
+	}
+
 	re, err = regexp.Compile(`videoId = '([^']+)'`)
-	ma := re.FindStringSubmatch(body)
+	ma = re.FindStringSubmatch(body)
 
 	if len(ma) != 2 {
 		return errors.New("youku: cannot find videoId")
@@ -110,6 +118,8 @@ func (m *vfile) parseYouku() (err error) {
 		return errors.New(fmt.Sprintf("fetch m3u8 failed: %v", err))
 	}
 	m.m3u8body = body
+
+
 	return
 }
 
@@ -439,8 +449,9 @@ type vfile struct {
 
 func testvfile() {
 	urls := []string {
-		"http://tv.sohu.com/20130417/n372981909.shtml",
+		"http://v.youku.com/v_show/id_XNTM1NTgzNjQ4.html?f=19249434",
 		/*
+		"http://tv.sohu.com/20130417/n372981909.shtml",
 		"http://tv.sohu.com/20130409/n372077553.shtml",
 		"http://tv.sohu.com/20130407/n371829027.shtml",
 		"http://tv.sohu.com/20130408/n371935984.shtml",

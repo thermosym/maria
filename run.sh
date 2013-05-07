@@ -1,4 +1,4 @@
 #!/bin/bash
 
-go build -o test . && ./test
+go build -o test . && ./test $*
 
