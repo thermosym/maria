@@ -391,6 +391,18 @@ func (m *vfile) downloadAllTs() (err error) {
 		m.downN++
 		m.l.Unlock()
 		w.Close()
+
+		if i == 0 {
+			var vw,vh int
+			err, _, vw,vh = avprobe(filepath.Join(m.path, "0.ts"))
+			if err == nil {
+				m.W = vw
+				m.H = vh
+				m.log("avprobe: size %dx%d", vw, vh)
+			} else {
+				m.log("avprobe failed: %v", err)
+			}
+		}
 	}
 	return
 }
@@ -416,6 +428,9 @@ func (v vfile) Statstr() string {
 		stat += "[出错]"
 	case "nonexist":
 		stat += "[未下载]"
+	}
+	if v.W != 0 {
+		stat += fmt.Sprintf("[%dx%d]", v.W, v.H)
 	}
 	return stat
 }
@@ -455,6 +470,7 @@ type vfile struct {
 	Dur float32
 	Ts []tsinfo
 	Starttm time.Time
+	W,H int
 
 	sha string
 	path string
@@ -469,8 +485,9 @@ type vfile struct {
 
 func testvfile() {
 	urls := []string {
-		"http://tv.sohu.com/20130506/n375007214.shtml",
+		"http://v.youku.com/v_show/id_XMTEwMzc0MjQ=.html?f=19250136",
 		/*
+		"http://tv.sohu.com/20130506/n375007214.shtml",
 		"http://v.youku.com/v_show/id_XNTM1NTgzNjQ4.html?f=19249434",
 		"http://tv.sohu.com/20130417/n372981909.shtml",
 		"http://tv.sohu.com/20130409/n372077553.shtml",

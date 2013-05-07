@@ -14,7 +14,7 @@ func test1() {
 }
 
 func avprobe(path string) (err error, dur float32, w,h int) {
-	out, err := exec.Command("ffprobe", path).CombinedOutput()
+	out, err := exec.Command("avprobe", path).CombinedOutput()
 	if err != nil {
 		return
 	}
@@ -30,13 +30,13 @@ func avprobe(path string) (err error, dur float32, w,h int) {
 			dur += float32(m)*60
 			dur += float32(s)
 			dur += float32(ms)/100
-			log.Printf("dur %v => %f", ma[1], dur)
+			log.Printf("avprobe %s: dur %v => %f", path, ma[1], dur)
 		}
 		re, _ = regexp.Compile(`Video: .* (\d+x\d+)`)
 		ma = re.FindStringSubmatch(l)
 		if len(ma) > 1 {
 			fmt.Sscanf(ma[1], "%dx%d", &w, &h)
-			log.Printf("wh %v => %dx%d", ma[1], w, h)
+			log.Printf("avprobe %s: size %v => %dx%d", path, ma[1], w, h)
 		}
 	}
 	return
