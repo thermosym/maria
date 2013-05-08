@@ -191,6 +191,7 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 
 	var f *os.File
 	filename := filepath.Join(m.path, "0"+ext)
+	m.Filename = filename
 
 	f, err = os.Create(filename)
 	if err != nil {
@@ -517,6 +518,7 @@ type vfile struct {
 	Type string
 	Size int64
 	Stat string
+	Filename string
 	Dur float32
 	Ts []tsinfo
 	Starttm time.Time
@@ -606,6 +608,9 @@ func vfilePage (w http.ResponseWriter, r *http.Request, path string) {
 		hasInfostr = true
 	}
 
+	livenr := global.user.countPlayers("/vfile")
+	log.Printf("%s", v.Type=="upload")
+
 	renderIndex(w, "manv",
 	mustache.RenderFile("tpl/viewVfile.html", map[string]interface{} {
 		"url": v.Url,
@@ -613,16 +618,25 @@ func vfilePage (w http.ResponseWriter, r *http.Request, path string) {
 		"statstr": v.Statstr(),
 		"path": path,
 		"starttm": v.Starttm,
-		"isDownloading": v.Stat == "downloading",
-		"isUploading": v.Stat == "uploading",
 		"progress": fmt.Sprintf("%.1f%%", v.progress*100),
 		"speed": fmt.Sprintf("%s/s", sizestr(v.speed)),
+
+		"livenr": livenr,
 
 		"hasTsinfo": len(v.Ts) > 0,
 		"tsTotal": len(v.Ts),
 		"tsDown": v.downN,
 
+		"isUploading": v.Stat == "uploading",
+		"isDownloading": v.Stat == "downloading",
 		"isError": v.Stat == "error",
+		"typeIsUpload": v.Type == "upload",
+		"origfile": v.Filename,
+
+		"typestr": v.Typestr(),
+
+		"hasM3u8": v.Type != "upload" || v.Stat == "done",
+
 		"error": fmt.Sprintf("%v", v.err),
 
 		"hasInfostr": hasInfostr,

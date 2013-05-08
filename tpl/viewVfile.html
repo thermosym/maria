@@ -5,16 +5,21 @@
 	<a class=btn href="/manv">返回</a>
 </p>
 
-<p>视频链接: <a href="{{url}}" target=_blank>{{url}}</a>
+<p>类型: {{typestr}}</p>
 <p>状态: {{statstr}}</p>
-<p>
-<a class=btn target=_blank href="/m3u8/vfile/{{path}}/a.m3u8">查看m3u8</a>
-<a class=btn target=_blank href="/play/vfile/{{path}}">播放m3u8</a>
-</p>
+
+{{#typeIsUpload}}
+<p> 查看原始文件: <a target=_blank href="{{origfile}}"></a> {{origfile}} </p>
+{{/typeIsUpload}}
+
+{{#hasM3u8}}
+<p> 查看 m3u8 文件: <a target=_blank href="/m3u8/vfile/{{path}}/a.m3u8">/m3u8/vfile/{{path}}/a.m3u8</a> </p>
+{{/hasM3u8}}
 
 <p>观看人数: {{livenr}}</p>
 
 {{#isDownloading}}
+<p>来源: <a href="{{url}}" target=_blank>{{url}}</a></p>
 <p>下载开始时间: {{starttm}}</p>
 <p>下载进度: {{progress}}</p>
 <p>下载速度: {{speed}}</p>
