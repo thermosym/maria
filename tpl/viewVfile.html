@@ -9,14 +9,16 @@
 <p>状态: {{statstr}}</p>
 
 {{#typeIsUpload}}
-<p> 查看原始文件: <a target=_blank href="{{origfile}}"></a> {{origfile}} </p>
+<p> 查看原始文件: <a target=_blank href="{{origfile}}">{{origfile}}</a></p>
 {{/typeIsUpload}}
 
 {{#hasM3u8}}
 <p> 查看 m3u8 文件: <a target=_blank href="/m3u8/vfile/{{path}}/a.m3u8">/m3u8/vfile/{{path}}/a.m3u8</a> </p>
 {{/hasM3u8}}
 
+{{#isDone}}
 <p>观看人数: {{livenr}}</p>
+{{/isDone}}
 
 {{#isDownloading}}
 <p>来源: <a href="{{url}}" target=_blank>{{url}}</a></p>

@@ -256,6 +256,17 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 	}
 
 	m.l.Lock()
+	m.Stat = "conv"
+	m.l.Unlock()
+	err = avconvM3u8(m.Filename, m.path, func (info avconvInfo) {
+		m.conv = info
+	})
+	if err != nil {
+		shit()
+		return
+	}
+
+	m.l.Lock()
 	m.log("done")
 	m.Stat = "done"
 	m.speed = 0
@@ -472,6 +483,10 @@ func (v vfile) Statstr() string {
 	case "uploading":
 		stat += fmt.Sprintf("[上传中%.1f%%]", v.progress*100)
 		stat += fmt.Sprintf("[%s]", sizestr(v.Size))
+	case "conv":
+		stat += fmt.Sprintf("[转码中%.1f%%]", v.conv.per*100)
+		stat += fmt.Sprintf("[%s/s]", sizestr(int64(v.conv.kbps)*1024/8))
+		stat += fmt.Sprintf("[%s]", sizestr(v.Size))
 	case "error":
 		stat += "[出错]"
 	case "nonexist":
@@ -528,6 +543,7 @@ type vfile struct {
 	Acodec,Vcodec string
 	Fps int
 	Bitrate int
+	conv avconvInfo
 
 	sha string
 	path string
@@ -641,6 +657,7 @@ func vfilePage (w http.ResponseWriter, r *http.Request, path string) {
 
 		"hasInfostr": hasInfostr,
 		"infostr": infostr,
+		"isDone": v.Stat == "done",
 	}))
 }
 
