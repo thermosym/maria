@@ -137,6 +137,18 @@ func renderIndex(w io.Writer, sel,body string) {
 
 func main() {
 
+	log.Printf("argv %v", os.Args)
+
+	if len(os.Args) >= 2 && os.Args[1] == "testavconv" {
+		testavconv()
+		return
+	}
+
+	if len(os.Args) >= 2 && os.Args[1] == "testcmd" {
+		testcmd()
+		return
+	}
+
 	testu := false
 
 	if len(os.Args) >= 2 && os.Args[1] == "testu" {
