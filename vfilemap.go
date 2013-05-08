@@ -7,6 +7,7 @@ import (
 	"sort"
 	"log"
 	"path/filepath"
+	"net/url"
 	"os"
 	"io"
 	"fmt"
@@ -32,6 +33,9 @@ func loadVfilemap() (m vfilemap) {
 			v.log("loaded %s", v.Url)
 			if v.Stat == "downloading" {
 				go v.download(v.Url)
+			}
+			if v.Type == "upload" {
+				v.sortUploadM3u8()
 			}
 			if v.Desc == "" {
 				v.Desc = v.Url
@@ -159,15 +163,47 @@ func (m *vfilelist) Less(i,j int) bool {
 	return m.m[i].Url < m.m[j].Url
 }
 
+func splitContent(c string) (r []string) {
+	for _, l := range strings.Split(c, "\n") {
+		r = append(r, strings.Trim(l, "\r\n"))
+	}
+	return
+}
+
 func vfilelistFromContent(c string) (m *vfilelist) {
 	m = &vfilelist{}
-	for _, line := range splitContent(c) {
+
+	parseVfile := func (line string) bool {
+		u, _ := url.Parse(line)
+		if strings.HasPrefix(u.Path, "/vfile") {
+			line = u.Path
+		}
+		if strings.HasPrefix(line, "/vfile") || strings.HasPrefix(line, "vfile") {
+			sha := pathsplit(strings.Trim(line, "/"), 1)
+			v := global.vfile.shotsha(sha)
+			if v == nil {
+				v = &vfile{Stat:"nonexist", Desc:line}
+			}
+			m.m = append(m.m, v)
+			return true
+		} else {
+			return false
+		}
+	}
+
+	parseUrl := func (line string) {
 		if strings.HasPrefix(line, "http") {
 			v := global.vfile.shoturl(line)
 			if v == nil {
 				v = &vfile{Stat:"nonexist", Url:line}
 			}
 			m.m = append(m.m, v)
+		}
+	}
+
+	for _, line := range splitContent(c) {
+		if !parseVfile(line) {
+			parseUrl(line)
 		}
 	}
 	m.dosum()
@@ -314,109 +350,13 @@ func (m vfilelist) genLiveM3u8(w io.Writer, host string, at float32) {
 
 }
 
-func (m vfilelist) genLiveM3u8_dummy(w io.Writer, host string, at float32) {
-
-	type pktS struct {
-		url string
-		dur float32
-		end bool
-		v *vfile
-	}
-
-	pkts := []pktS{}
-	segs := [][]pktS{}
-	poss := []float32{}
-	pos := float32(0)
-
-	flush := func () {
-		segs = append(segs, pkts)
-		poss = append(poss, pos)
-		pkts = []pktS{}
-	}
-
-	for _, v := range m.m {
-		for i, t := range v.Ts {
-			pkt := pktS{}
-			pkt.v = v
-			pkt.dur = t.Dur
-			pkt.url = fmt.Sprintf("http://%s/%s/%d.ts", host, v.path, i)
-			if i == len(v.Ts)-1 {
-				pkt.end = true
-			}
-			pos += pkt.dur
-			pkts = append(pkts, pkt)
-			if len(pkts) == 3 {
-				flush()
-			}
-		}
-	}
-	flush()
-
-	nloop := int(at/m.dur)
-	loopat := at - float32(nloop)*m.dur
-
-	segat := 0
-	for i := 0; i < len(segs); i++ {
-		segat = i
-		if poss[i] > loopat {
-			break
-		}
-	}
-	seqno := len(segs)*nloop + segat
-
+func (m vfilelist) genM3u8(w io.Writer, host string) {
 
 	fmt.Fprintf(w, "#EXTM3U\n")
 	fmt.Fprintf(w, "#EXT-X-TARGETDURATION:%.0f\n", 30.0)
-	fmt.Fprintf(w, "#EXT-X-MEDIA-SEQUENCE:%d\n", seqno)
-	fmt.Fprintf(w, "\n")
-	fmt.Fprintf(w, "# live stream at %s\n", durstr(at))
-	fmt.Fprintf(w, "# loop nr %d\n", nloop)
-	fmt.Fprintf(w, "# loop at %f\n", loopat)
-	fmt.Fprintf(w, "# segs nr %d\n", len(segs))
-	fmt.Fprintf(w, "# segs at %d\n", segat)
-	fmt.Fprintf(w, "\n")
-
-	for _, p := range segs[segat] {
-		fmt.Fprintf(w, "#EXTINF:%.0f\n", p.dur)
-		fmt.Fprintf(w, "%s\n", p.url)
-		if p.end {
-			fmt.Fprintf(w, "#EXT-X-DISCONTINUITY\n")
-		}
-	}
-}
-
-func (m vfilelist) genM3u8(w io.Writer, host string, args... interface{}) {
-	maxdur := float32(0)
-	for _, v := range m.m {
-		if v.Stat != "done" {
-			continue
-		}
-		for _, t := range v.Ts {
-			if t.Dur > maxdur {
-				maxdur = t.Dur
-			}
-		}
-	}
+	fmt.Fprintf(w, "#EXT-X-MEDIA-SEQUENCE:%d\n", 0)
 
 	debug := false
-
-	at := float32(-1)
-	if len(args) > 0 {
-		if args[0].(string) == "at" {
-			at = args[1].(float32)
-		}
-	}
-	fmt.Fprintf(w, "#EXTM3U\n")
-	fmt.Fprintf(w, "#EXT-X-TARGETDURATION:%.0f\n", maxdur)
-	fmt.Fprintf(w, "#EXT-X-MEDIA-SEQUENCE:%d\n", 0)
-	if at >= 0 {
-		if debug {
-			fmt.Fprintf(w, "# live stream at %s\n\n", durstr(at))
-		}
-	}
-
-	cur := float32(0)
-	cnt := 0
 
 	for _, v := range m.m {
 		if debug {
@@ -426,32 +366,23 @@ func (m vfilelist) genM3u8(w io.Writer, host string, args... interface{}) {
 				continue
 			}
 		}
-		for j, t := range v.Ts {
+		for i, t := range v.Ts {
 			if v.Size == 0 {
 				continue
 			}
-			if at >= 0 && cur > at && cnt < 3 || at < 0 {
-				fmt.Fprintf(w, "#EXTINF:%.0f,\n", t.Dur)
-				fmt.Fprintf(w, "http://%s/%s/%d.ts\n", host, v.path, j)
-				cnt++
-			}
-			cur += t.Dur
+			fmt.Fprintf(w, "#EXTINF:%.0f,\n", t.Dur)
+			fmt.Fprintf(w, "http://%s/%s/%d.ts\n", host, v.path, i)
 		}
 		if len(v.Ts) > 0 {
 			fmt.Fprintf(w, "#EXT-X-DISCONTINUITY\n")
 		}
-		//fmt.Fprintf(w, "\n")
 	}
-
-	if at < 0 {
-		fmt.Fprintf(w, "#EXT-X-ENDLIST\n")
-	}
+	fmt.Fprintf(w, "#EXT-X-ENDLIST\n")
 }
 
 func vfilelistParse(c string) (m vfilemap) {
 	m = vfilemap{}
 	return
 }
-
 
 

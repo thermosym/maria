@@ -168,6 +168,46 @@ func (m *vfile) load() (error) {
 	return nil
 }
 
+func (m *vfile) sortUploadM3u8() () {
+	_body, err := ioutil.ReadFile(filepath.Join(m.path, "a.m3u8"))
+	if err != nil {
+		return
+	}
+	body := string(_body)
+
+	lines := strings.Split(body, "\n")
+	var dur float32
+
+	for _, l := range lines {
+		if strings.HasPrefix(l, "#EXTINF:") {
+			fmt.Sscanf(l, "#EXTINF:%f", &dur)
+		}
+		if strings.HasPrefix(l, "/vfile") {
+			filename := strings.Trim(l, "\r\n/")
+			n := len(m.Ts)
+			newfilename := filepath.Join(m.path, fmt.Sprintf("%d.ts", n))
+			os.Rename(filename, newfilename)
+			m.Ts = append(m.Ts, tsinfo{
+				Dur: dur,
+			})
+			dur = 0
+		}
+	}
+	m.downN = len(m.Ts)
+
+	return
+}
+
+func (m *vfile) probe() (err error) {
+	var info avprobeInfo
+	err, info = avprobe(m.Filename)
+	if err != nil {
+		return err
+	}
+	m.copyAvprobeInfo(info)
+	return
+}
+
 func (m *vfile) upload(r io.Reader, length int64, ext string) {
 	m.Starttm = time.Now()
 
@@ -265,6 +305,8 @@ func (m *vfile) upload(r io.Reader, length int64, ext string) {
 		shit()
 		return
 	}
+
+	m.sortUploadM3u8()
 
 	m.l.Lock()
 	m.log("done")
@@ -457,6 +499,7 @@ func (m *vfile) copyAvprobeInfo(info avprobeInfo) {
 	m.Vinfo = info.vinfo
 	m.Fps = info.fps
 	m.Bitrate = info.bitrate
+	m.Dur = info.dur
 }
 
 func (v *vfile) avprobe() {
@@ -490,7 +533,7 @@ func (v vfile) Statstr() string {
 	case "error":
 		stat += "[出错]"
 	case "nonexist":
-		stat += "[未下载]"
+		stat += "[不存在]"
 	}
 	if v.Dur > 0.0 {
 		stat += fmt.Sprintf("[%s]", durstr(v.Dur))
@@ -499,6 +542,20 @@ func (v vfile) Statstr() string {
 		stat += fmt.Sprintf("[%dx%d]", v.W, v.H)
 	}
 	return stat
+}
+
+func (v *vfile) genLiveEndM3u8(w io.Writer, host string, at float32) {
+	pos := float32(0)
+	fmt.Fprintf(w, "#EXTM3U\n")
+	fmt.Fprintf(w, "#EXT-X-TARGETDURATION:%.0f\n", 10.0)
+	for i, t := range v.Ts {
+		pos += t.Dur
+		if pos > at {
+			fmt.Fprintf(w, "#EXTINF:%.0f,\n", t.Dur)
+			fmt.Fprintf(w, "http://%s/%s/%d.ts\n", host, v.path, i)
+		}
+	}
+	fmt.Fprintf(w, "#EXT-X-ENDLIST\n")
 }
 
 func (v *vfile) genM3u8(w io.Writer, host string) {

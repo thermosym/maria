@@ -101,13 +101,6 @@ func getsha1(url string) string {
 	return s
 }
 
-func splitContent(c string) (r []string) {
-	for _, l := range strings.Split(c, "\n") {
-		r = append(r, strings.Trim(l, "\r\n"))
-	}
-	return
-}
-
 func pathup (path string) string {
 	arr := strings.Split(path, "/")
 	if len(arr) <= 1 {
@@ -329,15 +322,22 @@ func main() {
 		fmt.Fprintf(w, `<a href="/menu/%s">返回</a>`, path)
 	}
 
-
-	vfileM3u8 := func (w http.ResponseWriter, wr io.Writer, sha string, host string) {
+	vfileM3u8 := func (r *http.Request, w http.ResponseWriter, wr io.Writer, sha string, host string) {
 		log.Printf("vfilem3u8: %s", sha)
 		v := global.vfile.shotsha(sha)
 		if v == nil {
 			http.Error(w, "not found", 404)
 			return
 		}
-		v.genM3u8(wr, host)
+		at := r.FormValue("at")
+		switch {
+		case at != "":
+			fat := float32(0)
+			fmt.Sscanf(at, "%f", &fat)
+			v.genLiveEndM3u8(wr, host, fat)
+		default:
+			v.genM3u8(wr, host)
+		}
 	}
 
 	menuM3u8 := func (r *http.Request, w http.ResponseWriter, wr io.Writer, path,host string) {
@@ -349,16 +349,12 @@ func main() {
 		}
 		list := vfilelistFromContent(m.Content)
 		at := r.FormValue("at")
-		live := r.FormValue("live")
 		liveend := r.FormValue("liveend")
 		switch {
 		case at != "":
 			fat := float32(0)
 			fmt.Sscanf(at, "%f", &fat)
-			list.genM3u8(w, host, "at", fat)
-		case live != "":
-			fat := tmdur2float(time.Since(m.tmstart))
-			list.genLiveM3u8(w, host, fat)
+			list.genLiveEndM3u8(w, host, fat)
 		case liveend != "":
 			fat := tmdur2float(time.Since(m.tmstart))
 			list.genLiveEndM3u8(w, host, fat)
@@ -409,7 +405,7 @@ func main() {
 		dir, file := filepath.Split(path)
 		ext := filepath.Ext(file)
 		switch ext {
-		case ".ts", ".html", ".css", ".js":
+		case ".ts", ".html", ".css", ".js", ".mp4", ".rm", ".rmvb", ".avi", ".mkv":
 			http.ServeFile(w, r, path[1:])
 		case ".m3u8":
 			path = dir
@@ -434,7 +430,7 @@ func main() {
 			userPage(w, pathsplit(path, 1))
 
 		case strings.HasPrefix(path, "/m3u8/vfile"):
-			vfileM3u8(w, &bs, pathsplit(path, 2), r.Host)
+			vfileM3u8(r, w, &bs, pathsplit(path, 2), r.Host)
 			oneshot()
 		case strings.HasPrefix(path, "/m3u8/menu"):
 			menuM3u8(r, w, &bs, pathsplit(path, 2), r.Host)
