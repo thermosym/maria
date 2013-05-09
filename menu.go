@@ -161,6 +161,9 @@ func (m *menu) writeFile(filename string) {
 }
 
 func (m *menu) readFile(filename string) {
+
+	m.Sub = map[string]*menu{}
+
 	data, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Printf("%v", err)
@@ -262,7 +265,7 @@ func testMenu() {
 
 	m.dumptree(0)
 	global.menu = m
-	m.writeFile("global")
+	m.writeFile("menu")
 }
 
 func menuPage(w io.Writer, path string) {
@@ -421,7 +424,7 @@ func path2title (path string) string {
 
 func loadMenu() (m *menu) {
 	m = &menu{Flag:"dir"}
-	m.readFile("global")
+	m.readFile("menu")
 	return
 }
 

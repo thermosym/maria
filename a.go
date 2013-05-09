@@ -197,10 +197,15 @@ func main() {
 			{Value:"live", Desc:"直播"},
 			{Value:"ondemand", Desc:"点播"},
 		}
+		checked := false
 		for i, t := range types {
 			if t.Value == m.Type {
 				types[i].Checked = "checked"
+				checked = true
 			}
+		}
+		if !checked {
+			types[0].Checked = "checked"
 		}
 
 		if op == "edit" {
