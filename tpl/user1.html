@@ -1,0 +1,39 @@
+
+<legend>
+	192.168.1.1 
+	<span class="label">离线</span>
+	<span class="label label-success">在线(192.1.1.1)</span>
+	<a>Chrome</a>
+	<a href="#" toggle="cliinfo" style="font-size:11pt">详情</a>
+</legend>
+<pre id="cliinfo" class="hide">
+hardware: xxx
+linux: 2.3.3
+</pre>
+<form class="form-inline" class="hide">
+	<label class="checkbox">强制操作</label>
+	<a class="btn">发消息</a>
+	<a class="btn">打开网页</a>
+	<a class="btn">插播</a>
+</form>
+<table class="table table-condensed" style="width:auto;min-width:500px">
+	<tr>
+		<td>时间</td>
+		<td>视频</td>
+		<td>菜单</td>
+		<td>时长</td>
+	</tr>
+	{{#Log}}
+	<tr>
+		<td>{{Time}}</td>
+		<td><a href="/vfile/{{VideoName}}">{{Video}}</a></td>
+		<td><a href="/menu/{{MenuName}}">{{Menu}}</a></td>
+		<td>{{Dur}}</td>
+	</tr>
+	{{/Log}}
+	<tr>
+		<td colspan="3"> </td>
+		<td>{{TotDur}}</td>
+	</tr>
+</table>
+

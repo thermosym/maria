@@ -6,6 +6,7 @@ import (
 
 	"bytes"
 	"net/http"
+	"crypto/rand"
 	"crypto/sha1"
 	"path/filepath"
 	"time"
@@ -17,34 +18,6 @@ import (
 	"encoding/json"
 	"strings"
 )
-
-func curl(url string) (body string, err error){
-	var resp *http.Response
-	resp, err = http.Get(url)
-	if err != nil {
-		return
-	}
-	var bodydata []byte
-	bodydata, err = ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return
-	}
-	body = string(bodydata)
-	return
-}
-
-func curldata(url string) (body []byte, err error) {
-	var resp *http.Response
-	resp, err = http.Get(url)
-	if err != nil {
-		return
-	}
-	body, err = ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return
-	}
-	return
-}
 
 func getloopat(at, dur float32) float32 {
 	n := int(at/dur)
@@ -74,12 +47,21 @@ func tmdur2float(dur time.Duration) float32 {
 	return a
 }
 
+func perstr(per float64) string {
+	return fmt.Sprintf("%.1f%%", per)
+}
+
 func durstr(d float32) string {
 	if d < 60*60 {
 		return fmt.Sprintf("%d:%.2d", int(d/60), int(d)%60)
 	}
 	return fmt.Sprintf("%d:%.2d:%.2d", int(d/3600), int(d/60)%60, int(d)%60)
 }
+
+func tmdurstr(d time.Duration) string {
+	return durstr(tmdur2float(d))
+}
+
 
 func sizestr(size int64) string {
 	if size < 1024 {
@@ -109,6 +91,23 @@ func pathup (path string) string {
 	return strings.Join(arr[0:len(arr)-1], "/")
 }
 
+func pathidx(path string, idx int) string {
+	a := pathSplit(path)
+	if idx < len(a) {
+		return a[idx]
+	}
+	return ""
+}
+
+func pathsub(path string, start int) string {
+	a := pathSplit(path)
+	if len(a) <= start {
+		return ""
+	} else {
+		return strings.Join(a[start:], "/")
+	}
+}
+
 func pathsplit(path string, from int) string {
 	a := filepath.Clean(strings.Trim(path, "/"))
 	b := strings.Split(a, "/")
@@ -128,9 +127,58 @@ func renderIndex(w io.Writer, sel,body string) {
 	fmt.Fprintf(w, "%s", s)
 }
 
+func pathSplit(path string) []string {
+	path = filepath.Clean(path)
+	path = strings.Trim(path, "/")
+	return strings.Split(path, "/")
+}
+
+func randsha1() (string) {
+	h := sha1.New()
+	io.CopyN(h, rand.Reader, 10)
+	return fmt.Sprintf("%x", h.Sum(nil))[:7]
+}
+
+func loadJson(path string, v interface{}) {
+	data, err := ioutil.ReadFile(path)
+	if err != nil {
+		return
+	}
+	json.Unmarshal(data, v)
+}
+
+func saveJson(path string, v interface{}) {
+	data, err := json.Marshal(v)
+	if err != nil {
+		return
+	}
+	ioutil.WriteFile(path, data, 0777)
+}
+
 func main() {
 
 	log.Printf("argv %v", os.Args)
+
+	testfuncs := []struct {
+		name string
+		cb func([]string)
+	}{
+		{"curl3", testCurl3},
+		{"downv", testDownVfile},
+		{"v1", testVfile1},
+		{"v2", testVfile2},
+		{"testhttp", testhttp},
+	}
+	for _, f := range testfuncs {
+		if len(os.Args) >= 2 && os.Args[1] == f.name {
+			log.Printf("calling %s", f.name)
+			f.cb(os.Args[1:])
+			return
+		}
+	}
+
+	//testMenuV2()
+	//return
 
 	if len(os.Args) >= 2 && os.Args[1] == "testavconv" {
 		testavconv()

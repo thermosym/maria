@@ -1,0 +1,114 @@
+
+
+<div id="vtext" class="hide">
+	<form>
+	<p> 
+	<a class="btn btn-primary" post="edit" reload="1">确定</a> 
+	<a class="btn" show="vtable" hide="vtext">返回</a>
+	</p>
+	<textarea name="text" style="width:500px;height:400px">
+	</textarea>
+	</form>
+</div>
+
+<div id="vtable">
+
+	<div id="vdel" class="hide">
+		<form class="form-inline">
+		<label class="radio"> 确认删除？</label>
+		<a class="btn btn-danger" form="vform" post="del" reload="1">确定</a> 
+		<a class="btn" show="vpanel" hide="vdel">返回</a>
+		</form>
+	</div>
+
+	<div id="vedit" class="hide">
+		<form class="form-inline">
+		<a class="btn" post="edit" show="vpanel" hide="vedit">返回</a> 
+		<label class="radio"> 修改为 </label>
+		<label class="radio"> <input type="radio" name="type" value="live" /> 直播 </label>
+		<label class="radio"> <input type="radio" name="type" value="normal" /> 点播 </label>
+		<a class="btn btn-primary" post="edit" reload="1">确定</a> 
+		</form>
+	</div>
+
+	{{^HideEdit}}
+	<div id="vpanel">
+		<p> 
+		<a class="btn" show="vedit" hide="vpanel">修改</a> 
+		{{#IsLive}}直播{{/IsLive}}
+		{{#IsNormal}}点播{{/IsNormal}}
+		<a class="btn" show="vtext" hide="vtable">编辑列表</a> 
+		</p>
+	</div>
+	{{/HideEdit}}
+
+	<form id="vform">
+	<table class="table table-condensed" style="width:auto;min-width:500px">
+		<tr class="muted">
+			{{^CanSort}}
+			{{#ShowSel}} <td>选择</td> {{/ShowSel}}
+			{{#ShowLine}}<td>行</td>{{/ShowLine}}
+			{{#ShowStat}}<td>状态</td>{{/ShowStat}}
+			<td>标题</td>
+			<td>分辨率</td>
+			<td>长度</td>
+			<td>大小</td>
+			<td>操作</td>
+			<td>删除</td>
+			{{/CanSort}}
+
+			{{#CanSort}}
+			{{#ShowSel}} <td><a>选择</a></td> {{/ShowSel}}
+			{{#ShowLine}}<td><a>行</a></td> {{/ShowLine}}
+			{{#ShowStat}}<td><a>状态</a></td>{{/ShowStat}}
+			<td><a>标题</a></td>
+			<td><a>分辨率</a></td>
+			<td><a>长度</a></td>
+			<td><a>大小</a></td>
+			<td><a>操作</a></td>
+			<td><a>删除</a></td>
+			{{/CanSort}}
+		</tr>
+
+		{{#Rows}}
+		<tr>
+			{{#ShowSel}}<td> <input name="list" type="checkbox"></input> </td>{{/ShowSel}}
+			{{#ShowLine}}<td>{{Line}}</td>{{/ShowLine}}
+			{{#ShowStat}}<td>{{Statstr}}</td>{{/ShowStat}}
+			<td>{{Desc}}</td>
+			<td>{{Geostr}}</td>
+			<td>{{Durstr}}</td>
+			<td>{{Sizestr}}</td>
+			<td> <a href="#">下载</a> </td>
+			<td> <a href="#" v="name={{Name}}" show="vdel" hide="vpanel">&times;</a> </td>
+		</tr>
+		{{/Rows}}
+		
+		<tr>
+			<td colspan="{{ColSpan}}"> 
+			<div class="form-inline">
+				{{#ShowSel}}
+				<label class="checkbox">
+					<input class="selall" type="checkbox"></input>
+					全选
+				</label> 
+				<label class="checkbox">
+					<a href="#" show="vdel" hide="vpanel">删除</a>
+				</label>
+				{{/ShowSel}}
+				{{#HasPager}}
+				<span style="float:right">共 {{PageNr}} | 页 {{PageStart}}/{{PageEnd}} | 下一页 上一页</span>
+				{{/HasPager}}
+			</div>
+			</td>
+
+			<td>{{TotDur}}</td>
+			<td>{{TotSize}}</td>
+			<td colspan="4"> </td>
+		</tr>
+	</form>
+	</table>
+
+</div>
+
+

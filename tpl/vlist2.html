@@ -1,0 +1,41 @@
+<form action="/cgi?mod=vlist2&act=del&form=1" method="post">
+<table class="table table-condensed">
+	<tr>
+		{{^canSort}}
+		<td>选择</td>
+		<td>标题</td>
+		<td>总长度</td>
+		<td>视频个数</td>
+		<td>操作</td>
+		{{/canSort}}
+		{{#canSort}}
+		<td><a>选择</a></td>
+		<td><a>标题</a></td>
+		<td><a>总长度</a></td>
+		<td><a>视频个数</a></td>
+		<td><a>操作</a></td>
+		{{/canSort}}
+	</tr>
+
+	{{#rows}}
+	<tr>
+		<td> <input name="{{Name}}" type="checkbox"></input> </td>
+		<td>{{Desc}}</td>
+		<td>{{Durstr}}</td>
+		<td>{{Count}}</td>
+		<td><a ajax=1 href="/cgi?mod=vlist2&act=del&name={{Name}}" >移除</a></td>
+	</tr>
+	{{/rows}}
+	
+	<tr>
+		<td colspan=5> 
+			<input type="checkbox"></input> <span>全选</span>
+			<a>移除</a>
+			{{#hasPager}}
+			<span style="float:right">共 {{nr}} | 页 {{startp}}/{{endp}} | 下一页 上一页</span>
+			{{/hasPager}}
+		</td>
+	</tr>
+</table>
+</form>
+

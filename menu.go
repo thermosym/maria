@@ -53,12 +53,8 @@ func (m *menu) fillM3u8Url(host,path string) {
 }
 
 func (m *menu) get(path string, cb func(r,p *menu, id string)) (r *menu) {
-	arr := strings.Split(strings.Trim(path, "/"), "/")
+	arr := pathSplit(path)
 	r = m
-	//log.Printf("menu get : %v", arr[0])
-	if arr[0] == "" || arr[0] == "/" {
-		return
-	}
 	for _, s := range arr {
 		p := r
 		r = r.Sub[s]
@@ -427,4 +423,5 @@ func loadMenu() (m *menu) {
 	m.readFile("menu")
 	return
 }
+
 

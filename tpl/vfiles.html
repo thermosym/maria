@@ -1,0 +1,38 @@
+
+<p>
+	<a class="btn" toggle="vyouku">添加优酷/搜狐视频</a>
+	<!--
+	<a class="btn" toggle="vyoutube">添加Youtube/Vimeo视频</a>
+	<a class="btn" toggle="vm3u8">添加视频链接</a>
+	<a class="btn" toggle="vupload" >上传视频</a>
+	!-->
+</p>
+
+<div id="alert">
+</div>
+
+<div id="vyouku" class="hide">
+<form class="form-inline">
+	<input type="text" name="url" class="input input-large" />
+	<a class="btn" post="download" listadd="vwatch">下载</a>
+</form>
+</div>
+
+<div id="vupload" class="hide">
+<form class="form-inline">
+	<input type="file" class="file" style="width: 150px"/>
+	<a class="btn">上传</a>
+</form>
+</div>
+
+<div id="vwatch" src="/vfile/watch">
+</div>
+
+<form class="form-inline">
+	<input type="text" class="input" />
+	<a class="btn">搜索</a>
+</form>
+
+<div src="/vfiles/list">
+</div>
+

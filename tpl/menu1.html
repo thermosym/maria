@@ -1,0 +1,123 @@
+
+<ul class="breadcrumb">
+	{{#Path}}
+		{{^End}}
+			<li><a href="/menu/{{Name}}">{{Desc}}</a> <span class="divider">/</span></li>
+		{{/End}}
+		{{#End}}
+			<li class="active">{{Desc}}</li>
+		{{/End}}
+	{{/Path}}
+</ul>
+
+<div id="alert">
+</div>
+
+<div id="modify" class="hide">
+<div class="form-search" >
+<form>
+	<a class="btn" show="panel" hide="modify">返回</a>
+	<label class="checkbox">修改为</label>
+	<input type="text" name="desc" value="xxx"></input>
+	<a class="btn btn-primary" reload="1" post="modify" >确定</a>
+</form>
+</div>
+</div>
+
+<div id="add" class="hide">
+<div class="form-search" >
+<form>
+	<label class="checkbox">添加</label>
+	<select name="type">
+		<option value="menu">子菜单</option>
+		<option value="list">播放列表</option>
+	</select>
+	<input type="text" name="desc" value="xxx"></input>
+	<a class="btn btn-primary" reload="1" post="add" >确定</a>
+	<a class="btn" show="panel" hide="add">返回</a>
+</form>
+</div>
+</div>
+
+<div id=movetod class="modal hide">
+	<div class="modal-body">
+		<form id="movetof" class="form-search" >
+			<label class="checkbox">移动到</label>
+			<select name="to" style="width:200px">
+				<option value="xx"> &nbsp; &nbsp; &nbsp;   根目录</option>
+			</select>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" class="close" data-dismiss="modal">取消</a>
+		<a class="btn btn-primary" reload="1" form2="movetof" post="moveto" >确定</a>
+	</div>
+</div>
+
+<div id=deld class="modal hide">
+	<div class="modal-body">
+		<p>确定删除？</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" class="close" data-dismiss="modal">取消</a>
+		<a href="#" class="btn btn-primary" reload="1" post="del">确定</a>
+	</div>
+</div>
+
+<div id="panel" class="">
+<div class="form-search" >
+	<a class="btn" show="modify" hide="panel">修改标题</a>
+{{#IsDir}}
+	<a class="btn" show="add" hide="panel">添加</a>
+{{/IsDir}}
+	<a class="btn" modal="movetod" v="node={{Name}}">移动到</a>
+	<a class="btn btn-danger" modal="deld" v="node={{Name}}" >删除</a>
+</div>
+</div>
+
+<hr>
+
+{{#IsDir}}
+{{#IsEmpty}}
+	<span class="muted">目录为空</span>
+{{/IsEmpty}}
+{{^IsEmpty}}
+
+<form id="table">
+<table class="table table-condensed" style="width:auto;min-width:400px">
+	<tr class="muted">
+		<td>选择</td>
+		<td>类型</td>
+		<td>标题</td>
+		<td>删除</td>
+	</tr>
+	{{#Dir}}
+	<tr>
+		<td><input name="list" value="{{Name}}" type="checkbox"></input></td>
+		<td>{{Type}}</td>
+		<td><a href="/menu/{{Name}}">{{Desc}}</a></td>
+		<td><a href="#" modal="deld" v="node={{Name}}">&times;</a></td>
+	</tr>
+	{{/Dir}}
+	<tr>
+		<td colspan="4">
+		<div class="form-inline">
+			<label class="checkbox">
+				<input class="selall" type="checkbox"></input>
+				全选
+			</label> 
+			<label class="checkbox"><a href="#" modal="deld" form="table">删除</a></label>
+			<label class="checkbox"><a href="#" modal="movetod" form="table">移动到</a></label>
+		</div>
+		</td>
+	</tr>
+</table>
+</form>
+
+{{/IsEmpty}}
+{{/IsDir}}
+
+{{^IsDir}}
+	{{{VList}}}
+{{/IsDir}}
+
