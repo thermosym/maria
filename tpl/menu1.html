@@ -19,59 +19,55 @@
 	<a class="btn" show="panel" hide="modify">返回</a>
 	<label class="checkbox">修改为</label>
 	<input type="text" name="desc" value="xxx"></input>
-	<a class="btn btn-primary" reload="1" post="modify" >确定</a>
+	<a class="btn btn-primary" >确定</a>
 </form>
 </div>
 </div>
 
 <div id="add" class="hide">
-<div class="form-search" >
+<div class="form-search">
 <form>
+	<a class="btn" show="panel" do="hide #add;show #panel">返回</a>
 	<label class="checkbox">添加</label>
 	<select name="type">
-		<option value="menu">子菜单</option>
-		<option value="list">播放列表</option>
+		<option value="dir">子菜单</option>
+		<option value="live">直播列表</option>
+		<option value="normal">点播列表</option>
 	</select>
 	<input type="text" name="desc" value="xxx"></input>
-	<a class="btn btn-primary" reload="1" post="add" >确定</a>
-	<a class="btn" show="panel" hide="add">返回</a>
+	<a class="btn btn-primary" do="post ? form 'do=add'; checkerr; reload page" >确定</a>
 </form>
 </div>
 </div>
 
-<div id=movetod class="modal hide">
-	<div class="modal-body">
-		<form id="movetof" class="form-search" >
-			<label class="checkbox">移动到</label>
-			<select name="to" style="width:200px">
-				<option value="xx"> &nbsp; &nbsp; &nbsp;   根目录</option>
-			</select>
-		</form>
-	</div>
-	<div class="modal-footer">
-		<a href="#" class="btn" class="close" data-dismiss="modal">取消</a>
-		<a class="btn btn-primary" reload="1" form2="movetof" post="moveto" >确定</a>
-	</div>
+<div id=moveto class="hide">
+	<form class="form-inline" >
+		<a href="#" class="btn" do="hide #moveto">取消</a>
+		<label class="checkbox">移动到</label>
+		<select name="to" style="width:200px">
+			<option value="xx"> &nbsp; &nbsp; &nbsp;   根目录</option>
+		</select>
+		<a class="btn btn-primary" do="ok 'do=moveto' form">确定</a>
+	</form>
 </div>
 
-<div id=deld class="modal hide">
-	<div class="modal-body">
-		<p>确定删除？</p>
-	</div>
-	<div class="modal-footer">
-		<a href="#" class="btn" class="close" data-dismiss="modal">取消</a>
-		<a href="#" class="btn btn-primary" reload="1" post="del">确定</a>
-	</div>
-</div>
-
-<div id="panel" class="">
+<div id="panel">
 <div class="form-search" >
+{{#CanUp}}
+	<a class="btn" href="/menu/{{Parent}}">向上</a>
+{{/CanUp}}
+{{#CanEditTitle}}
 	<a class="btn" show="modify" hide="panel">修改标题</a>
+{{/CanEditTitle}}
 {{#IsDir}}
-	<a class="btn" show="add" hide="panel">添加</a>
+	<a class="btn" do="show #add;hide #panel">添加</a>
 {{/IsDir}}
+{{#CanMove}}
 	<a class="btn" modal="movetod" v="node={{Name}}">移动到</a>
+{{/CanMove}}
+{{#CanDel}}
 	<a class="btn btn-danger" modal="deld" v="node={{Name}}" >删除</a>
+{{/CanDel}}
 </div>
 </div>
 
@@ -83,20 +79,20 @@
 {{/IsEmpty}}
 {{^IsEmpty}}
 
-<form id="table">
+<form>
 <table class="table table-condensed" style="width:auto;min-width:400px">
 	<tr class="muted">
 		<td>选择</td>
-		<td>类型</td>
 		<td>标题</td>
+		<td>类型</td>
 		<td>删除</td>
 	</tr>
 	{{#Dir}}
 	<tr>
-		<td><input name="list" value="{{Name}}" type="checkbox"></input></td>
-		<td>{{Type}}</td>
+		<td><input name="list" class="midcb" value="{{Name}}" type="checkbox"></input></td>
 		<td><a href="/menu/{{Name}}">{{Desc}}</a></td>
-		<td><a href="#" modal="deld" v="node={{Name}}">&times;</a></td>
+		<td>{{Typestr}}</td>
+		<td><a href="#" do="confirm '确定删除?'; post ? form 'do=del&node={{Name}}'; reload page">&times;</a></td>
 	</tr>
 	{{/Dir}}
 	<tr>
@@ -106,8 +102,8 @@
 				<input class="selall" type="checkbox"></input>
 				全选
 			</label> 
-			<label class="checkbox"><a href="#" modal="deld" form="table">删除</a></label>
-			<label class="checkbox"><a href="#" modal="movetod" form="table">移动到</a></label>
+			<label class="checkbox"><a href="#" do="confirm '确认删除?'; post ? 'do=del' form; reload page">删除</a></label>
+			<label class="checkbox"><a href="#" do="show #moveto; onok; post ? form">移动到</a></label>
 		</div>
 		</td>
 	</tr>
@@ -118,6 +114,7 @@
 {{/IsDir}}
 
 {{^IsDir}}
-	{{{VList}}}
+<div src="/vlist/{{Name}}?create=1">
+	</div>
 {{/IsDir}}
 

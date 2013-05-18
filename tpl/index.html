@@ -5,11 +5,6 @@
 		<title> 视频管理系统 </title>
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-		<script src=/js/jquery.js></script>
-		<script src=/js/bootstrap.min.js></script>
-		<script src=/js/main.js></script>
-
 		<style>
 			form input {
 				width: 120px;
@@ -17,7 +12,15 @@
 			form select {
 				width: 120px;
 			}
+			.midcb {
+				margin: 0 !important;
+			}
 		</style>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+		<script src=/js/jquery.js></script>
+		<script src=/js/bootstrap.min.js></script>
+		<script src=/js/main.js></script>
 
   </head>
 
@@ -29,9 +32,8 @@
 					<a class=brand>视频管理系统</a>
 					<ul class=nav>
 						<li class="{{menuSel}}"><a href="/menu">菜单</a></li>
-						<li class="{{manvSel}}"><a href="/manv">视频</a></li>
-						<li class="{{uploadSel}}"><a href="/manv/upload">上传</a></li>
-						<li class="{{userSel}}"><a href="/users">用户</a></li>
+						<li class="{{vfilesSel}}"><a href="/vfiles">视频</a></li>
+						<li class="{{vlistsSel}}"><a href="/vlists">播放列表</a></li>
 					</ul>
 				</div>
 			</div>

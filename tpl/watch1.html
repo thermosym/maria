@@ -1,12 +1,21 @@
+
+{{#test}}
+<div src="/vfile/watch" list="aa,dd,ee">
+</div>
+{{/test}}
+{{^test}}
+
+<form>
 <table>
-	<tr>
-		<td></td>
-		<td></td>
-	</tr>
 	{{#List}}
 	<tr>
 		<td>{{Statstr}}</td>
-		<td><a href="/vfile/{{Name}}" target="_blank">{{Desc}}</a></td>
+		<td><a href="/vfile/{{Name}}" target="_blank">{{Src}}</a></td>
+		<td><a href="#" listdel="{{Name}}">&times;</a></td>
 	</tr>
 	{{/List}}
 </table>
+</form>
+
+{{/test}}
+

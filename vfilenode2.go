@@ -207,6 +207,7 @@ func (v *vfileV2Node) download(url string) {
 	v.l.Lock()
 	v.Stat = "parsing"
 	v.Type = "download"
+	v.Src = url
 	v.forceStop = false
 	v.log("download start")
 	v.l.Unlock()
@@ -242,6 +243,18 @@ func (v *vfileV2Node) download(url string) {
 		v.save()
 	}
 	v.l.Unlock()
+}
+
+func (v vfileV2Node) Typestr() string {
+	switch v.Type {
+	case "youku":
+		return "优酷下载"
+	case "sohu":
+		return "搜狐下载"
+	case "upload":
+		return "用户上传"
+	}
+	return "未知类型"
 }
 
 func (v vfileV2Node) Geostr() string {

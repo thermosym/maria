@@ -1,4 +1,9 @@
 
+{{#NotFound}}
+<span class="muted">未找到播放列表</span>
+{{/NotFound}}
+
+{{^NotFound}}
 
 <div id="vtext" class="hide">
 	<form>
@@ -31,17 +36,23 @@
 		</form>
 	</div>
 
-	{{^HideEdit}}
+	{{#ShowEdit}}
 	<div id="vpanel">
 		<p> 
 		<a class="btn" show="vedit" hide="vpanel">修改</a> 
 		{{#IsLive}}直播{{/IsLive}}
 		{{#IsNormal}}点播{{/IsNormal}}
+		<a class="btn" >添加视频</a> 
 		<a class="btn" show="vtext" hide="vtable">编辑列表</a> 
 		</p>
 	</div>
-	{{/HideEdit}}
+	{{/ShowEdit}}
 
+	{{#RowsEmpty}}
+	<span class="muted">列表为空</span>
+	{{/RowsEmpty}}
+
+	{{^RowsEmpty}}
 	<form id="vform">
 	<table class="table table-condensed" style="width:auto;min-width:500px">
 		<tr class="muted">
@@ -108,7 +119,9 @@
 		</tr>
 	</form>
 	</table>
+	{{/RowsEmpty}}
 
 </div>
 
+{{/NotFound}}
 

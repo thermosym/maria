@@ -168,6 +168,7 @@ func main() {
 		{"v1", testVfile1},
 		{"v2", testVfile2},
 		{"testhttp", testhttp},
+		{"testajax", testajax},
 	}
 	for _, f := range testfuncs {
 		if len(os.Args) >= 2 && os.Args[1] == f.name {

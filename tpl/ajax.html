@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+		<title> Ajax test </title>
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+		<script src=/js/jquery.js></script>
+		<script src=/js/bootstrap.min.js></script>
+		<script src=/js/main.js></script>
+
+		<style>
+			form input {
+				width: 120px;
+			}
+			form select {
+				width: 120px;
+			}
+		</style>
+
+  </head>
+
+  <body>
+
+		<div class="navbar nav-fixed-top"> 
+			<div class="navbar-inner">
+				<div class="container">
+					<a class=brand>Ajax testing</a>
+					<ul class=nav>
+						<li class="active"><a >Test</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid" >
+
+			<p>add params after post: <a class="btn" do="get /randstr;listadd #a1 ret" >add</a></p>
+			<div id="a1" src="/showlist1" list="a,b,c"> </div>
+			<hr>
+
+			<p>update search: </p>
+			<form>
+				<input type="text" class="input" name="str"></input>
+				<input type="checkbox" name="g1" value="apple" checked>apple</input>
+				<input type="checkbox" name="g1" value="banana">banana</input>
+				<input type="checkbox" name="g1" value="shit">shit</input>
+				<a class="btn" do="get #sa2 form" >search</a>
+			</form>
+			<div id="sa2" src="/dumpform" > </div>
+			<hr>
+
+			<p>update text area</p>
+			<form id="taform">
+				<textarea name="xx">
+					hahaha
+				</textarea>
+				<a class="btn" do="get #tadiv form">update</a>
+			</form>
+			<div id="tadiv" src="/dumpform" form="taform" >
+			</div>
+			<hr>
+
+			<p>update one form to another</p>
+			<div id="u1">
+				<form id="u1f">
+					<input type="text" class="input" name="str1" value="cccdd"></input>
+				</form>
+			</div>
+			<a class="btn" do="get #u2 #u1f">update</a>
+			<div id="u2" src="/dumpform">
+			</div>
+			<hr>
+
+			<p>update and close</p>
+			<div id="uc1" t="#uc2">
+				<form id="uc1f">
+					<input type="text" class="input" name="str1" value="seaxx"></input>
+					<a class="btn" do="post $t form;hide div">ok</a>
+				</form>
+			</div>
+			<div id="uc2" src="/dumpform">
+			</div>
+			<hr>
+
+			<p>update and listadd</p>
+			<div id="ul1">
+				<form id="ul1f">
+					<input type="text" class="input" name="xx"></input>
+					<a class="btn" do="listadd #ul2 form.xx">add</a>
+				</form>
+			</div>
+			<div id="ul2" src="/dumpform">
+			</div>
+			<hr>
+
+			<p>sel and del</p>
+			<a class="btn" do="show #sel1; onok; get #sel2;show #sel2;hide #sel1">Show</a>
+			<div id="sel1" src="/seldel" class="hide"> </div>
+			<div id="sel2" src="/dumpform" class="hide"> </div>
+			<hr>
+
+			<p>search</p>
+			<form id="ul1f">
+				<input type="text" class="input" name="xx"></input>
+				<a class="btn" do="get #sa1 form">add</a>
+			</form>
+			<div id="sa1" src="/dumpform"></div>
+			<hr>
+
+			<p>checkerr</p>
+			<a class="btn" do="post /err; checkerr">Check</a>
+
+		</div>
+
+  </body>
+
+</html>
+

@@ -4,10 +4,10 @@ package main
 import (
 	"sync"
 	"strings"
+	"fmt"
 	"time"
 	"io"
 	"log"
-	"net/http"
 )
 
 /*
@@ -23,6 +23,7 @@ type vlistV2Node struct {
 	Type string
 	Desc string
 	Dur time.Duration
+	name string
 }
 
 type vlistV2 struct {
@@ -37,6 +38,17 @@ func loadVlistV2() (m *vlistV2) {
 	return
 }
 
+func (m *vlistV2Node) log(format string, v ...interface{}) {
+	str := fmt.Sprintf(format, v...)
+	log.Printf("vlist %s: %s", m.name, str)
+}
+
+func (m *vlistV2) log(format string, v ...interface{}) {
+	str := fmt.Sprintf(format, v...)
+	log.Printf("vlist: %s", str)
+}
+
+
 func (m *vlistV2) create() (name string) {
 	m.l.Lock()
 	defer m.l.Unlock()
@@ -46,7 +58,7 @@ func (m *vlistV2) create() (name string) {
 			break
 		}
 	}
-	node := &vlistV2Node{}
+	node := &vlistV2Node{name:name}
 	m.m[name] = node
 	return
 }
@@ -110,18 +122,19 @@ type vlistRow2 struct {
 
 type vlistView2 struct {
 	Rows []vlistRow2
+	RowsEmpty bool
 }
 
 type vlistView1 struct {
 	Rows []vlistRow1
-	Src string
+	RowsEmpty bool
 	TotDur string
 	TotSize string
 	IsLive bool
 	IsNormal bool
 	NotFound bool
 	CanSort bool
-	HideEdit bool
+	ShowEdit bool
 	ShowLine bool
 	CheckDel bool
 	ShowStat bool
@@ -129,7 +142,7 @@ type vlistView1 struct {
 	ColSpan int
 }
 
-func (m *vlistV2) list2(args form) (view vlistView2) {
+func (m *vlistV2) page2(args form) (view vlistView2) {
 	m.l.Lock()
 	defer m.l.Unlock()
 
@@ -141,6 +154,16 @@ func (m *vlistV2) list2(args form) (view vlistView2) {
 			Durstr: tmdurstr(v.Dur),
 		})
 	}
+	view.RowsEmpty = len(view.Rows) == 0
+	return
+}
+
+func (m *vlistV2) new1(args form) (view vlistView1) {
+	m.l.Lock()
+	defer m.l.Unlock()
+	view.ShowEdit = true
+	view.ShowSel = true
+	view.RowsEmpty = true
 	return
 }
 
@@ -148,43 +171,48 @@ func (m *vlistV2) page1(name string, args form) (view vlistView1) {
 	m.l.Lock()
 	defer m.l.Unlock()
 
-	view.Src = "/vlist/"+name
-
 	if name == "test" {
 		view.Rows = []vlistRow1 {
 			{Line: "aaa", Desc: "aaa", Geostr: "11x33", Sizestr: "123M", Name: "xx"},
 			{Line: "aaa", Desc: "aaa", Geostr: "11x33", Sizestr: "123M", Name: "yy"},
 		}
-	} else {
-		v, ok := m.m[name]
-		if !ok {
-			view.NotFound = true
-			return
-		}
-
-		view.ShowLine = true
-		view.ShowSel = true
-		view.ColSpan = 2
-		for _, p := range v.Pairs {
-			n, err := vm.vfile.info(p.vfile)
-			if err != nil {
-				continue
-			}
-			view.Rows = append(view.Rows, vlistRow1{
-				Name: n.name,
-				Desc: n.Desc,
-				Sizestr: n.Sizestr(),
-				Geostr: n.Geostr(),
-				Durstr: tmdurstr(n.Dur),
-				Line: p.line,
-			})
-		}
+		return
 	}
+
+	v, ok := m.m[name]
+	if !ok && args.str("create") == "1" {
+		v = &vlistV2Node{name:name}
+		m.m[name] = v
+		ok = true
+	}
+	if !ok {
+		view.NotFound = true
+		return
+	}
+
+	view.ShowLine = true
+	view.ShowSel = true
+	view.ColSpan = 2
+	for _, p := range v.Pairs {
+		n, err := vm.vfile.info(p.vfile)
+		if err != nil {
+			continue
+		}
+		view.Rows = append(view.Rows, vlistRow1{
+			Name: n.name,
+			Desc: n.Desc,
+			Sizestr: n.Sizestr(),
+			Geostr: n.Geostr(),
+			Durstr: tmdurstr(n.Dur),
+			Line: p.line,
+		})
+	}
+	view.RowsEmpty = len(view.Rows) == 0
 	return
 }
 
-func (m *vlistV2) post(path string, r *http.Request, w io.Writer) {
-	post := r.FormValue("post")
+func (m *vlistV2) post(path string, r form, w io.Writer) {
+	post := r.str("post")
 	log.Printf("vlist post: %s", post)
 }
 

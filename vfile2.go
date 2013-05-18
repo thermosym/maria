@@ -3,6 +3,7 @@ package main
 
 import (
 	"sync"
+	"strings"
 	"path/filepath"
 	"io"
 	"os"
@@ -148,26 +149,52 @@ func (m *vfileV2) post(path string, args form, w io.Writer) {
 		err := m.download(name, args.str("url"))
 		if err != nil {
 			jsonErr(w, err)
+		} else {
+			jsonWrite(w, hash{"list":name})
+			log.Printf("ret")
 		}
 	}
 }
 
+type vfileWatchRow1 struct {
+	Statstr,Src,Name,Type string
+}
+
 type vfileWatch1 struct {
-	List []vfileV2Node
+	List []vfileWatchRow1
 }
 
 func (m *vfileV2) watch1(args form) (view vfileWatch1) {
-	for _, name := range args.strs("list") {
-		v, _ := m.info(name)
-		view.List = append(view.List, v)
+	list := args.str("list")
+	if list == "" {
+		return
 	}
+	for _, name := range strings.Split(list, ",") {
+		v, _ := m.info(name)
+		row := vfileWatchRow1{
+			Statstr: v.Statstr(),
+			Src: v.Src,
+			Name: name,
+			Type: v.Typestr(),
+		}
+		view.List = append(view.List, row)
+	}
+	return
+}
+
+type vfileOne1 struct {
+	vfileV2Node
+}
+
+func (m *vfileV2) one1(name string, args form) (view vfileOne1){
+	v, _ := m.info(name)
+	view = vfileOne1{v}
 	return
 }
 
 func (m *vfileV2) page1(args form) (view vlistView1) {
 	m.l.Lock()
 	defer m.l.Unlock()
-	view.HideEdit = true
 	view.CanSort = true
 	view.CheckDel = true
 	view.ShowStat = true
@@ -181,6 +208,7 @@ func (m *vfileV2) page1(args form) (view vlistView1) {
 			Name: name,
 		})
 	}
+	view.RowsEmpty = len(view.Rows) == 0
 	return
 }
 

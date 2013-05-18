@@ -32,7 +32,8 @@ func sampleM3u8 (r *http.Request, w io.Writer, host,path string) {
 }
 
 type form interface {
-	str2(key string) (bool,string)
+	strs2(key string) ([]string,bool)
+	str2(key string) (string,bool)
 	str(key string) string
 	strs(key string) []string
 }
@@ -43,9 +44,9 @@ type myform struct {
 	r *http.Request
 }
 
-func (m myform) str2(key string) (ok bool, val string) {
+func (m myform) str2(key string) (val string, ok bool) {
 	var vals []string
-	vals, ok = m.r.Form[key]
+	vals, ok = m.strs2(key)
 	if len(vals) > 0 {
 		val = vals[0]
 	}
@@ -53,15 +54,20 @@ func (m myform) str2(key string) (ok bool, val string) {
 }
 
 func (m myform) str(key string) (val string) {
-	return m.r.FormValue(key)
+	val, _ = m.str2(key)
+	return
 }
 
-func (m myform) strs(key string) (vals []string) {
-	var ok bool
+func (m myform) strs2(key string) (vals []string, ok bool) {
 	vals, ok = m.r.Form[key]
 	if !ok {
 		vals, ok = m.r.URL.Query()[key]
 	}
+	return
+}
+
+func (m myform) strs(key string) (vals []string) {
+	vals, _ = m.strs2(key)
 	return
 }
 
@@ -83,7 +89,7 @@ func loadVM() {
 	vm.user = loadUserV2()
 }
 
-func jsonWrite(w io.Writer, a hash) {
+func jsonWrite(w io.Writer, a interface{}) {
 	b, _ := json.Marshal(a)
 	w.Write(b)
 }
@@ -98,74 +104,87 @@ func testhttp(_a []string) {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		path := filepath.Clean(r.URL.Path)
-		log.Printf("%s %s", r.Method, path)
+		r.ParseForm()
+		log.Printf("%s %s %v", r.Method, path, r.Form)
 		dir, file := filepath.Split(path)
 		ext := filepath.Ext(file)
 
 		switch ext {
 		case ".ts", ".html", ".css", ".js", ".mp4", ".rm", ".rmvb", ".avi", ".mkv":
 			http.ServeFile(w, r, path[1:])
+			return
 		case ".m3u8":
 			path = dir
 		}
 
-		var test bool
-		var mod string
-
-		if pathidx(path, 0) == "test" {
-			test = true
-			path = pathsub(path, 1)
+		mod := make([]string, 4)
+		for i, _ := range mod {
+			mod[i] = pathidx(path, i)
 		}
 
-		do := func (index bool, tpl string, a... interface{}) {
+		var test bool
+		if mod[0] == "test" {
+			test = true
+			mod = mod[1:]
+		}
+
+		do := func (index bool, tpl string, a ...interface{}) {
+			a = append(a, hash{"test":test})
 			str := mustache.RenderFile(tpl, a...)
 			if test || index {
-				renderIndex(w, mod, str)
+				renderIndex(w, mod[0], str)
 			} else {
 				fmt.Fprintf(w, "%s", str)
 			}
 		}
 
-		mod = pathidx(path, 0)
-		name1 := pathidx(path, 1)
-		//name2 := pathidx(path, 2)
+		if path == "/" || path == "/menu" {
+			http.Redirect(w, r, "/menu/root", 302)
+			return
+		}
+
 		form := myform{r}
 
 		if r.Method == "POST" {
-			switch mod {
+			switch mod[0] {
 			case "menu":
-				vm.menu.post(path, r, w)
+				vm.menu.post(mod[1], form, w)
 			case "vlist":
-				vm.vlist.post(path, r, w)
+				vm.vlist.post(mod[1], form, w)
 			case "vfiles":
-				vm.vfile.post(path, form, w)
+				vm.vfile.post(mod[1], form, w)
 			}
 			return
 		}
 
-		switch mod {
+		switch mod[0] {
 		case "vfile":
-			switch name1 {
+			switch mod[1] {
 			case "watch":
 				do(false, "tpl/watch1.html", vm.vfile.watch1(form))
+			default:
+				do(true, "tpl/vfile1.html", vm.vfile.one1(mod[1], form))
 			}
 		case "vfiles":
-			switch name1 {
+			switch mod[1] {
 			case "list":
 				do(false, "tpl/vlist1.html", vm.vfile.page1(form))
 			default:
 				do(true, "tpl/vfiles.html")
 			}
+		case "vlists":
+			do(true, "tpl/vlist2.html", vm.vlist.page2(form))
 		case "vlist":
-			do(true, "tpl/vlist1.html", vm.vlist.page1(name1, form))
+			switch mod[1] {
+			case "new":
+				do(false, "tpl/vlist1.html", vm.vlist.new1(form))
+			default:
+				do(false, "tpl/vlist1.html", vm.vlist.page1(mod[1], form))
+			}
 		case "menu":
-			view1 := vm.menu.view1(name1, form)
-			body2 := mustache.RenderFile("tpl/vlist1.html", view1.List)
-			map1 := map[string]interface{}{"VList" : body2}
-			body := mustache.RenderFile("tpl/menu1.html", view1, map1)
-			renderIndex(w, "menu", body)
+			do(true, "tpl/menu1.html", vm.menu.view1(mod[1], form))
 		case "users":
-			view1 := vm.user.view1(name1)
+			view1 := vm.user.view1(mod[1])
 			body := mustache.RenderFile("tpl/user1.html", view1)
 			renderIndex(w, "users", body)
 		}
