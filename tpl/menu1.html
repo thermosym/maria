@@ -2,7 +2,7 @@
 <ul class="breadcrumb">
 	{{#Path}}
 		{{^End}}
-			<li><a href="/menu/{{Name}}">{{Desc}}</a> <span class="divider">/</span></li>
+			<li><a href="#" do="href #menu,{{Name}}">{{Desc}}</a> <span class="divider">/</span></li>
 		{{/End}}
 		{{#End}}
 			<li class="active">{{Desc}}</li>
@@ -27,7 +27,7 @@
 <div id="add" class="hide">
 <div class="form-search">
 <form>
-	<a class="btn" show="panel" do="hide #add;show #panel">返回</a>
+	<a class="btn" show="panel" do="hide #add; show #panel">返回</a>
 	<label class="checkbox">添加</label>
 	<select name="type">
 		<option value="dir">子菜单</option>
@@ -35,26 +35,28 @@
 		<option value="normal">点播列表</option>
 	</select>
 	<input type="text" name="desc" value="xxx"></input>
-	<a class="btn btn-primary" do="post ? form 'do=add'; checkerr; reload page" >确定</a>
+	<a class="btn btn-primary" do="post /menu/{{Name}} form 'do=add'; checkerr; reload page" >确定</a>
 </form>
 </div>
 </div>
 
-<div id=moveto class="hide">
+<div id="moveto" class="hide">
 	<form class="form-inline" >
-		<a href="#" class="btn" do="hide #moveto">取消</a>
+		<a href="#" class="btn" do="hide div">取消</a>
 		<label class="checkbox">移动到</label>
-		<select name="to" style="width:200px">
-			<option value="xx"> &nbsp; &nbsp; &nbsp;   根目录</option>
+		<select name="to" style="width:200px" data="/menu/list?descindent=1">
+			{{#Rows}}
+			<option value="{{Name}}">{{Desc}}</option>
+			{{/Rows}}
 		</select>
-		<a class="btn btn-primary" do="ok 'do=moveto' form">确定</a>
+		<a class="btn btn-primary" do="r0 'do=moveto' form; hide div; ok">确定</a>
 	</form>
 </div>
 
 <div id="panel">
 <div class="form-search" >
 {{#CanUp}}
-	<a class="btn" href="/menu/{{Parent}}">向上</a>
+	<a class="btn" href="#" do="href #menu,{{Parent}}">向上</a>
 {{/CanUp}}
 {{#CanEditTitle}}
 	<a class="btn" show="modify" hide="panel">修改标题</a>
@@ -90,9 +92,9 @@
 	{{#Dir}}
 	<tr>
 		<td><input name="list" class="midcb" value="{{Name}}" type="checkbox"></input></td>
-		<td><a href="/menu/{{Name}}">{{Desc}}</a></td>
+		<td><a href="#" do="href #menu,{{Name}}">{{Desc}}</a></td>
 		<td>{{Typestr}}</td>
-		<td><a href="#" do="confirm '确定删除?'; post ? form 'do=del&node={{Name}}'; reload page">&times;</a></td>
+		<td><a href="#" do="confirm '确定删除?'; post /menu form 'do=del&node={{Name}}'; reload page">&times;</a></td>
 	</tr>
 	{{/Dir}}
 	<tr>
@@ -102,8 +104,8 @@
 				<input class="selall" type="checkbox"></input>
 				全选
 			</label> 
-			<label class="checkbox"><a href="#" do="confirm '确认删除?'; post ? 'do=del' form; reload page">删除</a></label>
-			<label class="checkbox"><a href="#" do="show #moveto; onok; post ? form">移动到</a></label>
+			<label class="checkbox"><a href="#" do="confirm '确认删除?'; post /menu 'do=del' form; reload page">删除</a></label>
+			<label class="checkbox"><a href="#" do="show #moveto 1" moveto1="post /menu form r0">移动到</a></label>
 		</div>
 		</td>
 	</tr>
@@ -114,7 +116,7 @@
 {{/IsDir}}
 
 {{^IsDir}}
-<div src="/vlist/{{Name}}?create=1">
-	</div>
+<div data="/vlist/{{Name}}?create=1" tpl="/tpl/vlist1.html">
+</div>
 {{/IsDir}}
 

@@ -2,8 +2,6 @@
 package main
 
 import (
-	"github.com/hoisie/mustache"
-
 	"encoding/json"
 	"fmt"
 	"time"
@@ -109,6 +107,11 @@ func testhttp(_a []string) {
 		dir, file := filepath.Split(path)
 		ext := filepath.Ext(file)
 
+		if path == "/" {
+			http.ServeFile(w, r, "tpl/index.html")
+			return
+		}
+
 		switch ext {
 		case ".ts", ".html", ".css", ".js", ".mp4", ".rm", ".rmvb", ".avi", ".mkv":
 			http.ServeFile(w, r, path[1:])
@@ -120,27 +123,6 @@ func testhttp(_a []string) {
 		mod := make([]string, 4)
 		for i, _ := range mod {
 			mod[i] = pathidx(path, i)
-		}
-
-		var test bool
-		if mod[0] == "test" {
-			test = true
-			mod = mod[1:]
-		}
-
-		do := func (index bool, tpl string, a ...interface{}) {
-			a = append(a, hash{"test":test})
-			str := mustache.RenderFile(tpl, a...)
-			if test || index {
-				renderIndex(w, mod[0], str)
-			} else {
-				fmt.Fprintf(w, "%s", str)
-			}
-		}
-
-		if path == "/" || path == "/menu" {
-			http.Redirect(w, r, "/menu/root", 302)
-			return
 		}
 
 		form := myform{r}
@@ -161,32 +143,28 @@ func testhttp(_a []string) {
 		case "vfile":
 			switch mod[1] {
 			case "watch":
-				do(false, "tpl/watch1.html", vm.vfile.watch1(form))
+				jsonWrite(w, vm.vfile.watch1(form))
 			default:
-				do(true, "tpl/vfile1.html", vm.vfile.one1(mod[1], form))
+				jsonWrite(w, vm.vfile.one1(mod[1], form))
 			}
 		case "vfiles":
 			switch mod[1] {
 			case "list":
-				do(false, "tpl/vlist1.html", vm.vfile.page1(form))
-			default:
-				do(true, "tpl/vfiles.html")
+				jsonWrite(w, vm.vfile.page1(form))
 			}
 		case "vlists":
-			do(true, "tpl/vlist2.html", vm.vlist.page2(form))
+			jsonWrite(w, vm.vlist.page2(form))
 		case "vlist":
 			switch mod[1] {
 			case "new":
-				do(false, "tpl/vlist1.html", vm.vlist.new1(form))
+				jsonWrite(w, vm.vlist.new1(form))
 			default:
-				do(false, "tpl/vlist1.html", vm.vlist.page1(mod[1], form))
+				jsonWrite(w, vm.vlist.page1(mod[1], form))
 			}
 		case "menu":
-			do(true, "tpl/menu1.html", vm.menu.view1(mod[1], form))
+			jsonWrite(w, vm.menu.view1(mod[1], form))
 		case "users":
-			view1 := vm.user.view1(mod[1])
-			body := mustache.RenderFile("tpl/user1.html", view1)
-			renderIndex(w, "users", body)
+			jsonWrite(w, vm.user.view1(mod[1]))
 		}
 	})
 	err := http.ListenAndServe(":9191", nil)

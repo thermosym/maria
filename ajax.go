@@ -48,6 +48,11 @@ func testajax(_a []string) {
 			http.Error(w, "something happens", 404)
 			return
 		}
+		if path == "/mod1" {
+			fmt.Fprintf(w, `<p>module1</p>`)
+			fmt.Fprintf(w, `<a class="btn" do="get $t 'p=banana&p=orange&p=apple'">Fruits</a>`)
+			fmt.Fprintf(w, `<a class="btn" do="get $t 'p=alien&p=human&p=child'">Humans</a>`)
+		}
 
 
 		if r.Method == "POST" {

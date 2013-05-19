@@ -135,6 +135,7 @@ type vlistView1 struct {
 	NotFound bool
 	CanSort bool
 	ShowEdit bool
+	ShowAdd bool
 	ShowLine bool
 	CheckDel bool
 	ShowStat bool
@@ -180,7 +181,7 @@ func (m *vlistV2) page1(name string, args form) (view vlistView1) {
 	}
 
 	v, ok := m.m[name]
-	if !ok && args.str("create") == "1" {
+	if !ok && args.str("create") != "" {
 		v = &vlistV2Node{name:name}
 		m.m[name] = v
 		ok = true
@@ -190,6 +191,7 @@ func (m *vlistV2) page1(name string, args form) (view vlistView1) {
 		return
 	}
 
+	view.ShowAdd = true
 	view.ShowLine = true
 	view.ShowSel = true
 	view.ColSpan = 2

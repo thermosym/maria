@@ -8,6 +8,8 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 		<script src=/js/jquery.js></script>
 		<script src=/js/bootstrap.min.js></script>
+		<script src=/js/mustache.js></script>
+		<script src=/js/tpl.js></script>
 		<script src=/js/main.js></script>
 
 		<style>
@@ -36,11 +38,22 @@
 
 		<div class="container-fluid" >
 
-			<p>add params after post: <a class="btn" do="get /randstr;listadd #a1 ret" >add</a></p>
-			<div id="a1" src="/showlist1" list="a,b,c"> </div>
-			<hr>
+		<div class="span6">
+			<h3>Hide, Show, Toggle</h3>
+			<a class="btn" do="hide #hs1">Hide Banana</a>
+			<a class="btn" do="show #hs1">Show Banana</a>
+			<a class="btn" do="hide #hs2">Hide Orange</a>
+			<a class="btn" do="show #hs2">Show Orange</a>
+			<a class="btn" do="toggle #hs1">Toggle Banana</a>
+			<a class="btn" do="toggle #hs2">Toggle Orange</a>
+			<p>
+			<div id="hs1"> <h4>Banana</h4> </div>
+			<div id="hs2"> <h4>Orange</h4> </div>
+			</p>
+		</div>
 
-			<p>update search: </p>
+		<div class="span6">
+			<h3>Search</h3>
 			<form>
 				<input type="text" class="input" name="str"></input>
 				<input type="checkbox" name="g1" value="apple" checked>apple</input>
@@ -49,69 +62,32 @@
 				<a class="btn" do="get #sa2 form" >search</a>
 			</form>
 			<div id="sa2" src="/dumpform" > </div>
-			<hr>
+		</div>
 
-			<p>update text area</p>
-			<form id="taform">
-				<textarea name="xx">
-					hahaha
-				</textarea>
-				<a class="btn" do="get #tadiv form">update</a>
-			</form>
-			<div id="tadiv" src="/dumpform" form="taform" >
-			</div>
-			<hr>
+		<div class="span6">
+			<h3>Select and Delete</h3>
+			<a class="btn" do="show #sel1; onok; get #sel2 data; hide #sel1">Show</a>
+			<p>
+				<div id="sel1" src="/seldel" class="hide"> </div>
+				<div id="sel2" src="/dumpform"> </div>
+			</p>
+		</div>
 
-			<p>update one form to another</p>
-			<div id="u1">
-				<form id="u1f">
-					<input type="text" class="input" name="str1" value="cccdd"></input>
-				</form>
-			</div>
-			<a class="btn" do="get #u2 #u1f">update</a>
-			<div id="u2" src="/dumpform">
-			</div>
-			<hr>
-
-			<p>update and close</p>
-			<div id="uc1" t="#uc2">
-				<form id="uc1f">
-					<input type="text" class="input" name="str1" value="seaxx"></input>
-					<a class="btn" do="post $t form;hide div">ok</a>
-				</form>
-			</div>
-			<div id="uc2" src="/dumpform">
-			</div>
-			<hr>
-
-			<p>update and listadd</p>
-			<div id="ul1">
-				<form id="ul1f">
-					<input type="text" class="input" name="xx"></input>
-					<a class="btn" do="listadd #ul2 form.xx">add</a>
-				</form>
-			</div>
-			<div id="ul2" src="/dumpform">
-			</div>
-			<hr>
-
-			<p>sel and del</p>
-			<a class="btn" do="show #sel1; onok; get #sel2;show #sel2;hide #sel1">Show</a>
-			<div id="sel1" src="/seldel" class="hide"> </div>
-			<div id="sel2" src="/dumpform" class="hide"> </div>
-			<hr>
-
-			<p>search</p>
-			<form id="ul1f">
-				<input type="text" class="input" name="xx"></input>
-				<a class="btn" do="get #sa1 form">add</a>
-			</form>
-			<div id="sa1" src="/dumpform"></div>
-			<hr>
-
-			<p>checkerr</p>
+		<div class="span6">
+			<h3>Check Error</h3>
 			<a class="btn" do="post /err; checkerr">Check</a>
+		</div>
 
+		<div class="span6">
+			<h3>Modules</h3>
+			<div id="m1" src="/mod1" t="#m2"> </div>
+			<div id="m2" src="/mod2" t="#m3"> </div>
+			<div id="m3" src="/mod3"> </div>
+		</div>
+
+		<div class="span6">
+			<h3>mustache test</h3>
+			<div id="mu1"></div>
 		</div>
 
   </body>

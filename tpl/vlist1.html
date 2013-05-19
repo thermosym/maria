@@ -18,35 +18,34 @@
 
 <div id="vtable">
 
-	<div id="vdel" class="hide">
-		<form class="form-inline">
-		<label class="radio"> 确认删除？</label>
-		<a class="btn btn-danger" form="vform" post="del" reload="1">确定</a> 
-		<a class="btn" show="vpanel" hide="vdel">返回</a>
-		</form>
-	</div>
-
 	<div id="vedit" class="hide">
 		<form class="form-inline">
-		<a class="btn" post="edit" show="vpanel" hide="vedit">返回</a> 
+		<a class="btn" do="show #vpanel; hide #vedit">返回</a> 
 		<label class="radio"> 修改为 </label>
 		<label class="radio"> <input type="radio" name="type" value="live" /> 直播 </label>
 		<label class="radio"> <input type="radio" name="type" value="normal" /> 点播 </label>
-		<a class="btn btn-primary" post="edit" reload="1">确定</a> 
+		<a class="btn btn-primary" do="post src form 'do=edit'">确定</a> 
 		</form>
 	</div>
 
-	{{#ShowEdit}}
 	<div id="vpanel">
-		<p> 
-		<a class="btn" show="vedit" hide="vpanel">修改</a> 
-		{{#IsLive}}直播{{/IsLive}}
-		{{#IsNormal}}点播{{/IsNormal}}
-		<a class="btn" >添加视频</a> 
-		<a class="btn" show="vtext" hide="vtable">编辑列表</a> 
-		</p>
+		<form>
+		{{#ShowEdit}}
+			<a class="btn" show="vedit" hide="vpanel">修改</a> 
+			{{#IsLive}}直播{{/IsLive}}
+			{{#IsNormal}}点播{{/IsNormal}}
+		{{/ShowEdit}}
+
+		</form>
 	</div>
-	{{/ShowEdit}}
+
+	{{#ShowAdd}}
+	<div id="vadd" src="/vfile/add" onok="post src" class="hide">
+	</div> 
+	<a class="btn" do="show #xx; onok; post src 'do=add'; ">添加视频</a> 
+	<a class="btn" do="hide #vpanel">批量添加</a> 
+	{{/ShowAdd}}
+
 
 	{{#RowsEmpty}}
 	<span class="muted">列表为空</span>

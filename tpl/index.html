@@ -20,6 +20,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 		<script src=/js/jquery.js></script>
 		<script src=/js/bootstrap.min.js></script>
+		<script src=/js/mustache.js></script>
 		<script src=/js/main.js></script>
 
   </head>
@@ -31,16 +32,15 @@
 				<div class="container">
 					<a class=brand>视频管理系统</a>
 					<ul class=nav>
-						<li class="{{menuSel}}"><a href="/menu">菜单</a></li>
-						<li class="{{vfilesSel}}"><a href="/vfiles">视频</a></li>
-						<li class="{{vlistsSel}}"><a href="/vlists">播放列表</a></li>
+						<li id="li_menu"><a href="?menu,root">菜单</a></li>
+						<li id="li_vfiles"><a href="?vfiles">视频</a></li>
+						<li id="li_vlists"><a href="?vlists">播放列表</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 
-		<div class="container-fluid" >
-			{{{body}}}
+		<div id="body" class="container-fluid">
 		</div>
 
   </body>
