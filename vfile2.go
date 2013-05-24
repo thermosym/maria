@@ -142,17 +142,29 @@ func (m *vfileV2) upload(name string, filename string, r io.Reader, length int64
 }
 
 func (m *vfileV2) post(path string, args form, w io.Writer) {
-	post := args.str("post")
-	switch post {
-	case "download":
+	do := args.str("do")
+	switch do {
+	case "addone":
 		name := m.create()
 		err := m.download(name, args.str("url"))
 		if err != nil {
 			jsonErr(w, err)
 		} else {
-			jsonWrite(w, hash{"list":name})
-			log.Printf("ret")
+			jsonWrite(w, hash{"nr":1, "nodes":[]string{name}})
 		}
+	case "addmany":
+		urls := args.str("urls")
+		added := []string{}
+		for _, u := range splitLines(urls) {
+			name := m.create()
+			err := m.download(name, u)
+			if err == nil {
+				added = append(added, name)
+			}
+		}
+		jsonWrite(w, hash{"nr":len(added), "nodes":added})
+	case "addtest":
+		jsonWrite(w, hash{"nr":3, "nodes":[]string{"1", "2", "3"}})
 	}
 }
 

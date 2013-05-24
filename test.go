@@ -4,9 +4,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"bytes"
 	"time"
 	"net/http"
 	"io"
+	"io/ioutil"
 	"log"
 	"path/filepath"
 )
@@ -38,8 +40,42 @@ type form interface {
 
 type hash map[string]interface{}
 
+func (m hash) str2(key string) (val string, ok bool) {
+	var vals []string
+	vals, ok = m.strs2(key)
+	if ok {
+		val = vals[0]
+	}
+	return
+}
+
+func (m hash) str(key string) (val string) {
+	val, _ = m.str2(key)
+	return
+}
+
+func (m hash) strs2(key string) (vals []string, ok bool) {
+	var _vals interface{}
+	_vals, ok = m[key]
+	if ok {
+		switch _vals.(type) {
+		case []string:
+			vals = _vals.([]string)
+		case string:
+			vals = []string{_vals.(string)}
+		}
+	}
+	return
+}
+
+func (m hash) strs(key string) (vals []string) {
+	vals, _ = m.strs2(key)
+	return
+}
+
 type myform struct {
 	r *http.Request
+	body hash
 }
 
 func (m myform) str2(key string) (val string, ok bool) {
@@ -59,7 +95,7 @@ func (m myform) str(key string) (val string) {
 func (m myform) strs2(key string) (vals []string, ok bool) {
 	vals, ok = m.r.Form[key]
 	if !ok {
-		vals, ok = m.r.URL.Query()[key]
+		vals, ok = m.body.strs2(key)
 	}
 	return
 }
@@ -102,10 +138,18 @@ func testhttp(_a []string) {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		path := filepath.Clean(r.URL.Path)
-		r.ParseForm()
-		log.Printf("%s %s %v", r.Method, path, r.Form)
+		log.Printf("%s %s", r.Method, path)
 		dir, file := filepath.Split(path)
 		ext := filepath.Ext(file)
+
+		var form myform
+		_body, _ := ioutil.ReadAll(r.Body)
+		form.r = r
+		json.Unmarshal(_body, &form.body)
+		r.ParseForm()
+		//log.Printf("data %s %v form %v", _body, form.body, r.Form)
+		//log.Printf("testdata: err = %v %v", form.body.str("err"), form.body.strs("err"))
+		log.Printf("  %v %v", r.Form, form.body)
 
 		if path == "/" {
 			http.ServeFile(w, r, "tpl/index.html")
@@ -125,47 +169,50 @@ func testhttp(_a []string) {
 			mod[i] = pathidx(path, i)
 		}
 
-		form := myform{r}
+		w2 := new(bytes.Buffer)
 
 		if r.Method == "POST" {
 			switch mod[0] {
 			case "menu":
-				vm.menu.post(mod[1], form, w)
+				vm.menu.post(mod[1], form, w2)
 			case "vlist":
-				vm.vlist.post(mod[1], form, w)
+				vm.vlist.post(mod[1], form, w2)
 			case "vfiles":
-				vm.vfile.post(mod[1], form, w)
+				vm.vfile.post(mod[1], form, w2)
 			}
-			return
+		} else {
+			switch mod[0] {
+			case "vfile":
+				switch mod[1] {
+				case "watch":
+					jsonWrite(w2, vm.vfile.watch1(form))
+				default:
+					jsonWrite(w2, vm.vfile.one1(mod[1], form))
+				}
+			case "vfiles":
+				switch mod[1] {
+				case "list":
+					jsonWrite(w2, vm.vfile.page1(form))
+				}
+			case "vlists":
+				jsonWrite(w2, vm.vlist.page2(form))
+			case "vlist":
+				switch mod[1] {
+				case "new":
+					jsonWrite(w2, vm.vlist.new1(form))
+				default:
+					jsonWrite(w2, vm.vlist.page1(mod[1], form))
+				}
+			case "menu":
+				jsonWrite(w2, vm.menu.view1(mod[1], form))
+			case "users":
+				jsonWrite(w2, vm.user.view1(mod[1]))
+			}
 		}
+		str := string(w2.Bytes())
+		log.Printf("%s", str)
+		fmt.Fprintf(w, "%s", str)
 
-		switch mod[0] {
-		case "vfile":
-			switch mod[1] {
-			case "watch":
-				jsonWrite(w, vm.vfile.watch1(form))
-			default:
-				jsonWrite(w, vm.vfile.one1(mod[1], form))
-			}
-		case "vfiles":
-			switch mod[1] {
-			case "list":
-				jsonWrite(w, vm.vfile.page1(form))
-			}
-		case "vlists":
-			jsonWrite(w, vm.vlist.page2(form))
-		case "vlist":
-			switch mod[1] {
-			case "new":
-				jsonWrite(w, vm.vlist.new1(form))
-			default:
-				jsonWrite(w, vm.vlist.page1(mod[1], form))
-			}
-		case "menu":
-			jsonWrite(w, vm.menu.view1(mod[1], form))
-		case "users":
-			jsonWrite(w, vm.user.view1(mod[1]))
-		}
 	})
 	err := http.ListenAndServe(":9191", nil)
 	if err != nil {

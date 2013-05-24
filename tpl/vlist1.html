@@ -40,15 +40,13 @@
 	</div>
 
 	{{#ShowAdd}}
-	<div id="vadd" src="/vfile/add" onok="post src" class="hide">
+	<div id="vadd" src="/vfile/add" onok="post src">
 	</div> 
-	<a class="btn" do="show #xx; onok; post src 'do=add'; ">添加视频</a> 
-	<a class="btn" do="hide #vpanel">批量添加</a> 
 	{{/ShowAdd}}
 
 
 	{{#RowsEmpty}}
-	<span class="muted">列表为空</span>
+	<p><span class="muted">列表为空</span></p>
 	{{/RowsEmpty}}
 
 	{{^RowsEmpty}}

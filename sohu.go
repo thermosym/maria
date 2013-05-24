@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func parseSohu(url string) (err error, body string, desc string) {
+func parseSohu(url string) (err error, m3u8url,body string, desc string) {
 
 	var re *regexp.Regexp
 	var ma []string
@@ -36,7 +36,7 @@ func parseSohu(url string) (err error, body string, desc string) {
 
 	vid := ma[1]
 
-	m3u8url := "http://hot.vrs.sohu.com/ipad"+vid+".m3u8"
+	m3u8url = "http://hot.vrs.sohu.com/ipad"+vid+".m3u8"
 	body, err = curl(m3u8url)
 	if err != nil {
 		err = errors.New(fmt.Sprintf("fetch m3u8 failed: %v", err))

@@ -1,0 +1,28 @@
+
+<form class="form-inline">
+<a class="btn" do="toggle #vaddone">添加视频</a> 
+<a class="btn" do="toggle #vaddmany">批量添加</a> 
+</form>
+
+<div id="vaddone" class="hide">
+	<form class="form-inline">
+		<input name="url" class="input input-large" type="text" 
+				placeholder="sohu,youku 视频地址"></input>
+		<a class="btn" do="post /vfiles do=addtest form; checkerr; render #vaddret ret; show #vaddret">添加</a>
+	</form>
+</div>
+
+<div id="vaddmany" class="hide"> 
+	<form>
+		<p>
+		<a class="btn btn-primary" do="post /vfiles do=addtest form; checkerr; render #vaddret ret; show #vaddret">添加</a>
+		<a class="btn" do="toggle #vaddmany">取消</a>
+		</p>
+		<textarea name="urls" style="width:500px;height:400px">#多行 sohu,youku 视频</textarea>
+	</form>
+</div>
+
+<div id="vaddret" class="hide">
+	成功添加 {{nr}} 个视频 <a class="btn btn-primary" do="ok">确定</a>
+</div>
+

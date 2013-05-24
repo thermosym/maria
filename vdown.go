@@ -9,19 +9,33 @@ import (
 	"fmt"
 	"strings"
 	"path/filepath"
+	"regexp"
+	"net/url"
 )
 
-func parseM3u8(body string) (ts []tsinfo2) {
+func parseM3u8(m3u8url,body string) (ts []tsinfo2, seq int) {
 	lines := strings.Split(body, "\n")
 	var dur float64
+	re, _ := regexp.Compile(`^[^#](\S+)`)
+	seq = -1
+	us,_ := url.Parse(m3u8url)
+	uprefix := us.Scheme+"://"+us.Host+"/"
 
 	for _, l := range lines {
+		l = strings.TrimRight(l, "\r")
 		if strings.HasPrefix(l, "#EXTINF:") {
 			fmt.Sscanf(l, "#EXTINF:%f", &dur)
 		}
-		if strings.HasPrefix(l, "http") {
+		if strings.HasPrefix(l, "#EXT-X-MEDIA-SEQUENCE:") {
+			fmt.Sscanf(l, "#EXT-X-MEDIA-SEQUENCE:%d", &seq)
+		}
+		if re.MatchString(l) {
+			turl := l
+			if !strings.HasPrefix(l, "http") {
+				turl = uprefix+turl
+			}
 			ts = append(ts, tsinfo2{
-				url: strings.TrimRight(l, "\r"),
+				url: turl,
 				Dur: time.Duration(dur*1000)*time.Millisecond,
 			})
 			dur = 0
@@ -34,6 +48,7 @@ type tsinfo2 struct {
 	Dur time.Duration
 	Size int64
 	url string
+	path string
 }
 
 type downloadStat struct {
@@ -50,6 +65,7 @@ type downloadStat struct {
 
 func downloadVfile(url, path string, cb func (s downloadStat) error) (err error) {
 	var desc, body string
+	var m3u8url string
 	var st downloadStat
 
 	st.stat = "parsingIndex"
@@ -57,9 +73,9 @@ func downloadVfile(url, path string, cb func (s downloadStat) error) (err error)
 
 	switch {
 	case strings.HasPrefix(url, "http://v.youku.com"):
-		err, body, desc = parseYouku(url)
+		err, m3u8url,body, desc = parseYouku(url)
 	case strings.HasPrefix(url, "http://tv.sohu.com"):
-		err, body, desc = parseSohu(url)
+		err, m3u8url,body, desc = parseSohu(url)
 	default:
 		err = errors.New(fmt.Sprintf("url %s can not download", url))
 	}
@@ -73,7 +89,7 @@ func downloadVfile(url, path string, cb func (s downloadStat) error) (err error)
 
 	ioutil.WriteFile(filepath.Join(path, "orig.m3u8"), []byte(body), 0777)
 
-	st.ts = parseM3u8(body)
+	st.ts, _ = parseM3u8(m3u8url, body)
 	for _, t := range st.ts {
 		st.dur += t.Dur
 	}

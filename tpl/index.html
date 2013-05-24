@@ -18,10 +18,10 @@
 		</style>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-		<script src=/js/jquery.js></script>
-		<script src=/js/bootstrap.min.js></script>
-		<script src=/js/mustache.js></script>
-		<script src=/js/main.js></script>
+		<script src="/js/jquery.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/mustache.js"></script>
+		<script src="/js/main.js"></script>
 
   </head>
 
@@ -30,17 +30,19 @@
 		<div class="navbar nav-fixed-top"> 
 			<div class="navbar-inner">
 				<div class="container">
-					<a class=brand>视频管理系统</a>
+					<a class="brand">视频管理系统</a>
 					<ul class=nav>
-						<li id="li_menu"><a href="?menu,root">菜单</a></li>
-						<li id="li_vfiles"><a href="?vfiles">视频</a></li>
-						<li id="li_vlists"><a href="?vlists">播放列表</a></li>
+						<li id="li_menu"><a href="#" do="href #menu,root">菜单</a></li>
+						<li id="li_vfiles"><a href="#" do="href #vfiles">视频</a></li>
+						<li id="li_vlists"><a href="#" do="href #vlists">播放列表</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 
-		<div id="body" class="container-fluid">
+		<div class="container-fluid">
+			<div id="alert"></div>
+			<div id="body"></div>
 		</div>
 
   </body>

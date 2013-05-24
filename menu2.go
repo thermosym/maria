@@ -33,6 +33,10 @@ type menuV2 struct {
 	l *sync.Mutex
 }
 
+func loadMenuV2From() (m *menuV2) {
+	return
+}
+
 func loadMenuV2(prefix string) (m *menuV2) {
 	m = &menuV2{}
 	m.m = map[string]*menuV2Node{}

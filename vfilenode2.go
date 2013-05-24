@@ -35,6 +35,7 @@ type vfileV2Node struct {
 	downSt downloadStat
 	upSt iocopyStat
 	convSt avconvStat
+	vproxySt vproxyStat
 	err error
 }
 
@@ -251,6 +252,8 @@ func (v vfileV2Node) Typestr() string {
 		return "优酷下载"
 	case "sohu":
 		return "搜狐下载"
+	case "vproxy":
+		return "在线直播"
 	case "upload":
 		return "用户上传"
 	}

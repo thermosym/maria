@@ -10,55 +10,91 @@
 	 * [DONE] `show #dialog 123` <div dialog123="xx xx"> can also works
 	 * [DONE] remove `onerr` stmt.
 	 * [DONE] `href xx` jmp to xx
+	 * [DONE] `post xx 'do=add'` => remove '' => `post xx do=add`
+	 * [DONE] ajax POST/GET using json
+	 * [DONE] `get/post` can only target url like `get /url dataA dataB`
+	 * [DONE] solve problem: when rendering a div content, it has been rendered before
+	 * 			using tpl cache method
+	 * [DONE] add `render`. `render #xx dataA dataB`
+	 * [DONE] combine `get` and `reload` as `load`. and can with parms like:
+	 * 		 `load #xx /url/a` `load #xx dataA dataB`
 	 * <a err="xx xx"> means when error exec `xx xx`; 
-	 * `post xx 'do=add'` => remove '' => `post xx do=add`
 	 */
 
 	var showerr = function (msg) {
-		/*
+		var a = $('#alert');
 		if (a.length) {
-			a.attr('style', 'width:400px');
-			a.attr('class', 'alert alert-error myerr');
-			a.html(
-				msg +
-				'	<button type="button" class="close" data-dismiss="alert">&times;</button>'
-				);
+			a.html('');
+			var div = $('<div style="width:400px" class="alert alert-error">');
+			div.html(
+				msg + '	<button type="button" class="close" data-dismiss="alert">&times;</button></div>'
+			);
+			setTimeout(function () {
+				div.fadeOut();
+			}, 2000);
+			a.prepend(div);
+		} else {
+			alert(msg);
 		}
-	 	*/
-		alert(msg);
 	};
 
 	var hideerr = function () {
 		$('.myerr').hide();
 	};
+
+	var render2 = function (dom, tpl, data) {
+		var html = Mustache.render(tpl, data);
+		dom.html(html);
+		binda(dom);
+		selall();
+		dom.find('div[data]').each(function () {
+			load($(this), null, null);
+		});
+	};
+
+	var cachetpl = function (html) {
+		var dom = $('<div style="display:none">');
+		dom.html(html);
+		dom.find('div[id]').each(function () {
+			var id = $(this).attr('id');
+			$.tplcache[id] = $(this).html();
+			console.log('add tplcache', id);
+		});
+		dom.remove();
+	};
+
+	var render = function (dom, data) {
+		var tpl = dom.attr('tpl');
+		if (tpl) {
+			$.get(tpl, function (_tpl) {
+				console.log('render with', tpl, data);
+				cachetpl(_tpl);
+				render2(dom, _tpl, data);
+			});
+		} else {
+			var _tpl;
+			var domid = dom.attr('id');
+			if (domid)
+				_tpl = $.tplcache[domid];
+			//if (_tpl)
+			//	console.log('using tplcache', domid, _tpl);
+			if (!_tpl)
+				_tpl = dom.html();
+			console.log('render', data);
+			render2(dom, _tpl, data);
+		}
+	};
 	
-	var reload = function (d) {
-		var src = d.attr('data');
-		if (!src)
+	var load = function (dom, url, query) {
+		if (!url)
+			url = dom.attr('data');
+		if (!url)
 			return ;
-		if (!src.match('\\?'))
-			src += '?';
-		else
-			src += '&';
-
-		var tpl = d.attr('tpl');
-		
-		var render = function (_tpl, _data) {
-			console.log(_data);
-			var html = Mustache.render(_tpl, parsejson(_data));
-			d.html(html);
-			binda(d);
-			selall();
-		};
-
-		$.get(src, function (_data) {
-			if (tpl) {
-				$.get(tpl, function (_tpl) {
-					render(_tpl, _data);
-				});
-			} else {
-				render(d.html(), _data); 
-			}
+		if (!query)
+			query = {};
+		$.get(url, query, function (_data) {
+			var data = parsejson(_data);
+			render(dom, data);
 		});
 	};
 
@@ -88,6 +124,21 @@
 		return st.a.closest(v);
 	};
 
+	var form2json = function (dom) {
+		var pair = dom.serializeArray();
+		var json = {};
+		for (var i in pair) {
+			var k = pair[i].name;
+			var v = pair[i].value;
+			if (k && v) {
+				if (!json[k]) 
+					json[k] = [];
+				json[k].push(v);
+			}
+		}
+		return json;
+	};
+
 	var getdata = function (st, v) {
 		if (v.substr(0,4) == 'form') {
 			var form = st.a.closest('form');
@@ -96,21 +147,45 @@
 			if (!form.length)
 				return;
 			if (v == 'form') 
-				return form.serialize();
+				return form2json(form);
 			if (v.substr(4,1) == '.') {
 				var dom = form.find('[name="'+v.substr(5)+'"]');
-				if (dom.length)
-					return v.substr(5)+'='+dom.val();
+				if (dom.length) { 
+					var a = {};
+					a[v.substr(5)] = dom.val();
+					return a;
+				}
 				return;
 			}
 		}
-		if (v.substr(0,1) == "'")
-			return v.substr(1,v.length-2);
-		if (v.substr(0,1) == '#')
-			return $(v).find('form').serialize();
-		if (v.match(/^r[0-9]*/))
+		if (v.match(/=/)) {
+			var a = v.split('=');
+			if (a.length >= 2) {
+				var j = {};
+				j[a[0]] = a[1];
+				return j;
+			}
+		}
+		if (v.substr(0,1) == '#') 
+			return form2json($(v).find('form'));
+		if (v.match(/^r[0-9]+/))
 			return $.regs[v];
+		if (v == 'ret')
+			return st.retobj;
 	};
+
+	var getdatas = function (st, arr) {
+		var json = {};
+		for (var i in arr) 
+			jsonadd(json, getdata(st, arr[i]));
+		return json;
+	};
+
+	var jsonadd = function (a, b) {
+		for (var k in b) {
+			a[k] = b[k];
+		}
+	}
 
 	var parsejson = function (str) {
 		var obj;
@@ -124,15 +199,19 @@
 		return obj;
 	};
 
-	var func_reload = function (st) {
-		var d = st.p.args[1];
-		if (d == 'page') {
-			window.location.reload();
+	var func_load = function (st) {
+		var dom = getdom(st.p.args[1]);
+		if (!dom)
 			return;
+		var url;
+		if (st.p.args[1][0] == '/') {
+			url = st.p.args[1];
+			st.p.args.shift();
 		}
-		var dom = getdom(st, d);
-		if (dom)
-			reload(dom);
+		var query;
+		if (st.p.args.length > 1)
+			query = getdatas(st, st.p.args.slice(1));
+		load(dom, url, query);
 	};
 
 	var func_href = function (st) {
@@ -141,40 +220,24 @@
 	};
 
 	var func_getpost = function (st) {
-		var data = '';
-		for (var i = 2; i < st.p.args.length; i++) {
-			var v = getdata(st, st.p.args[i]);
-			if (v)
-				data += v+'&';
-		}
 		var url = st.p.args[1];
-		var dom;
-		if (url.substr(0,1) != '/') {
-			dom = getdom(st, url);
-			if (dom)
-				url = dom.attr('data');
-		}
-		if (!url) {
-			st.cb(st);
-			return;
-		}
 		var method = st.p.op == 'get' ? 'GET' : 'POST';
-		console.log(st.p.op, url, data, dom);
+		var data = getdatas(st, st.p.args.slice(2));
+		var datastr = JSON.stringify(data);
+		console.log('ajax', st.p.op, url, datastr);
 		$.ajax({
 			url: url,
 			type: method,
-			data: data,
+			data: datastr,
 		}).done(function (ret) {
-			console.log('ajax ok');
-			$.ret = ret;
+			console.log('ajax ok', ret);
 			st.ret = ret;
 			st.retobj = parsejson(ret);
 			if (st.retobj.err)
-				st.err = retobj.err;
-			if (dom && method == 'GET')
-				dom.html(ret);
+				st.err = st.retobj.err;
 			st.cb(st);
 		}).fail(function (ret) {
+			console.log('ajax fail', ret.responseText);
 			st.err = ret.responseText;
 			st.cb(st);
 		});
@@ -198,13 +261,16 @@
 		}
 	};
 
+	var func_render = function (st) {
+		var dom = getdom(st, st.p.args[1]);
+		if (!dom)
+			return;
+		var data = getdatas(st, st.p.args.slice(2));
+		render(dom, data);
+	};
+
 	var func_r0 = function (st) {
-		var data = '';
-		for (var i = 1; i < st.p.args.length; i++) {
-			var val = getdata(st, st.p.args[i]);
-			if (val)
-				data += val+'&';
-		}
+		var data = getdatas(st, st.p.args.slice(1));
 		$.regs[st.p.op] = data;
 	};
 
@@ -287,10 +353,10 @@
 				break;
 			case 'ret':
 				break;
-			case 'reload':
+			case 'load':
 				if (seq.args.length < 2)
 					continue;
-				seq.func = func_reload;
+				seq.func = func_load;
 				break;
 			case 'ok':
 				seq.func = func_ok;
@@ -309,6 +375,11 @@
 				if (seq.args.length < 2)
 					continue;
 				seq.func = func_href;
+				break;
+			case 'render':
+				if (seq.args.length < 2)
+					continue;
+				seq.func = func_render;
 				break;
 			}
 			if (seq.func) {
@@ -332,12 +403,8 @@
 	};
 
 	$(document).ready(function () {
-		binda($('body'));
-		selall();
-		$('div[data]').each(function () {
-			reload($(this));
-		});
 		$.regs = {};
+		$.tplcache = {};
 
 		var q = location.hash.substring(1);
 		var a = q.split(',');
@@ -365,8 +432,9 @@
 			return;
 		}
 		location.hash = '#'+a.join(',');
-		reload($('#body'));
-	});
 
+		$('#body').attr('tpl', '/tpl/vfileadd.html');
+		load($('#body'));
+	});
 })();
 

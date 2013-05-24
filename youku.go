@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func parseYouku(url string) (err error, body string, desc string) {
+func parseYouku(url string) (err error, m3u8url,body string, desc string) {
 
 	var ma []string
 	var re *regexp.Regexp
@@ -35,7 +35,7 @@ func parseYouku(url string) (err error, body string, desc string) {
 
 	vid := ma[1]
 	tms := fmt.Sprintf("%d", time.Now().Unix())
-	m3u8url := "http://www.youku.com/player/getM3U8/vid/" + vid + "/type/hd2/ts/" + tms + "/v.m3u8"
+	m3u8url = "http://www.youku.com/player/getM3U8/vid/" + vid + "/type/hd2/ts/" + tms + "/v.m3u8"
 
 	body, err = curl(m3u8url)
 	if err != nil {
