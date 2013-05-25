@@ -27,7 +27,7 @@
 <div id="add" class="hide">
 <div class="form-search">
 <form>
-	<a class="btn" show="panel" do="hide #add; show #panel">返回</a>
+	<a class="btn" do="hide #add; show #panel">返回</a>
 	<label class="checkbox">添加</label>
 	<select name="type">
 		<option value="dir">子菜单</option>
@@ -35,7 +35,7 @@
 		<option value="normal">点播列表</option>
 	</select>
 	<input type="text" name="desc" value="xxx"></input>
-	<a class="btn btn-primary" do="post /menu/{{Name}} form 'do=add'; checkerr; reload page" >确定</a>
+	<a class="btn btn-primary" do="post /menu/{{Name}} form do=add; checkerr; reload page" >确定</a>
 </form>
 </div>
 </div>
@@ -49,7 +49,7 @@
 			<option value="{{Name}}">{{Desc}}</option>
 			{{/Rows}}
 		</select>
-		<a class="btn btn-primary" do="r0 'do=moveto' form; hide div; ok">确定</a>
+		<a class="btn btn-primary" do="r0 do=moveto form; hide div; ok">确定</a>
 	</form>
 </div>
 

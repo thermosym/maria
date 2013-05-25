@@ -164,12 +164,17 @@ func main() {
 		cb func([]string)
 	}{
 		{"curl3", testCurl3},
-		{"downv", testDownVfile},
+		{"vdown1", testvdown1},
+		{"vdown2", testvdown2},
+		{"vdown3", testvdown3},
 		{"v1", testVfile1},
 		{"v2", testVfile2},
 		{"testhttp", testhttp},
 		{"testajax", testajax},
 		{"proxy1", testproxy1},
+		{"proxy2", testproxy2},
+		{"proxy3", testproxy3},
+		{"httptimeout", testHttpTimeout},
 	}
 	for _, f := range testfuncs {
 		if len(os.Args) >= 2 && os.Args[1] == f.name {

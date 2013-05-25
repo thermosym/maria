@@ -32,7 +32,7 @@ type avprobeInfo struct {
 func avprobe(path string) (err error, info avprobeInfo) {
 	out, err := exec.Command("avprobe", path).CombinedOutput()
 	if err != nil {
-		err = errors.New(fmt.Sprintf("avprobe: %v: %s", err, out))
+		err = errors.New(fmt.Sprintf("avprobe: %v", err))
 		return
 	}
 	for _, l := range strings.Split(string(out), "\n") {

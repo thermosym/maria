@@ -52,7 +52,7 @@ type tsinfo2 struct {
 }
 
 type downloadStat struct {
-	stat string
+	op string
 	desc string
 	filename string
 	per float64
@@ -61,21 +61,32 @@ type downloadStat struct {
 	ts []tsinfo2
 	cur int
 	dur time.Duration
+	info avprobeStat
 }
 
-func downloadVfile(url, path string, cb func (s downloadStat) error) (err error) {
+type vdownCb func (s downloadStat) error
+
+func downloadVfile(url, path string, cb vdownCb, opts... interface{}) (err error) {
 	var desc, body string
 	var m3u8url string
 	var st downloadStat
 
-	st.stat = "parsingIndex"
-	cb(st)
+	probeMode := false
+	for _, o := range opts {
+		switch o.(type) {
+		case string:
+			if o.(string) == "probe" {
+				probeMode = true
+			}
+		}
+	}
+	curlopt := "timeout=10"
 
 	switch {
 	case strings.HasPrefix(url, "http://v.youku.com"):
-		err, m3u8url,body, desc = parseYouku(url)
+		err, m3u8url,body, desc = parseYouku(url, curlopt)
 	case strings.HasPrefix(url, "http://tv.sohu.com"):
-		err, m3u8url,body, desc = parseSohu(url)
+		err, m3u8url,body, desc = parseSohu(url, curlopt)
 	default:
 		err = errors.New(fmt.Sprintf("url %s can not download", url))
 	}
@@ -84,7 +95,7 @@ func downloadVfile(url, path string, cb func (s downloadStat) error) (err error)
 	}
 
 	st.desc = desc
-	st.stat = "parsingM3u8"
+	st.op = "desc"
 	cb(st)
 
 	ioutil.WriteFile(filepath.Join(path, "orig.m3u8"), []byte(body), 0777)
@@ -97,18 +108,18 @@ func downloadVfile(url, path string, cb func (s downloadStat) error) (err error)
 		err = errors.New("m3u8 duration == 0")
 		return
 	}
-
-	st.stat = "parsedM3u8"
+	st.op = "ts"
 	cb(st)
+
+	errp := errors.New("probe quit")
 
 	var dur time.Duration
 
 	for i, t := range st.ts {
-		st.stat = "downloading"
-		st.filename = filepath.Join(path, fmt.Sprintf("%d.ts", i))
+		filename := filepath.Join(path, fmt.Sprintf("%d.ts", i))
 
 		var size int64
-		err, st.speed, size = curl3(t.url, st.filename,
+		err, st.speed, size = curl3(t.url, filename,
 		func (ist iocopyStat) (err2 error) {
 			st.speed = ist.speed
 			st.per = float64(dur)/float64(st.dur)
@@ -116,35 +127,43 @@ func downloadVfile(url, path string, cb func (s downloadStat) error) (err error)
 
 			st2 := st
 			st2.size = st.size + ist.size
+			st2.op = "progress"
 			err2 = cb(st2)
 			if err2 != nil {
 				return
 			}
+
+			if probeMode && st2.size > 1024*100 {
+				return errp
+			}
+
 			return
-		})
-		if err != nil {
+		}, curlopt)
+
+		if err != nil && err != errp {
 			return
 		}
 
 		dur += t.Dur
 		st.size += size
 		st.cur++
-		st.stat = "completeTs"
-		cb(st)
 
 		if i == 0 {
-			st.stat = "firstTs"
+			err, st.info = avprobe2(filename)
+			st.op = "probe"
 			cb(st)
+			if err != nil {
+				return
+			}
+			if probeMode {
+				return
+			}
 		}
 	}
-
-	st.speed = 0
-	st.stat = "done"
-	cb(st)
 	return
 }
 
-func testDownVfile(_a []string) {
+func testvdown1(_a []string) {
 	url := "http://v.youku.com/v_show/id_XNTU0NzczOTc2_ev_2.html"
 	if len(_a) > 0 {
 		url = "http://tv.sohu.com/20130417/n372981909.shtml"
@@ -152,12 +171,57 @@ func testDownVfile(_a []string) {
 	downloadVfile(
 		url, "/tmp",
 		func (st downloadStat) error {
-			log.Printf("%s %v %v %d/%d",
-					st.stat, speedstr(st.speed), sizestr(st.size),
+			log.Printf("%v %v %d/%d",
+					speedstr(st.speed), sizestr(st.size),
 					st.cur, len(st.ts),
 				)
 			return nil
 		},
 	)
+}
+
+func testvdown2(a []string) {
+	url := "http://v.youku.com/v_show/id_XNTU0NzczOTc2_ev_2.html"
+	downloadVfile(
+		url, "/tmp",
+		func (st downloadStat) error {
+			return nil
+		},
+	)
+}
+
+func testvdown3(a []string) {
+	urls := []string {
+		"http://groups.google.com/forum/?fromgroups#!topic/golang-china/9Tc1q01CSRU",
+		"http://v.youku.com/v_show/id_XNTYxNTgyOTQw_ev_4.html",
+		"http://www.youku.com",
+		"http://tv.sohu.com",
+		"http://www.lpfrx.com/archives/4371/",
+		"http://news.youku.com/biye2013?ev=2",
+		"http://v.youku.com/v_show/id_XNTYxNjcyNTE2.html",
+		"http://tv.sohu.com/20130518/n376368240.shtml",
+		"http://tv.sohu.com/20130525/n377041056.shtml",
+	}
+	for _, u := range urls {
+		log.Printf("probe %s", u)
+		err := downloadVfile(
+			u, "/tmp",
+			func (st downloadStat) error {
+				switch st.op {
+				case "desc":
+					log.Printf("  desc %s", st.desc)
+				case "probe":
+					log.Printf("  info %v", st.info)
+				case "ts":
+					log.Printf("  dur %s", tmdurstr(st.dur))
+				}
+				return nil
+			},
+			"probe",
+		)
+		if err != nil {
+			log.Printf("  err %v", err)
+		}
+	}
 }
 

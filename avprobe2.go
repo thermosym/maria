@@ -25,7 +25,7 @@ type avprobeStat struct {
 func avprobe2(path string) (err error, info avprobeStat) {
 	out, err := exec.Command("avprobe", path).CombinedOutput()
 	if err != nil {
-		err = errors.New(fmt.Sprintf("avprobe: %v: %s", err, out))
+		err = errors.New(fmt.Sprintf("avprobe: %v", err))
 		return
 	}
 

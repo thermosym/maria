@@ -2,6 +2,7 @@
 package main
 
 import (
+	"strings"
 	"encoding/json"
 	"fmt"
 	"bytes"
@@ -11,11 +12,32 @@ import (
 	"io/ioutil"
 	"log"
 	"path/filepath"
+	"bufio"
+	"os"
 )
 
 var (
 	sampleM3u8Starttm = time.Now()
 )
+
+func readLines(path string, cb func(string) error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return
+	}
+	r := bufio.NewReader(f)
+	for {
+		line, err := r.ReadString('\n')
+		if err != nil {
+			break
+		}
+		err = cb(strings.Trim(line, "\r\n"))
+		if err != nil {
+			break
+		}
+	}
+	f.Close()
+}
 
 func sampleM3u8 (r *http.Request, w io.Writer, host,path string) {
 	list := global.vfile.shotall()
@@ -176,37 +198,16 @@ func testhttp(_a []string) {
 			case "menu":
 				vm.menu.post(mod[1], form, w2)
 			case "vlist":
-				vm.vlist.post(mod[1], form, w2)
+				//vm.vlist.post(mod[1], form, w2)
 			case "vfiles":
 				vm.vfile.post(mod[1], form, w2)
 			}
 		} else {
 			switch mod[0] {
 			case "vfile":
-				switch mod[1] {
-				case "watch":
-					jsonWrite(w2, vm.vfile.watch1(form))
-				default:
-					jsonWrite(w2, vm.vfile.one1(mod[1], form))
-				}
 			case "vfiles":
-				switch mod[1] {
-				case "list":
-					jsonWrite(w2, vm.vfile.page1(form))
-				}
-			case "vlists":
-				jsonWrite(w2, vm.vlist.page2(form))
-			case "vlist":
-				switch mod[1] {
-				case "new":
-					jsonWrite(w2, vm.vlist.new1(form))
-				default:
-					jsonWrite(w2, vm.vlist.page1(mod[1], form))
-				}
 			case "menu":
-				jsonWrite(w2, vm.menu.view1(mod[1], form))
 			case "users":
-				jsonWrite(w2, vm.user.view1(mod[1]))
 			}
 		}
 		str := string(w2.Bytes())

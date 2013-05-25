@@ -10,112 +10,186 @@ import (
 	"os"
 	"net/http"
 	"strings"
+	"errors"
 )
 
 type vproxyStat struct {
 	op string
+	stat string
 	path string
 	ts []tsinfo2
 	curseq int
 	curts int
-	drop int
+	ist iocopyStat
+	info avprobeStat
+	err error
 }
 
-type vproxyCb func (st vproxyStat)
+type vproxyCb func (st vproxyStat) error
 
 const (
 	TSNR = 30
 )
 
-func vproxyRun(prefix string, m3u8url string, cb vproxyCb) {
+func vproxyRun(prefix string, m3u8url string, cb vproxyCb, opts... interface{}) (err error) {
 
-	gotFirst := false
+	debug := true
 
-	getTs := func (path, url string) {
-		log.Printf("get ts %s", path)
-		err,speed,size := curl3(url, path,
-			func (ist iocopyStat) error {
-				log.Printf("getting %s %.1f%%", path, ist.per*100)
-				return nil
-			})
-		if err != nil {
-			log.Printf("%v", err)
-		} else {
-			if false {
-				log.Printf("speed %s size %s", speedstr(speed), sizestr(size))
-			}
-			//_, info := avprobe2(path)
-			//log.Printf("%v", info)
-			if !gotFirst {
-				cb(vproxyStat{op:"firstTs", path:path})
-				gotFirst = true
-			}
-		}
-	}
-
-	drop := 0
 	curseq := -1
 	curts := -1
+	timeout := -1
 	var files [TSNR]tsinfo2
+	probeMode := false
+	tmstart := time.Now()
+	gotFirst := false
+	var curlopt string
 
-	for {
-		body, err := curl(m3u8url)
+	getTs := func (path, url string) (err error) {
+		if debug {
+			log.Printf("get ts %s", path)
+		}
+		err,_,_ = curl3(url, path,
+			func (ist iocopyStat) error {
+				if !probeMode {
+					tmstart = time.Now()
+				}
+				if debug {
+					log.Printf("getting %s %.1f%%", path, ist.per*100)
+				}
+				cb(vproxyStat{op:"progress", ist:ist})
+				return nil
+			}, curlopt)
 		if err != nil {
-			log.Printf("fetch m3u8 err")
-			time.Sleep(time.Second)
-			continue
+			if debug {
+				log.Printf("getts: %v", err)
+			}
+			return
 		}
-		ts, seq := parseM3u8(m3u8url, body)
-		if seq == -1 {
-			log.Printf("m3u8 seq not found")
-			time.Sleep(time.Second)
-			continue
-		}
-		if len(ts) == 0 {
-			log.Printf("no ts found m3u8 body: %s", body)
-			time.Sleep(time.Second)
-			continue
-		}
-		//log.Printf("%s", body)
-		log.Printf("m3u8: %s seq %d ts nr %d curseq %d curts %d drop %d",
-				m3u8url, seq, len(ts), curseq, curts, drop)
-		if curseq == -1 {
-			curseq = seq
-			curts = seq
-			time.Sleep(time.Second)
-			continue
-		}
-		if seq < curseq {
-			// shit 
-			curseq = seq
-			curts = seq
-			time.Sleep(time.Second)
-			continue
-		}
-		if seq > curts {
-			// drop
-			drop += seq - curts
-			curseq = seq
-			curts = seq
-		}
-		//log.Printf("%s", body)
+		return
+	}
 
+	getAllTs := func (seq int, ts []tsinfo2) (err error) {
 		var file tsinfo2
-
 		i := curts
 		for ; i < seq+len(ts) && i<curts+len(ts); {
 			file = ts[i-curts]
 			file.path = filepath.Join(prefix, fmt.Sprintf("%d.ts", i%TSNR))
-			if true {
-				getTs(file.path, file.url)
+			err = getTs(file.path, file.url)
+			if err != nil {
+				return
+			}
+			if !gotFirst {
+				var info avprobeStat
+				err, info = avprobe2(file.path)
+				if err != nil {
+					return
+				}
+				cb(vproxyStat{op:"probe", info:info})
+				gotFirst = true
+			}
+			if probeMode && gotFirst {
+				return
 			}
 			files[i%TSNR] = file
 			i++
 		}
-		curts = i
+		return
+	}
+
+	for _, o := range opts {
+		switch o.(type) {
+		case string:
+			if o.(string) == "probe" {
+				probeMode = true
+			}
+			fmt.Sscanf(o.(string), "timeout=%d", &timeout)
+		}
+	}
+
+	if probeMode && timeout == -1 {
+		timeout = 10
+	}
+	if !probeMode && timeout == -1 {
+		timeout = 10
+	}
+
+	curlopt = fmt.Sprintf("timeout=%d", timeout)
+
+	for {
+		if debug {
+			log.Printf("fetching")
+		}
+		if time.Since(tmstart) > time.Duration(timeout)*time.Second {
+			if probeMode {
+				err = errors.New("probe timeout")
+				return
+			} else {
+				cb(vproxyStat{op:"timeout", err:errors.New("conn timeout")})
+			}
+		}
+
+		var body string
+		body, err = curl(m3u8url, curlopt)
+		if err != nil {
+			if debug {
+				log.Printf("fetch m3u8 err %v", err)
+			}
+			cb(vproxyStat{op:"warn", err:errors.New("fetch m3u8 err")})
+			time.Sleep(time.Second)
+			continue
+		}
+
+		ts, seq := parseM3u8(m3u8url, body)
+		if seq == -1 {
+			if debug {
+				log.Printf("m3u8 seq not found")
+			}
+			cb(vproxyStat{op:"warn", err:errors.New("m3u8 seq not found")})
+			time.Sleep(time.Second)
+			continue
+		}
+		if len(ts) == 0 {
+			if debug {
+				log.Printf("no ts found m3u8 body: %s", body)
+			}
+			cb(vproxyStat{op:"warn", err:errors.New("no ts entries found in m3u8")})
+			time.Sleep(time.Second)
+			continue
+		}
+
+		//log.Printf("%s", body)
+		if debug {
+			log.Printf("m3u8: %s seq %d ts nr %d curseq %d curts %d",
+					m3u8url, seq, len(ts), curseq, curts)
+		}
+		if curseq == -1 {
+			curseq = seq
+			curts = seq
+		}
+		if seq < curseq {
+			curseq = seq
+			curts = seq
+		}
+		if seq > curts {
+			curseq = seq
+			curts = seq
+		}
+		//log.Printf("%s", body)
+
+		err = getAllTs(seq, ts)
+		if probeMode {
+			return
+		} else {
+			if err != nil {
+				time.Sleep(time.Second)
+				continue
+			}
+		}
+
+		curts = seq+len(ts)
 		curseq = seq
 
-		st := vproxyStat{op:"update", curts:curts, curseq:curseq, drop:drop}
+		st := vproxyStat{op:"update", curts:curts, curseq:curseq}
 		for j := curseq; j < curts; j++ {
 			st.ts = append(st.ts, files[j%TSNR])
 		}
@@ -140,6 +214,73 @@ func genM3u8(w io.Writer, prefix string, ts []tsinfo2, seq int) {
 	}
 }
 
+func testproxy3(a []string) {
+	url := "http://live.gslb.letv.com/gslb?stream_id=cctv8&tag=live&ext=m3u8&sign=live_ipad"
+	log.Printf("test proxying %s", url)
+	vproxyRun("/tmp", url, func (st vproxyStat) error {
+		switch st.op {
+		case "progress":
+			log.Printf("speed %s", speedstr(st.ist.speed))
+		case "update":
+		case "timeout":
+			log.Printf("timeout")
+		}
+		return nil
+	})
+}
+
+func testproxy2(a []string) {
+	if len(a) < 2 {
+		return
+	}
+	log.Printf("reading %s", a[1])
+
+	type resS struct {
+		err error
+		line string
+		info avprobeStat
+		time time.Duration
+	}
+	res := []resS{}
+
+	i := 0
+	readLines(a[1], func (line string) error {
+		arr := strings.Split(line, ",")
+		if len(arr) < 2 {
+			return nil
+		}
+		log.Printf("probing %v", arr)
+
+		var info avprobeStat
+		tmstart := time.Now()
+
+		os.Mkdir("/tmp/1", 0777)
+		err := vproxyRun("/tmp/1", arr[1], func (st vproxyStat) error {
+			info = st.info
+			return nil
+		}, "probe", "timeout=6")
+
+		r := resS{
+			err: err,
+			line: line,
+			info: info,
+			time: time.Since(tmstart),
+		}
+		res = append(res, r)
+		i++
+
+		if r.err == nil {
+			log.Printf("ok response %s bitrate %s", tmdurstr(r.time), speedstr(r.info.Bitrate*1000/8))
+		} else {
+			log.Printf("err %v", r.err)
+		}
+		//if i > 30 {
+		//	return errors.New("eof")
+		//}
+		return nil
+	})
+}
+
 func testproxy1(a []string) {
 //	vproxyRun("http://sw.live.cntv.cn/cctv_p2p_cctv5.m3u8")
 	type stat struct {
@@ -161,8 +302,9 @@ func testproxy1(a []string) {
 		os.Mkdir(prefix, 0777)
 		go func(s *stat) {
 			vproxyRun(prefix, s.url,
-				func (st vproxyStat) {
+				func (st vproxyStat) error {
 					s.st = st
+					return nil
 				},
 			)
 		}(s)

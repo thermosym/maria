@@ -3,7 +3,6 @@ package main
 
 import (
 	"sync"
-	"strings"
 	"path/filepath"
 	"io"
 	"os"
@@ -21,6 +20,13 @@ vm vfile download [path] [url]
 type vfileV2 struct {
 	m map[string]*vfileV2Node
 	l *sync.Mutex
+}
+
+func newVfileV2() (m *vfileV2) {
+	m = &vfileV2{}
+	m.m = map[string]*vfileV2Node{}
+	m.l = &sync.Mutex{}
+	return
 }
 
 func loadVfileV2(prefix string) (m *vfileV2) {
@@ -41,7 +47,7 @@ func loadVfileV2(prefix string) (m *vfileV2) {
 		}
 		name := fi.Name()
 		log.Printf("vlist: load %v", name)
-		v := loadVfileV2Node(filepath.Join("vfile", name), name)
+		v := vfileFromPath(filepath.Join("vfile", name))
 		if v != nil {
 			m.m[name] = v
 		}
@@ -69,9 +75,7 @@ func (m *vfileV2) rm(name string) {
 	v.rm()
 }
 
-func (m *vfileV2) create() string {
-	m.l.Lock()
-	defer m.l.Unlock()
+func (m *vfileV2) _newname() string {
 	var name string
 	for {
 		name = randsha1()
@@ -79,29 +83,18 @@ func (m *vfileV2) create() string {
 			break
 		}
 	}
-	node := &vfileV2Node{}
-	node.l = &sync.Mutex{}
-	node.Stat = "init"
-	node.path = filepath.Join("vfile", name)
-	node.name = name
-	m.m[name] = node
 	return name
 }
 
-func (m *vfileV2) info(name string) (r vfileV2Node, err error) {
+func (m *vfileV2) info(name string) (info vfileV2NodeInfo, err error) {
 	m.l.Lock()
 	defer m.l.Unlock()
 	for vname, v := range m.m {
 		if vname == name {
-			r = *v
-			return
-		}
-		if v.Src == name {
-			r = *v
+			info = v.info()
 			return
 		}
 	}
-	r.Name = name
 	err = errors.New("not found")
 	return
 }
@@ -116,111 +109,65 @@ func (m *vfileV2) set(name string, args form) {
 	v.set(args)
 }
 
-func (m *vfileV2) download(name,url string) (err error) {
+func (m *vfileV2) newDownload(url string) (name string, err error) {
 	m.l.Lock()
 	defer m.l.Unlock()
-	v, ok := m.m[name]
-	if !ok {
-		return
-	}
-	err = v.downloadCheck(url)
+	name = m._newname()
+	var v *vfileV2Node
+	v, err = vfileNewDownload(url, filepath.Join("vfile", name))
 	if err != nil {
 		return
 	}
-	go v.download(url)
+	m.m[name] = v
+	v.name = name
 	return
 }
 
-func (m *vfileV2) upload(name string, filename string, r io.Reader, length int64) {
+func (m *vfileV2) newVProxy(url string) (name string) {
 	m.l.Lock()
 	defer m.l.Unlock()
-	v, ok := m.m[name]
-	if !ok {
-		return
-	}
-	go v.upload(filename, r, length)
+	name = m._newname()
+	var v *vfileV2Node
+	v = vfileNewVProxy(url, filepath.Join("vfile", name))
+	m.m[name] = v
+	v.name = name
+	return
+}
+
+func (m *vfileV2) newUpload(filename string, r io.Reader, length int64) (name string) {
+	m.l.Lock()
+	defer m.l.Unlock()
+	name = m._newname()
+	var v *vfileV2Node
+	v = vfileNewUpload(filename, r, length, filepath.Join("vfile", name))
+	m.m[name] = v
+	v.name = name
+	return
 }
 
 func (m *vfileV2) post(path string, args form, w io.Writer) {
 	do := args.str("do")
 	switch do {
 	case "addone":
-		name := m.create()
-		err := m.download(name, args.str("url"))
+		name, err := m.newDownload(args.str("url"))
 		if err != nil {
 			jsonErr(w, err)
 		} else {
-			jsonWrite(w, hash{"nr":1, "nodes":[]string{name}})
+			jsonWrite(w, hash{"ret":"ok", "nr":1, "names":[]string{name}})
 		}
 	case "addmany":
 		urls := args.str("urls")
 		added := []string{}
 		for _, u := range splitLines(urls) {
-			name := m.create()
-			err := m.download(name, u)
+			name,err := m.newDownload(u)
 			if err == nil {
 				added = append(added, name)
 			}
 		}
-		jsonWrite(w, hash{"nr":len(added), "nodes":added})
+		jsonWrite(w, hash{"ret":"ok", "nr":len(added), "nodes":added})
 	case "addtest":
 		jsonWrite(w, hash{"nr":3, "nodes":[]string{"1", "2", "3"}})
 	}
 }
 
-type vfileWatchRow1 struct {
-	Statstr,Src,Name,Type string
-}
-
-type vfileWatch1 struct {
-	List []vfileWatchRow1
-}
-
-func (m *vfileV2) watch1(args form) (view vfileWatch1) {
-	list := args.str("list")
-	if list == "" {
-		return
-	}
-	for _, name := range strings.Split(list, ",") {
-		v, _ := m.info(name)
-		row := vfileWatchRow1{
-			Statstr: v.Statstr(),
-			Src: v.Src,
-			Name: name,
-			Type: v.Typestr(),
-		}
-		view.List = append(view.List, row)
-	}
-	return
-}
-
-type vfileOne1 struct {
-	vfileV2Node
-}
-
-func (m *vfileV2) one1(name string, args form) (view vfileOne1){
-	v, _ := m.info(name)
-	view = vfileOne1{v}
-	return
-}
-
-func (m *vfileV2) page1(args form) (view vlistView1) {
-	m.l.Lock()
-	defer m.l.Unlock()
-	view.CanSort = true
-	view.CheckDel = true
-	view.ShowStat = true
-	view.ShowSel = false
-	for name, v := range m.m {
-		view.Rows = append(view.Rows, vlistRow1 {
-			Statstr: v.Statstr(),
-			Desc: v.Desc,
-			Geostr: v.Geostr(),
-			Sizestr: v.Sizestr(),
-			Name: name,
-		})
-	}
-	view.RowsEmpty = len(view.Rows) == 0
-	return
-}
 

@@ -4,11 +4,11 @@ package main
 import (
 	"io"
 	"os"
+	"errors"
 	"time"
 	"strings"
 	"fmt"
 	"log"
-	"errors"
 	"sync"
 	"path/filepath"
 )
@@ -19,12 +19,16 @@ type vfileV2Node struct {
 	Type string
 	Src string
 	Desc string
-	Size int64
 	Filename string
-	Dur time.Duration
 	Ts []tsinfo2
 	Starttm time.Time
 	Info avprobeStat
+
+	Size int64
+	TotSize int64
+	Dur time.Duration
+	Per float64
+	Speed int64
 
 	name string
 	path string
@@ -32,11 +36,41 @@ type vfileV2Node struct {
 	l *sync.Mutex
 
 	forceStop bool
-	downSt downloadStat
-	upSt iocopyStat
-	convSt avconvStat
-	vproxySt vproxyStat
 	err error
+}
+
+type vfileV2NodeInfo struct {
+	Stat string
+	Type string
+	Durstr string
+	Geo string
+	Perstr string
+	Speedstr string
+	Sizestr string
+}
+
+func (v *vfileV2Node) info() (info vfileV2NodeInfo) {
+	info.Stat = v.Stat
+	info.Type = v.Type
+	if v.Dur > 0.0 {
+		info.Durstr = tmdurstr(v.Dur)
+	}
+	if v.Info.W != 0 {
+		info.Geo = fmt.Sprintf("%dx%d", v.Info.W, v.Info.H)
+	}
+	info.Type = v.Type
+	if v.Size != 0 {
+		info.Sizestr = sizestr(v.Size)
+	}
+	if v.TotSize != 0 {
+	}
+	if v.Speed > 0 {
+		info.Speedstr = speedstr(v.Speed)
+	}
+	if v.Per > 0.0 {
+		info.Perstr = perstr(v.Per)
+	}
+	return
 }
 
 func (m *vfileV2Node) log(format string, v ...interface{}) {
@@ -44,10 +78,10 @@ func (m *vfileV2Node) log(format string, v ...interface{}) {
 	log.Printf("vfile %s: %s", m.name, str)
 }
 
-func loadVfileV2Node(path string, name string) (v *vfileV2Node) {
+
+func vfileFromPath(path string) (v *vfileV2Node) {
 	v = &vfileV2Node{}
 	v.path = path
-	v.name = name
 	v.l = &sync.Mutex{}
 	loadJson(filepath.Join(path, "info"), v)
 	return
@@ -69,50 +103,10 @@ func (m *vfileV2Node) rm() {
 func (m *vfileV2Node) set(args form) {
 	m.l.Lock()
 	defer m.l.Unlock()
-	t := args.str("type")
-	switch t {
-	case "youku","sohu","upload":
-		m.Type = t
-	}
 	d := args.str("desc")
 	if d != "" {
 		m.Desc = d
 	}
-}
-
-func (v vfileV2Node) Statstr() string {
-	stat := ""
-	switch v.Stat {
-	case "parsing":
-		stat += "[解析中]"
-	case "downloading":
-		stat += fmt.Sprintf("[下载中%.1f%%]", v.downSt.per*100)
-		stat += fmt.Sprintf("[%s]", speedstr(v.downSt.speed))
-		stat += fmt.Sprintf("[%s]", sizestr(v.Size))
-	case "done":
-		stat += "[已完成]"
-		stat += fmt.Sprintf("[%s]", sizestr(v.Size))
-	case "uploading":
-		stat += fmt.Sprintf("[上传中%.1f%%]", v.upSt.per*100)
-		stat += fmt.Sprintf("[%s]", sizestr(v.Size))
-	case "avconving":
-		stat += fmt.Sprintf("[转码中%.1f%%]", v.convSt.per*100)
-		stat += fmt.Sprintf("[%s]", speedstr(v.convSt.speed))
-		stat += fmt.Sprintf("[%s]", sizestr(v.Size))
-	case "error":
-		stat += "[出错]"
-	case "nonexist":
-		stat += "[不存在]"
-	default:
-		stat += "[不存在]"
-	}
-	if v.Dur > 0.0 {
-		stat += fmt.Sprintf("[%s]", tmdurstr(v.Dur))
-	}
-	if v.Info.W != 0 {
-		stat += fmt.Sprintf("[%dx%d]", v.Info.W, v.Info.H)
-	}
-	return stat
 }
 
 func uploadVfileConv(
@@ -120,7 +114,6 @@ func uploadVfileConv(
 	r io.Reader,
 	length int64,
 	cb ioCopyCb,
-	cb2 func(),
 	cb3 avconvCb,
 	) (err error, size int64) {
 
@@ -131,13 +124,11 @@ func uploadVfileConv(
 		return
 	}
 
-	err, _, size = ioCopy(r, length, w, cb)
+	err, _, size = ioCopy(r, length, w, cb, nil)
 	if err != nil {
 		err = errors.New(fmt.Sprintf("upload %s failed: %s", filename, err))
 		return
 	}
-
-	cb2()
 
 	err = avconvM3u8V2(filename, path, cb3)
 	if err != nil {
@@ -147,12 +138,13 @@ func uploadVfileConv(
 	return
 }
 
-func (v *vfileV2Node) upload(filename string, r io.Reader, length int64) {
+func (v *vfileV2Node) _upload(filename string, r io.Reader, length int64) {
 	v.l.Lock()
-	v.Stat = "uploading"
+	v.Stat = "connecting"
 	v.Type = "upload"
 	v.forceStop = false
 	v.Filename = filename
+	v.TotSize = length
 	v.l.Unlock()
 
 	iocopy := func (st iocopyStat) (err error) {
@@ -161,14 +153,11 @@ func (v *vfileV2Node) upload(filename string, r io.Reader, length int64) {
 		if v.forceStop {
 			return errors.New("user force stop uploading")
 		}
-		v.upSt = st
+		v.Stat = "uploading"
+		v.Speed = st.speed
+		v.Per = st.per
+		v.Size = st.size
 		return
-	}
-
-	done := func() {
-		v.l.Lock()
-		defer v.l.Unlock()
-		v.Stat = "avconving"
 	}
 
 	avconv := func (st avconvStat) (err error) {
@@ -177,13 +166,15 @@ func (v *vfileV2Node) upload(filename string, r io.Reader, length int64) {
 		if v.forceStop {
 			return errors.New("user force stop avconv")
 		}
-		v.convSt = st
+		v.Stat = "avconving"
+		v.Speed = st.speed
+		v.Per = st.per
 		return
 	}
 
 	err, size := uploadVfileConv(
 		filepath.Join(v.path, filename), v.path, r, length,
-		iocopy, done, avconv,
+		iocopy, avconv,
 	)
 
 	v.l.Lock()
@@ -191,22 +182,27 @@ func (v *vfileV2Node) upload(filename string, r io.Reader, length int64) {
 		v.Stat = "error"
 		v.err = err
 	} else {
+		v.Stat = "done"
 		v.Size = size
+		v.save()
 	}
-	v.save()
 	v.l.Unlock()
 }
 
-func (v *vfileV2Node) downloadCheck(url string) error {
-	if !strings.Contains(url, "youku") && !strings.Contains(url, "sohu") {
-		return errors.New("url invalid")
-	}
-	return nil
+func vfileNewUpload(filename string, r io.Reader, length int64, path string) (v *vfileV2Node) {
+	v = &vfileV2Node{}
+	v.path = path
+	v.l = &sync.Mutex{}
+	os.Mkdir(v.path, 0777)
+
+	go v._upload(filename, r, length)
+
+	return
 }
 
-func (v *vfileV2Node) download(url string) {
+func (v *vfileV2Node) _download(url string) {
 	v.l.Lock()
-	v.Stat = "parsing"
+	v.Stat = "connecting"
 	v.Type = "download"
 	v.Src = url
 	v.forceStop = false
@@ -219,16 +215,21 @@ func (v *vfileV2Node) download(url string) {
 		if v.forceStop {
 			return errors.New("user force stop")
 		}
-		v.downSt = st
-		v.Size = st.size
-		if st.stat == "firstTs" {
-			err, v.Info = avprobe2(st.filename)
-		}
-		if st.stat == "parsedM3u8" {
+		switch st.op {
+		case "desc":
+			v.Desc = st.desc
+		case "ts":
+			v.Ts = st.ts
+		case "progress":
 			v.Stat = "downloading"
+			v.Size = st.size
 			v.Dur = st.dur
+			v.Speed = st.speed
+			v.Per = st.per
+			v.log("download %s", perstr(st.per))
+		case "probe":
+			v.Info = st.info
 		}
-		v.log("download %s %s", st.stat, perstr(st.per))
 		return err
 	})
 
@@ -239,52 +240,103 @@ func (v *vfileV2Node) download(url string) {
 		v.log("download error %s", err)
 	} else {
 		v.Stat = "done"
-		v.Ts = v.downSt.ts
 		v.log("download done")
 		v.save()
 	}
 	v.l.Unlock()
 }
 
-func (v vfileV2Node) Typestr() string {
-	switch v.Type {
-	case "youku":
-		return "优酷下载"
-	case "sohu":
-		return "搜狐下载"
-	case "vproxy":
-		return "在线直播"
-	case "upload":
-		return "用户上传"
+func vfileNewDownload(url, path string) (v *vfileV2Node, err error) {
+	if !strings.Contains(url, "youku") && !strings.Contains(url, "sohu") {
+		err = errors.New("url invalid")
+		return
 	}
-	return "未知类型"
+
+	v = &vfileV2Node{}
+	v.path = path
+	v.l = &sync.Mutex{}
+	os.Mkdir(v.path, 0777)
+
+	go v._download(url)
+
+	return
 }
 
-func (v vfileV2Node) Geostr() string {
-	if v.Info.W == 0 {
-		return ""
-	}
-	return fmt.Sprintf("%dx%d", v.Info.W, v.Info.H)
+func vfileNewVProxy(url, path string) (v *vfileV2Node) {
+	v = &vfileV2Node{}
+	v.path = path
+	v.l = &sync.Mutex{}
+	os.Mkdir(path, 0777)
+
+	go func() {
+		v.l.Lock()
+		v.Stat = "connecting"
+		v.Type = "vproxy"
+		v.path = path
+		v.l.Unlock()
+
+		err := vproxyRun(path, url, func (st vproxyStat) (err error) {
+			v.l.Lock()
+			defer v.l.Unlock()
+			if v.forceStop {
+				err = errors.New("user force stop")
+				return
+			}
+			if st.op == "progress" {
+				v.Stat = "running"
+				v.Speed = st.ist.speed
+			}
+			if st.op == "timeout" {
+				v.Stat = "timeout"
+			}
+			return
+		})
+
+		v.l.Lock()
+		if err != nil {
+			v.Stat = "error"
+			v.err = err
+		} else {
+			v.Stat = "done"
+			v.save()
+		}
+		v.l.Unlock()
+	}()
+
+	return
 }
 
-func (v vfileV2Node) Sizestr() string {
-	if v.Size == 0 {
-		return ""
-	}
-	return sizestr(v.Size)
-}
-
-func testVfile1(_a []string) {
-	m := loadVfileV2Node("/tmp/", "hehe")
-	m.save()
-}
-
-func testVfile2(_a []string) {
-	m := loadVfileV2Node("/tmp/", "hehe")
-	go m.download("http://v.youku.com/v_show/id_XMzc2NDM4Nzc2.html")
+func testVfile1(a []string) {
+	vfileNewDownload("http://v.youku.com/v_show/id_XNTYxMjA4MTM2_ev_5.html", "/tmp/1")
 	for {
-		log.Printf("%v %v\n", m.Statstr(), m.err)
 		time.Sleep(time.Second)
 	}
+}
+
+func testVfile2(a []string) {
+	/*
+	man := newVfileV2()
+
+	for {
+		man.l.Lock()
+		running := 0
+		errorn := 0
+		hasinfoN := 0
+		for _, v := range man.m {
+			if v.Stat == "running" {
+				running++
+			}
+			if v.Stat == "error" {
+				errorn++
+			}
+			if v.Info.W != 0 {
+				hasinfoN++
+			}
+		}
+		man.l.Unlock()
+		log.Printf("running %d error %d hasinfo %d", running, errorn, hasinfoN)
+		time.Sleep(time.Second)
+	}
+	*/
 }
 
