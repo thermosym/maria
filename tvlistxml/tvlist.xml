@@ -1,0 +1,3286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+<tvlist label="大杂烩">
+
+<tv>
+	<channelid>4176B2C6ACD25F43AC17BDF4153295F4</channelid>
+	<name>新华中文</name>
+	<url tvsource="源1"><![CDATA[http://mobile.xinhuashixun.com/Live/cncHD.m3u8]]></url>
+</tv>
+
+<tv>
+	<channelid>EADFB26BBDA5794FA1829F8E9D95CCBE</channelid>
+	<name>新华国际</name>
+	<url tvsource="源1"><![CDATA[http://mobile.xinhuashixun.com/Live/cncworldHD.m3u8]]></url>
+</tv>
+
+<tv>
+	<channelid>5CA4506AB381BE419F3618E8F6DBE5C1</channelid>
+	<name>CCTV-1</name>
+	<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv1&tag=live&ext=m3u8&sign=live_ipad]]></url>
+	<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv1&tag=live&ext=m3u8]]></url>
+	<url tvsource="源1"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/1_/seg0/index.m3u8]]></url>
+	<url tvsource="源5"><![CDATA[http://vdn.apps.cntv.cn/api/getLiveUrlCommonRedirectApi.do?channel=pa://cctv_p2p_hdcctv1&type=ipad]]></url>
+	<url tvsource="百事通"><![CDATA[http://121.58.54.150/PLTV/88888888/224/0/3221225734/iptv18195.smil]]></url>
+</tv>
+
+<tv>
+<channelid>2B071A34C9D7674597CC34475E7BE3FD</channelid>
+<name>CCTV-2</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv2&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/7_/seg0/index.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://vdn.apps.cntv.cn/api/getLiveUrlCommonRedirectApi.do?channel=pa://cctv_p2p_hdcctv2&type=ipad]]></url>
+<url tvsource="百事通"><![CDATA[http://121.58.54.150/PLTV/88888888/224/0/3221225733/iptv18196.smil]]></url>
+</tv>
+<tv>
+<channelid>FCB2D8646A430448B7F7324EA178CFD7</channelid>
+<name>CCTV-3</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv3&tag=live&ext=m3u8&sign=live_tv]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv3&tag=live&ext=m3u8]]></url>
+<url tvsource="源3"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv3&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/8_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>02EC8029D4BC1F419BC82ECCE10D0C13</channelid>
+<name>CCTV-4</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv4&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/9_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>7A035CE424681445833A7DA07AECA8BE</channelid>
+<name>CCTV-5</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv5_800&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源11"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv5_800&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/10_/seg0/index.m3u8]]></url>
+<url tvsource="高清1"><![CDATA[http://tinyurl.com/btxqnca]]></url>
+<url tvsource="高清2"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805390]]></url>
+<url tvsource="源3"><![CDATA[http://vip.sports.cntv.cn/player.jsp?product=billiards&id=snk2013032601]]></url>
+<url tvsource="flv"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=803175]]></url>
+<url tvsource="源4"><![CDATA[http://main.gslb.ku6.com/broadcast/sub?channel=832]]></url>
+<url tvsource="源5"><![CDATA[http://220.181.168.111:554/66]]></url>
+<url tvsource="源6"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdcctv5.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245514D4233426A]]></url>
+<url tvsource="源8"><![CDATA[http://74.82.62.53:1935/liverepeater/11.stream/playlist.m3u8]]></url>
+<url tvsource="源9"><![CDATA[http://tvie01.ucatv.com.cn/channels/xjyx/CCTV5-Suma/flv:500k_flv/live.flv]]></url>
+</tv>
+<tv>
+<channelid>DF03F719BF54284CA4314971AF67DEB9</channelid>
+<name>CCTV-6</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv6&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/11_/seg0/index.m3u8]]></url>
+<url tvsource="源3"><![CDATA[http://t.live.cntv.cn/m3u8/cctv-6.m3u8]]></url>
+<url tvsource="源4"><![CDATA[rtmp://220.181.117.167/live/cctv6]]></url>
+</tv>
+<tv>
+<channelid>CC29B361338B3D4BAD481CA9A5CD47E6</channelid>
+<name>CCTV-7</name>
+<url tvsource="源3"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv7&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/12_/seg0/index.m3u8]]></url>
+<url tvsource="源4"><![CDATA[http://t.live.cntv.cn/m3u8/cctv-7.m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/cctv7]]></url>
+<url tvsource="源4"><![CDATA[http://tvhd.ak.live.cntv.cn/cache/12_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>D1F0178AEDF79643A2B5A61C794496D3</channelid>
+<name>CCTV-8</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv8&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/13_/seg0/index.m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/cctv8]]></url>
+</tv>
+<tv>
+<channelid>B134B08EBD911844AED069B072361EA7</channelid>
+<name>CCTV-9</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv9&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/14_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>95DD39A4AA83E34E9902D34BB8FD94D2</channelid>
+<name>CCTV-10</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv10&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/2_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C65A4F9AD044A441971E5C0811A29041</channelid>
+<name>CCTV-11</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv11&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/3_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>FFE8D26400C5854E927A81AC86708254</channelid>
+<name>CCTV-12</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv12&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/4_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>8091B47A9E1FF744BBC0CC7EC2C27ECA</channelid>
+<name>CCTV-13</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctvnew&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctvnew&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源3"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctvnew&tag=live&ext=m3u8&sign=live_tv]]></url>
+<url tvsource="源4"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/5_/seg0/index.m3u8]]></url>
+<url tvsource="百事通"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226043/10000100000000060000000000083631_0.smil]]></url>
+</tv>
+<tv>
+<channelid>C1DC074014923F4AAB4767544FF14ECF</channelid>
+<name>CCTV-14</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctvshaoer&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/15_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>50F093A3929C5E4883B8A79C5B883D90</channelid>
+<name>CCTV-15</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctvmusic&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源3"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/6_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>2FD875773A971D44B156727A2CB2263F</channelid>
+<name>CCTV-高清</name>
+<url tvsource="源2"><![CDATA[http://tvhd.ak.live.cntv.cn/cache/24_/seg0/index.m3u8]]></url>
+<url tvsource="flv"><![CDATA[http://220.181.168.111:554/34]]></url>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdcctvgaoqing.m3u8]]></url>
+</tv>
+<tv>
+<channelid>0314CF6C776BE3409DC4096534D1B11C</channelid>
+<name>CCTV-风云足球</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=fyzq&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=fyzq&tag=live&ext=m3u8]]></url>
+</tv>
+<tv>
+<channelid>D0EA859DE6017C4191D2D8E395F8BD8E</channelid>
+<name>CCTV-风云音乐</name>
+<url tvsource="乐视"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=fyyy&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[rtmp://220.181.117.167/live/fyyy]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=fyyy&tag=live&ext=m3u8]]></url>
+</tv>
+<tv>
+<channelid>9025D96CA6E9FB40B0EF8B47BA5EE363</channelid>
+<name>CCTV-第一剧场</name>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=dyjc&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[rtmp://220.181.117.167/live/dyjc]]></url>
+</tv>
+<tv>
+<channelid>EAA70EAA1010604A90F64B0A33982933</channelid>
+<name>CCTV-国防军事</name>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=guofangjunshi&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[rtmp://220.181.117.167/live/guofangjunshi]]></url>
+</tv>
+<tv>
+<channelid>C92DF33B727A7442A3E92E5799D4561C</channelid>
+<name>CCTV-怀旧剧场</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=hjjc&tag=live&ext=m3u8&sign=live_ipad]]></url>
+</tv>
+<tv>
+<channelid>D14DB7A7228A1A49AFA6D3BC8C051837</channelid>
+<name>CCTV-高尔夫网球</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=golfwangqiu&tag=live&ext=m3u8&sign=live_ipad]]></url>
+</tv>
+<tv>
+<channelid>CA3A1A628912D44998A84A8657409748</channelid>
+<name>CCTV-台球</name>
+<url tvsource="源1"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/78_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>517BAEA94613F74AA43649536C1DD2A2</channelid>
+<name>CCTV-世界地理</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shijiedili&tag=live&ext=m3u8]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shijiedili&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/shijiedili]]></url>
+</tv>
+<tv>
+<channelid>96F21982F4C4DC45AC33D386B31BEDA9</channelid>
+<name>CCTV-老故事</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226005/10000100000000060000000000083520_0.smil]]></url>
+</tv>
+<tv>
+<channelid>8BC7605679CEE145AEE94B9BA75511E0</channelid>
+<name>CCTV-新科动漫</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226008/10000100000000060000000000083523_0.smil]]></url>
+</tv>
+<tv>
+<channelid>4C0431D0FCF90D45AF107FBDC4DCFE41</channelid>
+<name>CCTV-央视精品</name>
+<url tvsource="源1"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/33_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>ED0A920BCF113548A04F4D5067E9769C</channelid>
+<name>CCTV-发现之旅</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226061/10000100000000060000000000109946_0.smil]]></url>
+</tv>
+<tv>
+<channelid>C0434AF48609EA49921E208502FE4ACF</channelid>
+<name>CCTV-电视指南</name>
+<url tvsource="源1"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/29_/seg0/index.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221225998/10000100000000060000000000083511_0.smil]]></url>
+<url tvsource="源3"><![CDATA[http://tvhd.ak.live.cntv.cn/cache/29_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C619E7045DD07442A0393760B352B254</channelid>
+<name>中国气象</name>
+<url tvsource="源1"><![CDATA[http://60.19.18.226/iPhone/161/prog_index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>6F374C072303514D9DDD733291E22DB0</channelid>
+<name>CCTV-9英语记录</name>
+<url tvsource="源1"><![CDATA[http://88.212.11.206:5000/live/17/17.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C2E2BA034E739C439270B630BCB79CFC</channelid>
+<name>CCTV-英语新闻</name>
+<url tvsource="源1"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A6B5745366942336E69]]></url>
+<url tvsource="源2"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdcctv9.m3u8]]></url>
+<url tvsource="源3"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A4D76456E6B42334273]]></url>
+<url tvsource="源4"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245514F4233426A]]></url>
+<url tvsource="源5"><![CDATA[http://88.212.11.206:5000/live/22/22.m3u8]]></url>
+</tv>
+<tv>
+<channelid>6F77711D555E934A8B9468EF7B518E86</channelid>
+<name>CCTV-xby</name>
+<url tvsource="源1"><![CDATA[http://88.212.11.206:5000/live/18/18.m3u8]]></url>
+</tv>
+<tv>
+<channelid>B2C46CFCBCA74C488BD0F82168C447E5</channelid>
+<name>CCTV-rus</name>
+<url tvsource="源1"><![CDATA[http://88.212.11.206:5000/live/19/19.m3u8]]></url>
+</tv>
+<tv>
+<channelid>285F90DCCB85DF43ADBC1B192B61C7E3</channelid>
+<name>CCTV-Fra</name>
+<url tvsource="源1"><![CDATA[http://88.212.11.206:5000/live/20/20.m3u8]]></url>
+</tv>
+<tv>
+<channelid>FE4FBEA9597FE64097735A9E452AE125</channelid>
+<name>CCTV-Esp</name>
+<url tvsource="源1"><![CDATA[http://88.212.11.206:5000/live/21/21.m3u8]]></url>
+</tv>
+<tv>
+<channelid>188CFAB6D875774680DED61A837447D4</channelid>
+<name>CETV-1</name>
+<url tvsource="源1"><![CDATA[http://live.64ma.com/livePlay.asp?sohuId=30]]></url>
+<url tvsource="源2"><![CDATA[http://web-play.pptv.com/web-m3u8-300165.m3u8]]></url>
+</tv>
+<tv>
+<channelid>321C8155D6058849A1313BA0930D4843</channelid>
+<name>CETV-2</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300417.m3u8]]></url>
+</tv>
+<tv>
+<channelid>46AB401216FD4D4FB4E518DEFFD3856C</channelid>
+<name>CETV-3</name>
+<url tvsource="源1"><![CDATA[http://live.64ma.com/livePlay.asp?sohuId=29]]></url>
+</tv>
+<tv>
+<channelid>B64339C47A2CAC4DA07F25E1856167DA</channelid>
+<name>凤凰资讯</name>
+<url tvsource="源1"><![CDATA[http://ims.veryhd.net/ty/fh_flv.php?flvid=421632]]></url>
+<url tvsource="源2"><![CDATA[http://qqlive.dnion.com:1863/1258215255.flv]]></url>
+<url tvsource="源8"><![CDATA[http://119.164.219.218/live/fhzx/playlist.m3u8]]></url>
+<url tvsource="源3"><![CDATA[http://live.3gv.ifeng.com/live/zixun?bitrate=500K]]></url>
+<url tvsource="源4"><![CDATA[rtsp://112.231.23.27:554/live/fhzx]]></url>
+<url tvsource="源5"><![CDATA[rtsp://live.3gv.ifeng.com/live/1256]]></url>
+<url tvsource="源6"><![CDATA[http://ims.veryhd.net/ty/playlive.php?uuid=5B63686E5D445830303030303034327C313633327C317C313030307C54545A582E54567C687474707C666C765B2F63686E5DVSDNSOOONERCOM00]]></url>
+<url tvsource="源7"><![CDATA[http://122.226.79.235:1163/tm3u8/live_m3u8/4040/kk.m3u8]]></url>
+<url tvsource="flv"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805494]]></url>
+</tv>
+<tv>
+<channelid>C08E50E92E4772479C3A3741F8A6C503</channelid>
+<name>凤凰中文</name>
+<url tvsource="源1"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A6A76796E504233426B]]></url>
+<url tvsource="源2"><![CDATA[http://119.164.219.218/live/fhzw/playlist.m3u8]]></url>
+<url tvsource="源3"><![CDATA[rtsp://112.231.23.27:554/live/fhzw]]></url>
+<url tvsource="源4"><![CDATA[rtsp://116.199.127.68/fenghuang]]></url>
+<url tvsource="源5"><![CDATA[rtsp://live.3gv.ifeng.com/live/2256]]></url>
+<url tvsource="flv"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805495]]></url>
+<url tvsource="源6"><![CDATA[http://ims.veryhd.net/ty/fh_flv.php?flvid=421669]]></url>
+</tv>
+<tv>
+<channelid>04141EDB93F76948BC54CAD913694363</channelid>
+<name>星空卫视</name>
+<url tvsource="源1"><![CDATA[http://119.164.219.218/live/xkws/playlist.m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/xingkongweishi]]></url>
+<url tvsource="源3"><![CDATA[http://115.238.98.66/broadcast/sub?channel=823&id=ku6_live]]></url>
+</tv>
+<tv>
+<channelid>48C84052EC8E4D46808F2B045D6BEAC9</channelid>
+<name>壹电视新闻</name>
+<url tvsource="源1"><![CDATA[http://newshls-i.akamaihd.net/hls/live/202100/newshls/3Ghistream.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://newshls-i.akamaihd.net/hls/live/202100/newshls/wifistream.m3u8]]></url>
+</tv>
+<tv>
+<channelid>25DE0781C5AFFC45B698B475EB786813</channelid>
+<name>[V]音乐台</name>
+<url tvsource="源1"><![CDATA[http://main.gslb.ku6.com/broadcast/sub?channel=910]]></url>
+<url tvsource="源2"><![CDATA[http://fw01.livem3u8.me.totiptv.com/live/9102f3553f3246ecbbc9738dd4803344.m3u8]]></url>
+</tv>
+<tv>
+<channelid>9BDBB1124FBFFE4F9FB38D816CB9BF6D</channelid>
+<name>魅力音乐</name>
+<url tvsource="源1"><![CDATA[http://218.202.219.67/channels/xjyx/MeiLiYinYue-Suma/flv:300k_flv]]></url>
+</tv>
+<tv>
+<channelid>0939856EC1E4A34D8C8B83B9741FA166</channelid>
+<name>大杂烩测试（切源换台）</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300400.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://web-play.pptv.com/web-m3u8-300402.m3u8]]></url>
+<url tvsource="源4"><![CDATA[http://web-play.pptv.com/web-m3u8-300408.m3u8]]></url>
+<url tvsource="源5"><![CDATA[http://web-play.pptv.com/web-m3u8-300409.m3u8]]></url>
+<url tvsource="源6"><![CDATA[http://web-play.pptv.com/web-m3u8-300410.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://web-play.pptv.com/web-m3u8-300411.m3u8]]></url>
+<url tvsource="源8"><![CDATA[http://web-play.pptv.com/web-m3u8-300412.m3u8]]></url>
+<url tvsource="源9"><![CDATA[http://web-play.pptv.com/web-m3u8-300413.m3u8]]></url>
+<url tvsource="源10"><![CDATA[http://web-play.pptv.com/web-m3u8-300414.m3u8]]></url>
+<url tvsource="源11"><![CDATA[http://web-play.pptv.com/web-m3u8-300415.m3u8]]></url>
+<url tvsource="源12"><![CDATA[http://web-play.pptv.com/web-m3u8-300416.m3u8]]></url>
+</tv>
+<tv>
+<channelid>2D2C4ECB9FE369448EDC9FD139F2517C</channelid>
+<name>探索-HD</name>
+<url tvsource="源1"><![CDATA[http://59.124.145.75:17548:discovery]]></url>
+</tv>
+<tv>
+<channelid>98534331B5EECF4EAF35F16E2E7B3BA3</channelid>
+<name>东方卫视HD</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300145.m3u8]]></url>
+</tv>
+<tv>
+<channelid>EAD2DCBD1678A441933F76E73ED57C0A</channelid>
+<name>浙江卫视HD</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300164.m3u8]]></url>
+</tv>
+<tv>
+<channelid>9EBD87E57A7B914C8029C5D91386457A</channelid>
+<name>深圳卫视HD</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300188.m3u8]]></url>
+</tv>
+<tv>
+<channelid>6E9528F175E8F4499BA4A51F3ED144B1</channelid>
+<name>北京卫视HD</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300166.m3u8]]></url>
+</tv>
+<tv>
+<channelid>DCA641F5FF745048B04B45CCC606EF87</channelid>
+<name>天津卫视HD</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300160.m3u8]]></url>
+</tv>
+<tv>
+<channelid>2410DE6B176BE44088833D07440503D4</channelid>
+<name>山东卫视HD</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300161.m3u8]]></url>
+</tv>
+<tv>
+<channelid>5202C390CDC5F6459E107FFC838AB253</channelid>
+<name>广东卫视HD</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300179.m3u8]]></url>
+</tv>
+<tv>
+<channelid>308D315D08007C4B9967C455077CA6D5</channelid>
+<name>河北卫视HD</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300143.m3u8]]></url>
+</tv>
+<tv>
+<channelid>8DA1155C0A69C741A128C7C3F393C526</channelid>
+<name>湖北卫视HD</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300146.m3u8]]></url>
+</tv>
+<tv>
+<channelid>9201E9F622E6B84DB41C09CDC6DB385A</channelid>
+<name>东方卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=dongfang&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=dongfang&tag=live&ext=m3u8]]></url>
+<url tvsource="源3"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226030/10000100000000060000000000083600_0.smil]]></url>
+<url tvsource="源4"><![CDATA[http://web-play.pptv.com/web-m3u8-300145.m3u8]]></url>
+<url tvsource="源"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/dfws/flv:sd/live]]></url>
+<url tvsource="flv"><![CDATA[http://qqlive.dnion.com:1863/3661744838.flv]]></url>
+<url tvsource="源5"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdshdongfangtv.m3u8]]></url>
+<url tvsource="源6"><![CDATA[http://liveipad.wasu.cn/dfws_ipad/z.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/dfws/flv:sd/live.flv]]></url>
+</tv>
+<tv>
+<channelid>0BD69866895C324097580FFC30ACB5E8</channelid>
+<name>湖南卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=hunan&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=hunan&tag=live&ext=m3u8]]></url>
+<url tvsource="bst"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226020/10000100000000060000000000083542_0.smil]]></url>
+<url tvsource="源3"><![CDATA[rtmp://220.181.117.167/live/hunan]]></url>
+<url tvsource="flv"><![CDATA[http://itv.hdpfans.com/ty/hdp_ty.php?uuid=803254]]></url>
+<url tvsource="m3u8"><![CDATA[http://live122.cnlive.com:1935/live/hunan/playlist.m3u8]]></url>
+<url tvsource="hdp"><![CDATA[http://itv.hdpfans.com/mg?id=7]]></url>
+</tv>
+<tv>
+<channelid>16A678AD83A0AD4F8121ACE0E0DC7B58</channelid>
+<name>北京卫视</name>
+<url tvsource="源10"><![CDATA[http://hlslive1.cntv.wscdns.com/cache/36_/seg0/index.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=bjws&tag=live&ext=m3u8]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=bjws&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="P2P"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdbtv1.m3u8]]></url>
+<url tvsource="源3"><![CDATA[rtmp://220.181.117.167/live/bjws]]></url>
+<url tvsource="源4"><![CDATA[http://218.202.219.67/channels/xjyx/BeiJing-HD-Suma/flv:300k_rtmp]]></url>
+<url tvsource="源5"><![CDATA[http://tuifei.sinaapp.com/box/lists/tv/sohu.php?id=307]]></url>
+<url tvsource="pptv"><![CDATA[http://web-play.pptv.com/web-m3u8-300166.m3u8]]></url>
+<url tvsource="flv"><![CDATA[http://qqlive.dnion.com:1863/2414742998.flv]]></url>
+<url tvsource="源6"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdbtv1.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://liveipad.wasu.cn/bjws_ipad/z.m3u8]]></url>
+<url tvsource="源8"><![CDATA[http://zb.v.qq.com:1863/?progid=2414742998]]></url>
+<url tvsource="百视通"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226017/10000100000000060000000000083539_0.smil]]></url>
+</tv>
+<tv>
+<channelid>143B0E18A3CDAD4EB825D33BAB7A63C5</channelid>
+<name>江苏卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=jiangsu&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=jiangsu&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/jiangsu]]></url>
+<url tvsource="源1"><![CDATA[rtmp://122.192.35.80:554/live/tv02]]></url>
+<url tvsource="源2"><![CDATA[rtmp://122.192.35.80:554/live/tv28]]></url>
+<url tvsource="源3"><![CDATA[http://web-play.pptv.com/web-m3u8-300429.m3u8]]></url>
+<url tvsource="flv"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=803250]]></url>
+<url tvsource="rtmp"><![CDATA[rtmp://zj.cdn.64ma.com:554/jstv1hd/live]]></url>
+<url tvsource="源2/3"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdjiangsutv.m3u8]]></url>
+<url tvsource="源3/3"><![CDATA[http://74.82.62.53:1935/liverepeater/21.stream/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>2898ED70AAA77C4A8B19D51F559BA4A4</channelid>
+<name>天津卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=tianjin&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源4"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=tianjin&tag=live&ext=m3u8]]></url>
+<url tvsource="源3"><![CDATA[rtmp://220.181.117.167/live/tianjin]]></url>
+<url tvsource="源5"><![CDATA[http://qqlive.dnion.com:1863/830075195.flv]]></url>
+<url tvsource="源5"><![CDATA[http://web-play.pptv.com/web-m3u8-300160.m3u8]]></url>
+<url tvsource="源6"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdtianjintv.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://v.hdplay.cn/live/72733437534537686132364E76515151]]></url>
+<url tvsource="源8"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A32624536734233426A]]></url>
+</tv>
+<tv>
+<channelid>EA265C07EDF6254B8339504E894B6439</channelid>
+<name>深圳卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shenzhen&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源6"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shenzhen&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221225996/10000100000000060000000000083508_0.smil]]></url>
+<url tvsource="源5"><![CDATA[rtmp://220.181.117.167/live/shenzhen]]></url>
+<url tvsource="flv"><![CDATA[http://qqlive.dnion.com:1863/2309309351.flv]]></url>
+<url tvsource="源3"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=803252]]></url>
+<url tvsource="源5"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdshenzhentv.m3u8]]></url>
+<url tvsource="源6"><![CDATA[http://tsl1.hls.cutv.com/cutvlive/AxeFRth/hls/live_sd.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://liveipad.wasu.cn/szws_ipad/z.m3u8]]></url>
+<url tvsource="源8"><![CDATA[http://zb.v.qq.com:1863/?progid=2309309351]]></url>
+</tv>
+<tv>
+<channelid>0D0AEB4E2C632642B61FDBEAF2ABDF91</channelid>
+<name>广东卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=guangdong&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=guangdong&tag=live&ext=m3u8]]></url>
+<url tvsource="源3"><![CDATA[rtmp://220.181.117.167/live/guangdong]]></url>
+<url tvsource="flv"><![CDATA[http://qqlive.dnion.com:1863/2084914015.flv]]></url>
+<url tvsource="源2/4"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdguangdongtv.m3u8]]></url>
+<url tvsource="源3/4"><![CDATA[http://liveipad.wasu.cn/gdws_ipad/z.m3u8]]></url>
+</tv>
+<tv>
+<channelid>789DBCC0A1D8384490E435D2E4DCB3D3</channelid>
+<name>浙江卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=zhejiang&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源6"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=zhejiang&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://qqlive.dnion.com:1863/1975434150.flv]]></url>
+<url tvsource="源4"><![CDATA[rtmp://220.181.117.167/live/zhejiang]]></url>
+<url tvsource="源5"><![CDATA[http://218.202.219.67/channels/xjyx/ZheJiang-HD-Envivio/flv:300k_rtmp]]></url>
+<url tvsource="flv"><![CDATA[http://r1.cztv.com/channels/101/500.flv/live]]></url>
+<url tvsource="源3"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=803248]]></url>
+<url tvsource="源5"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdzhejiangtv.m3u8]]></url>
+<url tvsource="源6"><![CDATA[http://liveipad.wasu.cn/zjws_ipad/z.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://c4.cztv.com/channels/101/500.flv/live.flv]]></url>
+<url tvsource="源8"><![CDATA[http://zb.v.qq.com:1863/?progid=2907109968]]></url>
+</tv>
+<tv>
+<channelid>8B707F4ABC06414E879EF53B74172769</channelid>
+<name>甘肃卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=gansu&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=gansu&tag=live&ext=m3u8]]></url>
+<url tvsource="flv"><![CDATA[http://qqlive.dnion.com:1863/3444760127.flv]]></url>
+<url tvsource="源3"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=804105]]></url>
+<url tvsource="m3u8"><![CDATA[http://live122.cnlive.com:1935/live/gansuweishi/playlist.m3u8]]></url>
+<url tvsource="源5"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdgansutv.m3u8]]></url>
+<url tvsource="源4/6"><![CDATA[http://zb.v.qq.com:1863/?progid=3444760127]]></url>
+<url tvsource="源6/6"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245424E4233426A]]></url>
+<url tvsource="pptv"><![CDATA[http://web-play.pptv.com/web-m3u8-300148.m3u8]]></url>
+</tv>
+<tv>
+<channelid>0C5CA1518A333947A8A158F4AAC97C90</channelid>
+<name>山东卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shandong&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shandong&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/shandong]]></url>
+<url tvsource="flv"><![CDATA[http://qqlive.dnion.com:1863/3660187036.flv]]></url>
+<url tvsource="源2/7"><![CDATA[http://web-play.pptv.com/web-m3u8-300161.m3u8]]></url>
+<url tvsource="源3/7"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdshandongtv.m3u8]]></url>
+<url tvsource="源4/7"><![CDATA[http://zb.v.qq.com:1863/?progid=3660187036]]></url>
+<url tvsource="源5/7"><![CDATA[http://v.hdplay.cn/live/72733437534537686132653262425151]]></url>
+<url tvsource="源6/7"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245424D4233426A]]></url>
+<url tvsource="源7/7"><![CDATA[http://zb.allook.cn/live/sdws/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>327C6C44D771ED48A0E74FC6823CDE6F</channelid>
+<name>安徽卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=anhui&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=anhui&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/anhui]]></url>
+<url tvsource="flv"><![CDATA[http://livecdn.ahtv.cn/channels/1501/500.flv/live]]></url>
+<url tvsource="源3/8"><![CDATA[http://livecdn.ahtv.cn/channels/1501/500.flv/live.flv]]></url>
+<url tvsource="源4/8"><![CDATA[http://web-play.pptv.com/web-m3u8-300162.m3u8]]></url>
+<url tvsource="源5/8"><![CDATA[http://liveipad.wasu.cn/ahws_ipad/z.m3u8]]></url>
+<url tvsource="源6/8"><![CDATA[http://zb.v.qq.com:1863/?progid=623043810]]></url>
+<url tvsource="源7/8"><![CDATA[http://v.hdplay.cn/live/72733437534537686132654D62515151]]></url>
+<url tvsource="源8/8"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A32624542384233426A]]></url>
+</tv>
+<tv>
+<channelid>7417E6529450F346B2424502170BC087</channelid>
+<name>湖北卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=hubei&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=hubei&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/hubei]]></url>
+<url tvsource="flv"><![CDATA[http://qqlive.dnion.com:1863/1128831868.flv]]></url>
+<url tvsource="源3"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=804096]]></url>
+<url tvsource="源2/8"><![CDATA[http://web-play.pptv.com/web-m3u8-300146.m3u8]]></url>
+<url tvsource="源3/8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdhubeitv.m3u8]]></url>
+<url tvsource="源4/8"><![CDATA[http://tsl5.hls.cutv.com/cutvlive/hw2bvyV/hls/live_sd.m3u8]]></url>
+<url tvsource="源5/8"><![CDATA[http://v.hdplay.cn/live/72733437534537686132655062565151]]></url>
+<url tvsource="源6/8"><![CDATA[http://zb.v.qq.com:1863/?progid=1128831868]]></url>
+<url tvsource="源7/8"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A32624562504233426A]]></url>
+<url tvsource="源8/8"><![CDATA[http://live9.hbtv.com.cn/channels/zbk/hbws/flv:sd/live.flv]]></url>
+</tv>
+<tv>
+<channelid>C90B208F866D4A40957464D9D68771A3</channelid>
+<name>云南卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=yunnan&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=yunnan&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/yunnan]]></url>
+<url tvsource="源4"><![CDATA[http://qqlive.dnion.com:1863/708402866.flv]]></url>
+<url tvsource="ts"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805170]]></url>
+<url tvsource="源2/6"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdyunnantv.m3u8]]></url>
+<url tvsource="源3/6"><![CDATA[http://web-play.pptv.com/web-m3u8-300181.m3u8]]></url>
+<url tvsource="源4/6"><![CDATA[http://zb.v.qq.com:1863/?progid=708402866]]></url>
+<url tvsource="源5/6"><![CDATA[http://v.hdplay.cn/live/72733437534537686132366957425151]]></url>
+<url tvsource="源6/6"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245426B4233426A]]></url>
+</tv>
+<tv>
+<channelid>F498F8AC86D38A4C9DA1CA042F5CE231</channelid>
+<name>吉林卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=jilin&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=jilin&tag=live&ext=m3u8]]></url>
+<url tvsource="源1"><![CDATA[rtmp://220.181.117.167/live/jilin]]></url>
+<url tvsource="ts"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=804084]]></url>
+<url tvsource="源5"><![CDATA[http://web-play.pptv.com/web-m3u8-300176.m3u8]]></url>
+<url tvsource="源6"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdjilintv.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://v.hdplay.cn/live/727334375345376861325638]]></url>
+<url tvsource="源8"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245364F4233426A]]></url>
+</tv>
+<tv>
+<channelid>4AB888086014044481CE9D91026A8538</channelid>
+<name>四川卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=sichuan&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=sichuan&tag=live&ext=m3u8]]></url>
+<url tvsource="源3"><![CDATA[rtmp://220.181.117.167/live/sichuan]]></url>
+<url tvsource="flv"><![CDATA[http://qqlive.dnion.com:1863/2453801339.flv]]></url>
+<url tvsource="源2/6"><![CDATA[http://web-play.pptv.com/web-m3u8-300177.m3u8]]></url>
+<url tvsource="源3/6"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdsichuantv.m3u8]]></url>
+<url tvsource="源4/6"><![CDATA[http://v.hdplay.cn/live/72733437534537686132364F76425151]]></url>
+<url tvsource="源5/6"><![CDATA[http://zb.v.qq.com:1863/?progid=2453801339]]></url>
+<url tvsource="源6/6"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A32624562324233426A]]></url>
+</tv>
+<tv>
+<channelid>5C342C3E6C9FE646965E9D56BBB912CB</channelid>
+<name>宁夏卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=ningxia&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=ningxia&tag=live&ext=m3u8]]></url>
+<url tvsource="源3"><![CDATA[rtmp://220.181.117.167/live/ningxia]]></url>
+<url tvsource="52"><![CDATA[rtmp://218.95.143.34/live/dslivehd9]]></url>
+<url tvsource="flv"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=804101]]></url>
+<url tvsource="源4"><![CDATA[http://web-play.pptv.com/web-m3u8-300187.m3u8]]></url>
+<url tvsource="源5"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdningxiatv.m3u8]]></url>
+</tv>
+<tv>
+<channelid>9BF82268E07D7F42A8CF0D32FBCEE727</channelid>
+<name>青海卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=qinghai&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=qinghai&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/qinghai]]></url>
+<url tvsource="源3"><![CDATA[http://qqlive.dnion.com:1863/877636586.flv]]></url>
+<url tvsource="m3u8"><![CDATA[http://live122.cnlive.com:1935/live/qinghaiweishi/playlist.m3u8]]></url>
+<url tvsource="源5"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdqinghaitv.m3u8]]></url>
+<url tvsource="源2/7"><![CDATA[http://web-play.pptv.com/web-m3u8-300180.m3u8]]></url>
+<url tvsource="源4/7"><![CDATA[http://zb.v.qq.com:1863/?progid=877636586]]></url>
+<url tvsource="源6/7"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A32624542694233426A]]></url>
+</tv>
+<tv>
+<channelid>B662EC74F7BB8446ABEB7D9667E6A9C1</channelid>
+<name>河北卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=hebei&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=hebei&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/hebei]]></url>
+<url tvsource="flv"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=804097]]></url>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdhebeitv.m3u8]]></url>
+<url tvsource="源2/6"><![CDATA[http://web-play.pptv.com/web-m3u8-300143.m3u8]]></url>
+<url tvsource="源4/6"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_05/flv:800k/live.flv]]></url>
+<url tvsource="源5/6"><![CDATA[http://v.hdplay.cn/live/72733437534537686132656962515151]]></url>
+<url tvsource="源6/6"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A32624562384233426A]]></url>
+</tv>
+<tv>
+<channelid>1C62D100C9CCA04CB640710B3BDEE7F0</channelid>
+<name>东南卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=dongnan&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=dongnan&tag=live&ext=m3u8]]></url>
+<url tvsource="源4"><![CDATA[rtmp://220.181.117.167/live/dongnan]]></url>
+<url tvsource="源2"><![CDATA[http://video.fjtv.net:8080/mms3.0/videoPlay/findBroadcastUrl.jspa?channelID=17&channelType=0]]></url>
+<url tvsource="flv"><![CDATA[http://qqlive.dnion.com:1863/1000637964.flv]]></url>
+<url tvsource="源3"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805173]]></url>
+<url tvsource="源7"><![CDATA[http://ims.veryhd.net/ty/fh_flv.php?flvid=421668]]></url>
+<url tvsource="源2/6"><![CDATA[http://web-play.pptv.com/web-m3u8-300175.m3u8]]></url>
+<url tvsource="源3/6"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hddongnantv.m3u8]]></url>
+<url tvsource="源4/6"><![CDATA[http://zb.v.qq.com:1863/?progid=1000637964]]></url>
+<url tvsource="源5/6"><![CDATA[http://v.hdplay.cn/live/72733437534537686132366B76515151]]></url>
+<url tvsource="源6/6"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A32624562694233426A]]></url>
+</tv>
+<tv>
+<channelid>542DA26F922AB041BB7D491D0375C925</channelid>
+<name>河南卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=henan&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=henan&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/henan]]></url>
+<url tvsource="源3"><![CDATA[http://qqlive.dnion.com:1863/4172356212.flv]]></url>
+<url tvsource="源2/7"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdhenantv.m3u8]]></url>
+<url tvsource="源3/7"><![CDATA[http://web-play.pptv.com/web-m3u8-300159.m3u8]]></url>
+<url tvsource="源4/7"><![CDATA[http://zb.v.qq.com:1863/?progid=4172356212]]></url>
+<url tvsource="源5/7"><![CDATA[http://v.hdplay.cn/live/72733437534537686132656976695151]]></url>
+<url tvsource="源6/7"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245426A4233426A]]></url>
+</tv>
+<tv>
+<channelid>A0D67A165D97E04E9BF2481C5EC74C2E</channelid>
+<name>山西卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shanxi&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shanxi&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/shanxi]]></url>
+<url tvsource="flv"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805168]]></url>
+<url tvsource="m3u8"><![CDATA[http://live122.cnlive.com:1935/live/dashanxiweishi/playlist.m3u8]]></url>
+<url tvsource="源4"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdshan1xitv.m3u8]]></url>
+<url tvsource="源5"><![CDATA[http://web-play.pptv.com/web-m3u8-300167.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://v.hdplay.cn/live/72733437534537686132656A76565151]]></url>
+<url tvsource="源8"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A32624562734233426A]]></url>
+</tv>
+<tv>
+<channelid>EFC13260774B3648994D949BF335732D</channelid>
+<name>陕西卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shanxi1&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源2"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shanxi1&tag=live&ext=m3u8]]></url>
+<url tvsource="源3"><![CDATA[rtmp://220.181.117.167/live/shanxi1]]></url>
+<url tvsource="源4"><![CDATA[http://qqlive.dnion.com:1863/2739752321.flv]]></url>
+<url tvsource="源5"><![CDATA[http://web-play.pptv.com/web-m3u8-300170.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://zb.v.qq.com:1863/?progid=2739752321]]></url>
+</tv>
+<tv>
+<channelid>2F357E7FF0A41D488D12D81CF9175B56</channelid>
+<name>江西卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=jiangxi&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=jiangxi&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://gslb.tv.sohu.com/live?cid=18&sig=se8dwEpwoVLyKTEZsTwufQ..]]></url>
+<url tvsource="源3"><![CDATA[rtmp://220.181.117.167/live/jiangxi]]></url>
+<url tvsource="flv"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=804098]]></url>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdjiangxitv.m3u8]]></url>
+<url tvsource="源5"><![CDATA[http://web-play.pptv.com/web-m3u8-300168.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://v.hdplay.cn/live/72733437534537686132654E62695151]]></url>
+<url tvsource="源8"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245626A4233426A]]></url>
+</tv>
+<tv>
+<channelid>B3BF72DD5E586546838E2160F159B1C9</channelid>
+<name>广西卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=guangxi&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=guangxi&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/guangxi]]></url>
+<url tvsource="源4"><![CDATA[http://qqlive.dnion.com:1863/974433428.flv]]></url>
+<url tvsource="flv"><![CDATA[http://222.216.111.87:5100/nn_live.flv?id=1004]]></url>
+<url tvsource="源3"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805171]]></url>
+<url tvsource="源2/7"><![CDATA[http://web-play.pptv.com/web-m3u8-300178.m3u8]]></url>
+<url tvsource="源5/7"><![CDATA[http://zb.v.qq.com:1863/?progid=974433428]]></url>
+<url tvsource="源6/7"><![CDATA[http://v.hdplay.cn/live/72733437534537686132366A76565151]]></url>
+<url tvsource="源7/7"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245624D4233426A]]></url>
+</tv>
+<tv>
+<channelid>D123679B49153143AF340A8936AB8353</channelid>
+<name>新疆卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=xinjiang&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=xinjiang&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/xinjiang]]></url>
+<url tvsource="ts"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=804102]]></url>
+<url tvsource="m3u8"><![CDATA[http://live122.cnlive.com:1935/live/xinjiangweishi/playlist.m3u8]]></url>
+<url tvsource="源2/6"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdxinjiangtv.m3u8]]></url>
+<url tvsource="源3/6"><![CDATA[http://web-play.pptv.com/web-m3u8-300411.m3u8]]></url>
+<url tvsource="源4/6"><![CDATA[http://v.hdplay.cn/live/72733437534537686132363862695151]]></url>
+<url tvsource="源5/6"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A32624542324233426A]]></url>
+</tv>
+<tv>
+<channelid>381D6F359F66A74989E8B377809A3141</channelid>
+<name>辽宁卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=liaoning&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=liaoning&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/liaoning]]></url>
+<url tvsource="flv"><![CDATA[http://qqlive.dnion.com:1863/3006271240.flv]]></url>
+<url tvsource="源2/6"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdliaoningtv.m3u8]]></url>
+<url tvsource="源3/6"><![CDATA[http://zb.v.qq.com:1863/?progid=3006271240]]></url>
+<url tvsource="源5/6"><![CDATA[http://liveipad.wasu.cn/lnws_ipad/z.m3u8]]></url>
+<url tvsource="源6/6"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A32624536504233426A]]></url>
+</tv>
+<tv>
+<channelid>12696AD62F7FE0448A7363700E605CC7</channelid>
+<name>重庆卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=chongqing&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=chongqing&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/chongqing]]></url>
+<url tvsource="源3"><![CDATA[http://live.64ma.com/livePlay.asp?sohuId=35]]></url>
+<url tvsource="源4"><![CDATA[http://qqlive.dnion.com:1863/2905421066.flv]]></url>
+<url tvsource="源5"><![CDATA[http://ims.veryhd.net/ty/fh_flv.php?flvid=421663]]></url>
+<url tvsource="源1"><![CDATA[rtmp://live5.cqnews.net:1935/live/TVFLV15]]></url>
+<url tvsource="源2/3"><![CDATA[http://live1.cqnews.net/TS/126/126_video.m3u8]]></url>
+<url tvsource="源3/3"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245364E4233426A]]></url>
+</tv>
+<tv>
+<channelid>88C0D66A6C9477479BE12DAA924255D8</channelid>
+<name>贵州卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=guizhou&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=guizhou&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/guizhou]]></url>
+<url tvsource="源4"><![CDATA[http://qqlive.dnion.com:1863/3051487004.flv]]></url>
+<url tvsource="源3"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805200]]></url>
+<url tvsource="m3u8"><![CDATA[http://live122.cnlive.com:1935/live/guizhouweishi/playlist.m3u8]]></url>
+<url tvsource="源2/6"><![CDATA[http://web-play.pptv.com/web-m3u8-300174.m3u8]]></url>
+<url tvsource="源4/6"><![CDATA[http://zb.v.qq.com:1863/?progid=3051487004]]></url>
+<url tvsource="源5/6"><![CDATA[http://v.hdplay.cn/live/72733437534537686132366962425151]]></url>
+<url tvsource="源6/6"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245624F4233426A]]></url>
+</tv>
+<tv>
+<channelid>66A40E64F35FC84199AF33EACC038BF1</channelid>
+<name>西藏卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=xizang&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=xizang&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/xizang]]></url>
+<url tvsource="ts"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=804103]]></url>
+<url tvsource="m3u8"><![CDATA[http://live122.cnlive.com:1935/live/xizangweishi/playlist.m3u8]]></url>
+<url tvsource="源2/4"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdxizangtv.m3u8]]></url>
+<url tvsource="源3/4"><![CDATA[http://web-play.pptv.com/web-m3u8-300412.m3u8]]></url>
+</tv>
+<tv>
+<channelid>18DBDC476638824A9DD062EC958590D4</channelid>
+<name>南方卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=nanfang&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=nanfang&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/nanfang]]></url>
+<url tvsource="源1/3"><![CDATA[http://v.hdplay.cn/live/7235784D53793768613262696233366A6265787570486F3061324C6876334C687632366962456E6A6F456232764146797633656976337A6A6F79426976333179767959597632566B7667364B7145763857515151]]></url>
+<url tvsource="源2/3"><![CDATA[http://master.anewtv.com/real/9.m3u8]]></url>
+<url tvsource="源3/3"><![CDATA[http://v.hdplay.cn/live/72733437534537686132623262695151]]></url>
+</tv>
+<tv>
+<channelid>D5E1ECC89E96814698DBF0F3496F8D7A</channelid>
+<name>内蒙古卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=neimenggu&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=neimenggu&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/neimenggu]]></url>
+<url tvsource="源3"><![CDATA[http://qqlive.dnion.com:1863/2342060367.flv]]></url>
+<url tvsource="源2/6"><![CDATA[http://web-play.pptv.com/web-m3u8-300173.m3u8]]></url>
+<url tvsource="源3/6"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdneimenggutv.m3u8]]></url>
+<url tvsource="源4/6"><![CDATA[http://zb.v.qq.com:1863/?progid=2342060367]]></url>
+<url tvsource="源5/6"><![CDATA[http://v.hdplay.cn/live/72733437534537686132367376565151]]></url>
+<url tvsource="源6/6"><![CDATA[http://v.hdplay.cn/live/53357A52616B5A326245424F4233426A]]></url>
+</tv>
+<tv>
+<channelid>40E5BB256F4387448CBEB21C595570F3</channelid>
+<name>黑龙江卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=heilongjiang&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=heilongjiang&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/heilongjiang]]></url>
+<url tvsource="flv"><![CDATA[http://125.211.216.199/channels/hljtv/wspd/flv:sd/live]]></url>
+<url tvsource="源2/3"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdheilongjiangtv.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C1921788091C3F4584D9848188901109</channelid>
+<name>海峡卫视</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300403.m3u8]]></url>
+</tv>
+<tv>
+<channelid>723FBED759A70C4CA58537D6B7B45C54</channelid>
+<name>旅游卫视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=lvyou&tag=live&ext=m3u8&sign=live_ipad]]></url>
+</tv>
+<tv>
+<channelid>211F3F57C01064448FD5B6F5F393A326</channelid>
+<name>兵团卫视</name>
+<url tvsource="源"><![CDATA[http://web-play.pptv.com/web-m3u8-300157.m3u8]]></url>
+</tv>
+<tv>
+<channelid>A1EC40FD2951C54D8E9D85F73E880FA1</channelid>
+<name>乐视电影</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=channel_1_pc&tag=live&ext=m3u8&sign=live_ipad]]></url>
+</tv>
+<tv ><channelid >EC68F4274CD0DC4DB71BFC5FC6B21573</channelid>
+<name >音乐直播</name>
+<url tvsource="源1" ><![CDATA[http://113.105.226.137:81/youkulive/101/400/0/]]></url>
+</tv>
+<tv>
+<channelid>A6B7EA9F5CF1114DBC2DB75FE730AECB</channelid>
+<name>CBN第一财经</name>
+<url tvsource="源1"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/dycj/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>94F722D69ADD624FA354430D5F59F7BE</channelid>
+<name>留学世界</name>
+<url tvsource="源1"><![CDATA[http://r1.cztv.com/channels/109/500.flv/live]]></url>
+<url tvsource="源3"><![CDATA[http://r1.cztv.com/channels/109/500.flv/live.flv]]></url>
+</tv>
+<tv ><channelid >CC1D7B3818C55842BE5CC478BF156233</channelid>
+<name >四海钓鱼</name>
+<url tvsource="源1" ><![CDATA[http://221.213.100.220/live/43/m00.m3u8]]></url>
+</tv>
+<tv>
+<channelid>3CF1CA9584207E47A54677FEE3A1EA4A</channelid>
+<name>20M高清|河北经济[超清]</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_02/flv:2000k/live]]></url>
+</tv>
+<tv>
+<channelid>3B59EBF88D020F4A86A30467EDF9B3D0</channelid>
+<name>20M高清|河北都市[超清]</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_01/flv:2000k/live]]></url>
+</tv>
+<tv>
+<channelid>E436B92374E63D42BD8840BE1FFDD3FF</channelid>
+<name>20M高清|河北影视[超清]</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_06/flv:2000k/live]]></url>
+</tv>
+<tv>
+<channelid>3DA876445176FE4F92EE968E4E7E44A4</channelid>
+<name>20M高清|河北少儿[超清]</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_07/flv:2000k/live]]></url>
+</tv>
+<tv>
+<channelid>9443FC336188E04E8B0381A333CE7BD4</channelid>
+<name>20M高清|河北公共[超清]</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_08/flv:2000k/live]]></url>
+</tv>
+<tv>
+<channelid>DB88D896D705DA468747CDCFF61A059B</channelid>
+<name>20M高清|河北农民[超清]</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_09/flv:2000k/live]]></url>
+</tv>
+<tv>
+<channelid>3176B1DA41598A40AD4235F4EABE89EC</channelid>
+<name>20M高清|CCTV1高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/15.stream]]></url>
+<url tvsource="源2"><![CDATA[http://url.52itv.cn/1352089486.direct]]></url>
+</tv>
+<tv>
+<channelid>47ACFD19F7864E4A894FEE71A91FC7C2</channelid>
+<name>20M高清|CCTV2高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/14.stream]]></url>
+</tv>
+<tv>
+<channelid>EB930F4B749D2640A0D2B2B3C2E19F4D</channelid>
+<name>20M高清|CCTV3高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/13.stream]]></url>
+</tv>
+<tv>
+<channelid>48A4541D5EC13C47B5BED1558E13AF6E</channelid>
+<name>20M高清|CCTV5高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/11.stream]]></url>
+<url tvsource="源2"><![CDATA[http://tinyurl.com/btxqnca]]></url>
+</tv>
+<tv>
+<channelid>CDEF3BD2C1A53F4B8237C4D075A5E368</channelid>
+<name>20M高清|CCTV6高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/10.stream]]></url>
+</tv>
+<tv>
+<channelid>795DB79533B4CF4A94524B67759954F7</channelid>
+<name>20M高清|江苏城市高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/19.stream]]></url>
+</tv>
+<tv>
+<channelid>20404020C215F6459CBBA715C72D3F6C</channelid>
+<name>20M高清|江苏综艺高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/20.stream]]></url>
+</tv>
+<tv>
+<channelid>A07F78013198D241B643DEFA87E0951E</channelid>
+<name>20M高清|江苏公共高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/6401.stream]]></url>
+</tv>
+<tv>
+<channelid>B00482CC37E87C46AEEFD30B3E4543D2</channelid>
+<name>20M高清|江苏影视高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/18.stream]]></url>
+</tv>
+<tv>
+<channelid>B73D7C11B841154994C9F6F29D8F762F</channelid>
+<name>20M高清|江苏教育高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/22.stream]]></url>
+</tv>
+<tv>
+<channelid>91F7C372B26B434DAF9271504487AD7C</channelid>
+<name>20M高清|江苏体育高清</name>
+<url tvsource="源1"><![CDATA[rtsp://74.82.62.53:1935/liverepeater/17.stream]]></url>
+</tv>
+<tv>
+<channelid>513422C9526E3C448E6FFA8E99D46715</channelid>
+<name>北京新闻频道</name>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdbtv9.m3u8]]></url>
+</tv>
+<tv>
+<channelid>0630C309AA93ED47A3E85B4089793D96</channelid>
+<name>北京文艺频道</name>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdbtv2.m3u8]]></url>
+<url tvsource="源1"><![CDATA[http://v.veryhd.net/ty/play?sohuid=308]]></url>
+<url tvsource="源2"><![CDATA[http://tuifei.sinaapp.com/box/lists/tv/sohu.php?id=308]]></url>
+<url tvsource="源3"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=bjwy&tag=live&ext=m3u8&sign=live_ipad]]></url>
+</tv>
+<tv>
+<channelid>837FA18080E9714F8B5A5CD3C88DC821</channelid>
+<name>北京科教频道</name>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdbtv3.m3u8]]></url>
+</tv>
+<tv>
+<channelid>3EE47455CB997342B75B484ED24645BD</channelid>
+<name>北京影视频道</name>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdbtv4.m3u8]]></url>
+</tv>
+<tv>
+<channelid>B04A4D39CB74164FAC103A1453C5A2AE</channelid>
+<name>北京财经频道</name>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdbtv5.m3u8]]></url>
+</tv>
+<tv>
+<channelid>B04A4D39CB74164FAC103A1453C5A3AE</channelid>
+<name>北京生活频道</name>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdbtv7.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C4EFAC9DA52D9D40BBFA7F0BAC652334</channelid>
+<name>北京青年频道</name>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdbtv8.m3u8]]></url>
+</tv>
+<tv>
+<channelid>064B69ACBFD3334BBE57E7DDC4F377E7</channelid>
+<name>北京体育频道</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=btv6_800&tag=live&ext=m3u8]]></url>
+<url tvsource="m3u8"><![CDATA[http://sw.live.cntv.cn/cctv_p2p_hdbtv6.m3u8]]></url>
+</tv>
+<tv>
+<channelid>3D597B1C14C0CF40BA628048F2363570</channelid>
+<name>北京国际频道</name>
+<url tvsource="源1"><![CDATA[http://61.67.123.93/live/btv_1200k.stream/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>A84762042140D743B33C297032FD0E17</channelid>
+<name>广西卫视</name>
+<url tvsource="源1"><![CDATA[http://222.216.111.88:5000/nn_live.flv?id=1004]]></url>
+</tv>
+<tv>
+<channelid>29C823749647FB48B7BD1853E6C8AF2D</channelid>
+<name>广西影视</name>
+<url tvsource="源1"><![CDATA[http://222.216.111.88:5000/nn_live.flv?id=1001]]></url>
+</tv>
+<tv>
+<channelid>0697279666381B4D990EBAA0BD08746C</channelid>
+<name>广西综艺</name>
+<url tvsource="源1"><![CDATA[http://222.216.111.88:5000/nn_live.flv?id=1005]]></url>
+</tv>
+<tv>
+<channelid>DF10F786AD43C54880038467855F66B2</channelid>
+<name>广西购物</name>
+<url tvsource="源1"><![CDATA[http://222.216.111.88:5000/nn_live.flv?id=1002]]></url>
+</tv>
+<tv>
+<channelid>25DE2C4D2B4BBB479BBD42B504E665C6</channelid>
+<name>湖北综合</name>
+<url tvsource="源1"><![CDATA[http://live9.hbtv.com.cn/channels/zbk/hbtv/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>947FE4560D45844B8C1E5B61D2461693</channelid>
+<name>湖北经视</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300447.m3u8]]></url>
+</tv>
+<tv>
+<channelid>D2ABBEC18C983E42A1BFA64097186588</channelid>
+<name>湖北碟市</name>
+<url tvsource="源1"><![CDATA[http://live9.hbtv.com.cn/channels/zbk/dspd/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>4F6BC75B1E729E4599CE03724ED4B382</channelid>
+<name>湖北公共</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300413.m3u8]]></url>
+</tv>
+<tv>
+<channelid>9D460DF7EC43E443A42B93C5C76DE448</channelid>
+<name>湖北教育</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300414.m3u8]]></url>
+</tv>
+<tv>
+<channelid>7FEEC2DADB1C7E4EBF9BF88F2E4F8D14</channelid>
+<name>湖北垄上</name>
+<url tvsource="源1"><![CDATA[http://59.175.153.186/channels/zbk/gspd/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>99CE7F91C1A68B49A84228CCCF65890F</channelid>
+<name>武汉2</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300416.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C2DA6AACD8AFDD488CB5D09604383B89</channelid>
+<name>武汉3</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300415.m3u8]]></url>
+</tv>
+<tv>
+<channelid>9C3C24A3C7A9EA44BC7DDF7051E19A0C</channelid>
+<name>三峡综合</name>
+<url tvsource="源1"><![CDATA[http://219.139.134.178/live/ch1.m3u8]]></url>
+</tv>
+<tv>
+<channelid>AC2B4DA737611543AD9E9C32DE76B8A5</channelid>
+<name>三峡公共</name>
+<url tvsource="源1"><![CDATA[http://219.139.134.178/live/ch3.m3u8]]></url>
+</tv>
+<tv>
+<channelid>D3B1CEB62561E64DBC9F1A4005D7938C</channelid>
+<name>三峡综艺</name>
+<url tvsource="源1"><![CDATA[http://219.139.134.178/live/ch5.m3u8]]></url>
+</tv>
+<tv>
+<channelid>DDBAAD069E55644AA9D88D5B57602B15</channelid>
+<name>湖南经视</name>
+<url tvsource="源2"><![CDATA[http://v.hdplay.cn/live/704738437132376861327A51]]></url>
+</tv>
+<tv>
+<channelid>54B887A3E94E1B4E950D303A817402B1</channelid>
+<name>湖南|先锋纪录</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226006/10000100000000060000000000083521_0.smil]]></url>
+</tv>
+<tv>
+<channelid>D1559EAD9078B94493109297EFA4603F</channelid>
+<name>湖南国际频道</name>
+<url tvsource="源1"><![CDATA[http://61.67.123.93/live/hunantv_1200k.stream/playlist.m3u8]]></url>
+<url tvsource="源1"><![CDATA[rtmp://61.67.123.93/live/hunantv_1200k.stream]]></url>
+</tv>
+<tv>
+<channelid>12BFAEB154FF714D83E2A3F470983AA4</channelid>
+<name>长沙女性频道</name>
+<url tvsource="源2"><![CDATA[rtmp://220.169.44.38/live/cstv3_800k]]></url>
+</tv>
+<tv>
+<channelid>C6C7E10014BFA743A52444C7DC15E84B</channelid>
+<name>长沙政法频道</name>
+<url tvsource="源3"><![CDATA[http://web-play.pptv.com/web-m3u8-300593.m3u8]]></url>
+<url tvsource="源4"><![CDATA[rtmp://220.169.44.38/live/cstv2_800k]]></url>
+</tv>
+<tv>
+<channelid>170F622E0BACF74A9543FC3A63714711</channelid>
+<name>长沙公共频道</name>
+<url tvsource="源2"><![CDATA[rtmp://220.169.44.38/live/cstv5_800k]]></url>
+</tv>
+<tv>
+<channelid>1442FF0E0187BA49A7DF961808F6E961</channelid>
+<name>长沙经贸频道</name>
+<url tvsource="源2"><![CDATA[rtmp://220.169.44.38/live/cstv4_800k]]></url>
+</tv>
+<tv>
+<channelid>A09EB6BA22DCCC4EA2ADA7392EEF8E39</channelid>
+<name>广州|广州少儿</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300408.m3u8]]></url>
+</tv>
+<tv>
+<channelid>E5633FD302F68C4BB28FF67001E46A0B</channelid>
+<name>广州|广州经济</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300409.m3u8]]></url>
+</tv>
+<tv>
+<channelid>FA4CC8F39936694D86F4290811F635C2</channelid>
+<name>广州|广州综合</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300410.m3u8]]></url>
+</tv>
+<tv>
+<channelid>B4FD44BACB81C1408A39BA80BC21B9A2</channelid>
+<name>广州|广州新闻</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300456.m3u8]]></url>
+</tv>
+<tv>
+<channelid>7A17412712A8534587DB0ED990880375</channelid>
+<name>广州|广州影视</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300451.m3u8]]></url>
+</tv>
+<tv>
+<channelid>A80B57EFBCA76C4C9A50A58D6C0DEDDD</channelid>
+<name>河北|河北卫视</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_05/flv:800k/live]]></url>
+</tv>
+<tv>
+<channelid>3BF3BBBB9EFDE745A9E3D1BF780B3BD2</channelid>
+<name>河北|河北都市</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_01/flv:800k/live]]></url>
+</tv>
+<tv>
+<channelid>8B8F540A54B6EC44A0288E29F15AE82D</channelid>
+<name>河北|河北经济</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_02/flv:800k/live]]></url>
+</tv>
+<tv>
+<channelid>557F9F2A9A8B5D4B91EE40C908E7D7BA</channelid>
+<name>河北|河北购物</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_03/flv:800k/live]]></url>
+</tv>
+<tv>
+<channelid>5BF2E33C0B40254C8CCF80A4A6894C70</channelid>
+<name>河北|河北影视</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_06/flv:800k/live]]></url>
+</tv>
+<tv>
+<channelid>C1703AAD6D8390489601C6DD226C043C</channelid>
+<name>河北|河北少儿</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_07/flv:800k/live]]></url>
+</tv>
+<tv>
+<channelid>B7AD410881FBD342B9364D63282A3547</channelid>
+<name>河北|河北公共</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_08/flv:800k/live]]></url>
+</tv>
+<tv>
+<channelid>F9394F6EDFEC594A996E58882034762F</channelid>
+<name>广东|广东珠江</name>
+<url tvsource="源1"><![CDATA[http://zb.v.qq.com:1863/?progid=1926463423]]></url>
+</tv>
+<tv>
+<channelid>50AF7120FC06D840A3BE8343B2BDD59A</channelid>
+<name>广东|广东公共</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300458.m3u8]]></url>
+</tv>
+<tv>
+<channelid>CC6F69B9B472704A81FE3448E49ABE0E</channelid>
+<name>广东|广东新闻</name>
+<url tvsource="源1"><![CDATA[http://zb.v.qq.com:1863/?progid=2631736979]]></url>
+</tv>
+<tv>
+<channelid>CB9627547119E4479DBC833C9FC511F9</channelid>
+<name>广东|广东移动</name>
+<url tvsource="源1"><![CDATA[http://124.160.184.108/live/5/45/d8ade53d048c4e379acede6182717801.m3u]]></url>
+</tv>
+<tv>
+<channelid>253DC0237ACA53458073D73D6F9A4947</channelid>
+<name>广东|广东会展</name>
+<url tvsource="源1"><![CDATA[http://124.160.184.108/live/5/45/0da7a16dd81f45408097961eda8c0842.m3u]]></url>
+</tv>
+<tv>
+<channelid>3CCA52B5193339469E7FE8480BCDF145</channelid>
+<name>广东|广东房产</name>
+<url tvsource="源1"><![CDATA[http://124.160.184.108/live/5/45/6a4868be1b9b4796812ef17fee181978.m3u]]></url>
+</tv>
+<tv>
+<channelid>999DA981FD24194BB7EFD2FF57CBF015</channelid>
+<name>广东|岭南戏曲</name>
+<url tvsource="源1"><![CDATA[http://124.160.184.108/live/5/45/b24a199e538448dbaab30e77e9c68ab7.m3u]]></url>
+</tv>
+<tv>
+<channelid>CFE42EA00F00CF4EBCB08D6AE06239DD</channelid>
+<name>广东|嘉佳卡通</name>
+<url tvsource="源1"><![CDATA[http://zb.v.qq.com:1863/?progid=1249794075]]></url>
+</tv>
+<tv>
+<channelid>50484998E09E2C4692BB9D83D455524E</channelid>
+<name>广东|珠江电影</name>
+<url tvsource="源1"><![CDATA[http://124.160.184.108/live/5/45/ce97641cf59b446e99f6f6842e57eb82.m3u]]></url>
+</tv>
+<tv>
+<channelid>F93E6811B4205243840183CA8ED08E0D</channelid>
+<name>广东|邮轮旅游</name>
+<url tvsource="源1"><![CDATA[http://124.160.184.108/live/5/45/f0aa5e248bec479b839079392d1d22f6.m3u]]></url>
+</tv>
+<tv>
+<channelid>6E07BBE4B300924DAAA8B88B07231384</channelid>
+<name>广东|南方经视</name>
+<url tvsource="源1"><![CDATA[http://master.anewtv.com/real/8.m3u8]]></url>
+</tv>
+<tv>
+<channelid>A54983B6D5A39F449FBF73A7D022D8E7</channelid>
+<name>广东|南方卫视</name>
+<url tvsource="源1"><![CDATA[http://master.anewtv.com/real/9.m3u8]]></url>
+</tv>
+<tv>
+<channelid>AF5D6AA7B6375F49B4F426EB6A3F2FAE</channelid>
+<name>广东|南方综艺</name>
+<url tvsource="源1"><![CDATA[http://master.anewtv.com/real/12.m3u8]]></url>
+</tv>
+<tv>
+<channelid>4C83AC19CA0D3E4BB6A3CACDCB1D2642</channelid>
+<name>广东|南方影视</name>
+<url tvsource="源1"><![CDATA[http://master.anewtv.com/real/10.m3u8]]></url>
+</tv>
+<tv>
+<channelid>E13FEEF788816C4ABD130C42F35DC673</channelid>
+<name>广东|南方少儿</name>
+<url tvsource="源1"><![CDATA[http://124.160.184.108/live/5/45/54c852d900ba4b14a8c4817d79cea82a.m3u]]></url>
+</tv>
+<tv>
+<channelid>AFE4C5133264E0459C6A1C6E48512E0A</channelid>
+<name>广东|广州影视</name>
+<url tvsource="源1"><![CDATA[http://124.160.184.108/live/5/45/3daf83ef89e242d3b6bac48083b4f44f.m3u]]></url>
+</tv>
+<tv>
+<channelid>41F2194C7C11EC4B82F8FE90C5E73355</channelid>
+<name>广东|广州竞赛</name>
+<url tvsource="源1"><![CDATA[http://124.160.184.108/live/5/45/6cbdc0e734a940eb9966aed3cbeafd6a.m3u]]></url>
+</tv>
+<tv>
+<channelid>1E3E5A99455F90428D3222358B5399DB</channelid>
+<name>广东|深圳电视剧</name>
+<url tvsource="源1"><![CDATA[http://tsl1.hls.cutv.com/cutvlive/4azbkoY/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>7B860E8CBC3D96429B6E16053F8E9725</channelid>
+<name>广东|深圳娱乐</name>
+<url tvsource="源1"><![CDATA[http://tsl1.hls.cutv.com/cutvlive/1q4iPng/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>8CD01966E23E4148885C5B28820446F8</channelid>
+<name>广东|深圳都市</name>
+<url tvsource="源1"><![CDATA[http://tsl1.hls.cutv.com/cutvlive/ZwxzUXr/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>B4C23099B40E0D4A91FE9F3012B262BB</channelid>
+<name>广东|深圳公共</name>
+<url tvsource="源1"><![CDATA[http://tsl1.hls.cutv.com/cutvlive/2q76Sw2/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>0E86B71A3639AD42B122C8CB12FFBA2A</channelid>
+<name>广东|深圳少儿</name>
+<url tvsource="源1"><![CDATA[http://tsl1.hls.cutv.com/cutvlive/1SIQj6s/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>566AB315F2C4B14AA8C0102AFB4E391C</channelid>
+<name>广东|深圳国际</name>
+<url tvsource="源1"><![CDATA[rtmp://113.105.76.231/sztv_int/livestream]]></url>
+</tv>
+<tv>
+<channelid>DF4D41E9C32D9E4AAE86800DA3DA7FEC</channelid>
+<name>广东|深圳财经生活</name>
+<url tvsource="源1"><![CDATA[http://tsl1.hls.cutv.com/cutvlive/3vlcoxP/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>FC76CF241CA2CB42BFF02BF48C1A106F</channelid>
+<name>广东|深圳体育健康</name>
+<url tvsource="源1"><![CDATA[http://tsl1.hls.cutv.com/cutvlive/4i8RVtK/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>52BB30D0C4935D41B61CEDCCBB0D4771</channelid>
+<name>广东|台山新闻综合</name>
+<url tvsource="源1"><![CDATA[http://220.249.195.38/live/live.stream/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>0FEC670C10290F47AB8F272A5882A29D</channelid>
+<name>上海新闻综合</name>
+<url tvsource="东方宽频"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/xwzh/flv:sd/live]]></url>
+<url tvsource="源1/3"><![CDATA[http://web-play.pptv.com/web-m3u8-300156.m3u8]]></url>
+<url tvsource="源3/3"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/xwzh/flv:sd/live.flv]]></url>
+</tv>
+<tv>
+<channelid>95094A8FCF176441A2E8B7A384DF7531</channelid>
+<name>上海电视剧</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300153.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://www.7po.com/xmlinfo.php?tp=145&tn=1]]></url>
+</tv>
+<tv>
+<channelid>9BEA92770DEA3F44B572EA403475EF3E</channelid>
+<name>上海东方电影</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300149.m3u8]]></url>
+<url tvsource="源5"><![CDATA[http://www.7po.com/xmlinfo.php?tp=143&tn=1]]></url>
+</tv>
+<tv>
+<channelid>A93D3939FE75C044AA8C4EA567B0529D</channelid>
+<name>上海教育频道</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300150.m3u8]]></url>
+</tv>
+<tv>
+<channelid>E1AE057B9A337D469FD82F4A21EB2EDD</channelid>
+<name>上海生活时尚</name>
+<url tvsource="东方宽频电信 (http)"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/xsk/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>95E921230825204D882D2FCE150D98A6</channelid>
+<name>上海文娱频道</name>
+<url tvsource="百视通"><![CDATA[http://live.bestvcdn.net/live/wypd/01.m3u8]]></url>
+<url tvsource="东方宽频"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/ics/flv:sd/live]]></url>
+<url tvsource="源4"><![CDATA[http://live.bestvcdn.net/live/wypd/02.m3u8]]></url>
+<url tvsource="源5"><![CDATA[http://live.bestvcdn.net/live/wypd/04.m3u8]]></url>
+<url tvsource="源7"><![CDATA[http://live.bestvcdn.net/live/wypd/03.m3u8]]></url>
+<url tvsource="源8"><![CDATA[http://live.bestvcdn.net/live/wypd/workflow1.m3u8]]></url>
+<url tvsource="源9"><![CDATA[http://web-play.pptv.com/web-m3u8-300214.m3u8]]></url>
+<url tvsource="源10"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/ics/flv:sd/live.flv]]></url>
+</tv>
+<tv>
+<channelid>C4B2AF60C985D04A8E9B781F90699DC2</channelid>
+<name>东方财经</name>
+<url tvsource="源2/3"><![CDATA[http://web-play.pptv.com/web-m3u8-300446.m3u8]]></url>
+</tv>
+<tv>
+<channelid>19EDE744AF57C949A955FE69280F1B18</channelid>
+<name>上海艺术人文</name>
+<url tvsource="东方宽频"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/ysrw/flv:sd/live]]></url>
+<url tvsource="源1/3"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/ysrw/flv:sd/live.flv]]></url>
+<url tvsource="源2/3"><![CDATA[http://web-play.pptv.com/web-m3u8-300454.m3u8]]></url>
+</tv>
+<tv>
+<channelid>5B93320BD6D5134289A100945D21346D</channelid>
+<name>东方娱乐频道</name>
+<url tvsource="东方宽频"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/ylpd/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>0000E8E96B92DC40BC06DA52C8F6C539</channelid>
+<name>上海星尚频道</name>
+<url tvsource="东方宽频"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/shss/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>96EBA6D88B72AF4F83866C0ED3D084A9</channelid>
+<name>上海纪实频道</name>
+<url tvsource="东方宽频"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/jspd/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>395E82305EAAEA4BAD18D278047418DA</channelid>
+<name>上海五星体育</name>
+<url tvsource="东方宽频"><![CDATA[http://livehttp.wasu.cn:18080/shanghaisports.flv]]></url>
+</tv>
+<tv>
+<channelid>6B3F25D0D248E647B5B2FB83CBEADFA0</channelid>
+<name>上海体育频道</name>
+<url tvsource="乐视"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shanghaitiyu_800&tag=live&ext=m3u8]]></url>
+<url tvsource="源2"><![CDATA[rtmp://220.181.117.167/live/shanghaitiyu_800]]></url>
+</tv>
+<tv>
+<channelid>C514BF23866E154494A62E28E92F0CBC</channelid>
+<name>上海购物频道</name>
+<url tvsource="东方宽频"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/xjpd/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>B0234</channelid>
+<name>黑龙江传媒</name>
+<url tvsource="源1"><![CDATA[http://live2.hljtv.com/channels/hljtv/sjpd/flv:hd]]></url>
+</tv>
+<tv>
+<channelid>B0235</channelid>
+<name>黑龙江导视</name>
+<url tvsource="官方"><![CDATA[http://live2.hljtv.com/channels/hljtv/daoshi/flv:hd/live]]></url>
+<url tvsource="源4"><![CDATA[http://www.7po.com/xmlinfo.php?tp=460&tn=1]]></url>
+<url tvsource=""><![CDATA[http://live2.hljtv.com/channels/hljtv/daoshi/flv:hd]]></url>
+<url tvsource=""><![CDATA[http://125.211.216.198/channels/hljtv/daoshi/flv:sd/live?1348477654763]]></url>
+</tv>
+<tv>
+<channelid>B0236</channelid>
+<name>黑龙江第七</name>
+<url tvsource="源1"><![CDATA[http://125.211.216.198/channels/hljtv/dqpd/flv:sd/live?1348477449985]]></url>
+</tv>
+<tv>
+<channelid>B0237</channelid>
+<name>黑龙江都市</name>
+<url tvsource="官方500"><![CDATA[http://125.211.216.199/channels/hljtv/dspd/flv:sd/live]]></url>
+<url tvsource="源1"><![CDATA[http://live2.hljtv.com/channels/hljtv/dspd/flv:hd/live]]></url>
+<url tvsource="源4"><![CDATA[http://www.7po.com/xmlinfo.php?tp=455&tn=2]]></url>
+<url tvsource=""><![CDATA[http://live2.hljtv.com/channels/hljtv/dspd/flv:hd]]></url>
+</tv>
+<tv>
+<channelid>B0238</channelid>
+<name>黑龙江法制</name>
+<url tvsource="源1"><![CDATA[http://live2.hljtv.com/channels/hljtv/fzpd/flv:hd]]></url>
+<url tvsource="源2"><![CDATA[http://www.7po.com/xmlinfo.php?tp=456&tn=1]]></url>
+</tv>
+<tv>
+<channelid>B0239</channelid>
+<name>黑龙江公共</name>
+<url tvsource="官方500"><![CDATA[http://125.211.216.199/channels/hljtv/ggpd/flv:sd/live]]></url>
+<url tvsource="源1"><![CDATA[http://live2.hljtv.com/channels/hljtv/ggpd/flv:hd/live]]></url>
+<url tvsource="源5"><![CDATA[http://www.7po.com/xmlinfo.php?tp=457&tn=1]]></url>
+<url tvsource=""><![CDATA[http://live2.hljtv.com/channels/hljtv/ggpd/flv:hd]]></url>
+<url tvsource=""><![CDATA[http://125.211.216.198/channels/hljtv/ggpd/flv:sd/live?1348477336133]]></url>
+</tv>
+<tv>
+<channelid>B0240</channelid>
+<name>黑龙江考试频道</name>
+<url tvsource="官方500"><![CDATA[http://125.211.216.199/channels/hljtv/kspd/flv:sd/live]]></url>
+<url tvsource="源1"><![CDATA[http://live2.hljtv.com/channels/hljtv/kspd/flv:hd/live]]></url>
+<url tvsource="源5"><![CDATA[http://www.7po.com/xmlinfo.php?tp=459&tn=1]]></url>
+<url tvsource=""><![CDATA[http://live2.hljtv.com/channels/hljtv/kspd/flv:hd]]></url>
+<url tvsource=""><![CDATA[http://125.211.216.198/channels/hljtv/kspd/flv:sd/live?1348477619091]]></url>
+</tv>
+<tv>
+<channelid>B0241</channelid>
+<name>黑龙江龙传媒</name>
+<url tvsource="官方"><![CDATA[http://125.211.216.199/channels/hljtv/sjpd/flv:sd/live]]></url>
+<url tvsource="源1"><![CDATA[http://live2.hljtv.com/channels/hljtv/sjpd/flv:hd/live]]></url>
+<url tvsource="源3"><![CDATA[http://www.7po.com/xmlinfo.php?tp=458&tn=1]]></url>
+</tv>
+<tv>
+<channelid>B0242</channelid>
+<name>黑龙江少儿</name>
+<url tvsource="官方"><![CDATA[http://live2.hljtv.com/channels/hljtv/dqpd/flv:hd/live]]></url>
+<url tvsource=""><![CDATA[http://live2.hljtv.com/channels/hljtv/dqpd/flv:hd]]></url>
+</tv>
+<tv>
+<channelid>B0243</channelid>
+<name>黑龙江手机</name>
+<url tvsource="源1"><![CDATA[http://125.211.216.198/channels/hljtv/sjpd/flv:sd/live?1348477528322]]></url>
+</tv>
+<tv>
+<channelid>B0244</channelid>
+<name>黑龙江文艺</name>
+<url tvsource="官方500"><![CDATA[http://125.211.216.199/channels/hljtv/wypd/flv:sd/live]]></url>
+<url tvsource="源1"><![CDATA[http://live2.hljtv.com/channels/hljtv/wypd/flv:hd/live]]></url>
+<url tvsource="源5"><![CDATA[http://www.7po.com/xmlinfo.php?tp=454&tn=1]]></url>
+<url tvsource=""><![CDATA[http://live2.hljtv.com/channels/hljtv/wypd/flv:hd]]></url>
+<url tvsource=""><![CDATA[http://125.211.216.198/channels/hljtv/wypd/flv:sd/live?1348477116718]]></url>
+</tv>
+<tv>
+<channelid>B0245</channelid>
+<name>黑龙江新闻</name>
+<url tvsource="官方500"><![CDATA[http://125.211.216.199/channels/hljtv/fzpd/flv:sd/live]]></url>
+<url tvsource="源1"><![CDATA[http://live2.hljtv.com/channels/hljtv/fzpd/flv:hd/live]]></url>
+<url tvsource=""><![CDATA[http://125.211.216.198/channels/hljtv/fzpd/flv:sd/live?1348477336133]]></url>
+</tv>
+<tv>
+<channelid>B0246</channelid>
+<name>黑龙江影视</name>
+<url tvsource="源1"><![CDATA[http://live2.hljtv.com/channels/hljtv/yspd/flv:hd/live]]></url>
+<url tvsource=""><![CDATA[http://live2.hljtv.com/channels/hljtv/yspd/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>F7E4F18018B67D4EA2F40E685CCBC434</channelid>
+<name>黑龙江|大庆百湖频道</name>
+<url tvsource="源1"><![CDATA[rtmp://live1.baihuwang.com:1935/live/bh]]></url>
+</tv>
+<tv>
+<channelid>C41706FDAF2B7E4C8CC8F591A1433356</channelid>
+<name>黑龙江|大庆科教频道</name>
+<url tvsource="源1"><![CDATA[rtmp://live1.baihuwang.com:1935/live/kj]]></url>
+</tv>
+<tv>
+<channelid>41C3C183F6676842A7ABFDC082218B29</channelid>
+<name>黑龙江|大庆新闻综合</name>
+<url tvsource="源1"><![CDATA[rtmp://live1.baihuwang.com:1935/live/zh]]></url>
+</tv>
+<tv>
+<channelid>63849CA9B193D746BE4857DE6163CE52</channelid>
+<name>黑龙江|大庆影视频道</name>
+<url tvsource="源1"><![CDATA[rtmp://live1.baihuwang.com:1935/live/ys]]></url>
+</tv>
+<tv>
+<channelid>778AB9245ECEF0438FFBF7C52F342386</channelid>
+<name>四川SCTV1 卫视频道</name>
+<url tvsource="源1"><![CDATA[rtmp://122.11.48.150/SRT_Live/SCTV1_M]]></url>
+</tv>
+<tv>
+<channelid>0E2C296EBC9077489F7009C65B6024AA</channelid>
+<name>四川SCTV2文化旅游</name>
+<url tvsource="官方"><![CDATA[rtmp://rtmp.sctv.com/SRT_Live/SCTV2_N]]></url>
+<url tvsource="源1"><![CDATA[rtmp://122.11.48.150/SRT_Live/SCTV2_M]]></url>
+</tv>
+<tv>
+<channelid>3A60FF6A63F14B48A7ED20B5C6B4C73F</channelid>
+<name>四川SCTV3 财经频道</name>
+<url tvsource="官方"><![CDATA[rtmp://rtmp.sctv.com/SRT_Live/SCTV3_N]]></url>
+<url tvsource="源3"><![CDATA[rtmp://122.11.48.150:1935/SRT_Live/_definst_/SCTV3_M.direct]]></url>
+<url tvsource="源1"><![CDATA[rtmp://122.11.48.150/SRT_Live/SCTV3_M]]></url>
+<url tvsource="手机"><![CDATA[rtmp://mlive.sctv.com/SRT_Live/SCTV3_M.stream]]></url>
+<url tvsource="双线"><![CDATA[rtmp://122.11.48.150:1935/SRT_Live/_definst_/SCTV3_M]]></url>
+<url tvsource="联通"><![CDATA[rtmp://119.4.250.55/liveedge/SCTV1_M.stream]]></url>
+</tv>
+<tv>
+<channelid>8AB873B77A50154F99AC9195F5571673</channelid>
+<name>四川SCTV4 新闻资讯频道</name>
+<url tvsource="官方"><![CDATA[rtmp://rtmp.sctv.com/SRT_Live/SCTV4_N]]></url>
+<url tvsource="源1"><![CDATA[rtmp://122.11.48.150/SRT_Live/SCTV4_M]]></url>
+<url tvsource="手机"><![CDATA[rtmp://mlive.sctv.com/SRT_Live/SCTV4_M.stream]]></url>
+</tv>
+<tv>
+<channelid>4E81B8B18AB52746A83017EBC3DDF29C</channelid>
+<name>四川SCTV5 影视文艺频道</name>
+<url tvsource="官方"><![CDATA[rtmp://rtmp.sctv.com/SRT_Live/SCTV5_N]]></url>
+<url tvsource="源1"><![CDATA[rtmp://122.11.48.150/SRT_Live/SCTV5_M]]></url>
+<url tvsource="手机"><![CDATA[rtmp://mlive.sctv.com/SRT_Live/SCTV5_M.stream]]></url>
+</tv>
+<tv>
+<channelid>129786CA935E6B4F99D2D463E7BFEA11</channelid>
+<name>四川SCTV6 星空购物频道</name>
+<url tvsource="官方"><![CDATA[rtmp://rtmp.sctv.com/SRT_Live/SCTV6_N]]></url>
+<url tvsource="源1"><![CDATA[rtmp://122.11.48.150/SRT_Live/SCTV6_M]]></url>
+<url tvsource="手机"><![CDATA[rtmp://mlive.sctv.com/SRT_Live/SCTV6_M.stream]]></url>
+</tv>
+<tv>
+<channelid>A8DFF47B3361DC49881E40A79A896E0B</channelid>
+<name>四川SCTV7 妇女儿童频道</name>
+<url tvsource="官方"><![CDATA[rtmp://rtmp.sctv.com/SRT_Live/SCTV7_N]]></url>
+<url tvsource="源1"><![CDATA[rtmp://122.11.48.150/SRT_Live/SCTV7_M]]></url>
+<url tvsource="手机"><![CDATA[rtmp://mlive.sctv.com/SRT_Live/SCTV7_M.stream]]></url>
+</tv>
+<tv>
+<channelid>B884B0807FC0194C946EF3B7CBE6154D</channelid>
+<name>四川SCTV8 科教频道</name>
+<url tvsource="手机"><![CDATA[rtmp://mlive.sctv.com/SRT_Live/SCJY_M.stream]]></url>
+<url tvsource="源1"><![CDATA[rtmp://122.11.48.150/SRT_Live/SCJY_M]]></url>
+<url tvsource="源4"><![CDATA[rtmp://rtmp.sctv.com/SRT_Live/SCJY_N]]></url>
+</tv>
+<tv>
+<channelid>F40013F5850B1442998E7BEFCE5B36C2</channelid>
+<name>四川SCTV9 公共频道</name>
+<url tvsource="官方"><![CDATA[rtmp://rtmp.sctv.com/SRT_Live/SCTV9_N]]></url>
+<url tvsource="源1"><![CDATA[rtmp://122.11.48.150/SRT_Live/SCTV9_M]]></url>
+<url tvsource="手机"><![CDATA[rtmp://mlive.sctv.com/SRT_Live/SCTV9_M.stream]]></url>
+</tv>
+<tv>
+<channelid>D2E9A0A25699CE48B65888A8B8ABCFFB</channelid>
+<name>四川|成都新闻综合</name>
+<url tvsource="源1"><![CDATA[http://itv.hdpfans.com/play?cdtvid=cdtv1]]></url>
+</tv>
+<tv>
+<channelid>DD169CBBB4B2B34E925AF658972F29AE</channelid>
+<name>四川|成都经济资讯</name>
+<url tvsource="源1"><![CDATA[http://itv.hdpfans.com/play?cdtvid=cdtv2]]></url>
+</tv>
+<tv>
+<channelid>A7EDA6443E6B714EA48525EA8BD4713A</channelid>
+<name>四川|成都生活频道</name>
+<url tvsource="源1"><![CDATA[http://itv.hdpfans.com/play?cdtvid=cdtv4]]></url>
+</tv>
+<tv>
+<channelid>E08A99D327B8424FB4FFFD9EFF196A40</channelid>
+<name>四川|成都公共频道</name>
+<url tvsource="源1"><![CDATA[http://itv.hdpfans.com/play?cdtvid=cdtv5]]></url>
+</tv>
+<tv>
+<channelid>72F47E8796C04D459611BA553FDE977E</channelid>
+<name>四川|成都少儿频道</name>
+<url tvsource="源1"><![CDATA[http://itv.hdpfans.com/play?cdtvid=cdtv6]]></url>
+</tv>
+<tv>
+<channelid>48B5DD04CB6C8B429C73390B6AE615E4</channelid>
+<name>四川|成都美食天府</name>
+<url tvsource="源1"><![CDATA[http://itv.hdpfans.com/play?cdtvid=cdtv7]]></url>
+</tv>
+<tv>
+<channelid>F3C42B3E59AB874B9A50AF898220A28E</channelid>
+<name>四川|成都每日购物</name>
+<url tvsource="源1"><![CDATA[http://itv.hdpfans.com/play?cdtvid=cdtv8]]></url>
+</tv>
+<tv>
+<channelid>9ECED1F1B3383C42887B85AE6BAF9409</channelid>
+<name>四川|成都汽车频道</name>
+<url tvsource="源1"><![CDATA[http://itv.hdpfans.com/play?cdtvid=qiche]]></url>
+</tv>
+<tv>
+<channelid>F3B8F4151C6070498F302B49993D25C4</channelid>
+<name>四川成都影视文艺</name>
+<url tvsource="官方"><![CDATA[http://itv.hdpfans.com/play?cdtvid=cdtv4]]></url>
+<url tvsource="源3"><![CDATA[http://114.112.34.103:82/live/5/45/baf438ab90d243d8b2f6e6ad702c064c.m3u]]></url>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300474.m3u8]]></url>
+<url tvsource="源5"><![CDATA[http://www.7po.com/xmlinfo.php?tp=426&tn=1]]></url>
+<url tvsource="源6"><![CDATA[http://ims.veryhd.net/ty/play?cdtvid=cdtv4]]></url>
+<url tvsource="源7"><![CDATA[http://wolidou.gotoip3.com/cd.php?u=cdtv4]]></url>
+</tv>
+<tv>
+<channelid>255BC158ADC8B14780175575B958DBF7</channelid>
+<name>四川成都资讯新干线</name>
+<url tvsource="源1"><![CDATA[http://itv.hdpfans.com/play?cdtvid=zixun]]></url>
+<url tvsource="官方直播"><![CDATA[http://ims.veryhd.net/ty/play?cdtvid=zixun]]></url>
+</tv>
+<tv>
+<channelid>BA357336C9BB2746A984E9E6AE11B662</channelid>
+<name>四川绵阳公共</name>
+<url tvsource="官方"><![CDATA[rtmp://cdn.myntv.cn/live/mytv2]]></url>
+<url tvsource="源2"><![CDATA[rtmp://cdn.myntv.cn/live/mytv2.direct]]></url>
+</tv>
+<tv>
+<channelid>3F78F8933555F14EAB9814228E8FCE05</channelid>
+<name>四川绵阳交通信息</name>
+<url tvsource="官方"><![CDATA[rtmp://cdn.myntv.cn/live/jtfw]]></url>
+<url tvsource="源2"><![CDATA[rtmp://cdn.myntv.cn/live/jtfw.direct]]></url>
+</tv>
+<tv>
+<channelid>BA7FB0192E5F5A49A438634B4DAAFE14</channelid>
+<name>四川绵阳科技</name>
+<url tvsource="官方"><![CDATA[rtmp://cdn.myntv.cn/live/mytv3]]></url>
+<url tvsource="源2"><![CDATA[rtmp://cdn.myntv.cn/live/mytv3.direct]]></url>
+</tv>
+<tv>
+<channelid>58F179F5C7A51543BB756404BF960904</channelid>
+<name>四川绵阳综合</name>
+<url tvsource="官方"><![CDATA[rtmp://cdn.myntv.cn/live/mytv1]]></url>
+<url tvsource="源2"><![CDATA[rtmp://cdn.myntv.cn/live/mytv1.direct]]></url>
+</tv>
+<tv>
+<channelid>4B8F284FE5B23747A9368F657EBD695C</channelid>
+<name>四川|四川阿坝综合</name>
+<url tvsource="源1"><![CDATA[http://112.194.248.2:1935/abtv/abtv.sdp/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>12B0BD0152C821489EBE5B80957A7A78</channelid>
+<name>四川蓉城先锋</name>
+<url tvsource="官方 (http)"><![CDATA[http://itv.hdpfans.com/play?cdtvid=party]]></url>
+<url tvsource="官方"><![CDATA[http://ims.veryhd.net/ty/play?cdtvid=party]]></url>
+</tv>
+<tv>
+<channelid>C9751167B0C5174EBE9C0E71337B7124</channelid>
+<name>浙江6频道</name>
+<url tvsource="默认源1"><![CDATA[http://l.m.cztv.com:554/zjtv6/live/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>5D20E4A754BC954EB9BDF0305BA0F702</channelid>
+<name>浙江公共频道</name>
+<url tvsource="新蓝网 (http)"><![CDATA[http://r1.cztv.com/channels/107/500.flv/live]]></url>
+<url tvsource="默认源1"><![CDATA[http://v4.cztv.com/channels/107/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>39311767D0D822438E13FEEECE482819</channelid>
+<name>浙江国际频道</name>
+<url tvsource="新蓝网 (http)"><![CDATA[http://r1.cztv.com/channels/110/500.flv/live]]></url>
+<url tvsource="默认源2"><![CDATA[http://v1.cztv.com/channels/110/500.flv]]></url>
+<url tvsource="源4"><![CDATA[http://v11.cztv.com/channels/110/500.flv]]></url>
+</tv>
+<tv>
+<channelid>B4DDE8B100FB214A8226B0870849B88B</channelid>
+<name>浙江经视频道</name>
+<url tvsource="新蓝网 (http)"><![CDATA[http://r1.cztv.com/channels/103/500.flv/live]]></url>
+<url tvsource="默认源2"><![CDATA[http://v1.cztv.com/channels/103/500.flv]]></url>
+<url tvsource="源4"><![CDATA[http://l.m.cztv.com:554/zjtv3/live/playlist.m3u8]]></url>
+<url tvsource="源1"><![CDATA[http://v3.cztv.com/channels/103/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>8935C97CD7E1DE41BE7B3FEF6A2F04EF</channelid>
+<name>浙江科教频道</name>
+<url tvsource="新蓝网 (http)"><![CDATA[http://r1.cztv.com/channels/104/500.flv/live]]></url>
+<url tvsource="默认源2"><![CDATA[http://v1.cztv.com/channels/104/500.flv]]></url>
+</tv>
+<tv>
+<channelid>967B2694A3408E4F81994C4B517D5011</channelid>
+<name>浙江民生频道</name>
+<url tvsource="新蓝网 (http)"><![CDATA[http://r1.cztv.com/channels/106/500.flv/live]]></url>
+<url tvsource="默认源2"><![CDATA[http://v1.cztv.com/channels/106/500.flv]]></url>
+</tv>
+<tv>
+<channelid>0FFCC9138C874E42AD0E6BBECD6B36A7</channelid>
+<name>浙江少儿频道</name>
+<url tvsource="新蓝网 (http)"><![CDATA[http://r1.cztv.com/channels/108/500.flv/live]]></url>
+<url tvsource="默认源2"><![CDATA[http://v1.cztv.com/channels/108/500.flv]]></url>
+<url tvsource="源4"><![CDATA[http://r1.cztv.com/channels/108/500.flv/live.flv]]></url>
+</tv>
+<tv>
+<channelid>C67041C3924F5545A270E03C3611CA04</channelid>
+<name>浙江影视频道</name>
+<url tvsource="新蓝网 (http)"><![CDATA[http://r1.cztv.com/channels/105/500.flv/live]]></url>
+<url tvsource="默认源2"><![CDATA[http://v1.cztv.com/channels/105/500.flv]]></url>
+<url tvsource="源4"><![CDATA[http://v5.cztv.com/channels/105/500.flv]]></url>
+<url tvsource="源5"><![CDATA[http://v4.cztv.com/channels/105/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>2AE31AF0BE696542A194DE4B8E21B5CC</channelid>
+<name>浙江手机台</name>
+<url tvsource="新蓝网 (http)"><![CDATA[http://c4.cztv.com/channels/304/512.flv/live]]></url>
+</tv>
+<tv>
+<channelid>A193CB4BD9F9FC41BFA1CECFA0E55BB5</channelid>
+<name>浙江留学世界</name>
+<url tvsource="源1"><![CDATA[http://v1.cztv.com/channels/109/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>DCFB9B125439D14996EC4437B9395336</channelid>
+<name>浙江网络电视</name>
+<url tvsource="源1"><![CDATA[http://c4.cztv.com/channels/304/512.flv/live]]></url>
+</tv>
+<tv>
+<channelid>4C7CD6A84DEB644482C42648CEFAD09F</channelid>
+<name>浙江购物频道</name>
+<url tvsource="源1"><![CDATA[http://v1.cztv.com/channels/111/500.flv/]]></url>
+</tv>
+<tv>
+<channelid>48808541890FF14792F983DD0164BB4C</channelid>
+<name>杭州综合频道</name>
+<url tvsource="源1"><![CDATA[http://live2.hoolo.tv/channels/hoolo/htv1/m3u8:sd/live]]></url>
+</tv>
+<tv>
+<channelid>05FA529B2F028548A388EBB5FA616B4F</channelid>
+<name>杭州明珠频道</name>
+<url tvsource="源1"><![CDATA[http://live2.hoolo.tv/channels/hoolo/htv2/m3u8:sd/live]]></url>
+</tv>
+<tv>
+<channelid>2A3690C1CE07254A837CF6A61B69BF79</channelid>
+<name>杭州生活频道</name>
+<url tvsource="源1"><![CDATA[http://live2.hoolo.tv/channels/hoolo/htv3/m3u8:500k_stream/live]]></url>
+</tv>
+<tv>
+<channelid>95A5FB5921A55742982397E9C97E5ADE</channelid>
+<name>杭州影视频道</name>
+<url tvsource="源1"><![CDATA[http://live2.hoolo.tv/channels/hoolo/htv4/m3u8:500k_stream/live]]></url>
+</tv>
+<tv>
+<channelid>EFD012F1DD82CA43AFF588E72A3404D2</channelid>
+<name>杭州少儿频道</name>
+<url tvsource="源1"><![CDATA[http://live2.hoolo.tv/channels/hoolo/htv5/m3u8:sd/live]]></url>
+</tv>
+<tv>
+<channelid>0B927B29B9F2EF4AB4006B75EE980D94</channelid>
+<name>杭州导视纪录</name>
+<url tvsource="源1"><![CDATA[http://live2.hoolo.tv/channels/hoolo/954/m3u8:sd/live]]></url>
+</tv>
+<tv>
+<channelid>4200F1FFF1E5A04BA75B8D46FF9BCEDE</channelid>
+<name>杭州移动电视</name>
+<url tvsource="源1"><![CDATA[mmst://vodvip.hcrt.cn/mobiletv]]></url>
+</tv>
+<tv>
+<channelid>19CA247279D7E54EAA2AD534E8335EBE</channelid>
+<name>浙江|台州新闻综合</name>
+<url tvsource="源1"><![CDATA[http://tsl6.hls.cutv.com/cutvlive/25qamuz/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C1CB5FC6C7A6674E95D0AC811EDE02B2</channelid>
+<name>浙江|台州影视文化</name>
+<url tvsource="源1"><![CDATA[http://tsl6.hls.cutv.com/cutvlive/w8Nk3zj/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>160C294AE735404485A082E81024276C</channelid>
+<name>浙江|宁波新闻综合</name>
+<url tvsource="源1"><![CDATA[http://tsl5.hls.cutv.com/cutvlive/J4tN33f/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>D2835CB33697DF42B3C1341F9B3764B1</channelid>
+<name>浙江|宁波社会生活</name>
+<url tvsource="源1"><![CDATA[http://tsl5.hls.cutv.com/cutvlive/gTsqhV4/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>7BED97C0B7A9B44FA9740D0B0C769C7D</channelid>
+<name>浙江|宁波文化娱乐</name>
+<url tvsource="源1"><![CDATA[http://tsl5.hls.cutv.com/cutvlive/Qg929n9/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>1EA8345B881C2F4ABCB3186FA5BBE32E</channelid>
+<name>浙江|宁波少儿频道</name>
+<url tvsource="源1"><![CDATA[http://live2.hoolo.tv/channels/hoolo/htv5/m3u8:sd/live]]></url>
+</tv>
+<tv>
+<channelid>A4F52E976E06724AA5D407C5BB6CD3E7</channelid>
+<name>金华新闻综合</name>
+<url tvsource="源1"><![CDATA[http://dns.36tv.net.cn/jhTV/tv1/index_256k.m3u8]]></url>
+</tv>
+<tv>
+<channelid>6C3CF2C46F4299458BCD39B690D5F717</channelid>
+<name>金华教育科教</name>
+<url tvsource="源1"><![CDATA[http://dns.36tv.net.cn/jhTV/tv2/index_256k.m3u8]]></url>
+</tv>
+<tv>
+<channelid>415232F5504F644BAD75BBCCCB5E8B5A</channelid>
+<name>金华新农村</name>
+<url tvsource="源1"><![CDATA[http://dns.36tv.net.cn/jhTV/tv4/index_256k.m3u8]]></url>
+</tv>
+<tv>
+<channelid>392B4605344CC94B99A03DA64C12EB89</channelid>
+<name>金华数字导视</name>
+<url tvsource="源1"><![CDATA[http://dns.36tv.net.cn/jhTV/dtv/index_256k.m3u8]]></url>
+</tv>
+<tv>
+<channelid>82C8269383E277419C08110AE11C6F70</channelid>
+<name>杭州移动电视</name>
+<url tvsource="源1"><![CDATA[mmst://vodvip.hcrt.cn/mobiletv]]></url>
+</tv>
+<tv>
+<channelid>C8720E915B8D2747AE8F5D1413E270B6</channelid>
+<name>浙江钱江都市</name>
+<url tvsource="默认源1"><![CDATA[http://l.m.cztv.com:554/zjtv2/live/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>16164860D8AF704EB6E8854069E6EA3E</channelid>
+<name>浙江钱江频道</name>
+<url tvsource="新蓝网 (http)"><![CDATA[http://r1.cztv.com/channels/102/500.flv/live]]></url>
+<url tvsource="默认源2"><![CDATA[http://v1.cztv.com/channels/102/500.flv]]></url>
+<url tvsource="源4"><![CDATA[http://115.238.46.149/channels/102/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>65EBAABA604DCA4FB1EA986AD35DEC8D</channelid>
+<name>浙江浙东新农村</name>
+<url tvsource="默认源1"><![CDATA[http://v1.cztv.com/channels/107/500.flv]]></url>
+</tv>
+<tv>
+<channelid>FD09A3351DBEE346B6C0B8742E1227E9</channelid>
+<name>青田新闻综合</name>
+<url tvsource="源1"><![CDATA[mmst://61.153.68.140/videolive]]></url>
+</tv>
+<tv>
+<channelid>6CC37493DE09694A9932B1114E5DC241</channelid>
+<name>温州新闻综合</name>
+<url tvsource="源1"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/xwzh/flv:sd/live.flv]]></url>
+<url tvsource="源2"><![CDATA[mmst://220.189.247.171/xwzh]]></url>
+</tv>
+<tv>
+<channelid>71D7518BFD72A5459089443BEAB563B8</channelid>
+<name>温州经济科教</name>
+<url tvsource="源1"><![CDATA[rtmp://122.228.187.70:1935/live/financial/financial]]></url>
+</tv>
+<tv>
+<channelid>F400B1A04EE6E64A86BFE61D2C2601EB</channelid>
+<name>温州都市生活</name>
+<url tvsource="源1"><![CDATA[rtmp://122.228.187.70:1935/live/citylife/citylife]]></url>
+</tv>
+<tv>
+<channelid>439F0CDF056DF84EBBE7DFCB3E598B22</channelid>
+<name>温州公共民生</name>
+<url tvsource="源1"><![CDATA[rtmp://122.228.187.70:1935/live/peoples/peoples]]></url>
+</tv>
+<tv>
+<channelid>5A55A7578B60494C896CE82C161C208E</channelid>
+<name>平湖新闻综合</name>
+<url tvsource="源1"><![CDATA[rtmp://live.xigo.tv:1935/xwzh/sd.stream]]></url>
+</tv>
+<tv>
+<channelid>9F9C673D7AB83D4B96E217F6C3349471</channelid>
+<name>平湖民生休闲</name>
+<url tvsource="源1"><![CDATA[rtmp://live.xigo.tv:1935/msxs/sd.stream]]></url>
+</tv>
+<tv>
+<channelid>24F0BE72B6723E44A84C1840D9DD92D4</channelid>
+<name>平湖数字影视</name>
+<url tvsource="源1"><![CDATA[rtmp://live.xigo.tv:1935/szys/sd.stream]]></url>
+</tv>
+<tv>
+<channelid>CC236F270B641D40A2908DA4D5039C93</channelid>
+<name>平湖西瓜频道</name>
+<url tvsource="源1"><![CDATA[rtmp://live.xigo.tv:1935/xgpd/sd.stream]]></url>
+</tv>
+<tv>
+<channelid>5C94BF2D818931408A8DB22AE0C43F07</channelid>
+<name>安徽|安徽影视频道</name>
+<url tvsource="源1"><![CDATA[http://livecdn.ahtv.cn/channels/1502/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>B3E8D69241644D4A99BD9E64B5839585</channelid>
+<name>安徽|安徽综艺频道</name>
+<url tvsource="源1"><![CDATA[http://livecdn.ahtv.cn/channels/1504/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>0872F20A08FC2F4C88BF91C1171624C8</channelid>
+<name>安徽|安徽经济频道</name>
+<url tvsource="源1"><![CDATA[http://livecdn.ahtv.cn/channels/1503/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>9C86F11EF4FC36419EE8AFB5639F65B8</channelid>
+<name>安徽|安徽科教频道</name>
+<url tvsource="源1"><![CDATA[http://livecdn.ahtv.cn/channels/1505/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>30DCA15C38B6494F84124FBE61ABD153</channelid>
+<name>安徽|安徽公共频道</name>
+<url tvsource="源1"><![CDATA[http://livecdn.ahtv.cn/channels/1506/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>963039480691234EB54ACCB9679415FB</channelid>
+<name>安徽|安徽人物频道</name>
+<url tvsource="源1"><![CDATA[http://livecdn.ahtv.cn/channels/1507/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>0A8D61A0672CC84DBC9E2CE91616A0EC</channelid>
+<name>安徽|安徽国际频道</name>
+<url tvsource="源1"><![CDATA[http://livecdn.ahtv.cn/channels/1508/500.flv/live]]></url>
+</tv>
+<tv>
+<channelid>16BEF636C8BD4743811D5CBD81FE8DE8</channelid>
+<name>南京新闻综合</name>
+<url tvsource="官方"><![CDATA[http://live.xwei.tv/channels/njtv/video_xwzh/flv:500k/live]]></url>
+<url tvsource="源2"><![CDATA[http://www.lnxdwj.com/fytv/tv.asp?ID=127]]></url>
+<url tvsource="源3"><![CDATA[http://live.xwei.tv/channels/njtv/video_xwzh/flv:500k/live.flv]]></url>
+<url tvsource="源4"><![CDATA[http://v.hdplay.cn/live/72733437534537686132624F57425151]]></url>
+</tv>
+<tv>
+<channelid>19EFAC52AC35C1408297E62FCBE64BF0</channelid>
+<name>南京教科频道</name>
+<url tvsource="官方"><![CDATA[http://live.xwei.tv/channels/njtv/video_kj/flv:500k/live]]></url>
+<url tvsource="源3"><![CDATA[http://live.xwei.tv/channels/njtv/video_kj/flv:500k/live.flv]]></url>
+<url tvsource="源4"><![CDATA[http://v.hdplay.cn/live/72733437534537686132625062515151]]></url>
+</tv>
+<tv>
+<channelid>587BBD9A87E34D40B4CAEB67A39E882A</channelid>
+<name>南京娱乐频道</name>
+<url tvsource="官方"><![CDATA[http://live.xwei.tv/channels/njtv/video_yl/flv:500k/live]]></url>
+<url tvsource="源3"><![CDATA[http://live.xwei.tv/channels/njtv/video_yl/flv:500k/live.flv]]></url>
+<url tvsource="源4"><![CDATA[http://v.hdplay.cn/live/72733437534537686132625076425151]]></url>
+</tv>
+<tv>
+<channelid>5221A4B8ED4B974DAA9E804E91621747</channelid>
+<name>南京十八频道</name>
+<url tvsource="官方"><![CDATA[http://live.xwei.tv/channels/njtv/video_18/flv:500k/live]]></url>
+<url tvsource="源2"><![CDATA[http://live.xwei.tv/channels/njtv/video_18/flv:500k/live.flv]]></url>
+</tv>
+<tv>
+<channelid>2964E8516D5759479C086676376AF162</channelid>
+<name>南京生活频道</name>
+<url tvsource="官方"><![CDATA[http://live.xwei.tv/channels/njtv/video_shh/flv:500k/live]]></url>
+<url tvsource="源3"><![CDATA[http://live.xwei.tv/channels/njtv/video_shh/flv:500k/live.flv]]></url>
+<url tvsource="源4"><![CDATA[http://v.hdplay.cn/live/72733437534537686132625062695151]]></url>
+</tv>
+<tv>
+<channelid>59DAB14503438E4FA51110CE80B5B892</channelid>
+<name>无锡新闻综合</name>
+<url tvsource="官方"><![CDATA[http://live2.thmz.com/channels/iptv/wxtv1/flv:sd/.flv]]></url>
+<url tvsource="源3"><![CDATA[http://live2.thmz.com/channels/iptv/wxtv1/flv:sd/live.flv]]></url>
+<url tvsource="源4"><![CDATA[http://v.hdplay.cn/live/72733437534537686132566962695151]]></url>
+</tv>
+<tv>
+<channelid>2C28E8C19A260049A0BFBAA245FFCBBE</channelid>
+<name>无锡娱乐频道</name>
+<url tvsource="官方"><![CDATA[http://live2.thmz.com/channels/iptv/wxtv2/flv:sd/.flv]]></url>
+<url tvsource="源2"><![CDATA[http://live2.thmz.com/channels/iptv/wxtv2/flv:sd/live.flv]]></url>
+</tv>
+<tv>
+<channelid>31515B45D2370942B670378A38395755</channelid>
+<name>无锡都市频道</name>
+<url tvsource="官方"><![CDATA[http://live2.thmz.com/channels/iptv/wxtv3/flv:sd/.flv]]></url>
+</tv>
+<tv>
+<channelid>747C2EC6D6968A4DAA4B4F978001149E</channelid>
+<name>无锡生活频道</name>
+<url tvsource="官方"><![CDATA[http://live2.thmz.com/channels/iptv/wxtv4/flv:sd/.flv]]></url>
+<url tvsource="源3"><![CDATA[http://live2.thmz.com/channels/iptv/wxtv4/flv:sd/live.flv]]></url>
+<url tvsource="源4"><![CDATA[http://v.hdplay.cn/live/72733437534537686132566976695151]]></url>
+</tv>
+<tv>
+<channelid>AC3132978493DD41A8ADEBAD0511DC7C</channelid>
+<name>无锡经济频道</name>
+<url tvsource="官方"><![CDATA[http://live2.thmz.com/channels/iptv/wxtv5/flv:sd/.flv]]></url>
+<url tvsource="源2"><![CDATA[http://live2.thmz.com/channels/iptv/wxtv5/flv:sd/live.flv]]></url>
+</tv>
+<tv>
+<channelid>4810AE5C9DB6BD4289C4E52627E506DE</channelid>
+<name>无锡城市频道</name>
+<url tvsource="官方"><![CDATA[http://live2.thmz.com/channels/iptv/wxmtv/flv:sd/.flv]]></url>
+</tv>
+<tv>
+<channelid>134E1610EA3109459142B237619248C4</channelid>
+<name>无锡网台</name>
+<url tvsource="官方"><![CDATA[http://live2.thmz.com/channels/iptv/wxntv/flv:sd/.flv]]></url>
+</tv>
+<tv>
+<channelid>5E056E7DF789C04981056705C671C120</channelid>
+<name>南通新闻频道</name>
+<url tvsource="官方"><![CDATA[http://media.ntjoy.com/channels/nttv/news/flv:TV1SD/live]]></url>
+</tv>
+<tv>
+<channelid>436ECD9BFD34364AB1CC7D4A6EF1BEE9</channelid>
+<name>南通社教频道</name>
+<url tvsource="官方"><![CDATA[http://media.ntjoy.com/channels/nttv/society/flv:TV2HD/live]]></url>
+<url tvsource="源3"><![CDATA[http://tsl3.hls.cutv.com/cutvlive/18Vmk78/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>CC8E81EBC2BEF945BE6ECA47EC00F016</channelid>
+<name>南通生活频道</name>
+<url tvsource="官方"><![CDATA[http://media.ntjoy.com/channels/nttv/life/flv:TV3SD/live]]></url>
+<url tvsource="源3"><![CDATA[http://tsl3.hls.cutv.com/cutvlive/SQ5Wj2s/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>CDE6B6A769853D4AB5228EB50191DEB8</channelid>
+<name>南通信息频道</name>
+<url tvsource="官方"><![CDATA[http://media.ntjoy.com/channels/nttv/information/flv:TV4SD/live]]></url>
+</tv>
+<tv>
+<channelid>838115A1A334A441922C76A9BDC669A4</channelid>
+<name>盐城城市公共</name>
+<url tvsource="官方"><![CDATA[http://live.0515yc.tv/channels/yctv/yc2/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>10AA1F0FCC416B4FB7BE5AC9029CFA0C</channelid>
+<name>盐城新闻综合</name>
+<url tvsource="官方"><![CDATA[http://live.0515yc.tv/channels/yctv/yc3/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>8730F6688258BC4EB9DECB4F0005408D</channelid>
+<name>江苏|盐城综合频道</name>
+<url tvsource="源1"><![CDATA[http://live.0515yc.tv/channels/yctv/yc1/flv:sd]]></url>
+</tv>
+<tv>
+<channelid>53E6FAB51F500D4AB11A65CD0D8E58A3</channelid>
+<name>江苏|苏州社会经济</name>
+<url tvsource="源1"><![CDATA[rtmp://streamrtsp.2500city.com/suzhoutv/livetv23]]></url>
+</tv>
+<tv>
+<channelid>10511063042F984D80CCB91E60F3D287</channelid>
+<name>江苏|常州综合</name>
+<url tvsource="源1"><![CDATA[rtmp://2live.cztv.tv:1935/cztvxw/sd.stream]]></url>
+</tv>
+<tv>
+<channelid>532EFCDC9ACDF647A7AFEC4B19BDB096</channelid>
+<name>江苏|常州都市</name>
+<url tvsource="源1"><![CDATA[rtmp://2live.cztv.tv:1935/cztvds/sd.stream]]></url>
+</tv>
+<tv>
+<channelid>5BC8C433636A4547BEF31A4CCD1D1A11</channelid>
+<name>江苏|常州生活</name>
+<url tvsource="源1"><![CDATA[rtmp://2live.cztv.tv:1935/cztvsh/sd.stream]]></url>
+</tv>
+<tv>
+<channelid>FD8658E7943B9B47AFC73B467A5531C1</channelid>
+<name>江苏|常州公共</name>
+<url tvsource="源1"><![CDATA[rtmp://2live.cztv.tv:1935/cztvgg/sd.stream]]></url>
+</tv>
+<tv>
+<channelid>A7E2A34A82446A4B9FA2D804E86E0FD9</channelid>
+<name>如东新闻频道</name>
+<url tvsource="官方"><![CDATA[http://live.rdxmt.com/channels/rudong/news/flv:sd/live]]></url>
+<url tvsource="源2"><![CDATA[http://live.rdxmt.com/channels/rudong/news/flv:sd/live.flv]]></url>
+</tv>
+<tv>
+<channelid>6C1CFA2588CB934B8D6187DA3BB92DA9</channelid>
+<name>如东生活频道</name>
+<url tvsource="官方"><![CDATA[http://live.rdxmt.com/channels/rudong/shfw/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>CC9A8701112D834CB4DD248A4F72AEA6</channelid>
+<name>如东影视频道</name>
+<url tvsource="官方"><![CDATA[http://live.rdxmt.com/channels/rudong/yswh/flv:sd/live]]></url>
+<url tvsource="源2"><![CDATA[http://live.rdxmt.com/channels/rudong/yswh/flv:sd/live.flv]]></url>
+</tv>
+<tv>
+<channelid>170B3F48A7FA6F4E9485E2C12249B112</channelid>
+<name>张家港新闻综合</name>
+<url tvsource="官方"><![CDATA[rtmp://3gvod.zjgonline.com.cn:1935/live/xinwenzonghe_300]]></url>
+</tv>
+<tv>
+<channelid>89F3884CCD52D341953973DBEE9C0D68</channelid>
+<name>张家港社会生活</name>
+<url tvsource="官方"><![CDATA[rtmp://3gvod.zjgonline.com.cn:1935/live/shehuishenghuo_300]]></url>
+</tv>
+<tv>
+<channelid>9B4B763ECFB20A45829FA1D375FF6967</channelid>
+<name>陕西|陕西农林卫视</name>
+<url tvsource="源1"><![CDATA[mmst://android.snbw.cn/sxtvs-9]]></url>
+</tv>
+<tv>
+<channelid>067A0698E9599B4AAB4F6AD90AF3BD95</channelid>
+<name>陕西|陕西新闻资讯</name>
+<url tvsource="源1"><![CDATA[mmst://android.snbw.cn/sxtvs-1]]></url>
+</tv>
+<tv>
+<channelid>173148BBB955D1409E79B9FFAA360579</channelid>
+<name>陕西|陕西都市青春</name>
+<url tvsource="源1"><![CDATA[mmst://android.snbw.cn/sxtvs-2]]></url>
+</tv>
+<tv>
+<channelid>A961FAB1F802394CA236DBC5186638FC</channelid>
+<name>陕西|陕西经济频道</name>
+<url tvsource="源1"><![CDATA[mmst://android.snbw.cn/sxtvs-3]]></url>
+</tv>
+<tv>
+<channelid>93C2A3B6811D7E4495D4D011DC78DDE9</channelid>
+<name>陕西|陕西公共频道</name>
+<url tvsource="源1"><![CDATA[mmst://android.snbw.cn/sxtvs-5]]></url>
+</tv>
+<tv>
+<channelid>B251B269A5ECB04FB4D0E50ABF770C8B</channelid>
+<name>山东国际频道</name>
+<url tvsource="源3"><![CDATA[http://live122.cnlive.com:1935/live/shandongjiaoyu/chunklist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>8D5D2A94D5C07F49BF3221DD53CE8C72</channelid>
+<name>山东影视频道</name>
+<url tvsource="源1"><![CDATA[http://119.164.219.218/live/sdys/playlist.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://zb.allook.cn/live/sdys/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>A265422CD630504C8C0C7EECFF54FFF7</channelid>
+<name>山东综艺频道</name>
+<url tvsource="源1"><![CDATA[http://119.164.219.218/live/sdzy/playlist.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://zb.allook.cn/live/sdzy/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>B77D821B7742034E976CEE98E655A1A9</channelid>
+<name>山东农科频道</name>
+<url tvsource="源1"><![CDATA[http://119.164.219.218/live/sdnk/playlist.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://zb.allook.cn/live/sdnk/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>AC81D79317141844B0B649ECCB608905</channelid>
+<name>山东生活频道</name>
+<url tvsource="源1"><![CDATA[http://119.164.219.218/live/sdsh/playlist.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://zb.allook.cn/live/sdsh/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C9FD7293DBA1834EAF862FF6D7E0E574</channelid>
+<name>山东体育</name>
+<url tvsource="源1"><![CDATA[http://119.164.219.218/live/sdty/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>BE2419DDCD53684094598F7D305A8EE1</channelid>
+<name>山东公共</name>
+<url tvsource="源1"><![CDATA[http://119.164.219.218/live/sdgg/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>16CB1D5D54951E4285888F62B32AFA4F</channelid>
+<name>山东|齐鲁</name>
+<url tvsource="源1"><![CDATA[http://119.164.219.218/live/sdql/playlist.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://zb.allook.cn/live/sdql/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C695F1204A17B1469C220DEC7B935A7E</channelid>
+<name>山东教育台</name>
+<url tvsource="乐视"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=sdjy&tag=live&ext=m3u8&sign=live_ipad]]></url>
+<url tvsource="官方"><![CDATA[rtsp://40.bluehn.com/LIVECAM2]]></url>
+<url tvsource="搜狐"><![CDATA[http://url.52itv.cn/live/72733437534537686132423262515151]]></url>
+<url tvsource="源1"><![CDATA[http://gslb.tv.sohu.com/live?cid=63&sig=Db2ddcoimvDFDFhOFD88Ww..&type=hls]]></url>
+<url tvsource="源2"><![CDATA[http://tuifei.sinaapp.com/box/lists/tv/sohu.php?id=429]]></url>
+<url tvsource="源3"><![CDATA[http://live.64ma.com/livePlay.asp?sohuId=63]]></url>
+<url tvsource="源4"><![CDATA[http://gslb.tv.sohu.com/live?cid=63&type=hls]]></url>
+<url tvsource="源5"><![CDATA[rtmp://220.181.117.167/live/sdjy]]></url>
+</tv>
+<tv>
+<channelid>F7F02D89E5D46F44BAA479F5E05A4181</channelid>
+<name>山东|济南新闻</name>
+<url tvsource="源1"><![CDATA[rtmp://222.173.22.115/jnxw/sd.stream]]></url>
+<url tvsource="官方"><![CDATA[rtmp://live.ijntv.cn:1935/jnxw/sd.stream]]></url>
+<url tvsource="源3"><![CDATA[http://tsl3.hls.cutv.com/cutvlive/VcoyNeb/hls/live_sd.m3u8]]></url>
+<url tvsource="源4"><![CDATA[http://media-live-01.ijntv.com/channels/jinan/video_xinwen/flv:sd/list.flv]]></url>
+</tv>
+<tv>
+<channelid>41BFD17791C29942A82F4612AFB8FD97</channelid>
+<name>济南都市频道</name>
+<url tvsource="官方"><![CDATA[rtmp://live.ijntv.cn:1935/jnds/sd.stream]]></url>
+<url tvsource="源3"><![CDATA[http://media-live-01.ijntv.com/channels/jinan/video_dushi/flv:sd/list.flv]]></url>
+<url tvsource="源4"><![CDATA[http://tsl3.hls.cutv.com/cutvlive/p0hcE91/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>8B4AB2C0B9D9D24DA7162937A32957D6</channelid>
+<name>济南娱乐频道</name>
+<url tvsource="官方"><![CDATA[rtmp://live.ijntv.cn:1935/jnyl/sd.stream]]></url>
+<url tvsource="源3"><![CDATA[http://tsl3.hls.cutv.com/cutvlive/xcisTAf/hls/live_sd.m3u8]]></url>
+<url tvsource="源4"><![CDATA[http://media-live-01.ijntv.com/channels/jinan/video_yule/flv:sd/list.flv]]></url>
+<url tvsource="源1"><![CDATA[http://media-live-01.ijntv.com/channels/jinan/video_yule/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>49112E70C6CF444AA0053EF2182144F4</channelid>
+<name>济南影视频道</name>
+<url tvsource="官方"><![CDATA[rtmp://live.ijntv.cn:1935/jnyd/sd.stream]]></url>
+<url tvsource="源3"><![CDATA[http://tsl3.hls.cutv.com/cutvlive/kdgtM0l/hls/live_sd.m3u8]]></url>
+<url tvsource="源4"><![CDATA[http://media-live-01.ijntv.com/channels/jinan/video_yingshi/flv:sd/list.flv]]></url>
+</tv>
+<tv>
+<channelid>4A35561F93BBEC4AA01DB6ACC8D401B1</channelid>
+<name>济南商务频道</name>
+<url tvsource="官方"><![CDATA[rtmp://live.ijntv.cn:1935/jnsw/sd.stream]]></url>
+<url tvsource="源4"><![CDATA[http://media-live-01.ijntv.com/channels/jinan/video_shangwu/flv:sd/list.flv]]></url>
+<url tvsource="源1"><![CDATA[http://media-live-01.ijntv.com/channels/jinan/video_shangwu/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>E75BA7AB1D98E940B213366CA2FBFF70</channelid>
+<name>济南生活频道</name>
+<url tvsource="官方"><![CDATA[rtmp://live.ijntv.cn:1935/jnsh/sd.stream]]></url>
+<url tvsource="源3"><![CDATA[http://tsl3.hls.cutv.com/cutvlive/thfDjK5/hls/live_sd.m3u8]]></url>
+<url tvsource="源4"><![CDATA[http://media-live-01.ijntv.com/channels/jinan/video_shenghuo/flv:sd/list.flv]]></url>
+</tv>
+<tv>
+<channelid>719454550C06E6468FE6166C85C22378</channelid>
+<name>济南少儿频道</name>
+<url tvsource="官方"><![CDATA[rtmp://live.ijntv.cn:1935/jnse/sd.stream]]></url>
+<url tvsource="源3"><![CDATA[http://tsl3.hls.cutv.com/cutvlive/1Ki5v7w/hls/live_sd.m3u8]]></url>
+<url tvsource="源4"><![CDATA[http://media-live-01.ijntv.com/channels/jinan/video_shaoer/flv:sd/list.flv]]></url>
+</tv>
+<tv>
+<channelid>1E002A6C806F1D48A3DD787157B394A4</channelid>
+<name>济南网视高清</name>
+<url tvsource="官方"><![CDATA[rtmp://live.ijntv.cn:1935/jnwt/hd.stream]]></url>
+</tv>
+<tv>
+<channelid>19C896E84483324EBBFD2FB9365ACEAA</channelid>
+<name>济南泉全天</name>
+<url tvsource="官方"><![CDATA[rtmp://live.ijntv.cn:1935/jnqtx/sd.stream]]></url>
+</tv>
+<tv>
+<channelid>F3E95B545B06BC4F8DA74A924E046544</channelid>
+<name>威海新闻综合</name>
+<url tvsource="官方"><![CDATA[rtmp://olive.weihai.tv/live/xwzh]]></url>
+</tv>
+<tv>
+<channelid>780D73AC270AA644B3DA0F36BE06142A</channelid>
+<name>威海公共频道</name>
+<url tvsource="官方"><![CDATA[rtmp://olive.weihai.tv/live/msysnew]]></url>
+</tv>
+<tv>
+<channelid>5E67CF11B1E70840ADF219C4D730A1AA</channelid>
+<name>青岛N套</name>
+<url tvsource="青岛1"><![CDATA[http://hls17.cntv.chinacache.net/cache/15_/seg0/index.m3u8]]></url>
+<url tvsource="青岛2"><![CDATA[http://hls17.cntv.chinacache.net/cache/16_/seg0/index.m3u8]]></url>
+<url tvsource="青岛3"><![CDATA[http://hls17.cntv.chinacache.net/cache/17_/seg0/index.m3u8]]></url>
+<url tvsource="青岛4"><![CDATA[http://hls17.cntv.chinacache.net/cache/18_/seg0/index.m3u8]]></url>
+<url tvsource="青岛5"><![CDATA[http://hls17.cntv.chinacache.net/cache/19_/seg0/index.m3u8]]></url>
+<url tvsource="青岛6"><![CDATA[http://hls17.cntv.chinacache.net/cache/20_/seg0/index.m3u8]]></url>
+<url tvsource="青岛7"><![CDATA[http://hls17.cntv.chinacache.net/cache/21_/seg0/index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>4DAB44C164B2DF4FBAA38FE9FF20CFF9</channelid>
+<name>青岛青少旅游</name>
+<url tvsource="源1"><![CDATA[http://112.231.23.44:554/live/tv61/playlist.m3u8?wowzasessionid=31745273]]></url>
+</tv>
+<tv>
+<channelid>3A550CC87828764AB1CDE96760B05079</channelid>
+<name>青岛都市频道</name>
+<url tvsource="源1"><![CDATA[rtmp://112.231.23.44:554/live/tv51]]></url>
+<url tvsource="源2"><![CDATA[rtmp://119.167.73.17:554/live/tv51]]></url>
+</tv>
+<tv>
+<channelid>76C54526B3AF0440B84412C596E2A5F2</channelid>
+<name>青岛少儿</name>
+<url tvsource="源1"><![CDATA[rtmp://112.231.23.44:554/live/tv61]]></url>
+<url tvsource="源2"><![CDATA[rtmp://119.167.73.17:554/live/tv61]]></url>
+</tv>
+<tv>
+<channelid>960565734A6E05429577AAA077429A5A</channelid>
+<name>青岛生活频道</name>
+<url tvsource="源1"><![CDATA[rtmp://119.167.73.17:554/live/tv21]]></url>
+<url tvsource="源2"><![CDATA[rtmp://112.231.23.44:554/live/tv21]]></url>
+</tv>
+<tv>
+<channelid>09AB6AD4CF906745BC157F7D6E8BF4CF</channelid>
+<name>青岛新闻综合</name>
+<url tvsource="源2"><![CDATA[rtmp://112.231.23.44:554/live/tv011]]></url>
+<url tvsource="源3"><![CDATA[rtmp://119.167.73.17:554/live/tv011]]></url>
+</tv>
+<tv>
+<channelid>82FE79E88442C244A6E55E602D85652C</channelid>
+<name>青岛影视频道</name>
+<url tvsource="源1"><![CDATA[rtmp://119.167.73.17:554/live/tv31]]></url>
+<url tvsource="源2"><![CDATA[rtmp://112.231.23.44:554/live/tv31]]></url>
+</tv>
+<tv>
+<channelid>07228C409682954A8A4569974F12E606</channelid>
+<name>菏泽1台</name>
+<url tvsource="源1"><![CDATA[rtmp://video.hznet.tv:1935/live/live1]]></url>
+</tv>
+<tv>
+<channelid>03709750E77BB34EA8B99C2306F4A453</channelid>
+<name>菏泽2台</name>
+<url tvsource="源1"><![CDATA[rtmp://video.hznet.tv:1935/live/live2]]></url>
+<url tvsource="源2"><![CDATA[rtmp://video.hznet.tv:1935/live/live3]]></url>
+</tv>
+<tv>
+<channelid>4C9965028EE70A478A0B43A889AFCD17</channelid>
+<name>江西教育</name>
+<url tvsource="自定义"><![CDATA[mms://218.65.110.19/live]]></url>
+</tv>
+<tv>
+<channelid>F4C9C1118C5E7449A5230764F948E55D</channelid>
+<name>江西九江一台</name>
+<url tvsource="官方电视台 (rtmp)"><![CDATA[rtmp://bbs.jjcmw.cn/live/jjtv1]]></url>
+</tv>
+<tv>
+<channelid>2E2795EFB622834F835A6B62941D6DAB</channelid>
+<name>江西都市</name>
+<url tvsource="默认源1"><![CDATA[rtmp://live.goldia.cn/live/livestream]]></url>
+</tv>
+<tv>
+<channelid>E158A0C218FA2744B868BE0930D6C937</channelid>
+<name>江西九江二台</name>
+<url tvsource="官方电视台 (rtmp)"><![CDATA[rtmp://bbs.jjcmw.cn/live/jjtv2]]></url>
+</tv>
+<tv>
+<channelid>BDB7B89E21ACB341AC9A7A9012714A74</channelid>
+<name>江西九江三台</name>
+<url tvsource="官方电视台 (rtmp)"><![CDATA[rtmp://bbs.jjcmw.cn/live/jjtv3]]></url>
+</tv>
+<tv>
+<channelid>E8C18F3093D35F41A75FAAE8F332D79B</channelid>
+<name>江西九江四台</name>
+<url tvsource="默认源1"><![CDATA[rtmp://bbs.jjcmw.cn/live/jjtv4]]></url>
+</tv>
+<tv>
+<channelid>C84161E1C9CC274F908348B753FD1771</channelid>
+<name>江西南昌都市频道</name>
+<url tvsource="官方电视台"><![CDATA[rtmp://w.ncnews.com.cn:1935/live/nctv2]]></url>
+<url tvsource="默认源1"><![CDATA[rtmp://w.ncnews.com.cn/live/nctv2]]></url>
+<url tvsource="默认源3"><![CDATA[rtmp://w.ncnews.com.cn:1935/live/nctv2.direct]]></url>
+</tv>
+<tv>
+<channelid>0F41D2B609AD3B458AE3DD6447756626</channelid>
+<name>江西南昌公共频道</name>
+<url tvsource="官方电视台"><![CDATA[rtmp://w.ncnews.com.cn:1935/live/nctv4]]></url>
+<url tvsource="默认源1"><![CDATA[rtmp://w.ncnews.com.cn/live/nctv4]]></url>
+<url tvsource="默认源3"><![CDATA[rtmp://w.ncnews.com.cn:1935/live/nctv4.direct]]></url>
+</tv>
+<tv>
+<channelid>1867731E069E824080E7B102361F19B1</channelid>
+<name>江西南昌新闻综合</name>
+<url tvsource="官方电视台"><![CDATA[rtmp://w.ncnews.com.cn:1935/live/nctv1]]></url>
+<url tvsource="默认源3"><![CDATA[rtsp://live1.ncnews.com.cn/nctv1]]></url>
+<url tvsource="默认源1"><![CDATA[rtmp://w.ncnews.com.cn/live/nctv1]]></url>
+<url tvsource="默认源4"><![CDATA[rtmp://w.ncnews.com.cn:1935/live/nctv1.direct]]></url>
+</tv>
+<tv>
+<channelid>B3C42C4A03B1264A8FBB740CC79422B0</channelid>
+<name>江西南昌资讯政法</name>
+<url tvsource="官方电视台"><![CDATA[rtmp://w.ncnews.com.cn:1935/live/nctv3]]></url>
+<url tvsource="默认源1"><![CDATA[rtmp://w.ncnews.com.cn/live/nctv3]]></url>
+<url tvsource="默认源3"><![CDATA[rtmp://w.ncnews.com.cn:1935/live/nctv3.direct]]></url>
+</tv>
+<tv>
+<channelid>26DB35CA2DEB1041B8B7CA3FB71CB436</channelid>
+<name>江西宜春新闻</name>
+<url tvsource="默认源1"><![CDATA[rtmp://live.ycstv.com:1935/live/live3]]></url>
+<url tvsource="默认源2"><![CDATA[rtmp://live.ycstv.com:1935/live/live3.direct]]></url>
+</tv>
+<tv>
+<channelid>2F4AAC97006DB049A7A7EA24EC3F49DF</channelid>
+<name>新疆|多频道</name>
+<url tvsource="源1"><![CDATA[http://vodhyw.sobeycache.com/live/b6f0fa893b48461291cdf2adb7d21ff5?fmt=h264_800k_flv]]></url>
+<url tvsource="源2"><![CDATA[http://vodhyw.sobeycache.com/live/4e923cb06c1b4e85b0173db6c61cabb1?fmt=h264_800k_flv]]></url>
+<url tvsource="源4"><![CDATA[http://218.202.219.67/channels/xjyx/UTV1-Envivio/flv:300k_rtmp]]></url>
+<url tvsource="源5"><![CDATA[http://218.202.219.67/channels/xjyx/UTV2-Envivio/flv:300k_rtmp]]></url>
+<url tvsource="源6"><![CDATA[rtmp://218.202.218.195/livepkgr/livestream1]]></url>
+</tv>
+<tv>
+<channelid>DC654B06DF18E84FAEE5C9D0887CAC51</channelid>
+<name>福建新闻频道</name>
+<url tvsource="zdy"><![CDATA[http://video.fjtv.net:8080/mms3.0/videoPlay/findBroadcastUrl.jspa?channelID=3&channelType=0]]></url>
+<url tvsource="源2"><![CDATA[rtsp://61.241.199.18/live/fjxw.sdp]]></url>
+</tv>
+<tv>
+<channelid>45A94F5194FA6D40A260F4E432F08ECB</channelid>
+<name>福建公共频道</name>
+<url tvsource="zdy"><![CDATA[http://video.fjtv.net:8080/mms3.0/videoPlay/findBroadcastUrl.jspa?channelID=8&channelType=0]]></url>
+</tv>
+<tv>
+<channelid>39E30BBEC58DE54592988D4FF99C8A66</channelid>
+<name>福建少儿频道</name>
+<url tvsource="zdy"><![CDATA[http://video.fjtv.net:8080/mms3.0/videoPlay/findBroadcastUrl.jspa?channelID=19&channelType=0]]></url>
+</tv>
+<tv>
+<channelid>C74651A3B977A64ABB057E3AAE8CE6C4</channelid>
+<name>福建体育频道</name>
+<url tvsource="源1"><![CDATA[rtsp://61.241.199.18/live/fjty.sdp]]></url>
+</tv>
+<tv>
+<channelid>AE20AFAFACAE544091F26DB31223C568</channelid>
+<name>福建电视剧频道</name>
+<url tvsource="源1"><![CDATA[rtsp://61.241.199.18/live/fjdsj.sdp]]></url>
+</tv>
+<tv>
+<channelid>2B68709C7D051A42B96889D3B7097E4A</channelid>
+<name>福建都市时尚</name>
+<url tvsource="源1"><![CDATA[rtsp://61.241.199.18/live/fjdsss.sdp]]></url>
+</tv>
+<tv>
+<channelid>8895FAA1211AB242A9556671690C2554</channelid>
+<name>福建福州新闻频道</name>
+<url tvsource="官方"><![CDATA[rtmp://live2.fzntv.cn:1935/live/zohi_fztv1]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live2.fzntv.cn:1935/live/zohi_fztv1.direct]]></url>
+</tv>
+<tv>
+<channelid>67239765FBDEF84984C68ADB818B5FCB</channelid>
+<name>福建福州影视频道</name>
+<url tvsource="官方"><![CDATA[rtmp://live2.fzntv.cn:1935/live/zohi_fztv2]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live2.fzntv.cn:1935/live/zohi_fztv2.direct]]></url>
+</tv>
+<tv>
+<channelid>74103CC78BF63E4FBA80775DEE78A6B3</channelid>
+<name>福建福州生活频道</name>
+<url tvsource="官方"><![CDATA[rtmp://live2.fzntv.cn:1935/live/zohi_fztv3]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live2.fzntv.cn:1935/live/zohi_fztv3.direct]]></url>
+</tv>
+<tv>
+<channelid>3F08F1D1D2BE6F46B753C98EE20BA6DF</channelid>
+<name>福建福州少儿频道</name>
+<url tvsource="官方"><![CDATA[rtmp://live2.fzntv.cn:1935/live/zohi_fztv4]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live2.fzntv.cn:1935/live/zohi_fztv4.direct]]></url>
+</tv>
+<tv>
+<channelid>960DFEA6D85AB0498A2BBCE6045899FA</channelid>
+<name>福建福州直播</name>
+<url tvsource="源1"><![CDATA[rtmp://live2.fzntv.cn:1935/live/zohi_chat]]></url>
+</tv>
+<tv>
+<channelid>E8891A300FA00B44B0BFC7FEE9035B83</channelid>
+<name>福建厦门纪实频道</name>
+<url tvsource="源1"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/jspd/flv:sd/live.flv]]></url>
+</tv>
+<tv>
+<channelid>167F1CE3EA97AE44B2256C5B948E5B28</channelid>
+<name>潮州综合</name>
+<url tvsource="源1"><![CDATA[rtmp://125.91.226.152:1935/oflaDemo/livestream]]></url>
+<url tvsource="源2"><![CDATA[rtmp://58.248.254.7:1935/live/iczzh.sdp]]></url>
+<url tvsource="源3"><![CDATA[rtmp://58.248.254.7:1935/live/iczzh.sdp.direct]]></url>
+<url tvsource="电信"><![CDATA[rtsp://113.108.220.53/tv/czws.sdp]]></url>
+</tv>
+<tv>
+<channelid>61E1C84239E9654D86F356627A6F186A</channelid>
+<name>汕头综合</name>
+<url tvsource="联通"><![CDATA[rtsp://58.248.254.11:1935/live/stzh-i.sdp]]></url>
+<url tvsource="电信"><![CDATA[rtsp://113.108.220.53/tv/stws-h.sdp]]></url>
+<url tvsource="源4"><![CDATA[rtmp://58.248.254.7:1935/live/istws.sdp]]></url>
+</tv>
+<tv>
+<channelid>FF02C6562455EA4F874EC51164ABAB18</channelid>
+<name>汕尾综合</name>
+<url tvsource="联通"><![CDATA[rtsp://58.248.254.11:1935/live/swws-i.sdp]]></url>
+<url tvsource="电信"><![CDATA[rtsp://113.108.220.53:1935/live/swws.sdp]]></url>
+<url tvsource="源2"><![CDATA[rtsp://113.108.220.53/tv/stws-h.sdp]]></url>
+<url tvsource="源4"><![CDATA[rtmp://58.248.254.7:1935/live/iswws.sdp]]></url>
+</tv>
+<tv>
+<channelid>4EE9F86CEE3954458C86DAB1B9591640</channelid>
+<name>重庆|重庆影视</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226068/10000100000000060000000000124004_0.smil]]></url>
+</tv>
+<tv>
+<channelid>20D8C7B85DD7D540BC4A004D64CABD77</channelid>
+<name>重庆|重庆娱乐</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226071/10000100000000060000000000124012_0.smil]]></url>
+</tv>
+<tv>
+<channelid>6B9AAA4FF7681349887FF55B371279EF</channelid>
+<name>重庆|重庆生活</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226072/10000100000000060000000000124013_0.smil]]></url>
+</tv>
+<tv>
+<channelid>006AAA360E6B8444926A938A4A0214E7</channelid>
+<name>重庆|重庆新财经</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226073/10000100000000060000000000124014_0.smil]]></url>
+</tv>
+<tv>
+<channelid>2D5CD0D834299A47AABEDB639A3B32F2</channelid>
+<name>重庆|重庆少儿频道</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226079/10000100000000060000000000124029_0.smil]]></url>
+</tv>
+<tv>
+<channelid>422ED4853203DE4AB4863626325520C5</channelid>
+<name>辽宁|辽宁影视</name>
+<url tvsource="源1"><![CDATA[http://60.19.18.226/iPhone/121/prog_index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>A84AF2CD68FFE0489E91A21485BE0D84</channelid>
+<name>辽宁|辽宁生活</name>
+<url tvsource="源1"><![CDATA[http://60.19.18.226/iPhone/122/prog_index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>1EEF9AD6B4F8C641B328E2A59256FA41</channelid>
+<name>辽宁|辽宁北方</name>
+<url tvsource="源1"><![CDATA[http://60.19.18.226/iPhone/172/prog_index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>698A685C7BCF6E4FA03ECB38E717EE9D</channelid>
+<name>辽宁|辽宁青少</name>
+<url tvsource="源1"><![CDATA[http://60.19.18.226/iPhone/131/prog_index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>04D3CFD3AD9F88428D14AAFD913C0954</channelid>
+<name>辽宁|辽宁都市</name>
+<url tvsource="源1"><![CDATA[http://60.19.18.226/iPhone/171/prog_index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>58787B6F76A8CC468E047C0188BF82D5</channelid>
+<name>辽宁公共</name>
+<url tvsource="源2"><![CDATA[rtsp://218.25.54.119/sytv4]]></url>
+</tv>
+<tv>
+<channelid>EFB9392E91827942A408AEB5985AD8C5</channelid>
+<name>沈阳新闻综合</name>
+<url tvsource="源2"><![CDATA[rtsp://218.25.54.119/sytv1]]></url>
+</tv>
+<tv>
+<channelid>F2EA6CF1206C02479BB5F8C1B6C300A7</channelid>
+<name>河南电视剧</name>
+<url tvsource="源1"><![CDATA[http://live.hntv.tv/channels/tvie/video_channel_05/m3u8:hntv5_apple_200k/live]]></url>
+</tv>
+<tv>
+<channelid>8EB1250611DFC04181E84E682433E3E2</channelid>
+<name>河南新农村</name>
+<url tvsource="源1"><![CDATA[http://live.hntv.tv/channels/tvie/video_channel_09/m3u8:hntv9_apple_200k/live]]></url>
+</tv>
+<tv>
+<channelid>D975F317FE099B4FAC09849BEC8EE549</channelid>
+<name>河南都市频道</name>
+<url tvsource="源1"><![CDATA[http://live.hntv.tv/channels/tvie/video_channel_02/m3u8:hntv2_apple_200k/live]]></url>
+</tv>
+<tv>
+<channelid>02AC283F53FB0B4F906B8B2738AD4C19</channelid>
+<name>河南民生频道</name>
+<url tvsource="源1"><![CDATA[http://live.hntv.tv/channels/tvie/video_channel_03/m3u8:hntv3_apple_200k/live]]></url>
+</tv>
+<tv>
+<channelid>CA4FE95A9F0DEE48B3DDE0AEDEA5E248</channelid>
+<name>河南法制频道</name>
+<url tvsource="源1"><![CDATA[http://live.hntv.tv/channels/tvie/video_channel_04/m3u8:hntv4_apple_200k/live]]></url>
+</tv>
+<tv>
+<channelid>82156F857ACB954CB92EE8486EB0EE42</channelid>
+<name>河南新闻频道</name>
+<url tvsource="源1"><![CDATA[http://live.hntv.tv/channels/tvie/video_channel_06/m3u8:hntv6_apple_200k/live]]></url>
+</tv>
+<tv>
+<channelid>733AD54418D1C2429E654639A98B25FC</channelid>
+<name>河南购物频道</name>
+<url tvsource="源1"><![CDATA[http://live.hntv.tv/channels/tvie/video_channel_07/m3u8:hntv7_apple_200k/live]]></url>
+</tv>
+<tv>
+<channelid>999C607AC51B7B439AFAAE9D5181EADA</channelid>
+<name>河南公共频道</name>
+<url tvsource="源1"><![CDATA[http://live.hntv.tv/channels/tvie/video_channel_08/m3u8:hntv8_apple_200k/live]]></url>
+</tv>
+<tv>
+<channelid>FE921E177216244883A9F30A6F8585E3</channelid>
+<name>海口2台</name>
+<url tvsource="源1"><![CDATA[http://121.58.54.150/PLTV/88888888/224/0/3221225739/iptv18190.smil]]></url>
+</tv>
+<tv>
+<channelid>B135721F7E8E524E9270A8E8DD9FCFCA</channelid>
+<name>三亚1台</name>
+<url tvsource="源1"><![CDATA[http://121.58.54.150/PLTV/88888888/224/0/3221225737/iptv18192.smil]]></url>
+</tv>
+<tv>
+<channelid>6E99C830505159428927C6D047A55FE3</channelid>
+<name>海南浦东电视台</name>
+<url tvsource="源1"><![CDATA[http://zb.pudongtv.cn/hls-live/livepkgr/_definst_/wslhevent/hls_pindao_1_350.m3u8]]></url>
+</tv>
+<tv>
+<channelid>59EFC289251E034A99C9764F2D4F7B0A</channelid>
+<name>甘肃晴彩兰州</name>
+<url tvsource="源1"><![CDATA[http://tsl5.hls.cutv.com/cutvChannelLive/KcQSF33.m3u8]]></url>
+<url tvsource="官方"><![CDATA[rtmp://live.lztv.tv/live/lztvcmmb]]></url>
+</tv>
+<tv>
+<channelid>60BC13FC8512874F9CEBA4FD5AFE2EA2</channelid>
+<name>太原新闻</name>
+<url tvsource="源1"><![CDATA[http://tsl6.hls.cutv.com/cutvlive/49VAfrw/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>4E5A6F56CC6DFD41B9164B12E655851A</channelid>
+<name>太原百姓</name>
+<url tvsource="源1"><![CDATA[http://tsl6.hls.cutv.com/cutvlive/u8BmT6h/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>6E843C39D6088248A76D217D650A4038</channelid>
+<name>太原法制</name>
+<url tvsource="源1"><![CDATA[http://tsl6.hls.cutv.com/cutvlive/phsry3e/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>5CF4FFF10C28EB4B9D63808BFBBD47A0</channelid>
+<name>太原文体</name>
+<url tvsource="源1"><![CDATA[http://tsl6.hls.cutv.com/cutvlive/rk8Z088/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>FEC85BBF28BB444AB17C363FA9628E02</channelid>
+<name>凤凰香港台</name>
+<url tvsource="源1"><![CDATA[http://live.3gv.ifeng.com/live/hongkong.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://www.7po.com/xmlinfo.php?tp=620&tn=1]]></url>
+</tv>
+<tv>
+<channelid>1744B70E6FFA9F47A3062D4FC027D107</channelid>
+<name>凤凰卫视美洲台</name>
+<url tvsource="源1"><![CDATA[http://lv3.livem3u8.na.itv.cn/live/6bf6dfe3eeaa46118c318e950bc288bd.m3u8?bitrate=1200]]></url>
+</tv>
+<tv>
+<channelid>C79981BDADD9414EB54026BCD022491A</channelid>
+<name>看看新闻</name>
+<url tvsource="源1"><![CDATA[http://live-cdn1.smgbb.tv/channels/bbtv/kkxww/flv:sd/live]]></url>
+</tv>
+<tv>
+<channelid>11FC80445212B4418BE343ED036A549D</channelid>
+<name>南投新闻	</name>
+<url tvsource="源1"><![CDATA[rtsp://27.100.64.99:1935/liveedge/live_1_2_0]]></url>
+<url tvsource="源2"><![CDATA[rtsp://27.100.64.99:1935/liveedge/live_1_2_1]]></url>
+</tv>
+<tv>
+<channelid>398254ABBA19CF46A9D722E404BBE8C4</channelid>
+<name>新加坡电影</name>
+<url tvsource="源1"><![CDATA[http://223.27.170.210/channels/39/800.flv/live]]></url>
+<url tvsource="源2"><![CDATA[rtsp://198.40.51.213/dz]]></url>
+</tv>
+<tv>
+<channelid>BA80798B58E02D4284477AE5AFB20C50</channelid>
+<name>生命电视台</name>
+<url tvsource="源1"><![CDATA[http://211.73.19.209/live/737C1A39-7688-5644-E1E0-E1FA0FCCD5C8?fmt=x264_0K_ts&cpid=admin&size=720X480&toflv=1]]></url>
+<url tvsource="源2"><![CDATA[http://211.73.19.209/live/737C1A39-7688-5644-E1E0-E1FA0FCCD5C8?fmt=x264_0K_ts&cpid=admin&size=720X480&toflv=2]]></url>
+</tv>
+<tv>
+<channelid>00A321E737DC724D9182E7F0B1BBA7D2</channelid>
+<name>华娱卫视</name>
+<url tvsource="源2"><![CDATA[rtsp://116.199.127.68/huayu]]></url>
+<url tvsource="源1"><![CDATA[rtsp://112.231.23.27:554/live/hyws]]></url>
+</tv>
+<tv>
+<channelid>ECA0EA2C1A587649A837F2A7DF13FE65</channelid>
+<name>健康卫视</name>
+<url tvsource="源1"><![CDATA[rtmp://wlive.videocc.net/live/jkwshk]]></url>
+</tv>
+<tv>
+<channelid>C973CD5B20027945A839E6EE75488EF7</channelid>
+<name>华夏娱乐卫视</name>
+<url tvsource="源1"><![CDATA[rtmp://203.69.68.219:1935/tvchannel/c1]]></url>
+</tv>
+<tv>
+<channelid>5988642A8746DD40BE5EB63A095568A0</channelid>
+<name>TVB互动电视新闻</name>
+<url tvsource="源1"><![CDATA[http://rtsp.vdowowza.tvb.com:1935/tvblive/mobile_inews_400.stream/chunklist.m3u8]]></url>
+</tv>
+<tv ><channelid >1B2E62E621347E47838D6D55230FC09A</channelid>
+<name >TVB翡翠台</name>
+<url tvsource="源1" ><![CDATA[http://119.147.242.7:14076]]></url>
+</tv>
+<tv ><channelid >09D267E28EFD06439CB3DDC4A2F738E6</channelid>
+<name >凤凰卫视香港台</name>
+<url tvsource="源1" ><![CDATA[http://live.3gv.ifeng.com/live/hongkong.m3u8]]></url>
+</tv>
+<tv ><channelid >46DB28851A906B4F9461BC39E41D8DF5</channelid>
+<name >香港卫视</name>
+<url tvsource="源1" ><![CDATA[http://qqlive.rec.hdl.lxdns.com/2584831218.flv]]></url>
+</tv>
+<tv ><channelid >540488E923223F49A5BBAEB59366935B</channelid>
+<name >香港卫视3</name>
+<url tvsource="源1" ><![CDATA[http://180.153.72.189:1863/2584831218.flv]]></url>
+</tv>
+<tv>
+<channelid>6D03D694349F9B469C02E7A56BC41BE0</channelid>
+<name>香港有线173</name>
+<url tvsource="源1"><![CDATA[rtsp://173.208.220.150/hkm.kmh]]></url>
+<url tvsource="源2"><![CDATA[http://tinyurl.com/bp9jxxf]]></url>
+</tv>
+<tv ><channelid >E54E2C2189B12041A4F8F809AD4F12A1</channelid>
+<name >香港娱乐</name>
+<url tvsource="源1" ><![CDATA[http://223.27.170.210/channels/1111/800.flv/live]]></url>
+</tv>
+<tv ><channelid >A745B546C0E37F489D530DC66338F158</channelid>
+<name >亚洲电影</name>
+<url tvsource="源1" ><![CDATA[http://223.27.170.210/channels/39/800.flv/live]]></url>
+</tv>
+<tv ><channelid >8FFE7B3DFC264F498CFFB92DB6651AB5</channelid>
+<name >IMovies</name>
+<url tvsource="源1" ><![CDATA[http://223.27.170.210/channels/39/800.flv/live]]></url>
+</tv>
+<tv ><channelid >178C1436E1D4F14B82CEEB3DED2C2349</channelid>
+<name >莲花卫视</name>
+<url tvsource="源1" ><![CDATA[http://61.14.175.39/zerox/LOTUS/1-39.m3u8]]></url>
+</tv>
+<tv ><channelid >C14D740B407A1748ABE50EA939FB08E4</channelid>
+<name >ip中视</name>
+<url tvsource="源1" ><![CDATA[http://61.67.123.93/live/ctv_1200k.stream/playlist.m3u8]]></url>
+</tv>
+<tv ><channelid >A094C8C46D2F114393278E8F9792FDF2</channelid>
+<name >民视</name>
+<url tvsource="源1" ><![CDATA[http://61.67.123.93/live/ftv_1200k.stream/playlist.m3u8]]></url>
+</tv>
+<tv ><channelid >C7E6929380FCFC4F8BEAABA0DCED2E0F</channelid>
+<name >香港卫视5</name>
+<url tvsource="源1" ><![CDATA[http://223.27.170.210/channels/1111/800.flv/live]]></url>
+</tv>
+<tv ><channelid >B22660275122A74493F207F18C40FAF0</channelid>
+<name >澳门卫视</name>
+<url tvsource="源1" ><![CDATA[http://61.67.123.93/live/mstv_1200k.stream/playlist.m3u8]]></url>
+</tv>
+<tv ><channelid >642993CBC685474BAD88C8D86E75D941</channelid>
+<name >澳亚卫视</name>
+<url tvsource="源1" ><![CDATA[http://61.67.123.93/live/mastv_1200k.stream/playlist.m3u8]]></url>
+</tv>
+<tv ><channelid >C6E6FA316F86F249ABF8057576555C60</channelid>
+<name >澳门莲花</name>
+<url tvsource="源1" ><![CDATA[http://61.14.175.39/zerox/LOTUS/0-39.m3u8]]></url>
+</tv>
+<tv ><channelid >A947105F39717C429D26C2FA2AE5D7BE</channelid>
+<name >宏观卫视</name>
+<url tvsource="源1" ><![CDATA[http://mobile.ccdntech.com/live/_definst_/vod62_Live/live1/playlist.m3u8]]></url>
+</tv>
+<tv ><channelid >D28023467DF5D543BBF0C0A63A93B91D</channelid>
+<name >澳视卫星台</name>
+<url tvsource="源1" ><![CDATA[http://218.213.227.174:1935/tv/ch3.live/playlist.m3u8]]></url>
+</tv>
+<tv ><channelid >5FAFEFDD5B88CC4DBD6E248370C137A8</channelid>
+<name >澳视体育台</name>
+<url tvsource="源1" ><![CDATA[http://218.213.227.174:1935/tv/ch4.live/playlist.m3u8]]></url>
+</tv>
+<tv ><channelid >7D897358A424FB43B26C9231D3FDB9AE</channelid>
+<name >港澳台壹新闻</name>
+<url tvsource="源1" ><![CDATA[http://newshls-i.akamaihd.net/hls/live/202100/newshls/wifistream.m3u8]]></url>
+</tv>
+<tv ><channelid >8DBAF2FEC175C740A439F3D436D1ACD8</channelid>
+<name >港I Movies</name>
+<url tvsource="源1" ><![CDATA[http://223.27.170.210/channels/39/800.flv/live]]></url>
+</tv>
+<tv ><channelid >803ADC5CC5B5314684A3450C4603C78E</channelid>
+<name >港laty tv</name>
+<url tvsource="源1" ><![CDATA[http://223.27.170.210/channels/1111/800.flv/live]]></url>
+</tv>
+<tv ><channelid >0D73E646DE547F4FB31D1FDDFBDA1744</channelid>
+<name >港香港卫视</name>
+<url tvsource="源1" ><![CDATA[http://180.153.72.189:1863/2584831218.flv]]></url>
+<url tvsource="源2" ><![CDATA[http://qqlive.rec.hdl.lxdns.com/2584831218.flv]]></url>
+</tv>
+<tv ><channelid >BF9AC270DBA19C46B5B1E758B794F34E</channelid>
+<name >澳视高清</name>
+<url tvsource="源1" ><![CDATA[rtmp://live3.tdm.com.mo:80/tv/ch6.live]]></url>
+</tv>
+<tv ><channelid >08455CA5C60E714EAD260CBF3B9ACDFD</channelid>
+<name >TVB星河台可播</name>
+<url tvsource="源1" ><![CDATA[http://getcloudtv.com/stream/testchannels/5070.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://122.226.79.235:1163/tm3u8/live_m3u8/5070/kk.m3u8]]></url>
+<url tvsource="源3"><![CDATA[http://122.226.79.235:1163/tm3u8/live_m3u8/]]></url>
+</tv>
+<tv ><channelid >F8467748EB589E428535BF78C60A76C6</channelid>
+<name >TVB音乐台可播</name>
+<url tvsource="源1" ><![CDATA[rtsp://173.208.220.150/tvbm.kmj]]></url>
+</tv>
+<tv ><channelid >1EB91FC8B1843345A108B0C3E39AEE8D</channelid>
+<name >TVB电影台可播</name>
+<url tvsource="源1" ><![CDATA[rtsp://173.208.220.150/tvbmov.yemjsdfdtwn]]></url>
+</tv>
+<tv ><channelid >5030927ADF06F2458486A23599DEAEA5</channelid>
+<name >TVB儿童台可播</name>
+<url tvsource="源1" ><![CDATA[rtsp://173.208.220.150/tvbq]]></url>
+</tv>
+<tv ><channelid >B0999041E9A6544787D1C3653EB46539</channelid>
+<name >TVB为食台可播</name>
+<url tvsource="源1" ><![CDATA[rtsp://173.208.220.150/tvbf.kug]]></url>
+</tv>
+<tv ><channelid >4DC44D15CB77964DB9893DFA5537519F</channelid>
+<name >TVB道通台可播</name>
+<url tvsource="源1" ><![CDATA[rtsp://173.208.220.150/tvbt.kmj]]></url>
+</tv>
+<tv ><channelid >FF5759DDD6D8F945B170D175E73EBAAF</channelid>
+<name >澳门卫视MSTV</name>
+<url tvsource="源1" ><![CDATA[http://61.67.123.93/live/mstv_1200k.stream/playlist.m3u8]]></url>
+</tv>
+<tv ><channelid >FFE28532E999D142ACCDCF56D2CFAECB</channelid>
+<name >澳门莲花LOTUS_MACAO</name>
+<url tvsource="源1" ><![CDATA[http://61.14.175.39/zerox/LOTUS/1-39.m3u8]]></url>
+<url tvsource="源2" ><![CDATA[http://61.14.175.39/zerox/LOTUS/2-39.m3u8]]></url>
+<url tvsource="源1"><![CDATA[http://61.14.175.39/zerox/LOTUS/0-39.m3u8]]></url>
+</tv>
+<tv ><channelid >EE8D6F46E130C146A0A9B0DBB1BA63BF</channelid>
+<name >澳门MACAO</name>
+<url tvsource="源1" ><![CDATA[http://218.213.227.174:1935/tv/ch3.live/playlist.m3u8]]></url>
+</tv>
+<tv ><channelid >223D85CCAB312A42A98FB2018AB88666</channelid>
+<name >澳门资讯可播</name>
+<url tvsource="源1" ><![CDATA[http://218.213.227.174:1935/tv/ch5.live/playlist.m3u8]]></url>
+</tv>
+<tv ><channelid >DFD30EECDEBBEF458F2FD0AA012F88D8</channelid>
+<name >澳视体育</name>
+<url tvsource="源1" ><![CDATA[rtmp://live3.tdm.com.mo:1935/tv/ch4.live]]></url>
+</tv>
+<tv ><channelid >AE83272FBFF08647A3769F5AB2A9A982</channelid>
+<name >阳光卫视</name>
+<url tvsource="源1" ><![CDATA[rtmp://www.isuntv.com/live/mpegts.stream]]></url>
+</tv>
+<tv ><channelid >04573ACAD7802E448859FC7084D3C0E0</channelid>
+<name >星空卫视可播</name>
+<url tvsource="源1" ><![CDATA[rtsp://116.199.127.68/xingkong]]></url>
+</tv>
+<tv ><channelid >116CBD213F3C1D4E8B4042C9BCFE2B38</channelid>
+<name >星空卫视国际</name>
+<url tvsource="源1" ><![CDATA[http://lv3.livem3u8.na.itv.cn/live/97acb1b2cbed4a4281a68356f8c2bd00.m3u8?bitrate=1200]]></url>
+</tv>
+<tv ><channelid >D3F524CEBED1F64DAC0918222EB95354</channelid>
+<name >星空卫视电影台</name>
+<url tvsource="源1" ><![CDATA[rtsp://173.208.220.150/sm.qpukustrmugpz]]></url>
+</tv>
+<tv>
+<channelid>1C07EE4D53E7EB48A856D5F4B382AE92</channelid>
+<name>新影视</name>
+<url tvsource="源1"><![CDATA[rtmp://live121.cnlive.com:1935/live/xinyingshi]]></url>
+</tv>
+<tv>
+<channelid>811509820F68614599AE343972CB4315</channelid>
+<name>翡翠高清</name>
+<url tvsource="源2"><![CDATA[http://live1.ms.tvb.com/tvb/tv/jade/044.m3u8]]></url>
+<url tvsource="源3"><![CDATA[rtsp://rtsp.vdowowza.tvb.com/tvblive/mobile_hdj_600.stream]]></url>
+<url tvsource="源1"><![CDATA[http://getcloudtv.com/stream/testchannels/8088.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C885EAA52FCA804E82D85F5C07647759</channelid>
+<name>翡翠台</name>
+<url tvsource="源3"><![CDATA[http://119.147.242.7:14164]]></url>
+<url tvsource="源4"><![CDATA[http://live1.ms.tvb.com/tvb/tv/jade/044.m3u8]]></url>
+<url tvsource="源1"><![CDATA[http://getcloudtv.com/stream/testchannels/2508.m3u8]]></url>
+</tv>
+<tv>
+<channelid>448A9EF4D9BC6D47A398E42F8A8E98C0</channelid>
+<name>国家地理频道</name>
+<url tvsource="源2"><![CDATA[http://77.91.77.21:6413/?sid=b12ef7a2e0291d2ad65c00173964d86h]]></url>
+<url tvsource="源3"><![CDATA[http://cds-se1.se.cds-sr1.vmo1.sbb.rs/live/disk/ngc_srb/hls/hls-audio101_eng=64000-video=1400000.m3u8]]></url>
+</tv>
+<tv>
+<channelid>F86684E1B161584FBC38768DDAD4016E</channelid>
+<name>三好消息</name>
+<url tvsource="源1"><![CDATA[http://210.59.248.53/hls-live/livepkgr/_definst_/liveevent/live-ch1-1.m3u8]]></url>
+</tv>
+<tv>
+<channelid>6E6D190A52627543AC7EF6C59B1EEEE4</channelid>
+<name>汉天卫视</name>
+<url tvsource="源1"><![CDATA[http://lv3.livem3u8.na.itv.cn/live/0807eef5c6ba4794b9f7c763163d638b.m3u8?bitrate=1200]]></url>
+</tv>
+<tv>
+<channelid>697AF069505FEB41B7DC48D78C2E4AE1</channelid>
+<name>年代新闻</name>
+<url tvsource="源1"><![CDATA[rtsp://210.61.68.145/m50]]></url>
+</tv>
+<tv>
+<channelid>9B524DCFE7E2A4488D80F059851310D6</channelid>
+<name>探索高清173</name>
+<url tvsource="源1"><![CDATA[rtsp://173.208.220.150/dsj]]></url>
+</tv>
+<tv>
+<channelid>40DE275E5A8A324F916381EBBD04CD80</channelid>
+<name>阳光卫视</name>
+<url tvsource="源1"><![CDATA[http://101.1.7.13/240k/3g_video_index.m3u8]]></url>
+</tv>
+<tv>
+<channelid>3FBAC8ADB8796648B514A40EDED24AE3</channelid>
+<name>邮轮旅游</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300425.m3u8]]></url>
+</tv>
+<tv>
+<channelid>404FFF680F228D45B625A4F80A267FCD</channelid>
+<name>中华财经台</name>
+<url tvsource="源1"><![CDATA[rtmp://61.67.123.93/live/cstv_1200k.stream]]></url>
+</tv>
+<tv>
+<channelid>8A7CD05D77D31C46AC7C524F15D01309</channelid>
+<name>雲林新闻</name>
+<url tvsource="源1"><![CDATA[rtsp://27.100.64.99:1935/liveedge/live_1_0_0]]></url>
+<url tvsource="源2"><![CDATA[rtsp://27.100.64.99:1935/liveedge/live_1_0_1]]></url>
+</tv>
+<tv>
+<channelid>3C2CDFE057C1FF4ABF161E2BE23A6779</channelid>
+<name>亞洲台HD</name>
+<url tvsource="源1"><![CDATA[http://stmap10.tvcdn.org/live/_definst_/ch162_1/playlist.m3u8?wowzasessionid=2031967589]]></url>
+</tv>
+<tv>
+<channelid>0F2C82A63607A045A817F33E857D2D70</channelid>
+<name>日本NHK高清</name>
+<url tvsource="源1"><![CDATA[rtmp://ca-1.srv.fivecool.net/nhkw/gwm]]></url>
+</tv>
+<tv>
+<channelid>73AC465B86609C4CB16DEF62DD913048</channelid>
+<name>國興日本</name>
+<url tvsource="源1"><![CDATA[http://stmap10.tvcdn.org/live/_definst_/ch30_1/playlist.m3u8?wowzasessionid=782250976]]></url>
+</tv>
+<tv>
+<channelid>22D6DD9E771E3F46B66A7D72FEE7D980</channelid>
+<name>緯來日本</name>
+<url tvsource="源1"><![CDATA[http://stmap10.tvcdn.org/live/_definst_/ch31_1/playlist.m3u8?wowzasessionid=1730587616]]></url>
+</tv>
+<tv>
+<channelid>13A215CEA8A04844B50E000206988C25</channelid>
+<name>中天新聞</name>
+<url tvsource="源1"><![CDATA[http://stmap10.tvcdn.org/live/_definst_/ch74_1/playlist.m3u8?wowzasessionid=846189093]]></url>
+</tv>
+<tv>
+<channelid>015B1B1B80203641AE7AD646E6042B45</channelid>
+<name>民視新聞</name>
+<url tvsource="源1"><![CDATA[http://stmap10.tvcdn.org/live/_definst_/ch71_1/playlist.m3u8?wowzasessionid=1919099039]]></url>
+</tv>
+<tv>
+<channelid>79EF5A36D120D844AD967564F3896BF8</channelid>
+<name>HBO-HD</name>
+<url tvsource="源1"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805496]]></url>
+<url tvsource="源2"><![CDATA[rtsp://173.208.220.150/hbohd.uewhdhsdfg]]></url>
+</tv>
+<tv>
+<channelid>00A321E737DC724D9182E7F0B1BBA7D1</channelid>
+<name>三立</name>
+<url tvsource="源1"><![CDATA[rtsp://210.61.68.145/m20]]></url>
+<url tvsource="源2"><![CDATA[rtsp://mtv.smallsun.biz/m09]]></url>
+<url tvsource="源3"><![CDATA[rtsp://210.61.68.145/m67]]></url>
+</tv>
+<tv>
+<channelid>79DDA7EAEEA3E540BAC561F6BC9FF075</channelid>
+<name>三立高清</name>
+<url tvsource="源1"><![CDATA[rtsp://mtv.smallsun.biz/m20]]></url>
+</tv>
+<tv>
+<channelid>79DDA7EAEEA3E540BAC561F6BC9FF071</channelid>
+<name>天映电影</name>
+<url tvsource="源1"><![CDATA[http://getcloudtv.com/stream/testchannels/5074.m3u8]]></url>
+</tv>
+<tv>
+<channelid>12EBAF57A7A450419FDEABE9270E2F0F</channelid>
+<name>本港台</name>
+<url tvsource="源1"><![CDATA[http://stmap10.tvcdn.org/live/_definst_/ch160_1/playlist.m3u8?wowzasessionid=1414217974]]></url>
+<url tvsource="源2"><![CDATA[rtsp://116.199.127.68/bengang]]></url>
+<url tvsource="源3"><![CDATA[http://119.147.242.7:14165]]></url>
+</tv>
+<tv>
+<channelid>1C59B642B7E8584B8A48FD0F1653F201</channelid>
+<name>NATGEO HD</name>
+<url tvsource="源1"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805536]]></url>
+</tv>
+<tv>
+<channelid>23D94A780B9B4B4CB7ED7C359CCBA804</channelid>
+<name>STAR MOVIES HD</name>
+<url tvsource="源1"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805537]]></url>
+</tv>
+<tv>
+<channelid>0C0FC32BF18A764299042E7F7D1D3024</channelid>
+<name>DISCOVERY WORLD HD</name>
+<url tvsource="源1"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805538]]></url>
+</tv>
+<tv>
+<channelid>C27A3EB3D5605341B2E644EF41D98368</channelid>
+<name>HBO SIGNATURE HD</name>
+<url tvsource="源1"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805389]]></url>
+</tv>
+<tv>
+<channelid>640544E8B0BB31429B4EBD85355C339E</channelid>
+<name>HONGKONG i-CABLE D200 HD</name>
+<url tvsource="源1"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805391]]></url>
+</tv>
+<tv>
+<channelid>E46700B944466D479199538AAAE914D3</channelid>
+<name>DISCOVERY WORLD</name>
+<url tvsource="源1"><![CDATA[HD http://ims.veryhd.net/ty/kbr_ty.php?uuid=805538]]></url>
+</tv>
+<tv>
+<channelid>6E794DFDF19E704D91ED231744173DA5</channelid>
+<name>EUROSPORT HD</name>
+<url tvsource="源1"><![CDATA[http://ims.veryhd.net/ty/kbr_ty.php?uuid=805392]]></url>
+</tv>
+<tv>
+<channelid>E2E535D6FD0B3E41B0174D2E381CC9C4</channelid>
+<name>体育|NEOTV</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300369.m3u8]]></url>
+</tv>
+<tv>
+<channelid>608AF3B861A4904F82821F3C78D536B6</channelid>
+<name>体育|游戏竞技</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300378.m3u8]]></url>
+<url tvsource="源2"><![CDATA[http://news24kbs-2.gscdn.com/news24_800/_definst_/news24_800.stream/playlist.m3u8]]></url>
+</tv>
+<tv>
+<channelid>DE82D7C5352F544BBB8E9D4D7E5BC7FA</channelid>
+<name>体育|游戏</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300434.m3u8]]></url>
+</tv>
+<tv>
+<channelid>D8C6133EE468A84CB9C1409808F215F9</channelid>
+<name>体育|PPTV直播</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300521.m3u8]]></url>
+</tv>
+<tv>
+<channelid>6E988C6E91FDDE4BB09C683FF48E710B</channelid>
+<name>体育|英超</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300224.m3u8]]></url>
+</tv>
+<tv>
+<channelid>47014EB4CFC2F842AC1BE1CFE23E3CD0</channelid>
+<name>体育|足球</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300225.m3u8]]></url>
+</tv>
+<tv>
+<channelid>0B925305609026499F716075A476BB1F</channelid>
+<name>上海体育</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=shanghaitiyu_800&tag=live&ext=m3u8]]></url>
+</tv>
+<tv>
+<channelid>E1633662ADA0504F999F380B47D98BB8</channelid>
+<name>北京体育</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=btv6_800&tag=live&ext=m3u8]]></url>
+</tv>
+<tv>
+<channelid>F3D40C57AD776D46B03602FB4C74E72E</channelid>
+<name>体育|CBA灌篮</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300226.m3u8]]></url>
+</tv>
+<tv>
+<channelid>346DF62F0A82344498E6E2A419D2219E</channelid>
+<name>家庭-新财经</name>
+<url tvsource="源1"><![CDATA[rtmp://live4.cqnews.net/live/TVFLV2]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live4.cqnews.net/live/TVFLV2.direct]]></url>
+</tv>
+<tv>
+<channelid>2EEC10FB23E44C4CA5232EB806022C34</channelid>
+<name>家庭-新城财经</name>
+<url tvsource="源1"><![CDATA[http://metroradio-f.akamaihd.net/mmc_h_300@63?v=2.1.20&fp=WIN11&r=OVYUW&g=VBQQIRDWCJDW&seek=NaN]]></url>
+</tv>
+<tv>
+<channelid>C23ABFB1F7195D4694ED6DEB651B70DF</channelid>
+<name>购物|河北购物</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_03/flv:500k/live]]></url>
+</tv>
+<tv>
+<channelid>3C368D2CF9FEDE4299AE75710B97E4DD</channelid>
+<name>购物|河北购物(超清)</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_03/flv:2000k/live]]></url>
+</tv>
+<tv>
+<channelid>DB44BAE7DDA9D349A36B643479D9B31F</channelid>
+<name>购物|广西购物频道</name>
+<url tvsource="源1"><![CDATA[http://222.216.111.88:5000/nn_live.flv?id=1002]]></url>
+</tv>
+<tv>
+<channelid>E61DFD6D26ADD94499BAA1AD578B94A1</channelid>
+<name>少儿|早期教育</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226007/10000100000000060000000000083522_0.smil]]></url>
+</tv>
+<tv>
+<channelid>30EBB868CE4DE042A6CEAEEFA3D4F750</channelid>
+<name>少儿|幼儿教育</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226058/10000100000000060000000000109943_0.smil]]></url>
+</tv>
+<tv>
+<channelid>10993FC973200341A06975A471883EA6</channelid>
+<name>少儿|CCTV-14少儿</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctvshaoer&tag=live&ext=m3u8&sign=live_ipad]]></url>
+</tv>
+<tv>
+<channelid>FB67C784D1385549BAE8FB0A33CDE4FE</channelid>
+<name>少儿|河北少儿频道</name>
+<url tvsource="源1"><![CDATA[http://live01.hebtv.com/channels/hebtv/video_channel_07/flv:2000k/live]]></url>
+</tv>
+<tv>
+<channelid>6F19BF2F6CCDF842AA8E443367E8F104</channelid>
+<name>少儿|成都少儿频道</name>
+<url tvsource="源1"><![CDATA[http://itv.hdpfans.com/play?cdtvid=cdtv6]]></url>
+</tv>
+<tv>
+<channelid>8944B4AE70C45A40954793F57A813DF8</channelid>
+<name>少儿|大连少儿频道</name>
+<url tvsource="源1"><![CDATA[rtmp://live.dltv.cn/live/live6]]></url>
+</tv>
+<tv>
+<channelid>E4530EE652F5444AA35CACAA0B38D6D3</channelid>
+<name>少儿|济南少儿频道</name>
+<url tvsource="源1"><![CDATA[rtmp://live.ijntv.cn:1935/jnse/sd.stream]]></url>
+</tv>
+<tv>
+<channelid>4AEAA8C84BCF7349B1D0D6B8580792BF</channelid>
+<name>少儿|青岛少儿频道</name>
+<url tvsource="源1"><![CDATA[rtmp://112.231.23.44:554/live/tv62]]></url>
+</tv>
+<tv>
+<channelid>606102DD24704E43838E5B07A89D410C</channelid>
+<name>少儿|深圳少儿频道</name>
+<url tvsource="源1"><![CDATA[http://tsl1.hls.cutv.com/cutvlive/1SIQj6s/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>FB5825BACB496F4F936483FBFCE40B2D</channelid>
+<name>少儿|武汉少儿频道</name>
+<url tvsource="源1"><![CDATA[http://tsl2.hls.cutv.com/cutvlive/vnLNskj/hls/live_sd.m3u8]]></url>
+</tv>
+<tv>
+<channelid>C98CCA77E2F77345958B277393B8E2C4</channelid>
+<name>少儿|福州少儿频道</name>
+<url tvsource="源1"><![CDATA[rtmp://live2.fzntv.cn:1935/live/zohi_fztv4]]></url>
+</tv>
+<tv>
+<channelid>84AC87FDE2EAA14CB279ED5E86E51E1E</channelid>
+<name>少儿|重庆少儿频道</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226079/10000100000000060000000000124029_0.smil]]></url>
+</tv>
+<tv>
+<channelid>9CAED585FC107244BEDE3074A7627506</channelid>
+<name>少儿|广州少儿频道</name>
+<url tvsource="源1"><![CDATA[http://web-play.pptv.com/web-m3u8-300408.m3u8]]></url>
+</tv>
+<tv>
+<channelid>E23CAC2043D2AC4EA2AEC76DB217E75B</channelid>
+<name>卡酷动画</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226003/10000100000000060000000000083517_0.smil]]></url>
+</tv>
+<tv>
+<channelid>396AC53E53AF8F41A2642782F14C2001</channelid>
+<name>乐视体育</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=sportlive&tag=live&ext=m3u8]]></url>
+</tv>
+<tv>
+<channelid>5AC992AECB8AB64B9D48EE384FEADD8A</channelid>
+<name>乐视</name>
+<url tvsource="源1"><![CDATA[http://live.gslb.letv.com/gslb?stream_id=channel_1_pc&tag=live&ext=m3u8&sign=live_ipad]]></url>
+</tv>
+<tv>
+<channelid>1EA50B70DC8B4B4BB1FB341D25F4EB86</channelid>
+<name>孕育指南</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226009/10000100000000060000000000083524_0.smil]]></url>
+</tv>
+<tv>
+<channelid>8D014B17DA72D745A93272A4863370C1</channelid>
+<name>幼儿教育</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226058/10000100000000060000000000109943_0.smil]]></url>
+</tv>
+<tv>
+<channelid>81C295950660AB4BAAF38AA57E68BF72</channelid>
+<name>英语辅导</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226063/10000100000000060000000000112974_0.smil]]></url>
+</tv>
+<tv>
+<channelid>1F4457B5E821B74F8212D6E909D089C8</channelid>
+<name>环球奇观</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226057/10000100000000060000000000109942_0.smil]]></url>
+</tv>
+<tv>
+<channelid>3B356908EA9F2545AFB65536CA04F5FB</channelid>
+<name>先锋纪录</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226006/10000100000000060000000000083521_0.smil]]></url>
+</tv>
+<tv>
+<channelid>31EAF95804F179419AEFC4A1F73A100D</channelid>
+<name>早期教育</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226007/10000100000000060000000000083522_0.smil]]></url>
+</tv>
+<tv>
+<channelid>6996D34B086AF147BF0EC7A8F450E0F9</channelid>
+<name>江苏靓妆</name>
+<url tvsource="源1"><![CDATA[http://123.147.124.8/PLTV/88888888/224/3221226056/10000100000000060000000000109941_0.smil]]></url>
+</tv>
+<tv>
+<channelid>742A7F025CA71F4FBB9E52D81D5ABC66</channelid>
+<name>@TV01新影视</name>
+<url tvsource="视讯中国 (rtmp)"><![CDATA[rtmp://live121.cnlive.com:1935/live/xinyingshi]]></url>
+<url tvsource="源3"><![CDATA[rtmp://live121.cnlive.com:1935/live/xinyingshi.direct]]></url>
+</tv>
+<tv>
+<channelid>26FA69F8B485E74E8879E56FD4E4277C</channelid>
+<name>@TV02新闻</name>
+<url tvsource="视讯中国"><![CDATA[rtmp://live121.cnlive.com:1935/live/news]]></url>
+</tv>
+<tv>
+<channelid>57DF67612D233244A2B0AF66F1CCF1DA</channelid>
+<name>@TV03音乐</name>
+<url tvsource="视讯中国 (rtmp)"><![CDATA[rtmp://live121.cnlive.com:1935/live/inyuetai]]></url>
+</tv>
+<tv>
+<channelid>E270538B2BEEFE489C266C2ACD8D4FD4</channelid>
+<name>@TV04大舞台</name>
+<url tvsource="视讯中国"><![CDATA[rtmp://live121.cnlive.com:1935/live/dawutai]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/dawutai.direct]]></url>
+</tv>
+<tv>
+<channelid>99FD89896E283C4EB9CC2910B4F4994C</channelid>
+<name>@TV05潮体育</name>
+<url tvsource="视讯中国"><![CDATA[rtmp://live121.cnlive.com:1935/live/chaotiyu]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/chaotiyu.direct]]></url>
+</tv>
+<tv>
+<channelid>DF1E9F201A4613459180DF1E3F814494</channelid>
+<name>@TV06中国爱综艺</name>
+<url tvsource="视讯中国 (rtmp)"><![CDATA[rtmp://live121.cnlive.com:1935/live/izongyi]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/izongyi.direct]]></url>
+</tv>
+<tv>
+<channelid>55A3AD858D0C8C4DB15FAB6EFAB037C7</channelid>
+<name>@TV07中国车世界</name>
+<url tvsource="视讯中国"><![CDATA[rtmp://live121.cnlive.com:1935/live/cheshijie]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/cheshijie.direct]]></url>
+</tv>
+<tv>
+<channelid>C36B13CA358E1344A6B361AAF254EC57</channelid>
+<name>@TV08美尚生活</name>
+<url tvsource="视讯"><![CDATA[rtmp://live121.cnlive.com:1935/live/meishangshenghuo]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/meishangshenghuo.direct]]></url>
+</tv>
+<tv>
+<channelid>1EB9AD13B55D42419798B499A1FCC638</channelid>
+<name>@TV09中国热动漫</name>
+<url tvsource="视讯中国"><![CDATA[rtmp://live121.cnlive.com:1935/live/dongman]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/dongman.direct]]></url>
+</tv>
+<tv>
+<channelid>42E42FB304049E4DAAB9DD41A68E602B</channelid>
+<name>@TV10中国娱乐</name>
+<url tvsource="视讯中国 (rtmp)"><![CDATA[rtmp://live121.cnlive.com:1935/live/eyule]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/eyule.direct]]></url>
+</tv>
+<tv>
+<channelid>D693FDFF7509EB4AA529888C4AB3F574</channelid>
+<name>@TV11中国记录片</name>
+<url tvsource="视讯中国"><![CDATA[rtmp://live121.cnlive.com:1935/live/leihejilu]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/leihejilu.direct]]></url>
+</tv>
+<tv>
+<channelid>A931C138678ABA4B9F33096F9A305E20</channelid>
+<name>@TV12中国搏击天下</name>
+<url tvsource="视讯中国"><![CDATA[rtmp://live121.cnlive.com:1935/live/bojitianxia]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/bojitianxia.direct]]></url>
+</tv>
+<tv>
+<channelid>84173E004509D54E9FD387B74422FD2A</channelid>
+<name>@TV13法制中国</name>
+<url tvsource="视讯"><![CDATA[rtmp://live121.cnlive.com:1935/live/fazhizhongguo]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/fazhizhongguo.direct]]></url>
+</tv>
+<tv>
+<channelid>458BD5DA2E173F4C83D69366AACE59B8</channelid>
+<name>@TV14世界小姐</name>
+<url tvsource="视讯 (rtmp)"><![CDATA[rtmp://live121.cnlive.com:1935/live/shijiexiaojie]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/shijiexiaojie.direct]]></url>
+</tv>
+<tv>
+<channelid>39DEA59D18707E4BB6842CB98069EF2C</channelid>
+<name>@TV15欢乐颂</name>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/shixunhuanlesong.direct]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/shixunhuanlesong]]></url>
+</tv>
+<tv>
+<channelid>8A907BA36A83704F8C1FDB3845D57EFF</channelid>
+<name>@TV16美丽中国</name>
+<url tvsource="视讯"><![CDATA[rtmp://live121.cnlive.com:1935/live/meilizhongguo]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/meilizhongguo.direct]]></url>
+</tv>
+<tv>
+<channelid>99D53106BC73B24EA620B00E395557C8</channelid>
+<name>@TV17美星写真</name>
+<url tvsource="视讯"><![CDATA[rtmp://live121.cnlive.com:1935/live/meixingxiezhen]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/meixingxiezhen.direct]]></url>
+</tv>
+<tv>
+<channelid>CF8370507C479544B824E81D153C4E81</channelid>
+<name>@TV18冰火新中超</name>
+<url tvsource="源1 (rtmp)"><![CDATA[rtmp://live121.cnlive.com:1935/live/jidongpindao]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/jidongpindao.direct]]></url>
+</tv>
+<tv>
+<channelid>9DA55E4F4EF73840AEA134DE9CC4AB29</channelid>
+<name>@TV19爱show视听杂志</name>
+<url tvsource="视讯 (rtmp)"><![CDATA[rtmp://live121.cnlive.com:1935/live/aishow]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/aishow.direct]]></url>
+</tv>
+<tv>
+<channelid>EEDFA77DBB3A624C8FDB92471C8B900E</channelid>
+<name>@TV20微直播</name>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/@tv]]></url>
+</tv>
+<tv>
+<channelid>AC046433DE76D94BA46BAE06EBFB25C8</channelid>
+<name>@TV21火星视频</name>
+<url tvsource="视讯中国"><![CDATA[rtmp://live121.cnlive.com:1935/live/huoxingshipin]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/huoxingshipin.direct]]></url>
+</tv>
+<tv>
+<channelid>CF5D8B7E35796645B21FB0BC916942C0</channelid>
+<name>@TV22梦莱坞原创</name>
+<url tvsource="视讯中国"><![CDATA[rtmp://live121.cnlive.com:1935/live/menglaiwu]]></url>
+<url tvsource="源3"><![CDATA[rtmp://live121.cnlive.com:1935/live/menglaiwu.direct]]></url>
+</tv>
+<tv>
+<channelid>ADFE2501824EDB4BA28305960FA2ACCF</channelid>
+<name>@TV23享旅游</name>
+<url tvsource="视讯 (rtmp)"><![CDATA[rtmp://live121.cnlive.com:1935/live/xianglvyou]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/xianglvyou.direct]]></url>
+</tv>
+<tv>
+<channelid>07CD20A04FF8A742B299B4F83B7B6CAF</channelid>
+<name>@TV24微游戏</name>
+<url tvsource="视讯中国 (rtmp)"><![CDATA[rtmp://live121.cnlive.com:1935/live/weiyouxi]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/weiyouxi.direct]]></url>
+</tv>
+<tv>
+<channelid>7D7DF71695770D4C84A1DE43C5FC9A44</channelid>
+<name>@TV25vlook</name>
+<url tvsource="视讯中国 (rtmp)"><![CDATA[rtmp://live121.cnlive.com:1935/live/vlook]]></url>
+<url tvsource="源2"><![CDATA[rtmp://live121.cnlive.com:1935/live/vlook.direct]]></url>
+</tv>
+<tv>
+<channelid>5CD35E8C4DC4F64EB2EE7184D94400A5</channelid>
+<name>@TV26炫韩娱</name>
+<url tvsource="源1"><![CDATA[rtmp://live121.cnlive.com:1935/live/xuanhanyu]]></url>
+</tv>
+<tv>
+<channelid>3520E0C3247F31409B243251EA5A7A84</channelid>
+<name>法国fashionbox</name>
+<url tvsource="源1"><![CDATA[rtmp://cp131115.live.edgefcs.net/live/FASHIONBOXHD_MT_RTMP@71492]]></url>
+</tv>
+<tv>
+<channelid>87D98E78E3DBAF468454BF7FE259B870</channelid>
+<name>国外3D直播</name>
+<url tvsource="源1"><![CDATA[http://89.208.33.168:8200]]></url>
+</tv>
+</tvlist>
+</xml>

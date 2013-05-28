@@ -3,4 +3,6 @@
 test
 global
 vfile
-
+*.exe
+*.dll
+/vfiles

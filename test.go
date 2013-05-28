@@ -4,8 +4,6 @@ package main
 import (
 	"strings"
 	"encoding/json"
-	"fmt"
-	"bytes"
 	"time"
 	"net/http"
 	"io"
@@ -14,6 +12,8 @@ import (
 	"path/filepath"
 	"bufio"
 	"os"
+	"errors"
+	"fmt"
 )
 
 var (
@@ -95,38 +95,6 @@ func (m hash) strs(key string) (vals []string) {
 	return
 }
 
-type myform struct {
-	r *http.Request
-	body hash
-}
-
-func (m myform) str2(key string) (val string, ok bool) {
-	var vals []string
-	vals, ok = m.strs2(key)
-	if len(vals) > 0 {
-		val = vals[0]
-	}
-	return
-}
-
-func (m myform) str(key string) (val string) {
-	val, _ = m.str2(key)
-	return
-}
-
-func (m myform) strs2(key string) (vals []string, ok bool) {
-	vals, ok = m.r.Form[key]
-	if !ok {
-		vals, ok = m.body.strs2(key)
-	}
-	return
-}
-
-func (m myform) strs(key string) (vals []string) {
-	vals, _ = m.strs2(key)
-	return
-}
-
 type globalV2 struct {
 	menu *menuV2
 	vfile *vfileV2
@@ -141,6 +109,7 @@ var (
 func loadVM() {
 	vm.menu = loadMenuV2(".")
 	vm.vfile = loadVfileV2(".")
+	//vm.vfile = loadVfileFromCsv("tvlistxml/sample3")
 	vm.vlist = loadVlistV2()
 	vm.user = loadUserV2()
 }
@@ -150,8 +119,15 @@ func jsonWrite(w io.Writer, a interface{}) {
 	w.Write(b)
 }
 
-func jsonErr(w io.Writer, err error) {
-	jsonWrite(w, hash{"err": fmt.Sprintf("%s", err)})
+func parseForm(r *http.Request) (ret hash) {
+	ret = hash{}
+	_body, _ := ioutil.ReadAll(r.Body)
+	json.Unmarshal(_body, &ret)
+	r.ParseForm()
+	for k,v := range r.Form {
+		ret[k] = v
+	}
+	return
 }
 
 func testhttp(_a []string) {
@@ -159,19 +135,12 @@ func testhttp(_a []string) {
 	loadVM()
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		path := filepath.Clean(r.URL.Path)
-		log.Printf("%s %s", r.Method, path)
+		//path := filepath.Clean(r.URL.Path)
+		path := r.URL.Path
 		dir, file := filepath.Split(path)
 		ext := filepath.Ext(file)
 
-		var form myform
-		_body, _ := ioutil.ReadAll(r.Body)
-		form.r = r
-		json.Unmarshal(_body, &form.body)
-		r.ParseForm()
-		//log.Printf("data %s %v form %v", _body, form.body, r.Form)
-		//log.Printf("testdata: err = %v %v", form.body.str("err"), form.body.strs("err"))
-		log.Printf("  %v %v", r.Form, form.body)
+		form := parseForm(r)
 
 		if path == "/" {
 			http.ServeFile(w, r, "tpl/index.html")
@@ -179,42 +148,39 @@ func testhttp(_a []string) {
 		}
 
 		switch ext {
-		case ".ts", ".html", ".css", ".js", ".mp4", ".rm", ".rmvb", ".avi", ".mkv":
-			http.ServeFile(w, r, path[1:])
+		case ".ts", ".html", ".css",".js", ".mp4",
+				 ".rm", ".rmvb", ".avi", ".mkv", ".ico":
+			http.ServeFile(w, r, filepath.Clean(path)[1:])
 			return
 		case ".m3u8":
 			path = dir
 		}
 
-		mod := make([]string, 4)
-		for i, _ := range mod {
-			mod[i] = pathidx(path, i)
+		var ret interface{}
+		var err error
+
+		log.Printf("%s %s %v", r.Method, path, form)
+
+		switch path {
+			case "/vfile":
+				err, ret = vm.vfile.post(form)
+			case "/menu":
+				err, ret = vm.menu.post(form)
+			case "/vlist":
+				err, ret = vm.vlist.post(form)
+			default:
+				err = errors.New(fmt.Sprintf("wrong path %s", path))
 		}
 
-		w2 := new(bytes.Buffer)
-
-		if r.Method == "POST" {
-			switch mod[0] {
-			case "menu":
-				vm.menu.post(mod[1], form, w2)
-			case "vlist":
-				//vm.vlist.post(mod[1], form, w2)
-			case "vfiles":
-				vm.vfile.post(mod[1], form, w2)
-			}
-		} else {
-			switch mod[0] {
-			case "vfile":
-			case "vfiles":
-			case "menu":
-			case "users":
-			}
+		if err != nil {
+			ret = hash{"err":fmt.Sprintf("%s", err)}
 		}
-		str := string(w2.Bytes())
-		log.Printf("%s", str)
-		fmt.Fprintf(w, "%s", str)
 
+		b, _ := json.Marshal(ret)
+		log.Printf("  %s", string(b))
+		w.Write(b)
 	})
+
 	err := http.ListenAndServe(":9191", nil)
 	if err != nil {
 		log.Printf("%v", err)

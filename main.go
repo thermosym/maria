@@ -48,7 +48,7 @@ func tmdur2float(dur time.Duration) float32 {
 }
 
 func perstr(per float64) string {
-	return fmt.Sprintf("%.1f%%", per)
+	return fmt.Sprintf("%.1f%%", per*100)
 }
 
 func durstr(d float32) string {
@@ -167,7 +167,7 @@ func main() {
 		{"vdown1", testvdown1},
 		{"vdown2", testvdown2},
 		{"vdown3", testvdown3},
-		{"v1", testVfile1},
+		{"vfile1", testvfile1},
 		{"v2", testVfile2},
 		{"testhttp", testhttp},
 		{"testajax", testajax},

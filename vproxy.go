@@ -41,7 +41,7 @@ func vproxyRun(prefix string, m3u8url string, cb vproxyCb, opts... interface{}) 
 	var files [TSNR]tsinfo2
 	probeMode := false
 	tmstart := time.Now()
-	gotFirst := false
+	probed := false
 	var curlopt string
 
 	getTs := func (path, url string) (err error) {
@@ -54,7 +54,8 @@ func vproxyRun(prefix string, m3u8url string, cb vproxyCb, opts... interface{}) 
 					tmstart = time.Now()
 				}
 				if debug {
-					log.Printf("getting %s %.1f%%", path, ist.per*100)
+					log.Printf("getting %s %s %s",
+							path, perstr(ist.per), speedstr(ist.speed))
 				}
 				cb(vproxyStat{op:"progress", ist:ist})
 				return nil
@@ -78,16 +79,16 @@ func vproxyRun(prefix string, m3u8url string, cb vproxyCb, opts... interface{}) 
 			if err != nil {
 				return
 			}
-			if !gotFirst {
+			if !probed {
 				var info avprobeStat
 				err, info = avprobe2(file.path)
 				if err != nil {
 					return
 				}
 				cb(vproxyStat{op:"probe", info:info})
-				gotFirst = true
+				probed = true
 			}
-			if probeMode && gotFirst {
+			if probeMode && probed {
 				return
 			}
 			files[i%TSNR] = file

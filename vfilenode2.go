@@ -41,6 +41,7 @@ type vfileV2Node struct {
 
 type vfileV2NodeInfo struct {
 	Stat string
+	Desc string
 	Type string
 	Durstr string
 	Geo string
@@ -70,6 +71,7 @@ func (v *vfileV2Node) info() (info vfileV2NodeInfo) {
 	if v.Per > 0.0 {
 		info.Perstr = perstr(v.Per)
 	}
+	info.Desc = v.Desc
 	return
 }
 
@@ -93,20 +95,25 @@ func (m *vfileV2Node) save() {
 	saveJson(filepath.Join(m.path, "info"), m)
 }
 
-func (m *vfileV2Node) rm() {
+func (m *vfileV2Node) stopAndRemove() {
 	m.l.Lock()
 	defer m.l.Unlock()
 	m.forceStop = true
 	os.RemoveAll(m.path)
 }
 
-func (m *vfileV2Node) set(args form) {
+func (m *vfileV2Node) modify(args form) (err error) {
 	m.l.Lock()
 	defer m.l.Unlock()
-	d := args.str("desc")
-	if d != "" {
-		m.Desc = d
+	str, ok := args.str2("desc")
+	if ok {
+		if str == "" {
+			err = errors.New("desc is empty")
+			return
+		}
+		m.Desc = str
 	}
+	return
 }
 
 func uploadVfileConv(
@@ -281,6 +288,9 @@ func vfileNewVProxy(url, path string) (v *vfileV2Node) {
 			if v.forceStop {
 				err = errors.New("user force stop")
 				return
+			}
+			if st.op == "probe" {
+				v.Info = st.info
 			}
 			if st.op == "progress" {
 				v.Stat = "running"
